@@ -30,6 +30,13 @@ export const metadata: Metadata = {
     title: SITE.name,
     description: SITE.tagline,
   },
+  icons: {
+    icon: [
+      { url: '/icon.svg', type: 'image/svg+xml' },
+    ],
+    shortcut: '/icon.svg',
+    apple: '/apple-icon',
+  },
   other: {
     'og:updated_time': new Date().toISOString(),
     'google-site-verification': SITE.gscVerification,

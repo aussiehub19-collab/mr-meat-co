@@ -14,7 +14,7 @@ interface SmartImageProps {
   unoptimized?: boolean;
 }
 
-const FALLBACK_IMAGE = 'https://images.unsplash.com/photo-1603048588665-791ca8aea617?q=80&w=800&auto=format&fit=crop';
+const FALLBACK_IMAGE = 'https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?q=80&w=1200&auto=format&fit=crop';
 
 export function extractGoogleDriveId(url: string): string | null {
   if (!url) return null;
@@ -53,13 +53,11 @@ export function SmartImage({
   const [prevSrc, setPrevSrc] = useState<string>(src);
   const [attempt, setAttempt] = useState<number>(0);
   const [overrideSrc, setOverrideSrc] = useState<string | null>(null);
-  const [useNativeImg, setUseNativeImg] = useState<boolean>(false);
 
   if (prevSrc !== src) {
     setPrevSrc(src);
     setAttempt(0);
     setOverrideSrc(null);
-    setUseNativeImg(false);
   }
 
   const imgSrc = overrideSrc ?? formatGoogleDriveUrl(src, attempt);
@@ -70,10 +68,6 @@ export function SmartImage({
       const nextAttempt = attempt + 1;
       setAttempt(nextAttempt);
       setOverrideSrc(formatGoogleDriveUrl(src, nextAttempt));
-    } else if (!useNativeImg) {
-      // Fallback to native img tag to bypass any Next.js proxy restriction
-      setUseNativeImg(true);
-      setOverrideSrc(formatGoogleDriveUrl(src, 0));
     } else if (imgSrc !== FALLBACK_IMAGE) {
       setOverrideSrc(FALLBACK_IMAGE);
     }
@@ -81,21 +75,6 @@ export function SmartImage({
 
   const isGoogleDrive = Boolean(extractGoogleDriveId(src) || (imgSrc && (imgSrc.includes('googleusercontent.com') || imgSrc.includes('drive.google.com'))));
   const shouldUnoptimize = unoptimized !== undefined ? unoptimized : isGoogleDrive;
-
-  if (useNativeImg) {
-    return (
-      <img
-        src={imgSrc}
-        alt={alt}
-        className={`${className} ${fill ? 'absolute inset-0 w-full h-full' : ''}`}
-        width={!fill ? width : undefined}
-        height={!fill ? height : undefined}
-        referrerPolicy="no-referrer"
-        onError={handleError}
-        loading={priority ? 'eager' : 'lazy'}
-      />
-    );
-  }
 
   if (fill) {
     return (

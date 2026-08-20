@@ -3,6 +3,8 @@ import { notFound } from 'next/navigation';
 import { CATEGORIES, SITE } from '@/config/site';
 import { JsonLd } from '@/components/JsonLd';
 import { ShopFilterClient } from '@/components/ShopFilterClient';
+import { SeafoodCatalogueClient } from '@/components/SeafoodCatalogueClient';
+import { PetFoodCatalogueClient } from '@/components/PetFoodCatalogueClient';
 import Link from 'next/link';
 
 export async function generateStaticParams() {
@@ -18,9 +20,20 @@ export async function generateMetadata({
   const category = CATEGORIES.find((c) => c.slug === categorySlug);
   if (!category) return {};
 
+  const isSeafood = categorySlug === 'seafood';
+  const isPetFood = categorySlug === 'pet-food';
+
   return {
-    title: `${category.name} Cuts & Products | The Meat Cart Australia`,
-    description: category.description,
+    title: isSeafood
+      ? `Seafood Catalogue | Fish, Prawns, Salmon & Value Packs`
+      : isPetFood
+      ? `Pet Food Catalogue | Raw Pet Mince, Bones, Offal & Pet Packs`
+      : `${category.name} Cuts & Products | The Meat Cart Australia`,
+    description: isSeafood
+      ? `Browse our seafood catalogue including Barramundi, Snapper, Flathead, King Prawns, Tasmanian Salmon portions, and mixed seafood value packs. Fresh chilled and frozen storage.`
+      : isPetFood
+      ? `Explore our raw pet food catalogue featuring Raw Mince, Bones, Offal, and Pet Packs. Pet food only — not for human consumption.`
+      : category.description,
     alternates: {
       canonical: `https://${SITE.domain}/${category.slug}/`,
     },
@@ -42,29 +55,62 @@ export default async function TopLevelCategoryPage({
     notFound();
   }
 
+  const isSeafood = categorySlug === 'seafood';
+  const isPetFood = categorySlug === 'pet-food';
+
   const breadcrumbSchema = {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
-    itemListElement: [
-      {
-        '@type': 'ListItem',
-        position: 1,
-        name: 'Home',
-        item: `https://${SITE.domain}/`,
-      },
-      {
-        '@type': 'ListItem',
-        position: 2,
-        name: 'Shop',
-        item: `https://${SITE.domain}/shop/`,
-      },
-      {
-        '@type': 'ListItem',
-        position: 3,
-        name: category.name,
-        item: `https://${SITE.domain}/${category.slug}/`,
-      },
-    ],
+    itemListElement: isSeafood
+      ? [
+          {
+            '@type': 'ListItem',
+            position: 1,
+            name: 'Home',
+            item: `https://${SITE.domain}/`,
+          },
+          {
+            '@type': 'ListItem',
+            position: 2,
+            name: 'Seafood',
+            item: `https://${SITE.domain}/seafood/`,
+          },
+        ]
+      : isPetFood
+      ? [
+          {
+            '@type': 'ListItem',
+            position: 1,
+            name: 'Home',
+            item: `https://${SITE.domain}/`,
+          },
+          {
+            '@type': 'ListItem',
+            position: 2,
+            name: 'Pet Food',
+            item: `https://${SITE.domain}/pet-food/`,
+          },
+        ]
+      : [
+          {
+            '@type': 'ListItem',
+            position: 1,
+            name: 'Home',
+            item: `https://${SITE.domain}/`,
+          },
+          {
+            '@type': 'ListItem',
+            position: 2,
+            name: 'Shop',
+            item: `https://${SITE.domain}/shop/`,
+          },
+          {
+            '@type': 'ListItem',
+            position: 3,
+            name: category.name,
+            item: `https://${SITE.domain}/${category.slug}/`,
+          },
+        ],
   };
 
   return (
@@ -74,18 +120,26 @@ export default async function TopLevelCategoryPage({
       {/* Header */}
       <div className="space-y-3 border-b border-red-900/40 pb-6">
         <div className="flex items-center space-x-2 text-xs font-bold uppercase tracking-wider text-red-500">
-          <Link href="/shop/" className="hover:underline text-gray-400">
-            Shop
+          <Link href="/" className="hover:underline text-gray-400">
+            Home
           </Link>
           <span>/</span>
           <span>{category.name}</span>
         </div>
 
         <h1 className="text-3xl sm:text-4xl font-black text-white font-serif">
-          {category.name} Cuts & Fresh Meat
+          {isSeafood
+            ? 'Seafood Product Catalogue'
+            : isPetFood
+            ? 'Pet Food Product Catalogue'
+            : `${category.name} Cuts & Fresh Meat`}
         </h1>
         <p className="text-gray-300 text-sm max-w-3xl leading-relaxed">
-          {category.description}
+          {isSeafood
+            ? 'Explore our complete seafood catalogue featuring fresh chilled and frozen fish fillets, raw and cooked prawns, salmon portions, and value packs. All prices are in AUD with clear storage and allergen information.'
+            : isPetFood
+            ? 'Raw pet meat, bones, offal, and pet packs prepared strictly for animal diets. Pet food only — not for human consumption. Keep frozen until use.'
+            : category.description}
         </p>
 
         {/* Subcategories Pills Bar */}
@@ -106,8 +160,14 @@ export default async function TopLevelCategoryPage({
         </div>
       </div>
 
-      {/* Interactive Shop Filter pre-selected to this category */}
-      <ShopFilterClient initialCategory={category.slug} />
+      {/* Interactive Filter System */}
+      {isSeafood ? (
+        <SeafoodCatalogueClient initialSubcategory="all" />
+      ) : isPetFood ? (
+        <PetFoodCatalogueClient initialSubcategory="all" />
+      ) : (
+        <ShopFilterClient initialCategory={category.slug} />
+      )}
     </div>
   );
 }

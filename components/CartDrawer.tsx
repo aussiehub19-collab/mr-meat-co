@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { useCart } from '@/lib/cart';
 import { SITE, SHOP, CONTACT } from '@/config/site';
 import { X, ShoppingBag, Plus, Minus, Trash2, ArrowRight, ShieldCheck, MessageSquare, Tag } from 'lucide-react';
-import Image from 'next/image';
+import { SmartImage } from '@/components/SmartImage';
 import Link from 'next/link';
 
 export function CartDrawer() {
@@ -89,7 +89,7 @@ export function CartDrawer() {
                   className="bg-white p-3 rounded-xl border border-gray-200 shadow-sm flex space-x-3 items-center"
                 >
                   <div className="relative w-20 h-16 rounded-lg overflow-hidden bg-gray-100 shrink-0 border border-gray-100">
-                    <Image
+                    <SmartImage
                       src={item.image}
                       alt={item.name}
                       fill
@@ -98,7 +98,17 @@ export function CartDrawer() {
                   </div>
                   <div className="flex-1 min-w-0">
                     <h4 className="text-sm font-semibold text-gray-900 truncate">{item.name}</h4>
-                    <p className="text-xs text-gray-500">${item.price.toFixed(2)} AUD / unit</p>
+                    {item.category === 'pet-food' && (
+                      <span className="inline-block mt-0.5 text-[10px] font-bold text-amber-800 bg-amber-100 px-1.5 py-0.2 rounded border border-amber-300">
+                        🐾 Pet Food Only (Not for Human Consumption)
+                      </span>
+                    )}
+                    {item.category === 'seafood' && (
+                      <span className="inline-block mt-0.5 text-[10px] font-bold text-sky-800 bg-sky-100 px-1.5 py-0.2 rounded border border-sky-300">
+                        🐟 Seafood (Allergen: Fish/Crustacea)
+                      </span>
+                    )}
+                    <p className="text-xs text-gray-500 mt-0.5">${item.price.toFixed(2)} AUD / unit</p>
                     <div className="flex items-center space-x-2 mt-2">
                       <button
                         type="button"

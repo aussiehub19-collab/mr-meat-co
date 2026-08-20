@@ -5,8 +5,23 @@ import Link from 'next/link';
 import { Product } from '@/config/site';
 import { useCart } from '@/lib/cart';
 import { SmartImage } from '@/components/SmartImage';
-import { Plus, Check } from 'lucide-react';
+import { Plus, Check, Snowflake, ShieldAlert } from 'lucide-react';
 import { useCustomStoreImages } from '@/lib/useCustomImages';
+
+function getProductHref(product: Product): string {
+  const cat = (product.main_category || product.category || '').toLowerCase();
+  const sub = (product.subcategory || '').toLowerCase().replace(/\s+/g, '-');
+  if (cat === 'wholesale') {
+    return `/wholesale/bulk-meat-orders/${sub}/${product.slug}/`;
+  }
+  if (cat === 'seafood') {
+    return `/seafood/${sub}/${product.slug}/`;
+  }
+  if (cat === 'pet-food') {
+    return `/pet-food/${sub}/${product.slug}/`;
+  }
+  return `/shop/${cat}/${product.slug}/`;
+}
 
 export function ProductCard({ product }: { product: Product }) {
   const { addToCart, cart } = useCart();
@@ -16,23 +31,27 @@ export function ProductCard({ product }: { product: Product }) {
   const customProductImage = customProductImages[product.slug] || customProductImages[product.product_id] || null;
   const activeImage = customProductImage || product.main_image || product.image;
 
-  const formatPriceType = () => {
-    if (!product.price_type) return 'AUD';
+  const formatPriceUnit = () => {
+    if (!product.price_type) return 'per item';
     switch (product.price_type) {
       case 'per_kg':
-        return '/ kg';
+        return 'per kg';
       case 'per_pack':
-        return '/ pack';
+        return 'per pack';
+      case 'per_box':
+        return 'per box';
       case 'per_item':
-        return '/ item';
+        return 'per item';
+      case 'fixed_pack_price':
+        return 'fixed pack price';
       case 'fixed_box_price':
-        return 'Box Price';
+        return 'fixed box price';
       case 'from_price':
-        return 'From';
+        return 'from price';
       case 'variable_weight':
-        return 'Approx Wt.';
+        return 'approx. weight';
       default:
-        return 'AUD';
+        return product.price_type.replace(/_/g, ' ');
     }
   };
 
@@ -52,10 +71,18 @@ export function ProductCard({ product }: { product: Product }) {
     ? `$${product.price.toFixed(2)}`
     : 'Inquire';
 
+  const isSeafood = (product.main_category || product.category) === 'seafood';
+  const isPetFood = (product.main_category || product.category) === 'pet-food' || product.pet_food_only;
+  const href = getProductHref(product);
+
+  const storageType = product.storage_type || (isPetFood ? 'Frozen' : 'Fresh Chilled');
+  const packSize = product.pack_size || product.weight || 'Standard Pack';
+  const stockStatus = product.stock_status || 'In Stock';
+
   return (
     <div className="group bg-[#1C1414] rounded-2xl border border-[#991B1B]/40 hover:border-red-500 overflow-hidden shadow-xl hover:shadow-red-950/40 transition-all duration-300 flex flex-col h-full">
       {/* Product Image Frame */}
-      <Link href={`/shop/${product.main_category || product.category}/${product.slug}/`} className="block relative aspect-[4/3] bg-white overflow-hidden p-2">
+      <Link href={href} className="block relative aspect-[4/3] bg-white overflow-hidden p-2">
         <SmartImage
           src={activeImage}
           alt={product.product_name || product.name}
@@ -70,12 +97,21 @@ export function ProductCard({ product }: { product: Product }) {
           </span>
         )}
 
-        {/* Stock Status Pill */}
-        {product.stock_status && product.stock_status !== 'In Stock' && (
-          <span className="absolute top-3 right-3 bg-red-950/90 text-red-200 border border-red-500/50 text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded shadow z-10">
-            {product.stock_status}
-          </span>
-        )}
+        {/* Storage Type Pill */}
+        <span
+          className={`absolute top-3 right-3 text-[10px] font-bold tracking-wider px-2.5 py-1 rounded-md shadow z-10 border flex items-center gap-1 ${
+            storageType === 'Frozen'
+              ? 'bg-sky-950/90 text-sky-200 border-sky-500/50'
+              : storageType === 'Refrigerated'
+              ? 'bg-purple-950/90 text-purple-200 border-purple-500/50'
+              : storageType === 'To be confirmed'
+              ? 'bg-amber-950/90 text-amber-200 border-amber-500/50'
+              : 'bg-emerald-950/90 text-emerald-200 border-emerald-500/50'
+          }`}
+        >
+          {storageType === 'Frozen' && <Snowflake className="w-3 h-3 text-sky-300" />}
+          {storageType}
+        </span>
       </Link>
 
       {/* Product Info */}
@@ -83,14 +119,44 @@ export function ProductCard({ product }: { product: Product }) {
         <div>
           <div className="flex items-center justify-between text-[11px] uppercase font-extrabold text-red-400 tracking-wider mb-1">
             <span>{product.subcategory || product.main_category || product.category}</span>
-            {product.weight && <span className="text-gray-300 font-normal">{product.weight}</span>}
+            <span className="text-emerald-400 font-semibold text-[10px] bg-emerald-950/60 px-2 py-0.5 rounded border border-emerald-500/30">
+              {stockStatus}
+            </span>
           </div>
-          <Link href={`/shop/${product.main_category || product.category}/${product.slug}/`} className="block">
+
+          <Link href={href} className="block">
             <h3 className="font-bold text-white text-base leading-snug group-hover:text-red-300 transition-colors line-clamp-2">
               {product.product_name || product.name}
             </h3>
           </Link>
-          <p className="text-xs text-gray-300 mt-1.5 line-clamp-2 leading-relaxed">
+
+          {/* Pack Size & Storage info row */}
+          <div className="mt-2 flex flex-wrap items-center gap-2 text-xs text-gray-300">
+            <span className="bg-[#141414] px-2 py-0.5 rounded border border-[#991B1B]/30 font-medium">
+              Pack size: <strong className="text-white">{packSize}</strong>
+            </span>
+            <span className="bg-[#141414] px-2 py-0.5 rounded border border-[#991B1B]/30 font-medium text-gray-300">
+              Storage: <span className="text-gray-200">{storageType}</span>
+            </span>
+          </div>
+
+          {/* Allergen note for seafood */}
+          {isSeafood && (
+            <p className="text-[11px] text-amber-300/90 mt-2 flex items-center gap-1 leading-tight">
+              <ShieldAlert className="w-3 h-3 text-amber-400 shrink-0" />
+              <span>Allergen: Contains Fish/Crustacea</span>
+            </p>
+          )}
+
+          {/* Pet Food Only Warning for Pet Products */}
+          {isPetFood && (
+            <div className="mt-2 p-2 bg-amber-950/40 border border-amber-500/50 rounded-lg flex items-center gap-1.5 text-[11px] font-bold text-amber-300">
+              <ShieldAlert className="w-3.5 h-3.5 text-amber-400 shrink-0" />
+              <span>Pet Food Only — Not for Human Consumption</span>
+            </div>
+          )}
+
+          <p className="text-xs text-gray-300 mt-2 line-clamp-2 leading-relaxed">
             {product.short_description || product.shortDescription}
           </p>
         </div>
@@ -98,10 +164,10 @@ export function ProductCard({ product }: { product: Product }) {
         <div className="pt-3 border-t border-[#991B1B]/30 flex items-center justify-between mt-auto">
           <div>
             <span className="text-[10px] text-gray-400 block font-medium uppercase tracking-wider">
-              Price {formatPriceType()}
+              {formatPriceUnit()}
             </span>
             <span className="text-lg font-black text-white">
-              {displayPrice}
+              {displayPrice} <span className="text-xs text-gray-400 font-normal">AUD</span>
             </span>
           </div>
 

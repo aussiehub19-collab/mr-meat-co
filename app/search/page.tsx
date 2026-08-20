@@ -15,7 +15,7 @@ function SearchResultsContent() {
   const results = useMemo(() => {
     const q = query.toLowerCase().trim();
     if (!q) {
-      return { products: [], posts: [] };
+      return { products: [], humanProducts: [], petFoodProducts: [], posts: [] };
     }
 
     const matchingProducts = PRODUCTS.filter(
@@ -32,7 +32,19 @@ function SearchResultsContent() {
         post.category.toLowerCase().includes(q)
     );
 
-    return { products: matchingProducts, posts: matchingPosts };
+    const humanProducts = matchingProducts.filter(
+      (p) => (p.main_category || p.category) !== 'pet-food' && !p.pet_food_only
+    );
+    const petFoodProducts = matchingProducts.filter(
+      (p) => (p.main_category || p.category) === 'pet-food' || p.pet_food_only
+    );
+
+    return {
+      products: matchingProducts,
+      humanProducts,
+      petFoodProducts,
+      posts: matchingPosts,
+    };
   }, [query]);
 
   return (
@@ -51,7 +63,7 @@ function SearchResultsContent() {
             type="text"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder="Search beef mince, wagyu steak, lamb cutlets..."
+            placeholder="Search beef mince, wagyu steak, pet bones..."
             className="w-full pl-12 pr-4 py-3.5 bg-[#141414] border border-[#991B1B]/40 rounded-2xl text-sm font-medium text-white placeholder-gray-500 shadow-sm focus:outline-none focus:border-red-500"
           />
           <Search className="w-5 h-5 text-red-500 absolute left-4 top-4" />
@@ -61,24 +73,51 @@ function SearchResultsContent() {
       {/* Results Section */}
       {query && (
         <div className="space-y-10">
-          {/* Products Results */}
-          <div className="space-y-6">
-            <h2 className="text-xl font-bold font-serif text-white">
-              Matching Products ({results.products.length})
-            </h2>
+          {/* Human Products Results */}
+          {results.humanProducts.length > 0 && (
+            <div className="space-y-6">
+              <h2 className="text-xl font-bold font-serif text-white">
+                Human Food & Butcher Cuts ({results.humanProducts.length})
+              </h2>
 
-            {results.products.length === 0 ? (
-              <p className="text-sm text-gray-300 bg-[#141414] p-6 rounded-2xl border border-[#991B1B]/40">
-                No products found matching &quot;{query}&quot;. Try searching for &quot;beef mince&quot;, &quot;steak&quot;, or &quot;lamb&quot;.
-              </p>
-            ) : (
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                {results.products.map((p) => (
+                {results.humanProducts.map((p) => (
                   <ProductCard key={p.slug} product={p} />
                 ))}
               </div>
-            )}
-          </div>
+            </div>
+          )}
+
+          {/* Pet Food Results Section (Separated) */}
+          {results.petFoodProducts.length > 0 && (
+            <div className="space-y-6 pt-6 border-t border-amber-500/40">
+              <div className="p-4 bg-amber-950/40 border border-amber-500/50 rounded-2xl flex items-start sm:items-center justify-between gap-4">
+                <div>
+                  <span className="bg-amber-500 text-black text-[10px] font-black uppercase tracking-wider px-2 py-0.5 rounded">
+                    Pet Food Category
+                  </span>
+                  <h2 className="text-xl font-black font-serif text-white mt-1">
+                    Pet Food Products ({results.petFoodProducts.length})
+                  </h2>
+                  <p className="text-xs text-amber-200/90 font-medium">
+                    Strictly for pet dietary consumption only. Not for human consumption.
+                  </p>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                {results.petFoodProducts.map((p) => (
+                  <ProductCard key={p.slug} product={p} />
+                ))}
+              </div>
+            </div>
+          )}
+
+          {results.products.length === 0 && (
+            <p className="text-sm text-gray-300 bg-[#141414] p-6 rounded-2xl border border-[#991B1B]/40">
+              No products found matching &quot;{query}&quot;. Try searching for &quot;beef mince&quot;, &quot;steak&quot;, or &quot;pet bones&quot;.
+            </p>
+          )}
 
           {/* Posts Results */}
           {results.posts.length > 0 && (

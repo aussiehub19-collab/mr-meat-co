@@ -14,6 +14,7 @@ export function Nav() {
   const { totalCount, setIsCartOpen } = useCart();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [shopDropdownOpen, setShopDropdownOpen] = useState(false);
+  const [wholesaleDropdownOpen, setWholesaleDropdownOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
 
   const handleSearchSubmit = (e: React.FormEvent) => {
@@ -96,15 +97,62 @@ export function Nav() {
               )}
             </div>
 
+            <Link href="/seafood/" className="font-bold text-sm text-gray-200 hover:text-red-400 transition-colors flex items-center gap-1">
+              <span>Seafood</span>
+              <span className="bg-red-900/60 text-red-300 text-[10px] px-1.5 py-0.5 rounded font-black border border-red-500/30">Fresh</span>
+            </Link>
+            <Link href="/pet-food/" className="font-bold text-sm text-gray-200 hover:text-amber-400 transition-colors flex items-center gap-1">
+              <span>Pet Food</span>
+              <span className="bg-amber-950/90 text-amber-300 text-[10px] px-1.5 py-0.5 rounded font-black border border-amber-500/40">Pets Only</span>
+            </Link>
             <Link href="/about/" className="font-bold text-sm text-gray-200 hover:text-red-400 transition-colors">
               About
             </Link>
-            <Link href="/wholesale/" className="font-bold text-sm text-gray-200 hover:text-red-400 transition-colors">
-              Wholesale
-            </Link>
-            <Link href="/faq/" className="font-bold text-sm text-gray-200 hover:text-red-400 transition-colors">
-              FAQ
-            </Link>
+            <div
+              className="relative"
+              onMouseEnter={() => setWholesaleDropdownOpen(true)}
+              onMouseLeave={() => setWholesaleDropdownOpen(false)}
+            >
+              <Link
+                href="/wholesale/"
+                className="flex items-center space-x-1 font-bold text-sm text-gray-200 hover:text-red-400 py-2 transition-colors"
+              >
+                <span>Wholesale</span>
+                <ChevronDown className="w-4 h-4 text-red-500" />
+              </Link>
+
+              {wholesaleDropdownOpen && (
+                <div className="absolute top-full left-0 w-72 bg-[#1C1212] rounded-2xl shadow-2xl border border-[#991B1B]/50 p-3 space-y-1.5 z-50 animate-in fade-in duration-150">
+                  <Link
+                    href="/wholesale/"
+                    onClick={() => setWholesaleDropdownOpen(false)}
+                    className="block p-2.5 rounded-xl hover:bg-[#281818] transition-colors"
+                  >
+                    <div className="font-bold text-xs text-white">Trade & B2B Supply</div>
+                    <div className="text-[10px] text-gray-400">Commercial restaurant and butchery supply</div>
+                  </Link>
+                  <Link
+                    href="/wholesale/bulk-meat-orders/"
+                    onClick={() => setWholesaleDropdownOpen(false)}
+                    className="block p-2.5 rounded-xl bg-red-950/40 hover:bg-red-950/80 border border-red-500/30 transition-colors"
+                  >
+                    <div className="font-bold text-xs text-red-300 flex items-center justify-between">
+                      <span>Bulk Meat & Animal Shares</span>
+                      <span className="text-[9px] bg-red-800 text-white px-1.5 py-0.5 rounded font-black">Buy Online</span>
+                    </div>
+                    <div className="text-[10px] text-gray-300">Freezer packs, bulk cartons & animal shares</div>
+                  </Link>
+                  <Link
+                    href="/wholesale/contact-us/"
+                    onClick={() => setWholesaleDropdownOpen(false)}
+                    className="block p-2.5 rounded-xl hover:bg-[#281818] transition-colors"
+                  >
+                    <div className="font-bold text-xs text-amber-300">Custom Bulk Quote</div>
+                    <div className="text-[10px] text-gray-400">For orders larger than listed packs</div>
+                  </Link>
+                </div>
+              )}
+            </div>
             <Link href="/contact/" className="font-bold text-sm text-gray-200 hover:text-red-400 transition-colors">
               Contact
             </Link>
@@ -184,14 +232,24 @@ export function Nav() {
             ))}
 
             <div className="pt-2 border-t border-red-900/30 flex flex-col space-y-2">
+              <Link href="/seafood/" onClick={() => setMobileMenuOpen(false)} className="py-1.5 hover:text-red-400 flex items-center justify-between">
+                <span>Seafood</span>
+                <span className="text-[10px] bg-red-900/60 text-red-300 px-1.5 py-0.5 rounded font-black border border-red-500/30">Fresh</span>
+              </Link>
+              <Link href="/pet-food/" onClick={() => setMobileMenuOpen(false)} className="py-1.5 hover:text-amber-400 flex items-center justify-between">
+                <span>Pet Food</span>
+                <span className="text-[10px] bg-amber-950/90 text-amber-300 px-1.5 py-0.5 rounded font-black border border-amber-500/40">Pets Only</span>
+              </Link>
               <Link href="/about/" onClick={() => setMobileMenuOpen(false)} className="py-1.5 hover:text-red-400">
                 About Us
               </Link>
-              <Link href="/wholesale/" onClick={() => setMobileMenuOpen(false)} className="py-1.5 hover:text-red-400">
-                Wholesale
+              <Link href="/wholesale/" onClick={() => setMobileMenuOpen(false)} className="py-1.5 hover:text-red-400 flex items-center justify-between">
+                <span>Wholesale & Trade</span>
+                <span className="text-[10px] bg-zinc-800 text-gray-300 px-1.5 py-0.5 rounded">B2B</span>
               </Link>
-              <Link href="/faq/" onClick={() => setMobileMenuOpen(false)} className="py-1.5 hover:text-red-400">
-                FAQ
+              <Link href="/wholesale/bulk-meat-orders/" onClick={() => setMobileMenuOpen(false)} className="pl-3 py-1.5 text-xs text-red-300 hover:text-red-200 flex items-center justify-between border-l border-red-500/40">
+                <span>↳ Bulk Orders & Animal Shares</span>
+                <span className="text-[9px] bg-red-900/60 text-red-200 px-1 py-0.5 rounded font-black">Buy Online</span>
               </Link>
               <Link href="/contact/" onClick={() => setMobileMenuOpen(false)} className="py-1.5 hover:text-red-400">
                 Contact

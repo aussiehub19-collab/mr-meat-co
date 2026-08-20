@@ -3,6 +3,8 @@ import { notFound } from 'next/navigation';
 import { CATEGORIES, PRODUCTS, SITE } from '@/config/site';
 import { JsonLd } from '@/components/JsonLd';
 import { ProductCard } from '@/components/ProductCard';
+import { SeafoodCatalogueClient } from '@/components/SeafoodCatalogueClient';
+import { PetFoodCatalogueClient } from '@/components/PetFoodCatalogueClient';
 import Link from 'next/link';
 
 export async function generateStaticParams() {
@@ -31,9 +33,20 @@ export async function generateMetadata({
 
   if (!subcategory) return {};
 
+  const isSeafood = categorySlug === 'seafood';
+  const isPetFood = categorySlug === 'pet-food';
+
   return {
-    title: `${subcategory} — ${category.name} | The Meat Cart Australia`,
-    description: `Shop fresh Australian ${subcategory.toLowerCase()} cuts under our ${category.name} butcher selection. Delivered chilled to your door.`,
+    title: isSeafood
+      ? `${subcategory} | Seafood Catalogue`
+      : isPetFood
+      ? `${subcategory} | Pet Food Catalogue`
+      : `${subcategory} — ${category.name} | The Meat Cart Australia`,
+    description: isSeafood
+      ? `Browse our ${subcategory.toLowerCase()} seafood catalogue. Fresh chilled and frozen storage with market-reference starting prices in AUD.`
+      : isPetFood
+      ? `Explore our ${subcategory.toLowerCase()} pet food catalogue. Pet food only — not for human consumption.`
+      : `Shop fresh Australian ${subcategory.toLowerCase()} cuts under our ${category.name} butcher selection. Delivered chilled to your door.`,
     alternates: {
       canonical: `https://${SITE.domain}/${category.slug}/${subSlug}/`,
     },
@@ -62,6 +75,9 @@ export default async function TopLevelSubcategoryPage({
   if (!subcategory) {
     notFound();
   }
+
+  const isSeafood = categorySlug === 'seafood';
+  const isPetFood = categorySlug === 'pet-food';
 
   const subProducts = PRODUCTS.filter((p) => {
     const categoryMatches =
@@ -92,26 +108,68 @@ export default async function TopLevelSubcategoryPage({
   const breadcrumbSchema = {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
-    itemListElement: [
-      {
-        '@type': 'ListItem',
-        position: 1,
-        name: 'Home',
-        item: `https://${SITE.domain}/`,
-      },
-      {
-        '@type': 'ListItem',
-        position: 2,
-        name: category.name,
-        item: `https://${SITE.domain}/${category.slug}/`,
-      },
-      {
-        '@type': 'ListItem',
-        position: 3,
-        name: subcategory,
-        item: `https://${SITE.domain}/${category.slug}/${subSlug}/`,
-      },
-    ],
+    itemListElement: isSeafood
+      ? [
+          {
+            '@type': 'ListItem',
+            position: 1,
+            name: 'Home',
+            item: `https://${SITE.domain}/`,
+          },
+          {
+            '@type': 'ListItem',
+            position: 2,
+            name: 'Seafood',
+            item: `https://${SITE.domain}/seafood/`,
+          },
+          {
+            '@type': 'ListItem',
+            position: 3,
+            name: subcategory,
+            item: `https://${SITE.domain}/seafood/${subSlug}/`,
+          },
+        ]
+      : isPetFood
+      ? [
+          {
+            '@type': 'ListItem',
+            position: 1,
+            name: 'Home',
+            item: `https://${SITE.domain}/`,
+          },
+          {
+            '@type': 'ListItem',
+            position: 2,
+            name: 'Pet Food',
+            item: `https://${SITE.domain}/pet-food/`,
+          },
+          {
+            '@type': 'ListItem',
+            position: 3,
+            name: subcategory,
+            item: `https://${SITE.domain}/pet-food/${subSlug}/`,
+          },
+        ]
+      : [
+          {
+            '@type': 'ListItem',
+            position: 1,
+            name: 'Home',
+            item: `https://${SITE.domain}/`,
+          },
+          {
+            '@type': 'ListItem',
+            position: 2,
+            name: category.name,
+            item: `https://${SITE.domain}/${category.slug}/`,
+          },
+          {
+            '@type': 'ListItem',
+            position: 3,
+            name: subcategory,
+            item: `https://${SITE.domain}/${category.slug}/${subSlug}/`,
+          },
+        ],
   };
 
   return (
@@ -121,8 +179,8 @@ export default async function TopLevelSubcategoryPage({
       {/* Header */}
       <div className="space-y-3 border-b border-red-900/40 pb-6">
         <div className="flex items-center space-x-2 text-xs font-bold uppercase tracking-wider text-red-500">
-          <Link href="/shop/" className="hover:underline text-gray-400">
-            Shop
+          <Link href="/" className="hover:underline text-gray-400">
+            Home
           </Link>
           <span>/</span>
           <Link href={`/${category.slug}/`} className="hover:underline text-gray-400">
@@ -133,15 +191,27 @@ export default async function TopLevelSubcategoryPage({
         </div>
 
         <h1 className="text-3xl sm:text-4xl font-black text-white font-serif">
-          Australian {subcategory} Cuts ({category.name})
+          {isSeafood
+            ? `${subcategory} Products`
+            : isPetFood
+            ? `Pet Food — ${subcategory}`
+            : `Australian ${subcategory} Cuts (${category.name})`}
         </h1>
         <p className="text-gray-300 text-sm max-w-3xl leading-relaxed">
-          Premium fresh {subcategory.toLowerCase()} hand-selected and trimmed by our craft butchers. High-protein, pasture-raised, delivered cold-chain across Australia.
+          {isSeafood
+            ? `Browse our selection of ${subcategory.toLowerCase()} products with transparent pack sizes, starting prices in AUD, and clear storage requirements.`
+            : isPetFood
+            ? `Raw pet meat, bones, offal, or pet packs for ${subcategory.toLowerCase()}. Prepared strictly for animal dietary consumption only. Not for human consumption.`
+            : `Premium fresh ${subcategory.toLowerCase()} hand-selected and trimmed by our craft butchers. High-protein, pasture-raised, delivered cold-chain across Australia.`}
         </p>
       </div>
 
-      {/* Product Grid */}
-      {subProducts.length === 0 ? (
+      {/* Product List or Interactive Filter */}
+      {isSeafood ? (
+        <SeafoodCatalogueClient initialSubcategory={subSlug} />
+      ) : isPetFood ? (
+        <PetFoodCatalogueClient initialSubcategory={subSlug} />
+      ) : subProducts.length === 0 ? (
         <div className="bg-[#141414] p-10 text-center rounded-2xl border border-red-900/40 space-y-3">
           <h3 className="text-lg font-bold text-white">No products currently listed under {subcategory}</h3>
           <p className="text-xs text-gray-400">Check back soon or explore our full {category.name} range.</p>

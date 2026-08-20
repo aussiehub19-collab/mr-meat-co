@@ -6,18 +6,26 @@ export interface Product {
   primary_product_category?: string;
   secondary_subcategories?: string[];
   collections: string[];
+  tags?: string[];
   slug: string;
   short_description: string;
   full_description: string;
   price: number | null;
   sale_price: number | null;
-  price_type: 'per_kg' | 'per_item' | 'per_pack' | 'fixed_box_price' | 'from_price' | 'variable_weight' | 'configurable_box_price';
+  price_type: 'per_kg' | 'per_item' | 'per_pack' | 'per_box' | 'fixed_box_price' | 'from_price' | 'variable_weight' | 'configurable_box_price' | 'fixed_pack_price';
   currency?: string;
   weight: string | null;
   pack_size: string | null;
   stock_status: 'In Stock' | 'Out of Stock' | 'Pre-Order' | 'Seasonal' | 'Discontinued';
-  storage_type: 'Fresh Chilled' | 'Frozen';
+  storage_type: 'Fresh Chilled' | 'Frozen' | 'Refrigerated' | 'To be confirmed' | string;
   product_type: string;
+  cut_type?: string;
+  cutType?: string;
+  animal_protein?: string;
+  pet_food_only?: boolean;
+  human_consumption_warning?: string;
+  feeding_instructions?: string;
+  handling_instructions?: string;
   cooking_methods: string[];
   product_format: string[];
   quality_attributes: string[] | null;
@@ -35,11 +43,21 @@ export interface Product {
   gallery_images: string[];
   SEO_title: string;
   SEO_meta_description: string;
+  seo_title?: string;
+  seo_meta_description?: string;
   breadcrumb_path: string;
 
-  // Meat Box specific fields
+  // Wholesale Bulk & Animal Share specific fields
+  is_wholesale?: boolean;
+  approximate_weight?: string | null;
+  bulk_order_notice?: string | null;
+  product_contents?: string[] | null;
+  is_animal_share?: boolean;
+
+  // Meat Box & Value Pack specific fields
   approximate_total_weight?: string | null;
   box_contents?: { name: string; quantity: string; slug?: string }[];
+  pack_contents?: Record<string, string>;
   included_product_references?: string[];
   min_order_value?: number;
 
@@ -221,7 +239,7 @@ export const CATEGORIES: Category[] = [
   {
     slug: "seafood",
     name: "Seafood",
-    description: "Australian seafood—salmon portions, barramundi fillets, ocean prawns, and mixed seafood packs.",
+    description: "Fish fillets and portions, raw and cooked prawns, salmon portions, and mixed seafood value packs.",
     subcategories: ["Fish", "Prawns", "Salmon", "Value Packs"],
     image: "https://lh3.googleusercontent.com/d/1e7vMDbqZ9Bcbz8lQvznXDHTroLinHdd-=s1600",
   },
@@ -260,7 +278,7 @@ function createProduct(
   price: number | null,
   weight: string | null,
   packSize: string | null,
-  priceType: 'per_kg' | 'per_item' | 'per_pack' | 'fixed_box_price' | 'from_price' | 'variable_weight' | 'configurable_box_price',
+  priceType: 'per_kg' | 'per_item' | 'per_pack' | 'per_box' | 'fixed_box_price' | 'from_price' | 'variable_weight' | 'configurable_box_price' | 'fixed_pack_price',
   shortDesc: string,
   fullDesc: string,
   productType: string,
@@ -273,26 +291,53 @@ function createProduct(
     featured?: boolean;
     badge?: string;
     stockStatus?: 'In Stock' | 'Out of Stock' | 'Pre-Order' | 'Seasonal' | 'Discontinued';
-    storageType?: 'Fresh Chilled' | 'Frozen';
+    storageType?: 'Fresh Chilled' | 'Frozen' | 'Refrigerated' | 'To be confirmed' | string;
+    animal_protein?: string;
+    pet_food_only?: boolean;
+    human_consumption_warning?: string;
+    feeding_instructions?: string;
+    handling_instructions?: string;
     ingredients?: string | null;
     allergens?: string | null;
+    allergen_information?: string | null;
     secondary_subcategories?: string[];
     primary_product_category?: string;
     country_of_origin?: string;
     supplier?: string;
     quality_claims?: string;
     use_by_date?: string;
+    approximate_weight?: string | null;
+    bulk_order_notice?: string | null;
+    product_contents?: string[] | null;
+    is_animal_share?: boolean;
     approximate_total_weight?: string | null;
     box_contents?: { name: string; quantity: string; slug?: string }[];
     included_product_references?: string[];
     min_order_value?: number;
+    seo_title?: string;
+    seo_meta_description?: string;
+    breadcrumb_path?: string;
+    pack_contents?: Record<string, string>;
+    storage_instructions?: string;
+    cooking_instructions?: string;
   }
 ): Product {
-  const stock_status = options?.stockStatus || 'In Stock';
-  const storage_type = options?.storageType || 'Fresh Chilled';
-
+  const isWholesale = mainCategory.toLowerCase() === 'wholesale';
   const isMeatBox = mainCategory === 'meat-boxes' || mainCategory === 'Meat Boxes';
-  const displayCategoryName = isMeatBox ? 'Meat Boxes' : mainCategory.charAt(0).toUpperCase() + mainCategory.slice(1);
+  const isSeafood = mainCategory === 'seafood' || mainCategory === 'Seafood';
+  const isPetFood = mainCategory === 'pet-food' || mainCategory === 'Pet Food';
+  const stock_status = options?.stockStatus || 'In Stock';
+  const storage_type = options?.storageType || (isPetFood ? 'Frozen' : 'Fresh Chilled');
+
+  const displayCategoryName = isWholesale
+    ? 'Wholesale'
+    : isMeatBox
+    ? 'Meat Boxes'
+    : isSeafood
+    ? 'Seafood'
+    : isPetFood
+    ? 'Pet Food'
+    : mainCategory.charAt(0).toUpperCase() + mainCategory.slice(1);
 
   return {
     product_id: id,
@@ -314,28 +359,43 @@ function createProduct(
     stock_status: stock_status,
     storage_type: storage_type,
     product_type: productType,
+    animal_protein: options?.animal_protein,
+    pet_food_only: isPetFood || options?.pet_food_only || false,
+    human_consumption_warning: isPetFood ? (options?.human_consumption_warning || "Pet Food Only — Not for Human Consumption") : options?.human_consumption_warning,
+    feeding_instructions: isPetFood ? (options?.feeding_instructions || "Refer to verified supplier instructions or seek veterinary advice") : undefined,
+    handling_instructions: isPetFood ? (options?.handling_instructions || "To be confirmed from verified supplier information") : undefined,
     cooking_methods: cookingMethods,
     product_format: productFormat,
     quality_attributes: qualityAttributes,
-    country_of_origin: options?.country_of_origin || "Australia",
-    supplier: options?.supplier || "Verified Local Australian Farms & Master Butchers",
-    quality_claims: options?.quality_claims || "Fresh Chilled & Vacuum Sealed",
-    ingredients: options?.ingredients || null,
-    allergen_information: options?.allergens || null,
-    storage_instructions: "Keep refrigerated below 4°C. Consume within 3 days or freeze immediately.",
+    country_of_origin: options?.country_of_origin || (isWholesale || isSeafood || isPetFood ? "To be confirmed" : "Australia"),
+    supplier: options?.supplier || (isWholesale || isSeafood || isPetFood ? "To be confirmed" : "Verified Local Australian Farms & Master Butchers"),
+    quality_claims: options?.quality_claims || (isWholesale || isSeafood || isPetFood ? "None supplied" : "Fresh Chilled & Vacuum Sealed"),
+    ingredients: options?.ingredients || (isWholesale || isSeafood || isPetFood ? "To be confirmed" : null),
+    allergen_information: options?.allergen_information || options?.allergens || (isSeafood ? "Contains Fish or Crustacean Shellfish — verify exact allergen information from supplier label" : isPetFood ? "To be confirmed" : null),
+    storage_instructions: options?.storage_instructions || (storage_type === 'Frozen' ? "Keep frozen at or below -18°C. Thaw in refrigerator before use." : storage_type === 'Refrigerated' ? "Keep refrigerated below 4°C. Consume within 3 days of opening." : storage_type === 'To be confirmed' ? "To be confirmed upon ordering." : "Keep refrigerated below 4°C. Consume within 3 days or freeze immediately."),
     use_by_date: options?.use_by_date || "To be confirmed",
-    cooking_instructions: "Cook thoroughly to safe internal temperature before consuming.",
+    cooking_instructions: isPetFood ? "Pet Food Only — Not for Human Consumption. Handle with appropriate hygiene procedures." : (options?.cooking_instructions || "Cook thoroughly to safe internal temperature before consuming."),
     SKU: `SKU-${id}`,
     barcode_or_GTIN: null,
     main_image: mainImage,
     gallery_images: [mainImage],
-    SEO_title: `${name} | Australian Online Meat Shop`,
-    SEO_meta_description: `${name} available from Australian Online Meat Shop. Market-reference pricing in AUD.`,
-    breadcrumb_path: `Home > ${displayCategoryName} > ${subcategory} > ${name}`,
+    SEO_title: options?.seo_title || `${name} | Australian Online Meat Shop`,
+    SEO_meta_description: options?.seo_meta_description || `${name} available from Australian Online Meat Shop. Market-reference pricing in AUD.`,
+    seo_title: options?.seo_title || `${name} | Australian Online Meat Shop`,
+    seo_meta_description: options?.seo_meta_description || `${name} available from Australian Online Meat Shop. Market-reference pricing in AUD.`,
+    breadcrumb_path: options?.breadcrumb_path || (isWholesale ? `Home > Wholesale > Bulk Meat Orders > ${subcategory} > ${name}` : `Home > ${displayCategoryName} > ${subcategory} > ${name}`),
+
+    // Wholesale Bulk & Animal Share specific fields
+    is_wholesale: isWholesale,
+    approximate_weight: options?.approximate_weight || packSize || weight,
+    bulk_order_notice: options?.bulk_order_notice,
+    product_contents: options?.product_contents,
+    is_animal_share: options?.is_animal_share,
 
     // Meat Box specific fields
     approximate_total_weight: options?.approximate_total_weight || weight,
     box_contents: options?.box_contents || [],
+    pack_contents: options?.pack_contents,
     included_product_references: options?.included_product_references || [],
     min_order_value: options?.min_order_value,
 
@@ -6141,164 +6201,2339 @@ export const PRODUCTS: Product[] = [
   ),
 
   // 11. SEAFOOD
+  // SEAFOOD — FISH
   createProduct(
     "PRD-SEA-001",
-    "Salmon Portions",
-    "seafood",
-    "Salmon",
-    "salmon-portions",
-    36.00,
-    "800g",
-    "4 x 200g Portions",
-    "per_pack",
-    "Fresh skin-on Tasmanian Atlantic salmon portions rich in Omega-3.",
-    "Freshly cut skin-on Tasmanian salmon fillets. Pan-sear skin down for crispy skin and moist pink flesh.",
-    "Fillet",
-    ["Pan-Fry", "Roast", "Grill"],
-    ["Fresh Chilled"],
-    ["Australian"],
-    ["Best Sellers", "Meal Prep", "Fresh Chilled"],
-    "https://picsum.photos/seed/salmon-portions/800/600",
-    { featured: true, badge: "Fresh Sashimi Grade" }
-  ),
-  createProduct(
-    "PRD-SEA-002",
     "Barramundi Fillets",
     "seafood",
     "Fish",
     "barramundi-fillets",
-    34.00,
-    "800g",
-    "1 x 800g Pack",
+    19.00,
+    "500g",
+    "500g",
     "per_pack",
-    "Fresh skin-on Australian barramundi fillets with firm white flesh.",
-    "Iconic Australian barramundi. Mild white fish with firm flakes that hold together on the grill.",
-    "Fillet",
-    ["Pan-Fry", "Grill", "Roast"],
-    ["Fresh Chilled"],
-    ["Australian"],
-    ["Fresh Chilled"],
-    "https://picsum.photos/seed/barramundi/800/600"
+    "Barramundi fillets prepared for pan-frying, grilling, barbecue or oven baking.",
+    "Barramundi fillets in a 500g pack. Clean, mild white fish suited for pan-frying, barbecue grilling, or oven baking.",
+    "Barramundi Fillet",
+    ["Pan-Fry", "Grill", "BBQ", "Oven"],
+    ["Fresh Chilled", "Vacuum Sealed"],
+    null,
+    ["Best Sellers", "Fresh Seafood", "Weeknight Meals"],
+    "https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?q=80&w=1200&auto=format&fit=crop",
+    {
+      storageType: "Fresh Chilled",
+      seo_title: "Barramundi Fillets | Seafood Catalogue",
+      seo_meta_description: "Barramundi Fillets in 500g pack size for $19.00 AUD. Fresh Chilled storage with pan-fry, grill, BBQ and oven cooking methods.",
+      breadcrumb_path: "Home > Seafood > Fish > Barramundi Fillets"
+    }
+  ),
+  createProduct(
+    "PRD-SEA-002",
+    "Barramundi Portions",
+    "seafood",
+    "Fish",
+    "barramundi-portions",
+    19.95,
+    "250g",
+    "250g",
+    "per_pack",
+    "Barramundi portions in 250g pack, frozen, for pan-fry, grill, BBQ or oven.",
+    "Individually frozen barramundi portions in a 250g pack. Suitable for pan-frying, barbecue grilling, or oven baking.",
+    "Barramundi Portion",
+    ["Pan-Fry", "Grill", "BBQ", "Oven"],
+    ["Frozen"],
+    null,
+    ["Frozen Seafood", "Weeknight Meals"],
+    "https://images.unsplash.com/photo-1534939561126-855b8675edd7?q=80&w=1200&auto=format&fit=crop",
+    {
+      storageType: "Frozen",
+      seo_title: "Barramundi Portions | Seafood Catalogue",
+      seo_meta_description: "Barramundi Portions in 250g pack size for $19.95 AUD. Frozen storage for pan-fry, grill, BBQ and oven cooking.",
+      breadcrumb_path: "Home > Seafood > Fish > Barramundi Portions"
+    }
   ),
   createProduct(
     "PRD-SEA-003",
-    "Prawns",
+    "Barramundi Bites",
     "seafood",
-    "Prawns",
-    "prawns",
-    48.00,
-    "1kg",
-    "1 x 1kg Pack",
-    "per_kg",
-    "Cooked Australian ocean king prawns ready to peel and eat.",
-    "Wild caught in Australian ocean waters and cooked. Firm, sweet, and bursting with fresh oceanic flavor.",
-    "Seafood Pack",
-    ["No Cooking Required"],
-    ["Fresh Chilled", "Cooked"],
-    ["Australian"],
-    ["Best Sellers", "Specials"],
-    "https://picsum.photos/seed/king-prawns/800/600",
-    { featured: true, badge: "Ocean Fresh" }
+    "Fish",
+    "barramundi-bites",
+    25.00,
+    "500g",
+    "500g",
+    "per_pack",
+    "Seasoned barramundi pieces in 500g pack for pan-fry, air fryer or oven.",
+    "Seasoned barramundi bite-sized pieces in a 500g pack. Convenient for quick pan-frying, air frying, or oven baking.",
+    "Seasoned Barramundi Pieces",
+    ["Pan-Fry", "Air Fryer", "Oven"],
+    ["Fresh Chilled"],
+    null,
+    ["Fresh Seafood", "Family Meals", "Weeknight Meals"],
+    "https://images.unsplash.com/photo-1599084993091-1cb5c0721cc6?q=80&w=1200&auto=format&fit=crop",
+    {
+      storageType: "Fresh Chilled",
+      seo_title: "Barramundi Bites | Seafood Catalogue",
+      seo_meta_description: "Barramundi Bites in 500g pack size for $25.00 AUD. Fresh Chilled seasoned barramundi pieces for pan-fry, air fryer and oven.",
+      breadcrumb_path: "Home > Seafood > Fish > Barramundi Bites"
+    }
   ),
   createProduct(
     "PRD-SEA-004",
-    "Mixed Seafood Packs",
+    "Snapper Fillets",
     "seafood",
-    "Value Packs",
-    "mixed-seafood-packs",
-    78.00,
-    "2kg",
-    "2kg Pack",
-    "fixed_box_price",
-    "Seafood pack featuring Salmon Portions, Barramundi, and Prawns.",
-    "A complete seafood assortment including Tasmanian Salmon Portions, Barramundi Fillets, and Ocean King Prawns.",
-    "Seafood Pack",
-    ["Pan-Fry", "No Cooking Required"],
+    "Fish",
+    "snapper-fillets",
+    29.99,
+    "500g",
+    "500g",
+    "per_pack",
+    "Snapper fillets in 500g pack for pan-frying, grilling, BBQ or oven baking.",
+    "Fresh chilled snapper fillets in a 500g pack. Delicate white fish fillets suitable for pan-frying, grilling, BBQ, or oven baking.",
+    "Snapper Fillet",
+    ["Pan-Fry", "Grill", "BBQ", "Oven"],
+    ["Fresh Chilled", "Vacuum Sealed"],
+    null,
+    ["Fresh Seafood", "Best Sellers", "Weeknight Meals"],
+    "https://images.unsplash.com/photo-1534939561126-855b8675edd7?q=80&w=1200&auto=format&fit=crop",
+    {
+      storageType: "Fresh Chilled",
+      seo_title: "Snapper Fillets | Seafood Catalogue",
+      seo_meta_description: "Snapper Fillets in 500g pack size for $29.99 AUD. Fresh Chilled storage with pan-fry, grill, BBQ and oven cooking methods.",
+      breadcrumb_path: "Home > Seafood > Fish > Snapper Fillets"
+    }
+  ),
+  createProduct(
+    "PRD-SEA-005",
+    "Flathead Fillets",
+    "seafood",
+    "Fish",
+    "flathead-fillets",
+    24.99,
+    "500g",
+    "500g",
+    "per_pack",
+    "Flathead fillets in 500g pack for pan-frying, grilling, air fryer or oven.",
+    "Fresh chilled flathead fillets in a 500g pack. Sweet and tender fillets ideal for pan-frying, air frying, grilling, or oven baking.",
+    "Flathead Fillet",
+    ["Pan-Fry", "Grill", "Air Fryer", "Oven"],
     ["Fresh Chilled"],
-    ["Australian"],
-    ["Family Meals"],
-    "https://picsum.photos/seed/mixed-seafood/800/600"
+    null,
+    ["Fresh Seafood", "Family Meals", "Weeknight Meals"],
+    "https://images.unsplash.com/photo-1599084993091-1cb5c0721cc6?q=80&w=1200&auto=format&fit=crop",
+    {
+      storageType: "Fresh Chilled",
+      seo_title: "Flathead Fillets | Seafood Catalogue",
+      seo_meta_description: "Flathead Fillets in 500g pack size for $24.99 AUD. Fresh Chilled storage for pan-fry, grill, air fryer and oven cooking.",
+      breadcrumb_path: "Home > Seafood > Fish > Flathead Fillets"
+    }
+  ),
+  createProduct(
+    "PRD-SEA-006",
+    "Threadfin Salmon Fillets",
+    "seafood",
+    "Fish",
+    "threadfin-salmon-fillets",
+    24.99,
+    "500g",
+    "500g",
+    "per_pack",
+    "Threadfin salmon fillets in 500g pack for pan-frying, grilling, BBQ or oven.",
+    "Fresh chilled threadfin salmon fillets in a 500g pack. Firm white fish fillets suitable for pan-frying, barbecue grilling, or oven baking.",
+    "Threadfin Salmon Fillet",
+    ["Pan-Fry", "Grill", "BBQ", "Oven"],
+    ["Fresh Chilled"],
+    null,
+    ["Fresh Seafood", "Weeknight Meals"],
+    "https://images.unsplash.com/photo-1534939561126-855b8675edd7?q=80&w=1200&auto=format&fit=crop",
+    {
+      storageType: "Fresh Chilled",
+      seo_title: "Threadfin Salmon Fillets | Seafood Catalogue",
+      seo_meta_description: "Threadfin Salmon Fillets in 500g pack size for $24.99 AUD. Fresh Chilled storage with pan-fry, grill, BBQ and oven methods.",
+      breadcrumb_path: "Home > Seafood > Fish > Threadfin Salmon Fillets"
+    }
   ),
 
-  // 12. PET FOOD
+  // SEAFOOD — PRAWNS
+  createProduct(
+    "PRD-SEA-007",
+    "School Prawns",
+    "seafood",
+    "Prawns",
+    "school-prawns",
+    21.00,
+    "1kg",
+    "1kg",
+    "per_kg",
+    "Whole raw school prawns sold per kg for BBQ, grill, pan-fry or boiling.",
+    "Fresh chilled whole raw school prawns in a 1kg pack. Suitable for barbecue grilling, pan-frying, or quick boiling.",
+    "Whole Raw Prawns",
+    ["BBQ", "Grill", "Pan-Fry", "Boil"],
+    ["Fresh Chilled"],
+    null,
+    ["Fresh Seafood", "BBQ Seafood", "Entertaining"],
+    "https://images.unsplash.com/photo-1565680018434-b513d5e5fd47?q=80&w=1200&auto=format&fit=crop",
+    {
+      storageType: "Fresh Chilled",
+      seo_title: "School Prawns | Seafood Catalogue",
+      seo_meta_description: "School Prawns in 1kg pack size for $21.00 AUD per kg. Fresh Chilled whole raw prawns for BBQ, grill, pan-fry and boil.",
+      breadcrumb_path: "Home > Seafood > Prawns > School Prawns"
+    }
+  ),
+  createProduct(
+    "PRD-SEA-008",
+    "Medium Green King Prawns",
+    "seafood",
+    "Prawns",
+    "medium-green-king-prawns",
+    29.90,
+    "1kg",
+    "1kg",
+    "per_kg",
+    "Raw medium green king prawns sold per kg for BBQ, grill, pan-fry or boil.",
+    "Fresh chilled raw medium green king prawns in a 1kg pack. Suitable for barbecue skewers, pan-frying with garlic butter, or boiling.",
+    "Raw King Prawns",
+    ["BBQ", "Grill", "Pan-Fry", "Boil"],
+    ["Fresh Chilled"],
+    null,
+    ["Fresh Seafood", "BBQ Seafood", "Best Sellers", "Entertaining"],
+    "https://images.unsplash.com/photo-1559742811-822873691df8?q=80&w=1200&auto=format&fit=crop",
+    {
+      storageType: "Fresh Chilled",
+      seo_title: "Medium Green King Prawns | Seafood Catalogue",
+      seo_meta_description: "Medium Green King Prawns in 1kg pack size for $29.90 AUD per kg. Fresh Chilled raw king prawns for BBQ, grill, pan-fry and boil.",
+      breadcrumb_path: "Home > Seafood > Prawns > Medium Green King Prawns"
+    }
+  ),
+  createProduct(
+    "PRD-SEA-009",
+    "Large Green King Prawns",
+    "seafood",
+    "Prawns",
+    "large-green-king-prawns",
+    42.99,
+    "1kg",
+    "1kg",
+    "per_kg",
+    "Raw large green king prawns sold per kg for BBQ, grill, pan-fry or boiling.",
+    "Fresh chilled raw large green king prawns in a 1kg pack. Sized for barbecue grilling, butterflying, or roasting.",
+    "Raw King Prawns",
+    ["BBQ", "Grill", "Pan-Fry", "Boil"],
+    ["Fresh Chilled"],
+    null,
+    ["Fresh Seafood", "BBQ Seafood", "Entertaining"],
+    "https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=1200&auto=format&fit=crop",
+    {
+      storageType: "Fresh Chilled",
+      seo_title: "Large Green King Prawns | Seafood Catalogue",
+      seo_meta_description: "Large Green King Prawns in 1kg pack size for $42.99 AUD per kg. Fresh Chilled raw king prawns for BBQ, grill, pan-fry and boil.",
+      breadcrumb_path: "Home > Seafood > Prawns > Large Green King Prawns"
+    }
+  ),
+  createProduct(
+    "PRD-SEA-010",
+    "XL Raw King Prawns",
+    "seafood",
+    "Prawns",
+    "xl-raw-king-prawns",
+    50.00,
+    "1kg",
+    "1kg",
+    "per_kg",
+    "Extra large raw king prawns sold per kg for BBQ, grill, pan-fry or boiling.",
+    "Fresh chilled extra large raw king prawns in a 1kg pack. Large prawn cut for barbecue grilling, butterflying, or whole cooking.",
+    "Raw King Prawns",
+    ["BBQ", "Grill", "Pan-Fry", "Boil"],
+    ["Fresh Chilled"],
+    null,
+    ["Fresh Seafood", "BBQ Seafood", "Entertaining"],
+    "https://images.unsplash.com/photo-1559742811-822873691df8?q=80&w=1200&auto=format&fit=crop",
+    {
+      storageType: "Fresh Chilled",
+      seo_title: "XL Raw King Prawns | Seafood Catalogue",
+      seo_meta_description: "XL Raw King Prawns in 1kg pack size for $50.00 AUD per kg. Fresh Chilled extra large raw king prawns for BBQ and grill.",
+      breadcrumb_path: "Home > Seafood > Prawns > XL Raw King Prawns"
+    }
+  ),
+  createProduct(
+    "PRD-SEA-011",
+    "Whole Cooked Prawns",
+    "seafood",
+    "Prawns",
+    "whole-cooked-prawns",
+    59.00,
+    "1kg",
+    "1kg",
+    "per_pack",
+    "Whole cooked prawns (1kg pack), frozen, ready to eat, BBQ or grill.",
+    "Frozen whole cooked prawns in a 1kg pack. Thaw and peel for immediate serving, or warm gently on the barbecue.",
+    "Cooked Prawns",
+    ["Ready to Eat", "BBQ", "Grill"],
+    ["Frozen", "Cooked"],
+    null,
+    ["Frozen Seafood", "Entertaining", "Best Sellers"],
+    "https://images.unsplash.com/photo-1565680018434-b513d5e5fd47?q=80&w=1200&auto=format&fit=crop",
+    {
+      storageType: "Frozen",
+      seo_title: "Whole Cooked Prawns | Seafood Catalogue",
+      seo_meta_description: "Whole Cooked Prawns in 1kg pack size for $59.00 AUD per pack. Frozen storage with ready to eat, BBQ and grill options.",
+      breadcrumb_path: "Home > Seafood > Prawns > Whole Cooked Prawns"
+    }
+  ),
+  createProduct(
+    "PRD-SEA-012",
+    "Raw Banana Prawns",
+    "seafood",
+    "Prawns",
+    "raw-banana-prawns",
+    12.50,
+    "500g",
+    "500g",
+    "per_pack",
+    "Raw banana prawns in 500g pack for BBQ, grill, pan-fry or boiling.",
+    "Fresh chilled raw banana prawns in a 500g pack. Tender prawns suited for stir-fries, curries, pan-searing, and boiling.",
+    "Raw Prawns",
+    ["BBQ", "Grill", "Pan-Fry", "Boil"],
+    ["Fresh Chilled"],
+    null,
+    ["Fresh Seafood", "Specials", "Weeknight Meals"],
+    "https://images.unsplash.com/photo-1559742811-822873691df8?q=80&w=1200&auto=format&fit=crop",
+    {
+      storageType: "Fresh Chilled",
+      seo_title: "Raw Banana Prawns | Seafood Catalogue",
+      seo_meta_description: "Raw Banana Prawns in 500g pack size for $12.50 AUD. Fresh Chilled raw prawns for BBQ, grill, pan-fry and boil.",
+      breadcrumb_path: "Home > Seafood > Prawns > Raw Banana Prawns"
+    }
+  ),
+  createProduct(
+    "PRD-SEA-013",
+    "Prawn Meat",
+    "seafood",
+    "Prawns",
+    "prawn-meat",
+    40.00,
+    "500g",
+    "500g",
+    "per_pack",
+    "Peeled raw prawn meat in 500g pack for stir-fry, pan-fry, curry or pasta.",
+    "Fresh chilled peeled raw prawn meat in a 500g pack. Ready to cook for quick stir-fries, pan-searing, curries, and pasta dishes.",
+    "Prawn Meat",
+    ["Stir-Fry", "Pan-Fry", "Curry", "Pasta"],
+    ["Fresh Chilled"],
+    null,
+    ["Fresh Seafood", "Weeknight Meals"],
+    "https://images.unsplash.com/photo-1565680018434-b513d5e5fd47?q=80&w=1200&auto=format&fit=crop",
+    {
+      storageType: "Fresh Chilled",
+      seo_title: "Prawn Meat | Seafood Catalogue",
+      seo_meta_description: "Prawn Meat in 500g pack size for $40.00 AUD. Fresh Chilled peeled prawn meat for stir-fry, pan-fry, curry and pasta.",
+      breadcrumb_path: "Home > Seafood > Prawns > Prawn Meat"
+    }
+  ),
+
+  // SEAFOOD — SALMON
+  createProduct(
+    "PRD-SEA-014",
+    "Tasmanian Salmon Portions",
+    "seafood",
+    "Salmon",
+    "tasmanian-salmon-portions",
+    24.95,
+    "500g",
+    "500g",
+    "per_pack",
+    "Salmon portions in 500g pack for pan-frying, grilling, BBQ or oven baking.",
+    "Fresh chilled salmon portions in a 500g pack. Portioned cuts suitable for pan-frying, barbecue grilling, or oven baking.",
+    "Salmon Portions",
+    ["Pan-Fry", "Grill", "BBQ", "Oven"],
+    ["Fresh Chilled", "Vacuum Sealed"],
+    null,
+    ["Fresh Seafood", "Best Sellers", "Weeknight Meals"],
+    "https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?q=80&w=1200&auto=format&fit=crop",
+    {
+      storageType: "Fresh Chilled",
+      seo_title: "Tasmanian Salmon Portions | Seafood Catalogue",
+      seo_meta_description: "Tasmanian Salmon Portions in 500g pack size for $24.95 AUD. Fresh Chilled storage with pan-fry, grill, BBQ and oven methods.",
+      breadcrumb_path: "Home > Seafood > Salmon > Tasmanian Salmon Portions"
+    }
+  ),
+  createProduct(
+    "PRD-SEA-015",
+    "Skin-On Salmon Portions",
+    "seafood",
+    "Salmon",
+    "skin-on-salmon-portions",
+    24.95,
+    "500g",
+    "500g",
+    "per_pack",
+    "Skin-on salmon portions in 500g pack for pan-fry, grill, BBQ or oven.",
+    "Fresh chilled skin-on salmon portions in a 500g pack. Suitable for pan-searing skin-side down for crispy skin, grilling, or baking.",
+    "Salmon Portions",
+    ["Pan-Fry", "Grill", "BBQ", "Oven"],
+    ["Fresh Chilled"],
+    null,
+    ["Fresh Seafood", "Weeknight Meals"],
+    "https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?q=80&w=1200&auto=format&fit=crop",
+    {
+      storageType: "Fresh Chilled",
+      seo_title: "Skin-On Salmon Portions | Seafood Catalogue",
+      seo_meta_description: "Skin-On Salmon Portions in 500g pack size for $24.95 AUD. Fresh Chilled salmon portions for crispy skin pan-fry, grill, BBQ and oven.",
+      breadcrumb_path: "Home > Seafood > Salmon > Skin-On Salmon Portions"
+    }
+  ),
+  createProduct(
+    "PRD-SEA-016",
+    "Skinless Salmon Portions",
+    "seafood",
+    "Salmon",
+    "skinless-salmon-portions",
+    26.95,
+    "500g",
+    "500g",
+    "per_pack",
+    "Skinless salmon portions in 500g pack for pan-fry, grill, BBQ or oven.",
+    "Fresh chilled skinless salmon portions in a 500g pack. Trimmed skinless cuts suitable for pan-searing, gentle baking, or poaching.",
+    "Salmon Portions",
+    ["Pan-Fry", "Grill", "BBQ", "Oven"],
+    ["Fresh Chilled"],
+    null,
+    ["Fresh Seafood", "Weeknight Meals"],
+    "https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?q=80&w=1200&auto=format&fit=crop",
+    {
+      storageType: "Fresh Chilled",
+      seo_title: "Skinless Salmon Portions | Seafood Catalogue",
+      seo_meta_description: "Skinless Salmon Portions in 500g pack size for $26.95 AUD. Fresh Chilled storage with pan-fry, grill, BBQ and oven cooking.",
+      breadcrumb_path: "Home > Seafood > Salmon > Skinless Salmon Portions"
+    }
+  ),
+  createProduct(
+    "PRD-SEA-017",
+    "Salmon Fillets",
+    "seafood",
+    "Salmon",
+    "salmon-fillets",
+    49.90,
+    "1kg",
+    "1kg",
+    "per_kg",
+    "Salmon fillets sold per kg in 1kg pack for pan-fry, grill, BBQ or oven.",
+    "Fresh chilled salmon fillets in a 1kg pack. Large fillet cut suitable for family dinners, whole roasting, or portioning.",
+    "Salmon Fillet",
+    ["Pan-Fry", "Grill", "BBQ", "Oven"],
+    ["Fresh Chilled"],
+    null,
+    ["Fresh Seafood", "Family Meals"],
+    "https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?q=80&w=1200&auto=format&fit=crop",
+    {
+      storageType: "Fresh Chilled",
+      seo_title: "Salmon Fillets | Seafood Catalogue",
+      seo_meta_description: "Salmon Fillets in 1kg pack size for $49.90 AUD per kg. Fresh Chilled salmon fillets for pan-fry, grill, BBQ and oven.",
+      breadcrumb_path: "Home > Seafood > Salmon > Salmon Fillets"
+    }
+  ),
+  createProduct(
+    "PRD-SEA-018",
+    "Whole Salmon",
+    "seafood",
+    "Salmon",
+    "whole-salmon",
+    99.00,
+    "Approximately 3kg",
+    "Approximately 3kg",
+    "per_item",
+    "Whole salmon (approx. 3kg) for roasting, BBQ or grilling.",
+    "Fresh chilled whole salmon (approx. 3kg). Prepared for whole oven roasting, barbecue, or custom cutting.",
+    "Whole Salmon",
+    ["Roast", "BBQ", "Grill"],
+    ["Fresh Chilled"],
+    null,
+    ["Fresh Seafood", "Entertaining", "Family Meals"],
+    "https://images.unsplash.com/photo-1534939561126-855b8675edd7?q=80&w=1200&auto=format&fit=crop",
+    {
+      storageType: "Fresh Chilled",
+      seo_title: "Whole Salmon | Seafood Catalogue",
+      seo_meta_description: "Whole Salmon (Approximately 3kg) for $99.00 AUD per item. Fresh Chilled whole salmon for roasting, BBQ and grilling.",
+      breadcrumb_path: "Home > Seafood > Salmon > Whole Salmon"
+    }
+  ),
+  createProduct(
+    "PRD-SEA-019",
+    "Hot Smoked Salmon",
+    "seafood",
+    "Salmon",
+    "hot-smoked-salmon",
+    8.50,
+    "150g",
+    "150g",
+    "per_pack",
+    "Hot smoked salmon in 150g pack, refrigerated, ready to eat.",
+    "Hot smoked salmon in a 150g pack. Ready to eat cold or flaked into salads, pasta, and platters.",
+    "Smoked Salmon",
+    ["Ready to Eat"],
+    ["Refrigerated"],
+    null,
+    ["Specials", "Entertaining"],
+    "https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?q=80&w=1200&auto=format&fit=crop",
+    {
+      storageType: "Refrigerated",
+      seo_title: "Hot Smoked Salmon | Seafood Catalogue",
+      seo_meta_description: "Hot Smoked Salmon in 150g pack size for $8.50 AUD. Refrigerated smoked salmon ready to eat.",
+      breadcrumb_path: "Home > Seafood > Salmon > Hot Smoked Salmon"
+    }
+  ),
+
+  // SEAFOOD — VALUE PACKS
+  createProduct(
+    "PRD-SEA-020",
+    "Seafood Pack for Two",
+    "seafood",
+    "Value Packs",
+    "seafood-pack-for-two",
+    39.00,
+    "1kg",
+    "1kg",
+    "fixed_pack_price",
+    "Mixed seafood pack for two (1kg) with Fish Fillets, Calamari Rings, Prawn Cutlets & Seafood Sticks.",
+    "Frozen 1kg mixed seafood pack sized for two. Contains Fish Fillets (400g), Calamari Rings (200g), Prawn Cutlets (200g), and Seafood Sticks (200g).",
+    "Mixed Seafood Pack",
+    ["Pan-Fry", "Grill", "Air Fryer", "Oven"],
+    ["Frozen"],
+    null,
+    ["Frozen Seafood", "Seafood Packs", "Value Packs", "Weeknight Meals"],
+    "https://images.unsplash.com/photo-1551024709-8f23befc6f87?q=80&w=1200&auto=format&fit=crop",
+    {
+      storageType: "Frozen",
+      box_contents: [
+        { name: "Fish Fillets", quantity: "400g" },
+        { name: "Calamari Rings", quantity: "200g" },
+        { name: "Prawn Cutlets", quantity: "200g" },
+        { name: "Seafood Sticks", quantity: "200g" }
+      ],
+      seo_title: "Seafood Pack for Two | Seafood Catalogue",
+      seo_meta_description: "Seafood Pack for Two in 1kg pack size for $39.00 AUD fixed pack price. Frozen mixed seafood pack with fish fillets, calamari, prawn cutlets and seafood sticks.",
+      breadcrumb_path: "Home > Seafood > Value Packs > Seafood Pack for Two"
+    }
+  ),
+  createProduct(
+    "PRD-SEA-021",
+    "Family Seafood Pack",
+    "seafood",
+    "Value Packs",
+    "family-seafood-pack",
+    65.00,
+    "2kg",
+    "2kg",
+    "fixed_pack_price",
+    "Family seafood pack (2kg) with Fish Fillets, Calamari Rings, Prawn Cutlets & Seafood Sticks.",
+    "Frozen 2kg family-sized mixed seafood pack. Contains Fish Fillets (800g), Calamari Rings (400g), Prawn Cutlets (400g), and Seafood Sticks (400g).",
+    "Mixed Seafood Pack",
+    ["Pan-Fry", "Grill", "Air Fryer", "Oven"],
+    ["Frozen"],
+    null,
+    ["Frozen Seafood", "Family Meals", "Seafood Packs", "Value Packs"],
+    "https://images.unsplash.com/photo-1551024709-8f23befc6f87?q=80&w=1200&auto=format&fit=crop",
+    {
+      storageType: "Frozen",
+      box_contents: [
+        { name: "Fish Fillets", quantity: "800g" },
+        { name: "Calamari Rings", quantity: "400g" },
+        { name: "Prawn Cutlets", quantity: "400g" },
+        { name: "Seafood Sticks", quantity: "400g" }
+      ],
+      seo_title: "Family Seafood Pack | Seafood Catalogue",
+      seo_meta_description: "Family Seafood Pack in 2kg pack size for $65.00 AUD fixed pack price. Frozen mixed seafood pack with fish fillets, calamari, prawn cutlets and seafood sticks.",
+      breadcrumb_path: "Home > Seafood > Value Packs > Family Seafood Pack"
+    }
+  ),
+  createProduct(
+    "PRD-SEA-022",
+    "Barramundi Value Pack",
+    "seafood",
+    "Value Packs",
+    "barramundi-value-pack",
+    38.00,
+    "1kg",
+    "1kg",
+    "per_pack",
+    "Barramundi value pack (1kg) with 4 fresh chilled barramundi portions.",
+    "Fresh chilled 1kg Barramundi Value Pack containing 4 barramundi portions. Suitable for pan-frying, barbecue grilling, or oven baking.",
+    "Barramundi Pack",
+    ["Pan-Fry", "Grill", "BBQ", "Oven"],
+    ["Fresh Chilled"],
+    null,
+    ["Fresh Seafood", "Seafood Packs", "Family Meals"],
+    "https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?q=80&w=1200&auto=format&fit=crop",
+    {
+      storageType: "Fresh Chilled",
+      box_contents: [
+        { name: "Barramundi Portions", quantity: "4 portions" }
+      ],
+      seo_title: "Barramundi Value Pack | Seafood Catalogue",
+      seo_meta_description: "Barramundi Value Pack in 1kg pack size for $38.00 AUD. Fresh Chilled barramundi pack with 4 portions for pan-fry, grill, BBQ and oven.",
+      breadcrumb_path: "Home > Seafood > Value Packs > Barramundi Value Pack"
+    }
+  ),
+  createProduct(
+    "PRD-SEA-023",
+    "Salmon Value Pack",
+    "seafood",
+    "Value Packs",
+    "salmon-value-pack",
+    49.90,
+    "1kg",
+    "1kg",
+    "per_pack",
+    "Salmon value pack (1kg) with 4 fresh chilled salmon portions.",
+    "Fresh chilled 1kg Salmon Value Pack containing 4 salmon portions. Suitable for pan-frying, barbecue grilling, or oven baking.",
+    "Salmon Pack",
+    ["Pan-Fry", "Grill", "BBQ", "Oven"],
+    ["Fresh Chilled"],
+    null,
+    ["Fresh Seafood", "Seafood Packs", "Family Meals"],
+    "https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?q=80&w=1200&auto=format&fit=crop",
+    {
+      storageType: "Fresh Chilled",
+      box_contents: [
+        { name: "Salmon Portions", quantity: "4 portions" }
+      ],
+      seo_title: "Salmon Value Pack | Seafood Catalogue",
+      seo_meta_description: "Salmon Value Pack in 1kg pack size for $49.90 AUD. Fresh Chilled salmon pack with 4 portions for pan-fry, grill, BBQ and oven.",
+      breadcrumb_path: "Home > Seafood > Value Packs > Salmon Value Pack"
+    }
+  ),
+  createProduct(
+    "PRD-SEA-024",
+    "Prawn Entertainer Pack",
+    "seafood",
+    "Value Packs",
+    "prawn-entertainer-pack",
+    56.90,
+    "2kg",
+    "2kg",
+    "per_pack",
+    "Frozen raw tiger prawn entertainer pack (2kg) for BBQ, grill, pan-fry or boil.",
+    "Frozen 2kg Prawn Entertainer Pack containing raw tiger prawns. Suitable for barbecue entertaining, grilling, pan-frying, or boiling.",
+    "Raw Tiger Prawn Pack",
+    ["BBQ", "Grill", "Pan-Fry", "Boil"],
+    ["Frozen"],
+    null,
+    ["Frozen Seafood", "Entertaining", "Seafood Packs", "BBQ Seafood"],
+    "https://images.unsplash.com/photo-1559742811-822873691df8?q=80&w=1200&auto=format&fit=crop",
+    {
+      storageType: "Frozen",
+      seo_title: "Prawn Entertainer Pack | Seafood Catalogue",
+      seo_meta_description: "Prawn Entertainer Pack in 2kg pack size for $56.90 AUD. Frozen raw tiger prawn pack for BBQ, grill, pan-fry and boil.",
+      breadcrumb_path: "Home > Seafood > Value Packs > Prawn Entertainer Pack"
+    }
+  ),
+  createProduct(
+    "PRD-SEA-025",
+    "Mixed Seafood Value Pack",
+    "seafood",
+    "Value Packs",
+    "mixed-seafood-value-pack",
+    90.00,
+    "Approximately 3kg",
+    "Approximately 3kg",
+    "fixed_pack_price",
+    "Mixed seafood value pack (approx. 3kg) with Barramundi Fillets, Salmon Portions, Raw Prawns & Calamari Rings.",
+    "Frozen approx. 3kg mixed seafood pack. Contains Barramundi Fillets (1kg), Salmon Portions (500g), Raw Prawns (1kg), and Calamari Rings (500g).",
+    "Mixed Seafood Pack",
+    ["Pan-Fry", "Grill", "Air Fryer", "Oven"],
+    ["Frozen"],
+    null,
+    ["Frozen Seafood", "Entertaining", "Family Meals", "Seafood Packs", "Value Packs"],
+    "https://images.unsplash.com/photo-1551024709-8f23befc6f87?q=80&w=1200&auto=format&fit=crop",
+    {
+      storageType: "Frozen",
+      box_contents: [
+        { name: "Barramundi Fillets", quantity: "1kg" },
+        { name: "Salmon Portions", quantity: "500g" },
+        { name: "Raw Prawns", quantity: "1kg" },
+        { name: "Calamari Rings", quantity: "500g" }
+      ],
+      seo_title: "Mixed Seafood Value Pack | Seafood Catalogue",
+      seo_meta_description: "Mixed Seafood Value Pack (Approximately 3kg) for $90.00 AUD fixed pack price. Frozen pack with barramundi, salmon, raw prawns and calamari.",
+      breadcrumb_path: "Home > Seafood > Value Packs > Mixed Seafood Value Pack"
+    }
+  ),
+
+  // 12. PET FOOD (24 Approved Catalogue Products)
+  // Raw Mince (7 items)
   createProduct(
     "PRD-PET-001",
-    "Pet Mince",
+    "Beef Pet Mince",
     "pet-food",
     "Raw Mince",
-    "pet-mince",
-    18.00,
-    "2kg",
-    "2kg Pack",
+    "beef-pet-mince",
+    14.00,
+    "1kg",
+    "1kg",
     "per_pack",
-    "100% natural raw beef & lamb pet mince formulated for dogs and cats.",
-    "Ground fresh in our workshop from natural Australian beef and lamb trim. Zero preservatives, grains, or chemicals.",
-    "Pet Pack",
-    ["No Cooking Required"],
-    ["Fresh Chilled", "Frozen"],
-    ["Australian"],
-    ["Best Sellers", "Budget Friendly"],
-    "https://picsum.photos/seed/pet-mince/800/600",
-    { featured: true, badge: "100% Natural BARF" }
+    "Frozen 1kg raw beef pet mince.",
+    "Frozen raw beef pet mince in a 1kg pack. Pet food only — not for human consumption.",
+    "Pet Mince",
+    ["Pet Food Only — Serve According to Verified Supplier Instructions"],
+    ["Frozen"],
+    null,
+    ["Raw Mince", "Frozen Pet Food", "Best Sellers"],
+    "https://images.unsplash.com/photo-1588168333986-5078d3ae3976?q=80&w=1200&auto=format&fit=crop",
+    {
+      storageType: "Frozen",
+      animal_protein: "Beef",
+      pet_food_only: true,
+      human_consumption_warning: "Pet Food Only — Not for Human Consumption",
+      seo_title: "Beef Pet Mince | Pet Food Catalogue",
+      seo_meta_description: "Beef Pet Mince in 1kg pack size for $14.00 AUD. Frozen raw beef pet mince. Pet food only — not for human consumption.",
+      breadcrumb_path: "Home > Pet Food > Raw Mince > Beef Pet Mince"
+    }
   ),
   createProduct(
     "PRD-PET-002",
-    "Marrow Bones",
+    "Beef & Offal Pet Mince",
     "pet-food",
-    "Bones",
-    "marrow-bones",
-    12.50,
-    "2kg",
-    "2kg Pack",
-    "per_pack",
-    "Fresh beef marrow bones for natural pet dental health and chewing.",
-    "Thick beef marrow bones that keep dogs entertained while naturally cleaning teeth and providing essential minerals.",
-    "Bones",
-    ["No Cooking Required"],
-    ["Fresh Chilled", "Frozen"],
-    ["Australian"],
-    ["Budget Friendly"],
-    "https://picsum.photos/seed/marrow-bones/800/600"
+    "Raw Mince",
+    "beef-and-offal-pet-mince",
+    50.00,
+    "10kg",
+    "10kg",
+    "per_box",
+    "Frozen 10kg bulk raw beef and offal pet mince box.",
+    "Bulk 10kg box of frozen raw beef and offal pet mince. Pet food only — not for human consumption.",
+    "Pet Mince",
+    ["Pet Food Only — Serve According to Verified Supplier Instructions"],
+    ["Frozen"],
+    null,
+    ["Raw Mince", "Bulk Pet Food", "Frozen Pet Food"],
+    "https://images.unsplash.com/photo-1588168333986-5078d3ae3976?q=80&w=1200&auto=format&fit=crop",
+    {
+      storageType: "Frozen",
+      animal_protein: "Beef",
+      pet_food_only: true,
+      human_consumption_warning: "Pet Food Only — Not for Human Consumption",
+      seo_title: "Beef & Offal Pet Mince | Pet Food Catalogue",
+      seo_meta_description: "Beef & Offal Pet Mince in 10kg bulk box for $50.00 AUD. Frozen raw pet mince. Pet food only — not for human consumption.",
+      breadcrumb_path: "Home > Pet Food > Raw Mince > Beef & Offal Pet Mince"
+    }
   ),
   createProduct(
     "PRD-PET-003",
+    "Chicken Pet Mince",
+    "pet-food",
+    "Raw Mince",
+    "chicken-pet-mince",
+    6.60,
+    "1kg",
+    "1kg",
+    "per_pack",
+    "Frozen 1kg raw chicken pet mince.",
+    "Frozen raw chicken pet mince in a 1kg pack. Pet food only — not for human consumption.",
+    "Pet Mince",
+    ["Pet Food Only — Serve According to Verified Supplier Instructions"],
+    ["Frozen"],
+    null,
+    ["Raw Mince", "Frozen Pet Food", "Best Sellers"],
+    "https://images.unsplash.com/photo-1604503468506-a8da13d82791?q=80&w=1200&auto=format&fit=crop",
+    {
+      storageType: "Frozen",
+      animal_protein: "Chicken",
+      pet_food_only: true,
+      human_consumption_warning: "Pet Food Only — Not for Human Consumption",
+      seo_title: "Chicken Pet Mince | Pet Food Catalogue",
+      seo_meta_description: "Chicken Pet Mince in 1kg pack size for $6.60 AUD. Frozen raw chicken pet mince. Pet food only — not for human consumption.",
+      breadcrumb_path: "Home > Pet Food > Raw Mince > Chicken Pet Mince"
+    }
+  ),
+  createProduct(
+    "PRD-PET-004",
+    "Chicken & Beef Pet Mince",
+    "pet-food",
+    "Raw Mince",
+    "chicken-and-beef-pet-mince",
+    7.70,
+    "1kg",
+    "1kg",
+    "per_pack",
+    "Frozen 1kg raw chicken and beef pet mince.",
+    "Frozen raw chicken and beef pet mince in a 1kg pack. Pet food only — not for human consumption.",
+    "Pet Mince",
+    ["Pet Food Only — Serve According to Verified Supplier Instructions"],
+    ["Frozen"],
+    null,
+    ["Raw Mince", "Frozen Pet Food"],
+    "https://images.unsplash.com/photo-1588168333986-5078d3ae3976?q=80&w=1200&auto=format&fit=crop",
+    {
+      storageType: "Frozen",
+      animal_protein: "Mixed Protein",
+      pet_food_only: true,
+      human_consumption_warning: "Pet Food Only — Not for Human Consumption",
+      seo_title: "Chicken & Beef Pet Mince | Pet Food Catalogue",
+      seo_meta_description: "Chicken & Beef Pet Mince in 1kg pack size for $7.70 AUD. Frozen raw pet mince. Pet food only — not for human consumption.",
+      breadcrumb_path: "Home > Pet Food > Raw Mince > Chicken & Beef Pet Mince"
+    }
+  ),
+  createProduct(
+    "PRD-PET-005",
+    "Kangaroo Pet Mince",
+    "pet-food",
+    "Raw Mince",
+    "kangaroo-pet-mince",
+    15.00,
+    "1kg",
+    "1kg",
+    "per_pack",
+    "Frozen 1kg raw kangaroo pet mince.",
+    "Frozen raw kangaroo pet mince in a 1kg pack. Pet food only — not for human consumption.",
+    "Pet Mince",
+    ["Pet Food Only — Serve According to Verified Supplier Instructions"],
+    ["Frozen"],
+    null,
+    ["Raw Mince", "Frozen Pet Food", "Best Sellers"],
+    "https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=1200&auto=format&fit=crop",
+    {
+      storageType: "Frozen",
+      animal_protein: "Kangaroo",
+      pet_food_only: true,
+      human_consumption_warning: "Pet Food Only — Not for Human Consumption",
+      seo_title: "Kangaroo Pet Mince | Pet Food Catalogue",
+      seo_meta_description: "Kangaroo Pet Mince in 1kg pack size for $15.00 AUD. Frozen raw kangaroo pet mince. Pet food only — not for human consumption.",
+      breadcrumb_path: "Home > Pet Food > Raw Mince > Kangaroo Pet Mince"
+    }
+  ),
+  createProduct(
+    "PRD-PET-006",
+    "Kangaroo & Chicken Pet Mince",
+    "pet-food",
+    "Raw Mince",
+    "kangaroo-and-chicken-pet-mince",
+    100.00,
+    "10kg",
+    "10kg",
+    "per_box",
+    "Frozen 10kg bulk raw kangaroo and chicken pet mince box.",
+    "Bulk 10kg box of frozen raw kangaroo and chicken pet mince. Pet food only — not for human consumption.",
+    "Pet Mince",
+    ["Pet Food Only — Serve According to Verified Supplier Instructions"],
+    ["Frozen"],
+    null,
+    ["Raw Mince", "Bulk Pet Food", "Frozen Pet Food"],
+    "https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=1200&auto=format&fit=crop",
+    {
+      storageType: "Frozen",
+      animal_protein: "Mixed Protein",
+      pet_food_only: true,
+      human_consumption_warning: "Pet Food Only — Not for Human Consumption",
+      seo_title: "Kangaroo & Chicken Pet Mince | Pet Food Catalogue",
+      seo_meta_description: "Kangaroo & Chicken Pet Mince in 10kg bulk box for $100.00 AUD. Frozen raw pet mince. Pet food only — not for human consumption.",
+      breadcrumb_path: "Home > Pet Food > Raw Mince > Kangaroo & Chicken Pet Mince"
+    }
+  ),
+  createProduct(
+    "PRD-PET-007",
+    "Diced Kangaroo & Beef Pet Mince",
+    "pet-food",
+    "Raw Mince",
+    "diced-kangaroo-and-beef-pet-mince",
+    8.99,
+    "600g",
+    "600g",
+    "per_pack",
+    "Frozen 600g diced raw kangaroo and beef pet mince.",
+    "Frozen diced raw kangaroo and beef pet mince in a 600g pack. Pet food only — not for human consumption.",
+    "Pet Mince",
+    ["Pet Food Only — Serve According to Verified Supplier Instructions"],
+    ["Frozen"],
+    null,
+    ["Raw Mince", "Frozen Pet Food"],
+    "https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=1200&auto=format&fit=crop",
+    {
+      storageType: "Frozen",
+      animal_protein: "Mixed Protein",
+      pet_food_only: true,
+      human_consumption_warning: "Pet Food Only — Not for Human Consumption",
+      seo_title: "Diced Kangaroo & Beef Pet Mince | Pet Food Catalogue",
+      seo_meta_description: "Diced Kangaroo & Beef Pet Mince in 600g pack size for $8.99 AUD. Frozen raw pet mince. Pet food only — not for human consumption.",
+      breadcrumb_path: "Home > Pet Food > Raw Mince > Diced Kangaroo & Beef Pet Mince"
+    }
+  ),
+
+  // Bones (8 items)
+  createProduct(
+    "PRD-PET-008",
+    "Beef Marrow Bones for Dogs",
+    "pet-food",
+    "Bones",
+    "beef-marrow-bones-for-dogs",
+    10.00,
+    "2kg",
+    "2kg",
+    "per_pack",
+    "Frozen 2kg raw beef marrow bones for dogs.",
+    "Frozen raw beef marrow bones for dogs in a 2kg pack. Pet food only — not for human consumption.",
+    "Bones",
+    ["Pet Food Only — Serve According to Verified Supplier Instructions"],
+    ["Frozen"],
+    null,
+    ["Bones", "Frozen Pet Food", "Best Sellers"],
+    "https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=1200&auto=format&fit=crop",
+    {
+      storageType: "Frozen",
+      animal_protein: "Beef",
+      pet_food_only: true,
+      human_consumption_warning: "Pet Food Only — Not for Human Consumption",
+      seo_title: "Beef Marrow Bones for Dogs | Pet Food Catalogue",
+      seo_meta_description: "Beef Marrow Bones for Dogs in 2kg pack size for $10.00 AUD. Frozen raw beef bones. Pet food only — not for human consumption.",
+      breadcrumb_path: "Home > Pet Food > Bones > Beef Marrow Bones for Dogs"
+    }
+  ),
+  createProduct(
+    "PRD-PET-009",
+    "Beef Brisket Bones for Dogs",
+    "pet-food",
+    "Bones",
+    "beef-brisket-bones-for-dogs",
+    10.00,
+    "2kg",
+    "2kg",
+    "per_pack",
+    "Frozen 2kg raw beef brisket bones for dogs.",
+    "Frozen raw beef brisket bones for dogs in a 2kg pack. Pet food only — not for human consumption.",
+    "Bones",
+    ["Pet Food Only — Serve According to Verified Supplier Instructions"],
+    ["Frozen"],
+    null,
+    ["Bones", "Frozen Pet Food"],
+    "https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=1200&auto=format&fit=crop",
+    {
+      storageType: "Frozen",
+      animal_protein: "Beef",
+      pet_food_only: true,
+      human_consumption_warning: "Pet Food Only — Not for Human Consumption",
+      seo_title: "Beef Brisket Bones for Dogs | Pet Food Catalogue",
+      seo_meta_description: "Beef Brisket Bones for Dogs in 2kg pack size for $10.00 AUD. Frozen raw beef bones. Pet food only — not for human consumption.",
+      breadcrumb_path: "Home > Pet Food > Bones > Beef Brisket Bones for Dogs"
+    }
+  ),
+  createProduct(
+    "PRD-PET-010",
     "Chicken Frames",
     "pet-food",
     "Bones",
     "chicken-frames",
-    14.00,
-    "3kg",
-    "3kg Pack",
+    6.00,
+    "2 frames",
+    "2 frames",
     "per_pack",
-    "Fresh raw chicken frames packed with natural calcium for dogs.",
-    "Raw Australian chicken frames. Great natural raw bone food source for pets.",
-    "Bones",
-    ["No Cooking Required"],
-    ["Fresh Chilled", "Frozen"],
-    ["Australian"],
-    ["Budget Friendly"],
-    "https://picsum.photos/seed/chicken-frames/800/600"
+    "Frozen pack of 2 raw chicken frames for pets.",
+    "Frozen raw chicken frames (2 frames per pack). Pet food only — not for human consumption.",
+    "Frames",
+    ["Pet Food Only — Serve According to Verified Supplier Instructions"],
+    ["Frozen"],
+    null,
+    ["Bones", "Frozen Pet Food", "Best Sellers"],
+    "https://images.unsplash.com/photo-1587593810167-a84920ea0781?q=80&w=1200&auto=format&fit=crop",
+    {
+      storageType: "Frozen",
+      animal_protein: "Chicken",
+      pet_food_only: true,
+      human_consumption_warning: "Pet Food Only — Not for Human Consumption",
+      seo_title: "Chicken Frames | Pet Food Catalogue",
+      seo_meta_description: "Chicken Frames (2 frames pack) for $6.00 AUD. Frozen raw chicken frames. Pet food only — not for human consumption.",
+      breadcrumb_path: "Home > Pet Food > Bones > Chicken Frames"
+    }
   ),
   createProduct(
-    "PRD-PET-004",
+    "PRD-PET-011",
+    "Chicken Frames Bulk Box",
+    "pet-food",
+    "Bones",
+    "chicken-frames-bulk-box",
+    40.00,
+    "10kg",
+    "10kg",
+    "per_box",
+    "Frozen 10kg bulk box of raw chicken frames for pets.",
+    "Bulk 10kg box of frozen raw chicken frames. Pet food only — not for human consumption.",
+    "Frames",
+    ["Pet Food Only — Serve According to Verified Supplier Instructions"],
+    ["Frozen"],
+    null,
+    ["Bones", "Bulk Pet Food", "Frozen Pet Food"],
+    "https://images.unsplash.com/photo-1587593810167-a84920ea0781?q=80&w=1200&auto=format&fit=crop",
+    {
+      storageType: "Frozen",
+      animal_protein: "Chicken",
+      pet_food_only: true,
+      human_consumption_warning: "Pet Food Only — Not for Human Consumption",
+      seo_title: "Chicken Frames Bulk Box | Pet Food Catalogue",
+      seo_meta_description: "Chicken Frames Bulk Box (10kg) for $40.00 AUD. Frozen bulk raw chicken frames. Pet food only — not for human consumption.",
+      breadcrumb_path: "Home > Pet Food > Bones > Chicken Frames Bulk Box"
+    }
+  ),
+  createProduct(
+    "PRD-PET-012",
+    "Chicken Necks",
+    "pet-food",
+    "Bones",
+    "chicken-necks",
+    6.00,
+    "1kg",
+    "1kg",
+    "per_pack",
+    "Frozen 1kg raw chicken necks for pets.",
+    "Frozen raw chicken necks in a 1kg pack. Pet food only — not for human consumption.",
+    "Necks",
+    ["Pet Food Only — Serve According to Verified Supplier Instructions"],
+    ["Frozen"],
+    null,
+    ["Bones", "Frozen Pet Food"],
+    "https://images.unsplash.com/photo-1587593810167-a84920ea0781?q=80&w=1200&auto=format&fit=crop",
+    {
+      storageType: "Frozen",
+      animal_protein: "Chicken",
+      pet_food_only: true,
+      human_consumption_warning: "Pet Food Only — Not for Human Consumption",
+      seo_title: "Chicken Necks | Pet Food Catalogue",
+      seo_meta_description: "Chicken Necks in 1kg pack size for $6.00 AUD. Frozen raw chicken necks. Pet food only — not for human consumption.",
+      breadcrumb_path: "Home > Pet Food > Bones > Chicken Necks"
+    }
+  ),
+  createProduct(
+    "PRD-PET-013",
+    "Chicken Feet",
+    "pet-food",
+    "Bones",
+    "chicken-feet",
+    6.00,
+    "1kg",
+    "1kg",
+    "per_pack",
+    "Frozen 1kg raw chicken feet for pets.",
+    "Frozen raw chicken feet in a 1kg pack. Pet food only — not for human consumption.",
+    "Feet",
+    ["Pet Food Only — Serve According to Verified Supplier Instructions"],
+    ["Frozen"],
+    null,
+    ["Bones", "Frozen Pet Food"],
+    "https://images.unsplash.com/photo-1587593810167-a84920ea0781?q=80&w=1200&auto=format&fit=crop",
+    {
+      storageType: "Frozen",
+      animal_protein: "Chicken",
+      pet_food_only: true,
+      human_consumption_warning: "Pet Food Only — Not for Human Consumption",
+      seo_title: "Chicken Feet | Pet Food Catalogue",
+      seo_meta_description: "Chicken Feet in 1kg pack size for $6.00 AUD. Frozen raw chicken feet. Pet food only — not for human consumption.",
+      breadcrumb_path: "Home > Pet Food > Bones > Chicken Feet"
+    }
+  ),
+  createProduct(
+    "PRD-PET-014",
+    "Turkey Necks",
+    "pet-food",
+    "Bones",
+    "turkey-necks",
+    15.00,
+    "4 pieces",
+    "4 pieces",
+    "per_pack",
+    "Frozen pack of 4 raw turkey necks for pets.",
+    "Frozen raw turkey necks (4 pieces per pack). Pet food only — not for human consumption.",
+    "Necks",
+    ["Pet Food Only — Serve According to Verified Supplier Instructions"],
+    ["Frozen"],
+    null,
+    ["Bones", "Frozen Pet Food"],
+    "https://images.unsplash.com/photo-1516684732162-798a0062be99?q=80&w=1200&auto=format&fit=crop",
+    {
+      storageType: "Frozen",
+      animal_protein: "Turkey",
+      pet_food_only: true,
+      human_consumption_warning: "Pet Food Only — Not for Human Consumption",
+      seo_title: "Turkey Necks | Pet Food Catalogue",
+      seo_meta_description: "Turkey Necks (4 pieces pack) for $15.00 AUD. Frozen raw turkey necks. Pet food only — not for human consumption.",
+      breadcrumb_path: "Home > Pet Food > Bones > Turkey Necks"
+    }
+  ),
+  createProduct(
+    "PRD-PET-015",
+    "Kangaroo Tails",
+    "pet-food",
+    "Bones",
+    "kangaroo-tails",
+    13.00,
+    "1kg",
+    "1kg",
+    "per_pack",
+    "Frozen 1kg raw kangaroo tails for pets.",
+    "Frozen raw kangaroo tails in a 1kg pack. Pet food only — not for human consumption.",
+    "Tails",
+    ["Pet Food Only — Serve According to Verified Supplier Instructions"],
+    ["Frozen"],
+    null,
+    ["Bones", "Frozen Pet Food"],
+    "https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=1200&auto=format&fit=crop",
+    {
+      storageType: "Frozen",
+      animal_protein: "Kangaroo",
+      pet_food_only: true,
+      human_consumption_warning: "Pet Food Only — Not for Human Consumption",
+      seo_title: "Kangaroo Tails | Pet Food Catalogue",
+      seo_meta_description: "Kangaroo Tails in 1kg pack size for $13.00 AUD. Frozen raw kangaroo tails. Pet food only — not for human consumption.",
+      breadcrumb_path: "Home > Pet Food > Bones > Kangaroo Tails"
+    }
+  ),
+
+  // Offal (5 items)
+  createProduct(
+    "PRD-PET-016",
+    "Beef Liver for Pets",
+    "pet-food",
+    "Offal",
+    "beef-liver-for-pets",
+    6.00,
+    "250g",
+    "250g",
+    "per_pack",
+    "Frozen 250g raw beef liver for pets.",
+    "Frozen raw beef liver in a 250g pack. Pet food only — not for human consumption.",
+    "Liver",
+    ["Pet Food Only — Serve According to Verified Supplier Instructions"],
+    ["Frozen"],
+    null,
+    ["Offal", "Frozen Pet Food"],
+    "https://images.unsplash.com/photo-1603048588665-791ca8aea617?q=80&w=1200&auto=format&fit=crop",
+    {
+      storageType: "Frozen",
+      animal_protein: "Beef",
+      pet_food_only: true,
+      human_consumption_warning: "Pet Food Only — Not for Human Consumption",
+      seo_title: "Beef Liver for Pets | Pet Food Catalogue",
+      seo_meta_description: "Beef Liver for Pets in 250g pack size for $6.00 AUD. Frozen raw beef liver. Pet food only — not for human consumption.",
+      breadcrumb_path: "Home > Pet Food > Offal > Beef Liver for Pets"
+    }
+  ),
+  createProduct(
+    "PRD-PET-017",
+    "Beef Heart for Pets",
+    "pet-food",
+    "Offal",
+    "beef-heart-for-pets",
+    8.99,
+    "500g",
+    "500g",
+    "per_pack",
+    "Frozen 500g raw beef heart for pets.",
+    "Frozen raw beef heart in a 500g pack. Pet food only — not for human consumption.",
+    "Heart",
+    ["Pet Food Only — Serve According to Verified Supplier Instructions"],
+    ["Frozen"],
+    null,
+    ["Offal", "Frozen Pet Food"],
+    "https://images.unsplash.com/photo-1603048588665-791ca8aea617?q=80&w=1200&auto=format&fit=crop",
+    {
+      storageType: "Frozen",
+      animal_protein: "Beef",
+      pet_food_only: true,
+      human_consumption_warning: "Pet Food Only — Not for Human Consumption",
+      seo_title: "Beef Heart for Pets | Pet Food Catalogue",
+      seo_meta_description: "Beef Heart for Pets in 500g pack size for $8.99 AUD. Frozen raw beef heart. Pet food only — not for human consumption.",
+      breadcrumb_path: "Home > Pet Food > Offal > Beef Heart for Pets"
+    }
+  ),
+  createProduct(
+    "PRD-PET-018",
+    "Beef Kidney for Pets",
+    "pet-food",
+    "Offal",
+    "beef-kidney-for-pets",
+    8.99,
+    "500g",
+    "500g",
+    "per_pack",
+    "Frozen 500g raw beef kidney for pets.",
+    "Frozen raw beef kidney in a 500g pack. Pet food only — not for human consumption.",
+    "Kidney",
+    ["Pet Food Only — Serve According to Verified Supplier Instructions"],
+    ["Frozen"],
+    null,
+    ["Offal", "Frozen Pet Food"],
+    "https://images.unsplash.com/photo-1603048588665-791ca8aea617?q=80&w=1200&auto=format&fit=crop",
+    {
+      storageType: "Frozen",
+      animal_protein: "Beef",
+      pet_food_only: true,
+      human_consumption_warning: "Pet Food Only — Not for Human Consumption",
+      seo_title: "Beef Kidney for Pets | Pet Food Catalogue",
+      seo_meta_description: "Beef Kidney for Pets in 500g pack size for $8.99 AUD. Frozen raw beef kidney. Pet food only — not for human consumption.",
+      breadcrumb_path: "Home > Pet Food > Offal > Beef Kidney for Pets"
+    }
+  ),
+  createProduct(
+    "PRD-PET-019",
+    "Mixed Beef Offal for Pets",
+    "pet-food",
+    "Offal",
+    "mixed-beef-offal-for-pets",
+    14.99,
+    "1kg",
+    "1kg",
+    "per_pack",
+    "Frozen 1kg mixed raw beef offal for pets.",
+    "Frozen raw mixed beef offal in a 1kg pack. Pet food only — not for human consumption.",
+    "Mixed Offal",
+    ["Pet Food Only — Serve According to Verified Supplier Instructions"],
+    ["Frozen"],
+    null,
+    ["Offal", "Frozen Pet Food"],
+    "https://images.unsplash.com/photo-1603048588665-791ca8aea617?q=80&w=1200&auto=format&fit=crop",
+    {
+      storageType: "Frozen",
+      animal_protein: "Beef",
+      pet_food_only: true,
+      human_consumption_warning: "Pet Food Only — Not for Human Consumption",
+      seo_title: "Mixed Beef Offal for Pets | Pet Food Catalogue",
+      seo_meta_description: "Mixed Beef Offal for Pets in 1kg pack size for $14.99 AUD. Frozen raw beef offal. Pet food only — not for human consumption.",
+      breadcrumb_path: "Home > Pet Food > Offal > Mixed Beef Offal for Pets"
+    }
+  ),
+  createProduct(
+    "PRD-PET-020",
+    "Chicken Livers for Pets",
+    "pet-food",
+    "Offal",
+    "chicken-livers-for-pets",
+    6.99,
+    "500g",
+    "500g",
+    "per_pack",
+    "Frozen 500g raw chicken livers for pets.",
+    "Frozen raw chicken livers in a 500g pack. Pet food only — not for human consumption.",
+    "Liver",
+    ["Pet Food Only — Serve According to Verified Supplier Instructions"],
+    ["Frozen"],
+    null,
+    ["Offal", "Frozen Pet Food"],
+    "https://images.unsplash.com/photo-1603048588665-791ca8aea617?q=80&w=1200&auto=format&fit=crop",
+    {
+      storageType: "Frozen",
+      animal_protein: "Chicken",
+      pet_food_only: true,
+      human_consumption_warning: "Pet Food Only — Not for Human Consumption",
+      seo_title: "Chicken Livers for Pets | Pet Food Catalogue",
+      seo_meta_description: "Chicken Livers for Pets in 500g pack size for $6.99 AUD. Frozen raw chicken livers. Pet food only — not for human consumption.",
+      breadcrumb_path: "Home > Pet Food > Offal > Chicken Livers for Pets"
+    }
+  ),
+
+  // Pet Packs (4 items)
+  createProduct(
+    "PRD-PET-021",
+    "Starter Pet Meat Box",
+    "pet-food",
+    "Pet Packs",
+    "starter-pet-meat-box",
+    30.00,
+    "Approximately 3kg",
+    "Approximately 3kg",
+    "fixed_box_price",
+    "Frozen Starter Pet Meat Box (approx. 3kg) with Beef Pet Mince, Chicken Pet Mince, Chicken Frames & Beef Liver.",
+    "Frozen Starter Pet Meat Box (approx. 3kg total weight). Pet food only — not for human consumption.",
+    "Pet Pack",
+    ["Pet Food Only — Serve According to Verified Supplier Instructions"],
+    ["Frozen"],
+    null,
+    ["Pet Packs", "Frozen Pet Food", "Best Sellers"],
+    "https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=1200&auto=format&fit=crop",
+    {
+      storageType: "Frozen",
+      animal_protein: "Mixed Protein",
+      pet_food_only: true,
+      human_consumption_warning: "Pet Food Only — Not for Human Consumption",
+      approximate_total_weight: "Approximately 3kg",
+      box_contents: [
+        { name: "Beef Pet Mince", quantity: "1kg", slug: "beef-pet-mince" },
+        { name: "Chicken Pet Mince", quantity: "1kg", slug: "chicken-pet-mince" },
+        { name: "Chicken Frames", quantity: "2 frames", slug: "chicken-frames" },
+        { name: "Beef Liver for Pets", quantity: "250g", slug: "beef-liver-for-pets" }
+      ],
+      seo_title: "Starter Pet Meat Box | Pet Food Catalogue",
+      seo_meta_description: "Starter Pet Meat Box (Approximately 3kg) for $30.00 AUD fixed box price. Frozen raw pet food box with beef mince, chicken mince, frames and liver.",
+      breadcrumb_path: "Home > Pet Food > Pet Packs > Starter Pet Meat Box"
+    }
+  ),
+  createProduct(
+    "PRD-PET-022",
     "Pet Meat Box",
     "pet-food",
     "Pet Packs",
     "pet-meat-box",
-    65.00,
-    "8kg",
-    "8kg Box",
+    55.00,
+    "Approximately 5kg",
+    "Approximately 5kg",
     "fixed_box_price",
-    "Bulk raw pet food pack with Raw Mince, Marrow Bones & Chicken Frames.",
-    "Complete raw BARF diet box for healthy pets. Contains Raw Pet Mince, Marrow Bones, and Chicken Frames.",
+    "Frozen Pet Meat Box (approx. 5kg) with Beef, Chicken & Kangaroo Pet Mince, Chicken Frames, Beef Marrow Bones & Beef Liver.",
+    "Frozen Pet Meat Box (approx. 5kg total weight). Pet food only — not for human consumption.",
     "Pet Pack",
-    ["No Cooking Required"],
-    ["Fresh Chilled", "Frozen"],
-    ["Australian"],
-    ["Budget Friendly"],
-    "https://picsum.photos/seed/pet-box/800/600",
-    { featured: true, badge: "Pet Choice" }
+    ["Pet Food Only — Serve According to Verified Supplier Instructions"],
+    ["Frozen"],
+    null,
+    ["Pet Packs", "Frozen Pet Food", "Best Sellers"],
+    "https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=1200&auto=format&fit=crop",
+    {
+      storageType: "Frozen",
+      animal_protein: "Mixed Protein",
+      pet_food_only: true,
+      human_consumption_warning: "Pet Food Only — Not for Human Consumption",
+      approximate_total_weight: "Approximately 5kg",
+      box_contents: [
+        { name: "Beef Pet Mince", quantity: "1kg", slug: "beef-pet-mince" },
+        { name: "Chicken Pet Mince", quantity: "1kg", slug: "chicken-pet-mince" },
+        { name: "Kangaroo Pet Mince", quantity: "1kg", slug: "kangaroo-pet-mince" },
+        { name: "Chicken Frames", quantity: "2 frames", slug: "chicken-frames" },
+        { name: "Beef Marrow Bones for Dogs", quantity: "1kg", slug: "beef-marrow-bones-for-dogs" },
+        { name: "Beef Liver for Pets", quantity: "250g", slug: "beef-liver-for-pets" }
+      ],
+      seo_title: "Pet Meat Box | Pet Food Catalogue",
+      seo_meta_description: "Pet Meat Box (Approximately 5kg) for $55.00 AUD fixed box price. Frozen raw pet food box with beef, chicken, kangaroo mince, bones and liver.",
+      breadcrumb_path: "Home > Pet Food > Pet Packs > Pet Meat Box"
+    }
   ),
+  createProduct(
+    "PRD-PET-023",
+    "Bulk Raw Pet Food Box",
+    "pet-food",
+    "Pet Packs",
+    "bulk-raw-pet-food-box",
+    85.00,
+    "Approximately 10kg",
+    "Approximately 10kg",
+    "fixed_box_price",
+    "Frozen Bulk Raw Pet Food Box (approx. 10kg) with Beef & Offal Pet Mince, Chicken Pet Mince, Chicken Frames & Beef Marrow Bones.",
+    "Bulk 10kg box of frozen raw pet food. Pet food only — not for human consumption.",
+    "Pet Pack",
+    ["Pet Food Only — Serve According to Verified Supplier Instructions"],
+    ["Frozen"],
+    null,
+    ["Pet Packs", "Bulk Pet Food", "Frozen Pet Food"],
+    "https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=1200&auto=format&fit=crop",
+    {
+      storageType: "Frozen",
+      animal_protein: "Mixed Protein",
+      pet_food_only: true,
+      human_consumption_warning: "Pet Food Only — Not for Human Consumption",
+      approximate_total_weight: "Approximately 10kg",
+      box_contents: [
+        { name: "Beef & Offal Pet Mince", quantity: "5kg", slug: "beef-and-offal-pet-mince" },
+        { name: "Chicken Pet Mince", quantity: "2kg", slug: "chicken-pet-mince" },
+        { name: "Chicken Frames", quantity: "2kg", slug: "chicken-frames" },
+        { name: "Beef Marrow Bones for Dogs", quantity: "1kg", slug: "beef-marrow-bones-for-dogs" }
+      ],
+      seo_title: "Bulk Raw Pet Food Box | Pet Food Catalogue",
+      seo_meta_description: "Bulk Raw Pet Food Box (Approximately 10kg) for $85.00 AUD fixed box price. Frozen bulk raw pet food box.",
+      breadcrumb_path: "Home > Pet Food > Pet Packs > Bulk Raw Pet Food Box"
+    }
+  ),
+  createProduct(
+    "PRD-PET-024",
+    "Kangaroo Pet Food Box",
+    "pet-food",
+    "Pet Packs",
+    "kangaroo-pet-food-box",
+    70.00,
+    "Approximately 5kg",
+    "Approximately 5kg",
+    "fixed_box_price",
+    "Frozen Kangaroo Pet Food Box (approx. 5kg) with Kangaroo Pet Mince, Kangaroo Tails, Diced Kangaroo & Beef Mince, Beef Liver & Marrow Bones.",
+    "Frozen Kangaroo Pet Food Box (approx. 5kg total weight). Pet food only — not for human consumption.",
+    "Pet Pack",
+    ["Pet Food Only — Serve According to Verified Supplier Instructions"],
+    ["Frozen"],
+    null,
+    ["Pet Packs", "Frozen Pet Food"],
+    "https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=1200&auto=format&fit=crop",
+    {
+      storageType: "Frozen",
+      animal_protein: "Mixed Protein",
+      pet_food_only: true,
+      human_consumption_warning: "Pet Food Only — Not for Human Consumption",
+      approximate_total_weight: "Approximately 5kg",
+      box_contents: [
+        { name: "Kangaroo Pet Mince", quantity: "2kg", slug: "kangaroo-pet-mince" },
+        { name: "Kangaroo Tails", quantity: "1kg", slug: "kangaroo-tails" },
+        { name: "Diced Kangaroo & Beef Pet Mince", quantity: "1.2kg", slug: "diced-kangaroo-and-beef-pet-mince" },
+        { name: "Beef Liver for Pets", quantity: "250g", slug: "beef-liver-for-pets" },
+        { name: "Beef Marrow Bones for Dogs", quantity: "1kg", slug: "beef-marrow-bones-for-dogs" }
+      ],
+      seo_title: "Kangaroo Pet Food Box | Pet Food Catalogue",
+      seo_meta_description: "Kangaroo Pet Food Box (Approximately 5kg) for $70.00 AUD fixed box price. Frozen raw pet food box with kangaroo mince, tails, diced mince, liver and bones.",
+      breadcrumb_path: "Home > Pet Food > Pet Packs > Kangaroo Pet Food Box"
+    }
+  ),
+
+  // ==========================================
+  // WHOLESALE — BULK MEAT ORDERS & ANIMAL SHARES (30 PRODUCTS)
+  // ==========================================
+
+  // --- 1. BULK BEEF (7 Products) ---
+  // Product 1: Quarter Beef Share
+  createProduct(
+    "quarter-beef-share",
+    "Quarter Beef Share",
+    "Wholesale",
+    "Bulk Beef",
+    "quarter-beef-share",
+    799.00,
+    "Approximately 50kg",
+    "Approximately 50kg",
+    "fixed_pack_price",
+    "Quarter Beef Share (approx. 50kg). Portioned beef cuts for family freezer storage.",
+    "Quarter Beef Share (approximately 50kg). Portioned beef cuts packaged for family freezer storage. Final selection includes assorted steaks, roasts, mince, sausages, slow-cook cuts, ribs, and bones where available.",
+    "Bulk Beef Share",
+    ["Roast", "Grill", "Slow Cook", "Pan Fry"],
+    ["Whole Carcass Share", "Assorted Portioned Cuts"],
+    null,
+    ["Bulk Meat Orders", "Animal Shares", "Bulk Beef"],
+    "https://images.unsplash.com/photo-1558030006-450675393462?q=80&w=1200&auto=format&fit=crop",
+    {
+      storageType: "To be confirmed",
+      animal_protein: "Beef",
+      is_animal_share: true,
+      approximate_weight: "Approximately 50kg",
+      product_contents: ["Steaks", "Roasts", "Mince", "Sausages", "Slow-cook cuts", "Ribs", "Bones", "Offal where available"],
+      bulk_order_notice: "Weight is approximate and can vary by animal size, trimming, cut selection and processing yield. Please ensure you have sufficient freezer capacity before ordering.",
+      seo_title: "Quarter Beef Share | Bulk Beef Orders",
+      seo_meta_description: "Quarter Beef Share (Approximately 50kg) for $799.00 AUD fixed pack price. Portioned beef cuts for family freezer storage.",
+      breadcrumb_path: "Home > Wholesale > Bulk Meat Orders > Bulk Beef > Quarter Beef Share"
+    }
+  ),
+
+  // Product 2: Half Beef Share
+  createProduct(
+    "half-beef-share",
+    "Half Beef Share",
+    "Wholesale",
+    "Bulk Beef",
+    "half-beef-share",
+    1549.00,
+    "Approximately 100kg",
+    "Approximately 100kg",
+    "fixed_pack_price",
+    "Half Beef Share (approx. 100kg). High volume bulk beef cuts for chest freezers.",
+    "Half Beef Share (approximately 100kg). High-volume bulk beef cuts prepared for chest freezers. Includes balanced forequarter and hindquarter cuts: premium steaks, hearty roasts, bulk mince, artisan sausages, slow-cook braises, ribs, and soup bones.",
+    "Bulk Beef Share",
+    ["Roast", "Grill", "Slow Cook", "Pan Fry"],
+    ["Whole Carcass Share", "Assorted Portioned Cuts"],
+    null,
+    ["Bulk Meat Orders", "Animal Shares", "Bulk Beef"],
+    "https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=1200&auto=format&fit=crop",
+    {
+      storageType: "To be confirmed",
+      animal_protein: "Beef",
+      is_animal_share: true,
+      approximate_weight: "Approximately 100kg",
+      product_contents: ["Steaks", "Roasts", "Mince", "Sausages", "Slow-cook cuts", "Ribs", "Bones", "Offal where available"],
+      bulk_order_notice: "Weight is approximate and can vary by animal size, trimming, cut selection and processing yield. Please ensure you have sufficient freezer capacity before ordering.",
+      seo_title: "Half Beef Share | Bulk Beef Orders",
+      seo_meta_description: "Half Beef Share (Approximately 100kg) for $1,549.00 AUD fixed pack price. High volume bulk beef cuts for chest freezers.",
+      breadcrumb_path: "Home > Wholesale > Bulk Meat Orders > Bulk Beef > Half Beef Share"
+    }
+  ),
+
+  // Product 3: Whole Beef Share (200kg)
+  createProduct(
+    "whole-beef-share-200kg",
+    "Whole Beef Share",
+    "Wholesale",
+    "Bulk Beef",
+    "whole-beef-share-200kg",
+    3398.00,
+    "Approximately 200kg",
+    "Approximately 200kg",
+    "fixed_pack_price",
+    "Whole Beef Share (approx. 200kg). Full carcass butchered cuts for maximum volume.",
+    "Whole Beef Share (approximately 200kg). Full carcass butchered cuts providing maximum volume and exceptional value per kilogram. Yields comprehensive cuts from prime steaks to slow-cooked cuts, roasts, mince, ribs, and bones.",
+    "Bulk Beef Share",
+    ["Roast", "Grill", "Slow Cook", "Pan Fry"],
+    ["Whole Carcass Share", "Assorted Portioned Cuts"],
+    null,
+    ["Bulk Meat Orders", "Animal Shares", "Bulk Beef"],
+    "https://images.unsplash.com/photo-1603048588665-791ca8aea617?q=80&w=1200&auto=format&fit=crop",
+    {
+      storageType: "To be confirmed",
+      animal_protein: "Beef",
+      is_animal_share: true,
+      approximate_weight: "Approximately 200kg",
+      product_contents: ["Steaks", "Roasts", "Mince", "Sausages", "Slow-cook cuts", "Ribs", "Bones", "Offal where available"],
+      bulk_order_notice: "Weight is approximate and can vary by animal size, trimming, cut selection and processing yield. Please ensure you have sufficient freezer capacity before ordering.",
+      seo_title: "Whole Beef Share (200kg) | Bulk Meat Orders",
+      seo_meta_description: "Whole Beef Share (Approximately 200kg) for $3,398.00 AUD fixed pack price. Full carcass butchered cuts for maximum volume.",
+      breadcrumb_path: "Home > Wholesale > Bulk Meat Orders > Bulk Beef > Whole Beef Share"
+    }
+  ),
+
+  // Product 4: Whole Beef Share (250kg)
+  createProduct(
+    "whole-beef-share-250kg",
+    "Whole Beef Share",
+    "Wholesale",
+    "Bulk Beef",
+    "whole-beef-share-250kg",
+    4247.50,
+    "Approximately 250kg",
+    "Approximately 250kg",
+    "fixed_pack_price",
+    "Whole Beef Share (approx. 250kg). Heavyweight full carcass beef share.",
+    "Whole Beef Share (approximately 250kg). Heavyweight full carcass beef share offering comprehensive whole animal butchery yield for commercial kitchens, clubs, or extended family freezer sharing.",
+    "Bulk Beef Share",
+    ["Roast", "Grill", "Slow Cook", "Pan Fry"],
+    ["Whole Carcass Share", "Assorted Portioned Cuts"],
+    null,
+    ["Bulk Meat Orders", "Animal Shares", "Bulk Beef"],
+    "https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=1200&auto=format&fit=crop",
+    {
+      storageType: "To be confirmed",
+      animal_protein: "Beef",
+      is_animal_share: true,
+      approximate_weight: "Approximately 250kg",
+      product_contents: ["Steaks", "Roasts", "Mince", "Sausages", "Slow-cook cuts", "Ribs", "Bones", "Offal where available"],
+      bulk_order_notice: "Weight is approximate and can vary by animal size, trimming, cut selection and processing yield. Please ensure you have sufficient freezer capacity before ordering.",
+      seo_title: "Whole Beef Share (250kg) | Bulk Meat Orders",
+      seo_meta_description: "Whole Beef Share (Approximately 250kg) for $4,247.50 AUD fixed pack price. Heavyweight full carcass beef share.",
+      breadcrumb_path: "Home > Wholesale > Bulk Meat Orders > Bulk Beef > Whole Beef Share"
+    }
+  ),
+
+  // Product 5: Bulk Beef Mince Box (5kg)
+  createProduct(
+    "bulk-beef-mince-box-5kg",
+    "Bulk Beef Mince Box",
+    "Wholesale",
+    "Bulk Beef",
+    "bulk-beef-mince-box-5kg",
+    74.95,
+    "5kg",
+    "5kg",
+    "fixed_pack_price",
+    "Bulk Beef Mince Box (5kg). Fresh chilled ground beef mince carton.",
+    "Bulk Beef Mince Box (5kg). Fresh chilled ground beef mince supplied in a wholesale carton. Ideal for high-volume family meal preparation, bolognese, burgers, and meatballs.",
+    "Bulk Beef Mince",
+    ["Pan Fry", "Bake", "Slow Cook", "Grill"],
+    ["Bulk Carton", "Ground Meat"],
+    null,
+    ["Bulk Meat Orders", "Bulk Beef", "Bulk Mince"],
+    "https://images.unsplash.com/photo-1588168333986-5078d3ae3976?q=80&w=1200&auto=format&fit=crop",
+    {
+      storageType: "Fresh Chilled",
+      animal_protein: "Beef",
+      approximate_weight: "5kg",
+      seo_title: "Bulk Beef Mince Box (5kg) | Wholesale Meat Orders",
+      seo_meta_description: "Bulk Beef Mince Box (5kg) for $74.95 AUD fixed pack price. Fresh chilled ground beef mince carton.",
+      breadcrumb_path: "Home > Wholesale > Bulk Meat Orders > Bulk Beef > Bulk Beef Mince Box"
+    }
+  ),
+
+  // Product 6: Bulk Beef Mince Box (10kg)
+  createProduct(
+    "bulk-beef-mince-box-10kg",
+    "Bulk Beef Mince Box",
+    "Wholesale",
+    "Bulk Beef",
+    "bulk-beef-mince-box-10kg",
+    149.90,
+    "10kg",
+    "10kg",
+    "fixed_pack_price",
+    "Bulk Beef Mince Box (10kg). Commercial master carton of fresh chilled ground beef mince.",
+    "Bulk Beef Mince Box (10kg). Master carton of fresh chilled ground beef mince. Perfectly proportioned for meal prep services, catering, foodservice, and large households.",
+    "Bulk Beef Mince",
+    ["Pan Fry", "Bake", "Slow Cook", "Grill"],
+    ["Bulk Carton", "Ground Meat"],
+    null,
+    ["Bulk Meat Orders", "Bulk Beef", "Bulk Mince"],
+    "https://images.unsplash.com/photo-1588168333986-5078d3ae3976?q=80&w=1200&auto=format&fit=crop",
+    {
+      storageType: "Fresh Chilled",
+      animal_protein: "Beef",
+      approximate_weight: "10kg",
+      seo_title: "Bulk Beef Mince Box (10kg) | Wholesale Meat Orders",
+      seo_meta_description: "Bulk Beef Mince Box (10kg) for $149.90 AUD fixed pack price. Commercial master carton of fresh chilled ground beef mince.",
+      breadcrumb_path: "Home > Wholesale > Bulk Meat Orders > Bulk Beef > Bulk Beef Mince Box"
+    }
+  ),
+
+  // Product 7: Bulk Whole Rump
+  createProduct(
+    "bulk-whole-rump",
+    "Bulk Whole Rump",
+    "Wholesale",
+    "Bulk Beef",
+    "bulk-whole-rump",
+    80.00,
+    "Approximately 3kg to 4kg",
+    "Approximately 3kg to 4kg",
+    "fixed_pack_price",
+    "Bulk Whole Rump (approx. 3kg to 4kg). Sub-primal whole beef cut.",
+    "Bulk Whole Rump (approximately 3kg to 4kg). Whole sub-primal beef cut ready for portioning into your own thick steaks, tender stir-fry strips, roasts, or barbecue skewers.",
+    "Bulk Beef Cut",
+    ["Roast", "Grill", "Pan Fry"],
+    ["Whole Sub-primal", "Bulk Cut"],
+    null,
+    ["Bulk Meat Orders", "Bulk Beef", "Bulk Cuts"],
+    "https://images.unsplash.com/photo-1558030006-450675393462?q=80&w=1200&auto=format&fit=crop",
+    {
+      storageType: "Fresh Chilled",
+      animal_protein: "Beef",
+      approximate_weight: "Approximately 3kg to 4kg",
+      seo_title: "Bulk Whole Rump | Bulk Beef Orders",
+      seo_meta_description: "Bulk Whole Rump (Approximately 3kg to 4kg) for $80.00 AUD fixed pack price. Sub-primal whole beef cut.",
+      breadcrumb_path: "Home > Wholesale > Bulk Meat Orders > Bulk Beef > Bulk Whole Rump"
+    }
+  ),
+
+  // --- 2. BULK LAMB (4 Products) ---
+  // Product 8: Half Lamb Share
+  createProduct(
+    "half-lamb-share",
+    "Half Lamb Share",
+    "Wholesale",
+    "Bulk Lamb",
+    "half-lamb-share",
+    250.00,
+    "Approximately 12.5kg",
+    "Approximately 12.5kg",
+    "fixed_pack_price",
+    "Half Lamb Share (approx. 12.5kg). Portioned lamb leg, chops, shanks, and shoulder cuts.",
+    "Half Lamb Share (approximately 12.5kg). Portioned fresh chilled lamb carcass half. Includes leg roast, loin chops, BBQ chops, shanks, shoulder, ribs, and lamb mince.",
+    "Bulk Lamb Share",
+    ["Roast", "Grill", "Slow Cook", "Pan Fry"],
+    ["Whole Carcass Share", "Assorted Portioned Cuts"],
+    null,
+    ["Bulk Meat Orders", "Animal Shares", "Bulk Lamb"],
+    "https://images.unsplash.com/photo-1602498456745-e9503b30470b?q=80&w=1200&auto=format&fit=crop",
+    {
+      storageType: "Fresh Chilled",
+      animal_protein: "Lamb",
+      is_animal_share: true,
+      approximate_weight: "Approximately 12.5kg",
+      product_contents: ["Lamb leg", "Lamb loin chops", "Lamb BBQ chops", "Lamb shanks", "Lamb shoulder", "Lamb mince", "Lamb ribs"],
+      bulk_order_notice: "Weight is approximate and can vary by animal size, trimming, cut selection and processing yield. Please ensure you have sufficient freezer capacity before ordering.",
+      seo_title: "Half Lamb Share | Bulk Lamb Orders",
+      seo_meta_description: "Half Lamb Share (Approximately 12.5kg) for $250.00 AUD fixed pack price. Portioned lamb leg, chops, shanks, and shoulder cuts.",
+      breadcrumb_path: "Home > Wholesale > Bulk Meat Orders > Bulk Lamb > Half Lamb Share"
+    }
+  ),
+
+  // Product 9: Whole Lamb Share (12-13kg)
+  createProduct(
+    "whole-lamb-share",
+    "Whole Lamb Share",
+    "Wholesale",
+    "Bulk Lamb",
+    "whole-lamb-share",
+    290.99,
+    "Approximately 12kg to 13kg",
+    "Approximately 12kg to 13kg",
+    "from_price",
+    "Whole Lamb Share (approx. 12kg to 13kg). Whole lamb carcass portioned for family freezer stocking.",
+    "Whole Lamb Share (approximately 12kg to 13kg). Whole lamb carcass portioned into convenient cuts for family freezer stocking. Includes whole and half roasts, loin chops, forequarter chops, shanks, ribs, and mince.",
+    "Bulk Lamb Share",
+    ["Roast", "Grill", "Slow Cook", "Pan Fry"],
+    ["Whole Carcass Share", "Assorted Portioned Cuts"],
+    null,
+    ["Bulk Meat Orders", "Animal Shares", "Bulk Lamb"],
+    "https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=1200&auto=format&fit=crop",
+    {
+      storageType: "Fresh Chilled",
+      animal_protein: "Lamb",
+      is_animal_share: true,
+      approximate_weight: "Approximately 12kg to 13kg",
+      product_contents: ["Lamb leg", "Lamb loin chops", "Lamb BBQ chops", "Lamb shanks", "Lamb shoulder", "Lamb mince", "Lamb ribs"],
+      bulk_order_notice: "Weight is approximate and can vary by animal size, trimming, cut selection and processing yield. Please ensure you have sufficient freezer capacity before ordering.",
+      seo_title: "Whole Lamb Share (12-13kg) | Bulk Lamb Orders",
+      seo_meta_description: "Whole Lamb Share (Approximately 12kg to 13kg) from $290.99 AUD. Whole lamb carcass portioned for family freezer stocking.",
+      breadcrumb_path: "Home > Wholesale > Bulk Meat Orders > Bulk Lamb > Whole Lamb Share"
+    }
+  ),
+
+  // Product 10: Whole Lamb Share (13-17kg)
+  createProduct(
+    "whole-lamb-share-13-17kg",
+    "Whole Lamb Share",
+    "Wholesale",
+    "Bulk Lamb",
+    "whole-lamb-share-13-17kg",
+    310.99,
+    "Approximately 13kg to 17kg",
+    "Approximately 13kg to 17kg",
+    "fixed_pack_price",
+    "Whole Lamb Share (approx. 13kg to 17kg). Heavyweight whole lamb carcass portioned cuts.",
+    "Whole Lamb Share (approximately 13kg to 17kg). Heavyweight whole lamb carcass butchered and portioned into vacuum-ready cuts. Features prime legs, tender loin chops, cutlets, shanks, shoulder roasts, and ribs.",
+    "Bulk Lamb Share",
+    ["Roast", "Grill", "Slow Cook", "Pan Fry"],
+    ["Whole Carcass Share", "Assorted Portioned Cuts"],
+    null,
+    ["Bulk Meat Orders", "Animal Shares", "Bulk Lamb"],
+    "https://images.unsplash.com/photo-1602498456745-e9503b30470b?q=80&w=1200&auto=format&fit=crop",
+    {
+      storageType: "Fresh Chilled",
+      animal_protein: "Lamb",
+      is_animal_share: true,
+      approximate_weight: "Approximately 13kg to 17kg",
+      product_contents: ["Lamb leg", "Lamb loin chops", "Lamb BBQ chops", "Lamb shanks", "Lamb shoulder", "Lamb mince", "Lamb ribs"],
+      bulk_order_notice: "Weight is approximate and can vary by animal size, trimming, cut selection and processing yield. Please ensure you have sufficient freezer capacity before ordering.",
+      seo_title: "Whole Lamb Share (13-17kg) | Bulk Lamb Orders",
+      seo_meta_description: "Whole Lamb Share (Approximately 13kg to 17kg) for $310.99 AUD fixed pack price. Heavyweight whole lamb carcass portioned cuts.",
+      breadcrumb_path: "Home > Wholesale > Bulk Meat Orders > Bulk Lamb > Whole Lamb Share"
+    }
+  ),
+
+  // Product 11: Bulk Lamb Variety Pack (6kg)
+  createProduct(
+    "bulk-lamb-variety-pack",
+    "Bulk Lamb Variety Pack",
+    "Wholesale",
+    "Bulk Lamb",
+    "bulk-lamb-variety-pack",
+    135.50,
+    "6kg",
+    "6kg",
+    "fixed_pack_price",
+    "Bulk Lamb Variety Pack (6kg). Everyday lamb roasts, chops, ribs, and shanks.",
+    "Bulk Lamb Variety Pack (6kg). A balanced selection of fresh chilled Australian lamb cuts including leg roasts, loin chops, BBQ chops, shanks, shoulder, and ribs.",
+    "Bulk Lamb Pack",
+    ["Roast", "Grill", "Slow Cook", "Pan Fry"],
+    ["Bulk Carton", "Assorted Cuts"],
+    null,
+    ["Bulk Meat Orders", "Bulk Lamb", "Bulk Cuts"],
+    "https://images.unsplash.com/photo-1602498456745-e9503b30470b?q=80&w=1200&auto=format&fit=crop",
+    {
+      storageType: "Fresh Chilled",
+      animal_protein: "Lamb",
+      approximate_weight: "6kg",
+      product_contents: ["Lamb leg", "Lamb loin chops", "Lamb BBQ chops", "Lamb shanks", "Lamb shoulder", "Lamb mince", "Lamb ribs"],
+      seo_title: "Bulk Lamb Variety Pack (6kg) | Bulk Lamb Orders",
+      seo_meta_description: "Bulk Lamb Variety Pack (6kg) for $135.50 AUD fixed pack price. Everyday lamb roasts, chops, ribs, and shanks.",
+      breadcrumb_path: "Home > Wholesale > Bulk Meat Orders > Bulk Lamb > Bulk Lamb Variety Pack"
+    }
+  ),
+
+  // --- 3. BULK PORK (3 Products) ---
+  // Product 12: Half Pork Share
+  createProduct(
+    "half-pork-share",
+    "Half Pork Share",
+    "Wholesale",
+    "Bulk Pork",
+    "half-pork-share",
+    385.00,
+    "Approximately 30kg to 35kg",
+    "Approximately 30kg to 35kg",
+    "fixed_pack_price",
+    "Half Pork Share (approx. 30kg to 35kg). Portioned pork leg, chops, ribs, and belly.",
+    "Half Pork Share (approximately 30kg to 35kg). Portioned fresh chilled pork carcass half. Includes roasting leg, loin chops, grilling chops, spare ribs, pork belly, and pickled pork cuts.",
+    "Bulk Pork Share",
+    ["Roast", "Grill", "Pan Fry", "Slow Cook"],
+    ["Whole Carcass Share", "Assorted Portioned Cuts"],
+    null,
+    ["Bulk Meat Orders", "Animal Shares", "Bulk Pork"],
+    "https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?q=80&w=1200&auto=format&fit=crop",
+    {
+      storageType: "Fresh Chilled",
+      animal_protein: "Pork",
+      is_animal_share: true,
+      approximate_weight: "Approximately 30kg to 35kg",
+      product_contents: ["Pork leg", "Pork loin chops", "Pork grilling chops", "Pork spare ribs", "Pickled pork"],
+      bulk_order_notice: "Weight is approximate and can vary by animal size, trimming, cut selection and processing yield. Please ensure you have sufficient freezer capacity before ordering.",
+      seo_title: "Half Pork Share | Bulk Pork Orders",
+      seo_meta_description: "Half Pork Share (Approximately 30kg to 35kg) for $385.00 AUD fixed pack price. Portioned pork leg, chops, ribs, and belly.",
+      breadcrumb_path: "Home > Wholesale > Bulk Meat Orders > Bulk Pork > Half Pork Share"
+    }
+  ),
+
+  // Product 13: Bulk Pork Variety Pack (11kg)
+  createProduct(
+    "bulk-pork-variety-pack",
+    "Bulk Pork Variety Pack",
+    "Wholesale",
+    "Bulk Pork",
+    "bulk-pork-variety-pack",
+    169.90,
+    "11kg",
+    "11kg",
+    "fixed_pack_price",
+    "Bulk Pork Variety Pack (11kg). Fresh chilled pork leg, chops, ribs, and roasts.",
+    "Bulk Pork Variety Pack (11kg). Assorted carton of fresh chilled pork cuts including pork leg roasts, loin chops, grilling chops, spare ribs, and pickled pork cuts.",
+    "Bulk Pork Pack",
+    ["Roast", "Grill", "Pan Fry", "Slow Cook"],
+    ["Bulk Carton", "Assorted Cuts"],
+    null,
+    ["Bulk Meat Orders", "Bulk Pork", "Bulk Cuts"],
+    "https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?q=80&w=1200&auto=format&fit=crop",
+    {
+      storageType: "Fresh Chilled",
+      animal_protein: "Pork",
+      approximate_weight: "11kg",
+      product_contents: ["Pork leg", "Pork loin chops", "Pork grilling chops", "Pork spare ribs", "Pickled pork"],
+      seo_title: "Bulk Pork Variety Pack (11kg) | Bulk Pork Orders",
+      seo_meta_description: "Bulk Pork Variety Pack (11kg) for $169.90 AUD fixed pack price. Fresh chilled pork leg, chops, ribs, and roasts.",
+      breadcrumb_path: "Home > Wholesale > Bulk Meat Orders > Bulk Pork > Bulk Pork Variety Pack"
+    }
+  ),
+
+  // Product 14: Bulk Pork Fillet (Min 500g)
+  createProduct(
+    "bulk-pork-fillet",
+    "Bulk Pork Fillet",
+    "Wholesale",
+    "Bulk Pork",
+    "bulk-pork-fillet",
+    24.99,
+    "Minimum 500g",
+    "Minimum 500g",
+    "per_kg",
+    "Bulk Pork Fillet (min. 500g). Lean fresh chilled pork tenderloin fillet.",
+    "Bulk Pork Fillet (minimum 500g). Exceptionally tender, lean, fresh chilled pork tenderloin fillets sold at a competitive per-kilogram rate for wholesale meal prep and catering.",
+    "Pork Fillet",
+    ["Pan Fry", "Roast", "Stir Fry"],
+    ["Whole Fillet", "Lean Cut"],
+    null,
+    ["Bulk Meat Orders", "Bulk Pork", "Bulk Cuts"],
+    "https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?q=80&w=1200&auto=format&fit=crop",
+    {
+      storageType: "Fresh Chilled",
+      animal_protein: "Pork",
+      approximate_weight: "Minimum 500g",
+      seo_title: "Bulk Pork Fillet | Bulk Pork Orders",
+      seo_meta_description: "Bulk Pork Fillet (Minimum 500g) for $24.99 AUD per kg. Lean fresh chilled pork tenderloin fillet.",
+      breadcrumb_path: "Home > Wholesale > Bulk Meat Orders > Bulk Pork > Bulk Pork Fillet"
+    }
+  ),
+
+  // --- 4. BULK CHICKEN (6 Products) ---
+  // Product 15: Bulk Chicken Breast Fillets (2kg - $25.98)
+  createProduct(
+    "bulk-chicken-breast-fillets-2kg",
+    "Bulk Chicken Breast Fillets",
+    "Wholesale",
+    "Bulk Chicken",
+    "bulk-chicken-breast-fillets-2kg",
+    25.98,
+    "2kg",
+    "2kg",
+    "fixed_pack_price",
+    "Bulk Chicken Breast Fillets (2kg). Fresh chilled boneless skinless chicken breast.",
+    "Bulk Chicken Breast Fillets (2kg). Fresh chilled boneless, skinless Australian chicken breast fillets packed for bulk household convenience.",
+    "Bulk Chicken",
+    ["Pan Fry", "Bake", "Grill", "Stir Fry"],
+    ["Bulk Pack", "Boneless"],
+    null,
+    ["Bulk Meat Orders", "Bulk Chicken", "Bulk Cuts"],
+    "https://images.unsplash.com/photo-1604503468506-a8da13d82791?q=80&w=1200&auto=format&fit=crop",
+    {
+      storageType: "Fresh Chilled",
+      animal_protein: "Chicken",
+      approximate_weight: "2kg",
+      seo_title: "Bulk Chicken Breast Fillets (2kg) | Bulk Chicken Orders",
+      seo_meta_description: "Bulk Chicken Breast Fillets (2kg) for $25.98 AUD fixed pack price. Fresh chilled boneless skinless chicken breast.",
+      breadcrumb_path: "Home > Wholesale > Bulk Meat Orders > Bulk Chicken > Bulk Chicken Breast Fillets"
+    }
+  ),
+
+  // Product 16: Bulk Chicken Breast Fillets (2kg Portion - $29.98)
+  createProduct(
+    "bulk-chicken-breast-fillets-2kg-portion",
+    "Bulk Chicken Breast Fillets",
+    "Wholesale",
+    "Bulk Chicken",
+    "bulk-chicken-breast-fillets-2kg-portion",
+    29.98,
+    "2kg",
+    "2kg",
+    "fixed_pack_price",
+    "Bulk Chicken Breast Fillets (2kg). Fresh chilled trimmed chicken breasts.",
+    "Bulk Chicken Breast Fillets (2kg). Premium trimmed, fresh chilled chicken breast fillets ready for high-protein meal prep, slicing, or grilling.",
+    "Bulk Chicken",
+    ["Pan Fry", "Bake", "Grill", "Stir Fry"],
+    ["Bulk Pack", "Boneless"],
+    null,
+    ["Bulk Meat Orders", "Bulk Chicken", "Bulk Cuts"],
+    "https://images.unsplash.com/photo-1604503468506-a8da13d82791?q=80&w=1200&auto=format&fit=crop",
+    {
+      storageType: "Fresh Chilled",
+      animal_protein: "Chicken",
+      approximate_weight: "2kg",
+      seo_title: "Bulk Chicken Breast Fillets (2kg) | Bulk Chicken Orders",
+      seo_meta_description: "Bulk Chicken Breast Fillets (2kg) for $29.98 AUD fixed pack price. Fresh chilled trimmed chicken breasts.",
+      breadcrumb_path: "Home > Wholesale > Bulk Meat Orders > Bulk Chicken > Bulk Chicken Breast Fillets"
+    }
+  ),
+
+  // Product 17: Bulk Chicken Drumsticks (2kg - $15.98)
+  createProduct(
+    "bulk-chicken-drumsticks-2kg",
+    "Bulk Chicken Drumsticks",
+    "Wholesale",
+    "Bulk Chicken",
+    "bulk-chicken-drumsticks-2kg",
+    15.98,
+    "2kg",
+    "2kg",
+    "fixed_pack_price",
+    "Bulk Chicken Drumsticks (2kg). Fresh chilled bone-in chicken drumsticks.",
+    "Bulk Chicken Drumsticks (2kg). Fresh chilled Australian chicken drumsticks packed in a 2kg value bag. Ideal for baking, grilling, and family weeknight dinners.",
+    "Bulk Chicken",
+    ["Roast", "Bake", "Grill", "BBQ"],
+    ["Bulk Pack", "Bone-In"],
+    null,
+    ["Bulk Meat Orders", "Bulk Chicken", "Bulk Cuts"],
+    "https://images.unsplash.com/photo-1587593810167-a84920ea0781?q=80&w=1200&auto=format&fit=crop",
+    {
+      storageType: "Fresh Chilled",
+      animal_protein: "Chicken",
+      approximate_weight: "2kg",
+      seo_title: "Bulk Chicken Drumsticks (2kg) | Bulk Chicken Orders",
+      seo_meta_description: "Bulk Chicken Drumsticks (2kg) for $15.98 AUD fixed pack price. Fresh chilled bone-in chicken drumsticks.",
+      breadcrumb_path: "Home > Wholesale > Bulk Meat Orders > Bulk Chicken > Bulk Chicken Drumsticks"
+    }
+  ),
+
+  // Product 18: Bulk Chicken Breast Schnitzel Box (5kg - $99.00)
+  createProduct(
+    "bulk-chicken-breast-schnitzel-box-5kg",
+    "Bulk Chicken Breast Schnitzel Box",
+    "Wholesale",
+    "Bulk Chicken",
+    "bulk-chicken-breast-schnitzel-box-5kg",
+    99.00,
+    "5kg",
+    "5kg",
+    "fixed_pack_price",
+    "Bulk Chicken Breast Schnitzel Box (5kg). Frozen crumbed chicken breast schnitzels.",
+    "Bulk Chicken Breast Schnitzel Box (5kg). Frozen tender crumbed chicken breast schnitzels ready for shallow frying or baking. Ideal for canteens, catering, or bulk family freezer storage.",
+    "Bulk Chicken Schnitzel",
+    ["Pan Fry", "Bake", "Air Fry"],
+    ["Bulk Carton", "Crumbed"],
+    null,
+    ["Bulk Meat Orders", "Bulk Chicken", "Bulk Carton"],
+    "https://images.unsplash.com/photo-1598515214211-89d3c73ae83b?q=80&w=1200&auto=format&fit=crop",
+    {
+      storageType: "Frozen",
+      animal_protein: "Chicken",
+      approximate_weight: "5kg",
+      seo_title: "Bulk Chicken Breast Schnitzel Box (5kg) | Bulk Orders",
+      seo_meta_description: "Bulk Chicken Breast Schnitzel Box (5kg) for $99.00 AUD fixed pack price. Frozen crumbed chicken breast schnitzels.",
+      breadcrumb_path: "Home > Wholesale > Bulk Meat Orders > Bulk Chicken > Bulk Chicken Breast Schnitzel Box"
+    }
+  ),
+
+  // Product 19: Bulk Chicken Thigh Fillets (5kg - $74.95)
+  createProduct(
+    "bulk-chicken-thigh-fillets-5kg",
+    "Bulk Chicken Thigh Fillets",
+    "Wholesale",
+    "Bulk Chicken",
+    "bulk-chicken-thigh-fillets-5kg",
+    74.95,
+    "5kg",
+    "5kg",
+    "fixed_pack_price",
+    "Bulk Chicken Thigh Fillets (5kg). Fresh chilled boneless skinless chicken thighs.",
+    "Bulk Chicken Thigh Fillets (5kg). Fresh chilled boneless skinless chicken thigh fillets packed in a 5kg commercial master bag. Perfect for curries, stir-fries, and barbecue skewers.",
+    "Bulk Chicken",
+    ["Pan Fry", "Bake", "Grill", "Curry", "BBQ"],
+    ["Bulk Carton", "Boneless"],
+    null,
+    ["Bulk Meat Orders", "Bulk Chicken", "Bulk Cuts"],
+    "https://images.unsplash.com/photo-1604503468506-a8da13d82791?q=80&w=1200&auto=format&fit=crop",
+    {
+      storageType: "Fresh Chilled",
+      animal_protein: "Chicken",
+      approximate_weight: "5kg",
+      seo_title: "Bulk Chicken Thigh Fillets (5kg) | Bulk Chicken Orders",
+      seo_meta_description: "Bulk Chicken Thigh Fillets (5kg) for $74.95 AUD fixed pack price. Fresh chilled boneless skinless chicken thighs.",
+      breadcrumb_path: "Home > Wholesale > Bulk Meat Orders > Bulk Chicken > Bulk Chicken Thigh Fillets"
+    }
+  ),
+
+  // Product 20: Bulk Chicken Wings (5kg - $35.00)
+  createProduct(
+    "bulk-chicken-wings-5kg",
+    "Bulk Chicken Wings",
+    "Wholesale",
+    "Bulk Chicken",
+    "bulk-chicken-wings-5kg",
+    35.00,
+    "5kg",
+    "5kg",
+    "fixed_pack_price",
+    "Bulk Chicken Wings (5kg). Fresh chilled chicken wings carton.",
+    "Bulk Chicken Wings (5kg). Fresh chilled 3-joint chicken wings packed in a 5kg wholesale carton. Excellent for buffalo wings, oven roasting, and smoking.",
+    "Bulk Chicken",
+    ["Roast", "Bake", "Grill", "BBQ", "Deep Fry"],
+    ["Bulk Carton", "Bone-In"],
+    null,
+    ["Bulk Meat Orders", "Bulk Chicken", "Bulk Cuts"],
+    "https://images.unsplash.com/photo-1567620832903-9fc6debc209f?q=80&w=1200&auto=format&fit=crop",
+    {
+      storageType: "Fresh Chilled",
+      animal_protein: "Chicken",
+      approximate_weight: "5kg",
+      seo_title: "Bulk Chicken Wings (5kg) | Bulk Chicken Orders",
+      seo_meta_description: "Bulk Chicken Wings (5kg) for $35.00 AUD fixed pack price. Fresh chilled chicken wings carton.",
+      breadcrumb_path: "Home > Wholesale > Bulk Meat Orders > Bulk Chicken > Bulk Chicken Wings"
+    }
+  ),
+
+  // --- 5. BULK GOAT (4 Products) ---
+  // Product 21: Bulk Goat Side (~11kg - $282.15)
+  createProduct(
+    "bulk-goat-side",
+    "Bulk Goat Side",
+    "Wholesale",
+    "Bulk Goat",
+    "bulk-goat-side",
+    282.15,
+    "Approximately 11kg",
+    "Approximately 11kg",
+    "fixed_pack_price",
+    "Bulk Goat Side (approx. 11kg). Half goat carcass portioned into legs, shoulder, ribs, and curry pieces.",
+    "Bulk Goat Side (approximately 11kg). Half goat carcass portioned into primal cuts including leg roasts, shoulder, ribs, shanks, and diced bone-in curry pieces.",
+    "Bulk Goat Share",
+    ["Slow Cook", "Curry", "Roast", "Stew"],
+    ["Whole Carcass Share", "Assorted Portioned Cuts"],
+    null,
+    ["Bulk Meat Orders", "Animal Shares", "Bulk Goat"],
+    "https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=1200&auto=format&fit=crop",
+    {
+      storageType: "To be confirmed",
+      animal_protein: "Goat",
+      is_animal_share: true,
+      approximate_weight: "Approximately 11kg",
+      product_contents: ["Goat leg", "Goat shoulder", "Goat shanks", "Goat ribs", "Goat curry pieces"],
+      bulk_order_notice: "Weight is approximate and can vary by animal size, trimming, cut selection and processing yield. Please ensure you have sufficient freezer capacity before ordering.",
+      seo_title: "Bulk Goat Side (~11kg) | Bulk Goat Orders",
+      seo_meta_description: "Bulk Goat Side (Approximately 11kg) for $282.15 AUD fixed pack price. Half goat carcass portioned into legs, shoulder, ribs, and curry pieces.",
+      breadcrumb_path: "Home > Wholesale > Bulk Meat Orders > Bulk Goat > Bulk Goat Side"
+    }
+  ),
+
+  // Product 22: Bulk Goat Curry Pieces (2.5kg - $42.48)
+  createProduct(
+    "bulk-goat-curry-pieces-2-5kg",
+    "Bulk Goat Curry Pieces",
+    "Wholesale",
+    "Bulk Goat",
+    "bulk-goat-curry-pieces-2-5kg",
+    42.48,
+    "2.5kg",
+    "2.5kg",
+    "fixed_pack_price",
+    "Bulk Goat Curry Pieces (2.5kg). Bone-in fresh chilled diced goat pieces.",
+    "Bulk Goat Curry Pieces (2.5kg). Bone-in fresh chilled diced goat pieces expertly chopped for authentic slow-cooked curries, stews, and biryanis.",
+    "Bulk Goat",
+    ["Slow Cook", "Curry", "Stew"],
+    ["Bulk Pack", "Bone-In", "Diced"],
+    null,
+    ["Bulk Meat Orders", "Bulk Goat", "Bulk Cuts"],
+    "https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=1200&auto=format&fit=crop",
+    {
+      storageType: "Fresh Chilled",
+      animal_protein: "Goat",
+      approximate_weight: "2.5kg",
+      seo_title: "Bulk Goat Curry Pieces (2.5kg) | Bulk Goat Orders",
+      seo_meta_description: "Bulk Goat Curry Pieces (2.5kg) for $42.48 AUD fixed pack price. Bone-in fresh chilled diced goat pieces.",
+      breadcrumb_path: "Home > Wholesale > Bulk Meat Orders > Bulk Goat > Bulk Goat Curry Pieces"
+    }
+  ),
+
+  // Product 23: Bulk Goat Curry Pieces (5kg - $84.95)
+  createProduct(
+    "bulk-goat-curry-pieces-5kg",
+    "Bulk Goat Curry Pieces",
+    "Wholesale",
+    "Bulk Goat",
+    "bulk-goat-curry-pieces-5kg",
+    84.95,
+    "5kg",
+    "5kg",
+    "fixed_pack_price",
+    "Bulk Goat Curry Pieces (5kg). Fresh chilled bone-in diced goat curry carton.",
+    "Bulk Goat Curry Pieces (5kg). Master carton of fresh chilled bone-in diced goat pieces. Prepared for restaurant kitchens, catering events, and large gatherings.",
+    "Bulk Goat",
+    ["Slow Cook", "Curry", "Stew"],
+    ["Bulk Carton", "Bone-In", "Diced"],
+    null,
+    ["Bulk Meat Orders", "Bulk Goat", "Bulk Cuts"],
+    "https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=1200&auto=format&fit=crop",
+    {
+      storageType: "Fresh Chilled",
+      animal_protein: "Goat",
+      approximate_weight: "5kg",
+      seo_title: "Bulk Goat Curry Pieces (5kg) | Bulk Goat Orders",
+      seo_meta_description: "Bulk Goat Curry Pieces (5kg) for $84.95 AUD fixed pack price. Fresh chilled bone-in diced goat curry carton.",
+      breadcrumb_path: "Home > Wholesale > Bulk Meat Orders > Bulk Goat > Bulk Goat Curry Pieces"
+    }
+  ),
+
+  // Product 24: Bulk Goat Ribs (~1kg - $17.99/kg)
+  createProduct(
+    "bulk-goat-ribs",
+    "Bulk Goat Ribs",
+    "Wholesale",
+    "Bulk Goat",
+    "bulk-goat-ribs",
+    17.99,
+    "Approximately 1kg",
+    "Approximately 1kg",
+    "per_kg",
+    "Bulk Goat Ribs (approx. 1kg). Fresh chilled bone-in goat ribs.",
+    "Bulk Goat Ribs (approximately 1kg). Fresh chilled bone-in goat ribs perfect for low-and-slow barbecue smoking, braising, or roasting with aromatic spices.",
+    "Bulk Goat",
+    ["Slow Cook", "BBQ", "Roast", "Braise"],
+    ["Bone-In", "Bulk Ribs"],
+    null,
+    ["Bulk Meat Orders", "Bulk Goat", "Bulk Cuts"],
+    "https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=1200&auto=format&fit=crop",
+    {
+      storageType: "Fresh Chilled",
+      animal_protein: "Goat",
+      approximate_weight: "Approximately 1kg",
+      seo_title: "Bulk Goat Ribs | Bulk Goat Orders",
+      seo_meta_description: "Bulk Goat Ribs (Approximately 1kg) for $17.99 AUD per kg. Fresh chilled bone-in goat ribs.",
+      breadcrumb_path: "Home > Wholesale > Bulk Meat Orders > Bulk Goat > Bulk Goat Ribs"
+    }
+  ),
+
+  // --- 6. BULK SAUSAGES (3 Products) ---
+  // Product 25: Bulk Beef Sausages (5kg - $89.95)
+  createProduct(
+    "bulk-beef-sausages-5kg",
+    "Bulk Beef Sausages",
+    "Wholesale",
+    "Bulk Sausages",
+    "bulk-beef-sausages-5kg",
+    89.95,
+    "5kg",
+    "5kg",
+    "fixed_pack_price",
+    "Bulk Beef Sausages (5kg). Fresh chilled classic butcher beef sausages.",
+    "Bulk Beef Sausages (5kg). Fresh chilled traditional Aussie butcher beef sausages packed in a 5kg carton. Perfect for sausage sizzles, school fundraisers, and barbecue catering.",
+    "Bulk Sausages",
+    ["Grill", "BBQ", "Pan Fry"],
+    ["Bulk Carton", "Fresh Sausages"],
+    null,
+    ["Bulk Meat Orders", "Bulk Sausages", "Bulk Cuts"],
+    "https://images.unsplash.com/photo-1585325701165-351af916e581?q=80&w=1200&auto=format&fit=crop",
+    {
+      storageType: "Fresh Chilled",
+      animal_protein: "Sausages",
+      approximate_weight: "5kg",
+      seo_title: "Bulk Beef Sausages (5kg) | Bulk Sausage Orders",
+      seo_meta_description: "Bulk Beef Sausages (5kg) for $89.95 AUD fixed pack price. Fresh chilled classic butcher beef sausages.",
+      breadcrumb_path: "Home > Wholesale > Bulk Meat Orders > Bulk Sausages > Bulk Beef Sausages"
+    }
+  ),
+
+  // Product 26: Bulk Beef Sausages (10kg - $179.90)
+  createProduct(
+    "bulk-beef-sausages-10kg",
+    "Bulk Beef Sausages",
+    "Wholesale",
+    "Bulk Sausages",
+    "bulk-beef-sausages-10kg",
+    179.90,
+    "10kg",
+    "10kg",
+    "fixed_pack_price",
+    "Bulk Beef Sausages (10kg). Master carton of fresh chilled beef sausages.",
+    "Bulk Beef Sausages (10kg). Master carton of fresh chilled classic butcher beef sausages. Designed for large community events, sporting clubs, food trucks, and caterers.",
+    "Bulk Sausages",
+    ["Grill", "BBQ", "Pan Fry"],
+    ["Bulk Carton", "Fresh Sausages"],
+    null,
+    ["Bulk Meat Orders", "Bulk Sausages", "Bulk Cuts"],
+    "https://images.unsplash.com/photo-1585325701165-351af916e581?q=80&w=1200&auto=format&fit=crop",
+    {
+      storageType: "Fresh Chilled",
+      animal_protein: "Sausages",
+      approximate_weight: "10kg",
+      seo_title: "Bulk Beef Sausages (10kg) | Bulk Sausage Orders",
+      seo_meta_description: "Bulk Beef Sausages (10kg) for $179.90 AUD fixed pack price. Master carton of fresh chilled beef sausages.",
+      breadcrumb_path: "Home > Wholesale > Bulk Meat Orders > Bulk Sausages > Bulk Beef Sausages"
+    }
+  ),
+
+  // Product 27: Bulk Gourmet Sausages (5kg - $124.95)
+  createProduct(
+    "bulk-gourmet-sausages-5kg",
+    "Bulk Gourmet Sausages",
+    "Wholesale",
+    "Bulk Sausages",
+    "bulk-gourmet-sausages-5kg",
+    124.95,
+    "5kg",
+    "5kg",
+    "fixed_pack_price",
+    "Bulk Gourmet Sausages (5kg). Fresh chilled handcrafted gourmet sausages.",
+    "Bulk Gourmet Sausages (5kg). Handcrafted gourmet sausage links made with artisan seasonings, packed in a 5kg wholesale box for premium barbecue gatherings and bistro service.",
+    "Bulk Gourmet Sausages",
+    ["Grill", "BBQ", "Pan Fry"],
+    ["Bulk Carton", "Gourmet Sausages"],
+    null,
+    ["Bulk Meat Orders", "Bulk Sausages", "Bulk Cuts"],
+    "https://images.unsplash.com/photo-1585325701165-351af916e581?q=80&w=1200&auto=format&fit=crop",
+    {
+      storageType: "Fresh Chilled",
+      animal_protein: "Sausages",
+      approximate_weight: "5kg",
+      seo_title: "Bulk Gourmet Sausages (5kg) | Bulk Sausage Orders",
+      seo_meta_description: "Bulk Gourmet Sausages (5kg) for $124.95 AUD fixed pack price. Fresh chilled handcrafted gourmet sausages.",
+      breadcrumb_path: "Home > Wholesale > Bulk Meat Orders > Bulk Sausages > Bulk Gourmet Sausages"
+    }
+  ),
+
+  // --- 7. BULK MIXED MEAT PACKS (3 Products) ---
+  // Product 28: Chicken & Beef Mince Bulk Pack (20kg - $365.00)
+  createProduct(
+    "chicken-beef-mince-bulk-pack",
+    "Chicken & Beef Mince Bulk Pack",
+    "Wholesale",
+    "Bulk Mixed Meat Packs",
+    "chicken-beef-mince-bulk-pack",
+    365.00,
+    "20kg",
+    "20kg",
+    "fixed_pack_price",
+    "Chicken & Beef Mince Bulk Pack (20kg). 10kg Chicken Mince and 10kg Beef Mince.",
+    "Chicken & Beef Mince Bulk Pack (20kg). Combined high-volume freezer carton featuring 10kg of fresh chilled Chicken Mince and 10kg of fresh chilled Beef Mince.",
+    "Bulk Mixed Meat Pack",
+    ["Pan Fry", "Bake", "Slow Cook", "Grill"],
+    ["Bulk Carton", "Mixed Meat Pack"],
+    null,
+    ["Bulk Meat Orders", "Bulk Mixed Meat Packs", "Bulk Mince"],
+    "https://images.unsplash.com/photo-1588168333986-5078d3ae3976?q=80&w=1200&auto=format&fit=crop",
+    {
+      storageType: "Fresh Chilled",
+      animal_protein: "Mixed Meat",
+      approximate_weight: "20kg",
+      product_contents: ["Chicken Mince — 10kg", "Beef Mince — 10kg"],
+      seo_title: "Chicken & Beef Mince Bulk Pack (20kg) | Bulk Mixed Packs",
+      seo_meta_description: "Chicken & Beef Mince Bulk Pack (20kg) for $365.00 AUD fixed pack price. 10kg Chicken Mince and 10kg Beef Mince.",
+      breadcrumb_path: "Home > Wholesale > Bulk Meat Orders > Bulk Mixed Meat Packs > Chicken & Beef Mince Bulk Pack"
+    }
+  ),
+
+  // Product 29: Family Freezer Meat Pack (8kg - $130.00)
+  createProduct(
+    "family-freezer-meat-pack",
+    "Family Freezer Meat Pack",
+    "Wholesale",
+    "Bulk Mixed Meat Packs",
+    "family-freezer-meat-pack",
+    130.00,
+    "8kg",
+    "8kg",
+    "fixed_pack_price",
+    "Family Freezer Meat Pack (8kg). 7 essential butcher cuts for family meal storage.",
+    "Family Freezer Meat Pack (8kg). 7 essential butcher cuts packed for complete weekly family meals. Includes Leg of Lamb, Rump Steak, Beef Mince, Chicken Breast Fillets, Pork Loin Chops, Thin Sausages, and Chicken Schnitzel.",
+    "Bulk Mixed Meat Pack",
+    ["Roast", "Grill", "Pan Fry", "Bake"],
+    ["Bulk Carton", "Family Pack"],
+    null,
+    ["Bulk Meat Orders", "Bulk Mixed Meat Packs", "Family Freezer Pack"],
+    "https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=1200&auto=format&fit=crop",
+    {
+      storageType: "Fresh Chilled",
+      animal_protein: "Mixed Meat",
+      approximate_weight: "8kg",
+      product_contents: ["Leg of Lamb", "Rump Steak", "Beef Mince", "Chicken Breast Fillets", "Pork Loin Chops", "Thin Sausages", "Chicken Schnitzel"],
+      seo_title: "Family Freezer Meat Pack (8kg) | Bulk Mixed Meat Packs",
+      seo_meta_description: "Family Freezer Meat Pack (8kg) for $130.00 AUD fixed pack price. 7 essential butcher cuts for family meal storage.",
+      breadcrumb_path: "Home > Wholesale > Bulk Meat Orders > Bulk Mixed Meat Packs > Family Freezer Meat Pack"
+    }
+  ),
+
+  // Product 30: Bulk BBQ Meat Pack (5kg - $85.00)
+  createProduct(
+    "bulk-bbq-meat-pack",
+    "Bulk BBQ Meat Pack",
+    "Wholesale",
+    "Bulk Mixed Meat Packs",
+    "bulk-bbq-meat-pack",
+    85.00,
+    "5kg",
+    "5kg",
+    "fixed_pack_price",
+    "Bulk BBQ Meat Pack (5kg). Fresh chilled BBQ steak, beef sausages, patties, drumsticks, and ribs.",
+    "Bulk BBQ Meat Pack (5kg). Ready-to-cook fresh chilled barbecue selection featuring BBQ Steak, Beef Sausages, Beef Burger Patties, Chicken Drumsticks, and Pork Ribs.",
+    "Bulk BBQ Meat Pack",
+    ["Grill", "BBQ", "Roast"],
+    ["Bulk Pack", "BBQ Pack"],
+    null,
+    ["Bulk Meat Orders", "Bulk Mixed Meat Packs", "BBQ Pack"],
+    "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?q=80&w=1200&auto=format&fit=crop",
+    {
+      storageType: "Fresh Chilled",
+      animal_protein: "Mixed Meat",
+      approximate_weight: "5kg",
+      product_contents: ["BBQ Steak", "Beef Sausages", "Beef Burger Patties", "Chicken Drumsticks", "Pork Ribs"],
+      seo_title: "Bulk BBQ Meat Pack (5kg) | Bulk Mixed Meat Packs",
+      seo_meta_description: "Bulk BBQ Meat Pack (5kg) for $85.00 AUD fixed pack price. Fresh chilled BBQ steak, beef sausages, patties, drumsticks, and ribs.",
+      breadcrumb_path: "Home > Wholesale > Bulk Meat Orders > Bulk Mixed Meat Packs > Bulk BBQ Meat Pack"
+    }
+  ),
+];
+
+export interface WholesaleSubcategory {
+  slug: string;
+  name: string;
+  description: string;
+  image: string;
+}
+
+export const WHOLESALE_BULK_SUBCATEGORIES: WholesaleSubcategory[] = [
+  {
+    slug: "bulk-beef",
+    name: "Bulk Beef",
+    description: "Quarter, half and whole beef carcass shares, bulk mince boxes and whole rump sub-primals.",
+    image: "https://images.unsplash.com/photo-1558030006-450675393462?q=80&w=1200&auto=format&fit=crop",
+  },
+  {
+    slug: "bulk-lamb",
+    name: "Bulk Lamb",
+    description: "Half and whole lamb carcass shares, and bulk 6kg lamb variety packs.",
+    image: "https://images.unsplash.com/photo-1602498456745-e9503b30470b?q=80&w=1200&auto=format&fit=crop",
+  },
+  {
+    slug: "bulk-pork",
+    name: "Bulk Pork",
+    description: "Half pork carcass shares, 11kg pork variety packs and whole pork fillets.",
+    image: "https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?q=80&w=1200&auto=format&fit=crop",
+  },
+  {
+    slug: "bulk-chicken",
+    name: "Bulk Chicken",
+    description: "Bulk chicken breast fillets, drumsticks, thigh fillets, chicken wings and 5kg schnitzel cartons.",
+    image: "https://images.unsplash.com/photo-1604503468506-a8da13d82791?q=80&w=1200&auto=format&fit=crop",
+  },
+  {
+    slug: "bulk-goat",
+    name: "Bulk Goat",
+    description: "Bulk half goat sides, 2.5kg and 5kg diced goat curry cartons, and bone-in goat ribs.",
+    image: "https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=1200&auto=format&fit=crop",
+  },
+  {
+    slug: "bulk-sausages",
+    name: "Bulk Sausages",
+    description: "5kg and 10kg cartons of butcher beef sausages and 5kg gourmet sausage links.",
+    image: "https://images.unsplash.com/photo-1585325701165-351af916e581?q=80&w=1200&auto=format&fit=crop",
+  },
+  {
+    slug: "bulk-mixed-meat-packs",
+    name: "Bulk Mixed Meat Packs",
+    description: "20kg chicken and beef mince cartons, 8kg family freezer packs, and 5kg bulk BBQ packs.",
+    image: "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?q=80&w=1200&auto=format&fit=crop",
+  },
 ];
 
 export const POSTS: Post[] = [

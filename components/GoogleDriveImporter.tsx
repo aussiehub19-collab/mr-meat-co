@@ -27,25 +27,25 @@ export function GoogleDriveImporter() {
   const [statusMessage, setStatusMessage] = useState<string>('');
   const [driveFiles, setDriveFiles] = useState<DriveFile[]>([]);
   const DEFAULT_CATEGORIES = {
-    'beef': 'https://images.unsplash.com/photo-1603048588665-791ca8aea617?q=80&w=1000&auto=format&fit=crop',
-    'chicken': 'https://images.unsplash.com/photo-1604503468506-a8da13d82791?q=80&w=1000&auto=format&fit=crop',
-    'lamb': 'https://images.unsplash.com/photo-1602498456745-e9503b30470b?q=80&w=1000&auto=format&fit=crop',
-    'pork': 'https://images.unsplash.com/photo-1608039829572-78524f79c4c7?q=80&w=1000&auto=format&fit=crop',
-    'sausages': 'https://images.unsplash.com/photo-1585325701165-351af916e581?q=80&w=1000&auto=format&fit=crop',
-    'bbq-grill': 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?q=80&w=1000&auto=format&fit=crop',
-    'meat-boxes': 'https://images.unsplash.com/photo-1551024709-8f23befc6f87?q=80&w=1000&auto=format&fit=crop',
-    'ready-to-cook': 'https://images.unsplash.com/photo-1598515214211-89d3c73ae83b?q=80&w=1000&auto=format&fit=crop',
-    'deli-cured': 'https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=1000&auto=format&fit=crop',
-    'specialty-meat': 'https://images.unsplash.com/photo-1588168333986-5078d3ae3976?q=80&w=1000&auto=format&fit=crop',
-    'seafood': 'https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?q=80&w=1000&auto=format&fit=crop',
-    'pet-food': 'https://images.unsplash.com/photo-1568640347023-a616a30bc3bd?q=80&w=1000&auto=format&fit=crop',
+    'beef': 'https://lh3.googleusercontent.com/d/1YWTnXmoCyfBDglXDL-2qdYuZ89CkGu9x=s1600',
+    'chicken': 'https://lh3.googleusercontent.com/d/1FWmcolYuF6iyBDPEwi6IJA5pvz_M8PjS=s1600',
+    'lamb': 'https://lh3.googleusercontent.com/d/1PY-AmOnPVtLAw-Y9jk5eftAnGeXEAHSh=s1600',
+    'pork': 'https://lh3.googleusercontent.com/d/1H-6O5-aL561LdEOD5Lzi-_n8ulTKVdO9=s1600',
+    'sausages': 'https://lh3.googleusercontent.com/d/1BPk70tExq-QsY9XJUlOWsuy94d5NTH_J=s1600',
+    'bbq-grill': 'https://lh3.googleusercontent.com/d/1HM0Ds8tlN1E1iJaM-xXfHRrdtqxl_R7G=s1600',
+    'meat-boxes': 'https://lh3.googleusercontent.com/d/1Lu078x0uI5mJlKKBKsvUgMuWOd_hIM9t=s1600',
+    'ready-to-cook': 'https://lh3.googleusercontent.com/d/1FvrTICIb3LUOzprGGkc1xpKo8gCCcMiq=s1600',
+    'deli-cured': 'https://lh3.googleusercontent.com/d/14RwyTYmojT8ahAkDdMe_Xb857OxRp_sd=s1600',
+    'specialty-meat': 'https://lh3.googleusercontent.com/d/1t5E5nORfMd12SvLUZJbB0V4Codmg6P3z=s1600',
+    'seafood': 'https://lh3.googleusercontent.com/d/1e7vMDbqZ9Bcbz8lQvznXDHTroLinHdd-=s1600',
+    'pet-food': 'https://lh3.googleusercontent.com/d/1EA5D2vhLL8D1hhoHrvrpozGMONw1P4wf=s1600',
   };
 
   const DEFAULT_HERO = {
-    'hero-1': 'https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?q=80&w=1600&auto=format&fit=crop',
-    'hero-2': 'https://images.unsplash.com/photo-1558030006-450675393462?q=80&w=1600&auto=format&fit=crop',
-    'hero-3': 'https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?q=80&w=1600&auto=format&fit=crop',
-    'hero-4': 'https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=1600&auto=format&fit=crop',
+    'hero-1': 'https://lh3.googleusercontent.com/d/10v5cHy2ak158WzwiJWYis7F8aYzgPmC0=s1600',
+    'hero-2': 'https://lh3.googleusercontent.com/d/1-4L7-LEnv6LTYnGVkVwtq-HqWQRNzrXe=s1600',
+    'hero-3': 'https://lh3.googleusercontent.com/d/1xR20gyxNqigV451JOig6liMLPL1wjPoM=s1600',
+    'hero-4': 'https://lh3.googleusercontent.com/d/1uSGU31Cn3HSzOD9jjrpTa_cQCu5uZcqV=s1600',
   };
 
   const [categoryAssignments, setCategoryAssignments] = useState<{ [key: string]: string }>(DEFAULT_CATEGORIES);

@@ -1,33 +1,21 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Link from 'next/link';
 import { CATEGORIES } from '@/config/site';
 import { SmartImage } from '@/components/SmartImage';
 import { ArrowRight } from 'lucide-react';
+import { useCustomStoreImages } from '@/lib/useCustomImages';
 
 export function CategoryGridClient() {
-  const [customCategoryImages, setCustomCategoryImages] = useState<{ [key: string]: string }>({});
-
-  const loadCustomImages = () => {
-    try {
-      const stored = localStorage.getItem('tmc_gdrive_category_images');
-      if (stored) {
-        setCustomCategoryImages(JSON.parse(stored));
-      }
-    } catch (e) {
-      console.error(e);
-    }
-  };
-
-  useEffect(() => {
-    loadCustomImages();
-    window.addEventListener('tmc_images_updated', loadCustomImages);
-    return () => window.removeEventListener('tmc_images_updated', loadCustomImages);
-  }, []);
+  const customCategoryImages = useCustomStoreImages('tmc_gdrive_category_images');
 
   const getCategoryImage = (slug: string, defaultImage: string) => {
-    return customCategoryImages[slug] || defaultImage;
+    const custom = customCategoryImages[slug];
+    if (!custom) {
+      return defaultImage;
+    }
+    return custom;
   };
 
   return (

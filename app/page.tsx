@@ -9,7 +9,7 @@ import { CategoryGridClient } from '@/components/CategoryGridClient';
 import { Truck, ShieldCheck, Percent, Utensils, MessageSquare, ArrowRight, Award, Flame, CheckCircle2 } from 'lucide-react';
 
 export default function HomePage() {
-  const featuredProducts = PRODUCTS.filter((p) => p.featured).slice(0, 4);
+  const featuredProducts = PRODUCTS.filter((p) => p.featured).slice(0, 8);
 
   // Schema LD JSON structures
   const storeSchema = {

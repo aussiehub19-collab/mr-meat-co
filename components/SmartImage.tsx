@@ -50,28 +50,32 @@ export function SmartImage({
   fill = false,
   unoptimized,
 }: SmartImageProps) {
+  const [prevSrc, setPrevSrc] = useState<string>(src);
   const [attempt, setAttempt] = useState<number>(0);
-  const [imgSrc, setImgSrc] = useState<string>(() => formatGoogleDriveUrl(src, 0));
+  const [overrideSrc, setOverrideSrc] = useState<string | null>(null);
   const [useNativeImg, setUseNativeImg] = useState<boolean>(false);
 
-  useEffect(() => {
+  if (prevSrc !== src) {
+    setPrevSrc(src);
     setAttempt(0);
+    setOverrideSrc(null);
     setUseNativeImg(false);
-    setImgSrc(formatGoogleDriveUrl(src, 0));
-  }, [src]);
+  }
+
+  const imgSrc = overrideSrc ?? formatGoogleDriveUrl(src, attempt);
 
   const handleError = () => {
     const fileId = extractGoogleDriveId(src);
     if (fileId && attempt < 2) {
       const nextAttempt = attempt + 1;
       setAttempt(nextAttempt);
-      setImgSrc(formatGoogleDriveUrl(src, nextAttempt));
+      setOverrideSrc(formatGoogleDriveUrl(src, nextAttempt));
     } else if (!useNativeImg) {
       // Fallback to native img tag to bypass any Next.js proxy restriction
       setUseNativeImg(true);
-      setImgSrc(formatGoogleDriveUrl(src, 0));
+      setOverrideSrc(formatGoogleDriveUrl(src, 0));
     } else if (imgSrc !== FALLBACK_IMAGE) {
-      setImgSrc(FALLBACK_IMAGE);
+      setOverrideSrc(FALLBACK_IMAGE);
     }
   };
 

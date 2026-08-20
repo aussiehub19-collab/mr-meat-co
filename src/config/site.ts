@@ -153,84 +153,84 @@ export const CATEGORIES: Category[] = [
     name: "Beef",
     description: "Australian beef cuts, dry-aged steaks, fresh beef mince, slow-cook roasts, and offal.",
     subcategories: ["Steaks", "Roasts", "Mince & Diced", "Slow Cook", "BBQ", "Offal"],
-    image: "https://lh3.googleusercontent.com/d/1YWTnXmoCyfBDglXDL-2qdYuZ89CkGu9x",
+    image: "https://images.unsplash.com/photo-1603048588665-791ca8aea617?q=80&w=1000&auto=format&fit=crop",
   },
   {
     slug: "chicken",
     name: "Chicken",
     description: "Australian chicken breasts, thighs, drumsticks, wings, whole birds, lean mince, and crumbed schnitzels.",
     subcategories: ["Breast", "Thighs", "Drumsticks", "Wings", "Whole Birds", "Mince", "Crumbed"],
-    image: "https://lh3.googleusercontent.com/d/1FWmcolYuF6iyBDPEwi6IJA5pvz_M8PjS",
+    image: "https://images.unsplash.com/photo-1604503468506-a8da13d82791?q=80&w=1000&auto=format&fit=crop",
   },
   {
     slug: "lamb",
     name: "Lamb",
     description: "Australian lamb cutlets, loin chops, leg roasts, shoulder, shanks, and mince.",
     subcategories: ["Chops & Cutlets", "Roasts", "Slow Cook", "Mince & Diced", "BBQ"],
-    image: "https://lh3.googleusercontent.com/d/1PY-AmOnPVtLAw-Y9jk5eftAnGeXEAHSh",
+    image: "https://images.unsplash.com/photo-1602498456745-e9503b30470b?q=80&w=1000&auto=format&fit=crop",
   },
   {
     slug: "pork",
     name: "Pork",
     description: "Australian pork cuts, crispy pork belly, ribs, pork shoulder roasts, cutlets, mince, bacon, and ham.",
     subcategories: ["Roasts", "Belly & Ribs", "Chops & Steaks", "Mince", "Bacon & Ham"],
-    image: "https://lh3.googleusercontent.com/d/1H-6O5-aL561LdEOD5Lzi-_n8ulTKVdO9",
+    image: "https://images.unsplash.com/photo-1608039829572-78524f79c4c7?q=80&w=1000&auto=format&fit=crop",
   },
   {
     slug: "sausages",
     name: "Sausages",
     description: "Australian craft sausages made with beef, pork, chicken, lamb, and gourmet flavor blends.",
     subcategories: ["Beef", "Pork", "Chicken", "Lamb", "Gourmet Flavours"],
-    image: "https://lh3.googleusercontent.com/d/1BPk70tExq-QsY9XJUlOWsuy94d5NTH_J",
+    image: "https://images.unsplash.com/photo-1585325701165-351af916e581?q=80&w=1000&auto=format&fit=crop",
   },
   {
     slug: "bbq-grill",
     name: "BBQ & Grill",
     description: "Australian barbecue essentials—steak packs, sausage packs, ribs, skewers, and burger patties.",
     subcategories: ["Steak Packs", "Sausage Packs", "Ribs", "Skewers", "Burgers"],
-    image: "https://lh3.googleusercontent.com/d/1HM0Ds8tlN1E1iJaM-xXfHRrdtqxl_R7G",
+    image: "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?q=80&w=1000&auto=format&fit=crop",
   },
   {
     slug: "meat-boxes",
     name: "Meat Boxes",
     description: "Household meat boxes, value freezer stockers, BBQ boxes, premium steak bundles, and lean protein prep.",
     subcategories: ["Family", "Value", "BBQ", "Premium Steak", "Lean / Meal Prep", "Build a Box"],
-    image: "https://lh3.googleusercontent.com/d/1Lu078x0uI5mJlKKBKsvUgMuWOd_hIM9t",
+    image: "https://images.unsplash.com/photo-1551024709-8f23befc6f87?q=80&w=1000&auto=format&fit=crop",
   },
   {
     slug: "ready-to-cook",
     name: "Ready to Cook",
     description: "Chef-prepared weeknight dinners—chicken schnitzels, crumbed steak, marinated chicken, kebabs, patties, and stir-fry.",
     subcategories: ["Schnitzels", "Marinated Cuts", "Kebabs", "Burger Patties", "Stir-Fry"],
-    image: "https://lh3.googleusercontent.com/d/1FvrTICIb3LUOzprGGkc1xpKo8gCCcMiq",
+    image: "https://images.unsplash.com/photo-1598515214211-89d3c73ae83b?q=80&w=1000&auto=format&fit=crop",
   },
   {
     slug: "deli-cured",
     name: "Deli & Cured",
     description: "Wood-smoked bacon, leg ham, sopressa salami, beef jerky, and cured smallgoods.",
     subcategories: ["Bacon", "Ham", "Salami", "Jerky", "Smallgoods"],
-    image: "https://lh3.googleusercontent.com/d/14RwyTYmojT8ahAkDdMe_Xb857OxRp_sd",
+    image: "https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=1000&auto=format&fit=crop",
   },
   {
     slug: "specialty-meat",
     name: "Specialty Meat",
     description: "Australian specialty cuts including veal schnitzels, cutlets, goat shoulder, and wild kangaroo.",
     subcategories: ["Veal", "Goat", "Kangaroo", "Game"],
-    image: "https://lh3.googleusercontent.com/d/1t5E5nORfMd12SvLUZJbB0V4Codmg6P3z",
+    image: "https://images.unsplash.com/photo-1588168333986-5078d3ae3976?q=80&w=1000&auto=format&fit=crop",
   },
   {
     slug: "seafood",
     name: "Seafood",
     description: "Australian seafood—salmon portions, barramundi fillets, ocean prawns, and mixed seafood packs.",
     subcategories: ["Fish", "Prawns", "Salmon", "Value Packs"],
-    image: "https://lh3.googleusercontent.com/d/1e7vMDbqZ9Bcbz8lQvznXDHTroLinHdd-",
+    image: "https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?q=80&w=1000&auto=format&fit=crop",
   },
   {
     slug: "pet-food",
     name: "Pet Food",
     description: "Natural raw BARF pet food—pet mince, beef marrow bones, chicken frames, and pet meat boxes.",
     subcategories: ["Raw Mince", "Bones", "Offal", "Pet Packs"],
-    image: "https://lh3.googleusercontent.com/d/1EA5D2vhLL8D1hhoHrvrpozGMONw1P4wf",
+    image: "https://images.unsplash.com/photo-1568640347023-a616a30bc3bd?q=80&w=1000&auto=format&fit=crop",
   },
 ];
 
@@ -370,7 +370,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled", "Vacuum Sealed"],
     null,
     ["Best Sellers", "Steaks", "Fresh Chilled"],
-    "https://picsum.photos/seed/scotch-fillet-steak/800/600",
+    "https://images.unsplash.com/photo-1603048588665-791ca8aea617?q=80&w=800&auto=format&fit=crop",
     { featured: true, badge: "Popular Cut" }
   ),
   createProduct(
@@ -429,7 +429,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled", "Vacuum Sealed"],
     null,
     ["Steaks", "Fresh Chilled"],
-    "https://picsum.photos/seed/eye-fillet-steak/800/600",
+    "https://images.unsplash.com/photo-1558030006-450675393462?q=80&w=800&auto=format&fit=crop",
     { featured: true, badge: "Tender Cut" }
   ),
   createProduct(
@@ -663,7 +663,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled"],
     null,
     ["Mince & Diced", "Fresh Chilled"],
-    "https://picsum.photos/seed/premium-beef-mince/800/600",
+    "https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?q=80&w=800&auto=format&fit=crop",
     { featured: true, badge: "Popular Mince" }
   ),
   createProduct(
@@ -743,7 +743,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled", "Vacuum Sealed"],
     null,
     ["Slow Cooking", "BBQ"],
-    "https://picsum.photos/seed/beef-brisket/800/600",
+    "https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=800&auto=format&fit=crop",
     { featured: true, badge: "Slow Cook Cut" }
   ),
   createProduct(
@@ -1683,7 +1683,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled", "Vacuum Sealed"],
     null,
     ["Best Sellers", "BBQ", "Fresh Chilled"],
-    "https://picsum.photos/seed/lamb-cutlets/800/600",
+    "https://images.unsplash.com/photo-1602498456745-e9503b30470b?q=80&w=800&auto=format&fit=crop",
     { featured: true, badge: "Popular Cut", secondary_subcategories: ["BBQ"] }
   ),
   createProduct(

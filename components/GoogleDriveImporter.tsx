@@ -1,8 +1,8 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
-import { CATEGORIES } from '@/config/site';
-import { FolderOpen, RefreshCw, Check, Image as ImageIcon, AlertCircle, LogIn, Upload, Link as LinkIcon, X, Sparkles, Plus, FileImage } from 'lucide-react';
+import { CATEGORIES, PRODUCTS } from '@/config/site';
+import { FolderOpen, RefreshCw, Check, Image as ImageIcon, LogIn, Upload, Link as LinkIcon, X, Sparkles, FileImage, Trash2, ShoppingBag } from 'lucide-react';
 
 interface DriveFile {
   id: string;
@@ -26,53 +26,55 @@ export function GoogleDriveImporter() {
   const [loading, setLoading] = useState(false);
   const [statusMessage, setStatusMessage] = useState<string>('');
   const [driveFiles, setDriveFiles] = useState<DriveFile[]>([]);
-  const [assignments, setAssignments] = useState<{ [key: string]: string }>({});
-  const [heroAssignments, setHeroAssignments] = useState<{ [key: string]: string }>({});
+  const DEFAULT_CATEGORIES = {
+    'beef': 'https://images.unsplash.com/photo-1603048588665-791ca8aea617?q=80&w=1000&auto=format&fit=crop',
+    'chicken': 'https://images.unsplash.com/photo-1604503468506-a8da13d82791?q=80&w=1000&auto=format&fit=crop',
+    'lamb': 'https://images.unsplash.com/photo-1602498456745-e9503b30470b?q=80&w=1000&auto=format&fit=crop',
+    'pork': 'https://images.unsplash.com/photo-1608039829572-78524f79c4c7?q=80&w=1000&auto=format&fit=crop',
+    'sausages': 'https://images.unsplash.com/photo-1585325701165-351af916e581?q=80&w=1000&auto=format&fit=crop',
+    'bbq-grill': 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?q=80&w=1000&auto=format&fit=crop',
+    'meat-boxes': 'https://images.unsplash.com/photo-1551024709-8f23befc6f87?q=80&w=1000&auto=format&fit=crop',
+    'ready-to-cook': 'https://images.unsplash.com/photo-1598515214211-89d3c73ae83b?q=80&w=1000&auto=format&fit=crop',
+    'deli-cured': 'https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=1000&auto=format&fit=crop',
+    'specialty-meat': 'https://images.unsplash.com/photo-1588168333986-5078d3ae3976?q=80&w=1000&auto=format&fit=crop',
+    'seafood': 'https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?q=80&w=1000&auto=format&fit=crop',
+    'pet-food': 'https://images.unsplash.com/photo-1568640347023-a616a30bc3bd?q=80&w=1000&auto=format&fit=crop',
+  };
+
+  const DEFAULT_HERO = {
+    'hero-1': 'https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?q=80&w=1600&auto=format&fit=crop',
+    'hero-2': 'https://images.unsplash.com/photo-1558030006-450675393462?q=80&w=1600&auto=format&fit=crop',
+    'hero-3': 'https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?q=80&w=1600&auto=format&fit=crop',
+    'hero-4': 'https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=1600&auto=format&fit=crop',
+  };
+
+  const [categoryAssignments, setCategoryAssignments] = useState<{ [key: string]: string }>(DEFAULT_CATEGORIES);
+  const [heroAssignments, setHeroAssignments] = useState<{ [key: string]: string }>(DEFAULT_HERO);
+  const [productAssignments, setProductAssignments] = useState<{ [key: string]: string }>({});
+
   const [savedSuccess, setSavedSuccess] = useState(false);
   const [pasteLinksInput, setPasteLinksInput] = useState('');
 
   const fileInputRef = useRef<HTMLInputElement>(null);
 
-  // Load existing assignments from localStorage
   useEffect(() => {
-    try {
-      const storedCategories = localStorage.getItem('tmc_gdrive_category_images');
-      if (storedCategories) {
-        setAssignments(JSON.parse(storedCategories));
-      } else {
-        const defaultCats = {
-          'beef': 'https://lh3.googleusercontent.com/d/1YWTnXmoCyfBDglXDL-2qdYuZ89CkGu9x',
-          'chicken': 'https://lh3.googleusercontent.com/d/1FWmcolYuF6iyBDPEwi6IJA5pvz_M8PjS',
-          'lamb': 'https://lh3.googleusercontent.com/d/1PY-AmOnPVtLAw-Y9jk5eftAnGeXEAHSh',
-          'pork': 'https://lh3.googleusercontent.com/d/1H-6O5-aL561LdEOD5Lzi-_n8ulTKVdO9',
-          'sausages': 'https://lh3.googleusercontent.com/d/1BPk70tExq-QsY9XJUlOWsuy94d5NTH_J',
-          'bbq-grill': 'https://lh3.googleusercontent.com/d/1HM0Ds8tlN1E1iJaM-xXfHRrdtqxl_R7G',
-          'meat-boxes': 'https://lh3.googleusercontent.com/d/1Lu078x0uI5mJlKKBKsvUgMuWOd_hIM9t',
-          'ready-to-cook': 'https://lh3.googleusercontent.com/d/1FvrTICIb3LUOzprGGkc1xpKo8gCCcMiq',
-          'deli-cured': 'https://lh3.googleusercontent.com/d/14RwyTYmojT8ahAkDdMe_Xb857OxRp_sd',
-          'specialty-meat': 'https://lh3.googleusercontent.com/d/1t5E5nORfMd12SvLUZJbB0V4Codmg6P3z',
-          'seafood': 'https://lh3.googleusercontent.com/d/1e7vMDbqZ9Bcbz8lQvznXDHTroLinHdd-',
-          'pet-food': 'https://lh3.googleusercontent.com/d/1EA5D2vhLL8D1hhoHrvrpozGMONw1P4wf',
-        };
-        setAssignments(defaultCats);
-        localStorage.setItem('tmc_gdrive_category_images', JSON.stringify(defaultCats));
+    const handleUpdate = () => {
+      try {
+        const storedCategories = localStorage.getItem('tmc_gdrive_category_images');
+        if (storedCategories) setCategoryAssignments(JSON.parse(storedCategories));
+
+        const storedHero = localStorage.getItem('tmc_gdrive_hero_images');
+        if (storedHero) setHeroAssignments(JSON.parse(storedHero));
+
+        const storedProducts = localStorage.getItem('tmc_gdrive_product_images');
+        if (storedProducts) setProductAssignments(JSON.parse(storedProducts));
+      } catch (err) {
+        console.error('Error syncing assignments:', err);
       }
-      const storedHero = localStorage.getItem('tmc_gdrive_hero_images');
-      if (storedHero) {
-        setHeroAssignments(JSON.parse(storedHero));
-      } else {
-        const defaultHeros = {
-          'hero-1': 'https://lh3.googleusercontent.com/d/10v5cHy2ak158WzwiJWYis7F8aYzgPmC0',
-          'hero-2': 'https://lh3.googleusercontent.com/d/1-4L7-LEnv6LTYnGVkVwtq-HqWQRNzrXe',
-          'hero-3': 'https://lh3.googleusercontent.com/d/1xR20gyxNqigV451JOig6liMLPL1wjPoM',
-          'hero-4': 'https://lh3.googleusercontent.com/d/1uSGU31Cn3HSzOD9jjrpTa_cQCu5uZcqV',
-        };
-        setHeroAssignments(defaultHeros);
-        localStorage.setItem('tmc_gdrive_hero_images', JSON.stringify(defaultHeros));
-      }
-    } catch (err) {
-      console.error('Error reading localStorage:', err);
-    }
+    };
+    handleUpdate();
+    window.addEventListener('tmc_images_updated', handleUpdate);
+    return () => window.removeEventListener('tmc_images_updated', handleUpdate);
   }, []);
 
   // Initialize Google Identity Services Script
@@ -150,7 +152,7 @@ export function GoogleDriveImporter() {
       const driveMatch = cleanUrl.match(/\/d\/([a-zA-Z0-9_-]+)/) || cleanUrl.match(/id=([a-zA-Z0-9_-]+)/);
       if (driveMatch && driveMatch[1]) {
         fileId = driveMatch[1];
-        finalImgUrl = `https://lh3.googleusercontent.com/d/${fileId}`;
+        finalImgUrl = `https://lh3.googleusercontent.com/d/${fileId}=s1600`;
       } else {
         fileId = `link-${idx}-${Date.now()}`;
       }
@@ -298,7 +300,7 @@ export function GoogleDriveImporter() {
             } catch (e) {
               console.warn('Error fetching image blob:', e);
             }
-            const lh3Link = `https://lh3.googleusercontent.com/d/${file.id}`;
+            const lh3Link = `https://lh3.googleusercontent.com/d/${file.id}=s1600`;
             return { ...file, dataUrl: file.thumbnailLink?.replace('=s220', '=s1600') || lh3Link };
           })
         );
@@ -315,12 +317,13 @@ export function GoogleDriveImporter() {
   };
 
   const autoMatchFiles = (files: DriveFile[]) => {
-    const newCategoryAssignments: { [key: string]: string } = { ...assignments };
+    const newCategoryAssignments: { [key: string]: string } = { ...categoryAssignments };
     const newHeroAssignments: { [key: string]: string } = { ...heroAssignments };
+    const newProductAssignments: { [key: string]: string } = { ...productAssignments };
 
     files.forEach((file) => {
       const lowerName = file.name.toLowerCase();
-      const imgUrl = file.dataUrl || `https://lh3.googleusercontent.com/d/${file.id}`;
+      const imgUrl = file.dataUrl || `https://lh3.googleusercontent.com/d/${file.id}=s1600`;
 
       // Match Hero Slides
       if (lowerName.includes('hero1') || lowerName.includes('mince-hero') || lowerName.includes('banner1') || lowerName.includes('slide1')) {
@@ -338,27 +341,48 @@ export function GoogleDriveImporter() {
         if (
           lowerName.includes(cat.slug) ||
           lowerName.includes(cat.name.toLowerCase()) ||
-          (cat.slug === 'fresh-beef' && (lowerName.includes('beef') || lowerName.includes('mince') || lowerName.includes('steak'))) ||
-          (cat.slug === 'fresh-lamb' && lowerName.includes('lamb')) ||
-          (cat.slug === 'fresh-pork' && lowerName.includes('pork')) ||
-          (cat.slug === 'poultry' && (lowerName.includes('poultry') || lowerName.includes('chicken') || lowerName.includes('duck'))) ||
-          (cat.slug === 'specialty-meat' && (lowerName.includes('specialty') || lowerName.includes('goat') || lowerName.includes('game'))) ||
-          (cat.slug === 'freezer-packs' && (lowerName.includes('pack') || lowerName.includes('freezer') || lowerName.includes('box')))
+          (cat.slug === 'beef' && (lowerName.includes('beef') && !lowerName.includes('mince') && !lowerName.includes('steak'))) ||
+          (cat.slug === 'chicken' && lowerName.includes('chicken')) ||
+          (cat.slug === 'lamb' && lowerName.includes('lamb')) ||
+          (cat.slug === 'pork' && lowerName.includes('pork')) ||
+          (cat.slug === 'sausages' && lowerName.includes('sausage')) ||
+          (cat.slug === 'meat-boxes' && (lowerName.includes('box') || lowerName.includes('pack')))
         ) {
           if (!newCategoryAssignments[cat.slug]) {
             newCategoryAssignments[cat.slug] = imgUrl;
           }
         }
       });
+
+      // Match Products
+      PRODUCTS.forEach((prod) => {
+        const prodSlug = prod.slug.toLowerCase();
+        const prodName = prod.name.toLowerCase();
+        if (
+          lowerName.includes(prodSlug) ||
+          lowerName.includes(prodName) ||
+          (prod.slug === 'scotch-fillet-steak' && (lowerName.includes('scotch') || lowerName.includes('fillet'))) ||
+          (prod.slug === 'porterhouse-steak' && lowerName.includes('porterhouse')) ||
+          (prod.slug === 'rump-steak' && lowerName.includes('rump')) ||
+          (prod.slug === 'eye-fillet-steak' && lowerName.includes('eye-fillet')) ||
+          (prod.slug === 'beef-mince-premium-5-star-lean' && lowerName.includes('mince')) ||
+          (prod.slug === 'beef-brisket' && lowerName.includes('brisket'))
+        ) {
+          if (!newProductAssignments[prod.slug]) {
+            newProductAssignments[prod.slug] = imgUrl;
+          }
+        }
+      });
     });
 
-    setAssignments(newCategoryAssignments);
+    setCategoryAssignments(newCategoryAssignments);
     setHeroAssignments(newHeroAssignments);
+    setProductAssignments(newProductAssignments);
   };
 
   const handleAssignCategory = (catSlug: string, imageUrl: string) => {
-    const updated = { ...assignments, [catSlug]: imageUrl };
-    setAssignments(updated);
+    const updated = { ...categoryAssignments, [catSlug]: imageUrl };
+    setCategoryAssignments(updated);
   };
 
   const handleAssignHero = (heroId: string, imageUrl: string) => {
@@ -366,12 +390,18 @@ export function GoogleDriveImporter() {
     setHeroAssignments(updated);
   };
 
+  const handleAssignProduct = (prodSlug: string, imageUrl: string) => {
+    const updated = { ...productAssignments, [prodSlug]: imageUrl };
+    setProductAssignments(updated);
+  };
+
   const saveAssignments = () => {
     try {
-      localStorage.setItem('tmc_gdrive_category_images', JSON.stringify(assignments));
+      localStorage.setItem('tmc_gdrive_category_images', JSON.stringify(categoryAssignments));
       localStorage.setItem('tmc_gdrive_hero_images', JSON.stringify(heroAssignments));
+      localStorage.setItem('tmc_gdrive_product_images', JSON.stringify(productAssignments));
       
-      // Dispatch event to refresh Hero and Category Grid immediately
+      // Dispatch event to refresh Hero, Category Grid, and Product Cards immediately
       window.dispatchEvent(new Event('tmc_images_updated'));
       
       setSavedSuccess(true);
@@ -380,6 +410,21 @@ export function GoogleDriveImporter() {
       console.error('Failed to save to localStorage:', e);
     }
   };
+
+  const clearAllCustomImages = () => {
+    if (window.confirm('Reset all custom images back to store defaults?')) {
+      localStorage.removeItem('tmc_gdrive_category_images');
+      localStorage.removeItem('tmc_gdrive_hero_images');
+      localStorage.removeItem('tmc_gdrive_product_images');
+      setCategoryAssignments({});
+      setHeroAssignments({});
+      setProductAssignments({});
+      window.dispatchEvent(new Event('tmc_images_updated'));
+    }
+  };
+
+  // Top products for dropdown
+  const topProducts = PRODUCTS.filter((p) => p.featured).slice(0, 16);
 
   return (
     <>
@@ -393,7 +438,7 @@ export function GoogleDriveImporter() {
         className="hidden"
       />
 
-      {/* Floating Banner */}
+      {/* Floating Admin Banner */}
       <div className="bg-gradient-to-r from-red-950 via-zinc-900 to-black text-white border-y border-red-800/60 px-4 py-3 shadow-lg">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3 text-sm">
           <div className="flex items-center space-x-3">
@@ -403,14 +448,14 @@ export function GoogleDriveImporter() {
             <div>
               <div className="flex items-center space-x-2">
                 <span className="font-extrabold text-white text-xs sm:text-sm tracking-wide">
-                  Google Drive & Photo Sync — "the meat cart"
+                  Image Sync &amp; Drive Manager &mdash; &ldquo;the meat cart&rdquo;
                 </span>
                 <span className="bg-red-500/20 text-red-400 border border-red-500/30 text-[10px] font-bold px-2 py-0.5 rounded-full">
-                  Live Admin
+                  Live Customizer
                 </span>
               </div>
               <p className="text-xs text-gray-300 mt-0.5">
-                Upload or connect your photos from <span className="text-red-400 font-semibold">"the meat cart"</span> folder to update Hero slides & Category cards live!
+                Upload images or sync with Google Drive folder to update Hero slides, Categories &amp; Products live!
               </p>
             </div>
           </div>
@@ -428,7 +473,7 @@ export function GoogleDriveImporter() {
               className="bg-red-700 hover:bg-red-800 text-white text-xs font-bold px-4 py-2 rounded-lg transition-all shadow-md flex items-center space-x-2 border border-red-500/30"
             >
               <LogIn className="w-3.5 h-3.5" />
-              <span>Sync Drive Folder</span>
+              <span>Manage Images</span>
             </button>
           </div>
         </div>
@@ -445,10 +490,10 @@ export function GoogleDriveImporter() {
                 <FolderOpen className="w-6 h-6 text-red-500" />
                 <div>
                   <h3 className="font-black text-lg text-white font-serif">
-                    Image Manager — "the meat cart"
+                    Image Manager &amp; Live Sync
                   </h3>
                   <p className="text-xs text-gray-400">
-                    Upload image files or fetch from Google Drive to assign to Hero slides & Butcher Categories.
+                    Assign photos from your device or Google Drive to Hero slides, Categories &amp; Featured Products.
                   </p>
                 </div>
               </div>
@@ -482,7 +527,7 @@ export function GoogleDriveImporter() {
                   <div>
                     <h4 className="text-sm font-bold text-white">Upload Photos From Device</h4>
                     <p className="text-xs text-gray-400">
-                      Drag & drop image files here, or click to choose from computer / Drive sync folder.
+                      Drag &amp; drop image files here, or click to choose from computer.
                     </p>
                   </div>
                   <span className="bg-red-700 text-white text-[11px] font-bold px-3 py-1 rounded-md mt-1">
@@ -495,7 +540,7 @@ export function GoogleDriveImporter() {
                   <div className="space-y-1">
                     <div className="flex items-center space-x-2 text-xs font-bold text-gray-300">
                       <Sparkles className="w-4 h-4 text-red-400" />
-                      <span>Google Drive Folder: <span className="text-white font-mono bg-black/60 px-2 py-0.5 rounded">"the meat cart"</span></span>
+                      <span>Google Drive Folder: <span className="text-white font-mono bg-black/60 px-2 py-0.5 rounded">&ldquo;the meat cart&rdquo;</span></span>
                     </div>
                     <p className="text-xs text-gray-400 leading-relaxed">
                       {statusMessage || 'Click button below to scan your Google Drive account.'}
@@ -519,9 +564,9 @@ export function GoogleDriveImporter() {
                 <div className="flex items-center justify-between">
                   <div className="flex items-center space-x-2 text-xs font-bold text-gray-300">
                     <LinkIcon className="w-4 h-4 text-red-400" />
-                    <span>Paste Shared Google Drive Image Links / URLs</span>
+                    <span>Paste Shared Google Drive Image Links / Direct URLs</span>
                   </div>
-                  <span className="text-[11px] text-gray-500">Supports file links & shared URLs</span>
+                  <span className="text-[11px] text-gray-500">Auto-converts shared drive links</span>
                 </div>
                 <div className="flex flex-col sm:flex-row gap-2">
                   <textarea
@@ -550,13 +595,13 @@ export function GoogleDriveImporter() {
                       <span>Loaded Images ({driveFiles.length})</span>
                     </h4>
                     <span className="text-xs text-gray-400">
-                      Assign each photo to a Hero Slide or Category Card
+                      Select what each photo should replace:
                     </span>
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
                     {driveFiles.map((file) => {
-                      const imgSrc = file.dataUrl || file.thumbnailLink || `https://lh3.googleusercontent.com/d/${file.id}`;
+                      const imgSrc = file.dataUrl || file.thumbnailLink || `https://lh3.googleusercontent.com/d/${file.id}=s1600`;
                       
                       return (
                         <div
@@ -610,8 +655,8 @@ export function GoogleDriveImporter() {
                                   if (e.target.value) handleAssignCategory(e.target.value, imgSrc);
                                 }}
                                 value={
-                                  Object.keys(assignments).find(
-                                    (k) => assignments[k] === imgSrc
+                                  Object.keys(categoryAssignments).find(
+                                    (k) => categoryAssignments[k] === imgSrc
                                   ) || ''
                                 }
                               >
@@ -619,6 +664,31 @@ export function GoogleDriveImporter() {
                                 {CATEGORIES.map((cat) => (
                                   <option key={cat.slug} value={cat.slug}>
                                     Category: {cat.name}
+                                  </option>
+                                ))}
+                              </select>
+                            </div>
+
+                            <div>
+                              <label className="block text-[11px] text-gray-400 font-semibold mb-1 flex items-center space-x-1">
+                                <ShoppingBag className="w-3 h-3 text-red-400" />
+                                <span>Assign to Product Card:</span>
+                              </label>
+                              <select
+                                className="w-full bg-zinc-800 border border-zinc-700 text-white rounded-lg p-1.5 text-xs focus:ring-1 focus:ring-red-500"
+                                onChange={(e) => {
+                                  if (e.target.value) handleAssignProduct(e.target.value, imgSrc);
+                                }}
+                                value={
+                                  Object.keys(productAssignments).find(
+                                    (k) => productAssignments[k] === imgSrc
+                                  ) || ''
+                                }
+                              >
+                                <option value="">-- None --</option>
+                                {topProducts.map((prod) => (
+                                  <option key={prod.slug} value={prod.slug}>
+                                    {prod.name} ({prod.category})
                                   </option>
                                 ))}
                               </select>
@@ -633,10 +703,10 @@ export function GoogleDriveImporter() {
                 <div className="py-10 text-center space-y-3 bg-zinc-900/40 rounded-xl border border-zinc-800/80">
                   <ImageIcon className="w-12 h-12 text-zinc-600 mx-auto" />
                   <p className="text-sm text-gray-300 font-medium">
-                    No images added yet.
+                    No images added to session yet.
                   </p>
                   <p className="text-xs text-gray-500 max-w-md mx-auto">
-                    Use the <strong>"Upload Photos"</strong> box above to drag and drop your photos directly, or click <strong>"Connect & Fetch From Google Drive"</strong>.
+                    Use <strong>&ldquo;Upload Photos From Device&rdquo;</strong> above to drag and drop your image files, or click <strong>&ldquo;Connect &amp; Fetch From Google Drive&rdquo;</strong>.
                   </p>
                 </div>
               )}
@@ -645,14 +715,19 @@ export function GoogleDriveImporter() {
 
             {/* Modal Footer */}
             <div className="px-6 py-4 bg-zinc-900 border-t border-zinc-800 flex items-center justify-between">
-              <div className="text-xs text-gray-400">
-                {savedSuccess ? (
-                  <span className="text-emerald-400 font-bold flex items-center space-x-1">
+              <div className="flex items-center space-x-3">
+                <button
+                  onClick={clearAllCustomImages}
+                  className="text-xs text-gray-500 hover:text-red-400 flex items-center space-x-1"
+                >
+                  <Trash2 className="w-3.5 h-3.5" />
+                  <span>Reset to Defaults</span>
+                </button>
+                {savedSuccess && (
+                  <span className="text-emerald-400 font-bold text-xs flex items-center space-x-1">
                     <Check className="w-4 h-4" />
-                    <span>Applied to Hero & Category Grid Live!</span>
+                    <span>Applied to Hero, Categories & Products Live!</span>
                   </span>
-                ) : (
-                  <span>Click "Save & Apply" to publish image updates live to the store.</span>
                 )}
               </div>
 

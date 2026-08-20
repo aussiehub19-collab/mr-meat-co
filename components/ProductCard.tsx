@@ -6,10 +6,15 @@ import { Product } from '@/config/site';
 import { useCart } from '@/lib/cart';
 import { SmartImage } from '@/components/SmartImage';
 import { Plus, Check } from 'lucide-react';
+import { useCustomStoreImages } from '@/lib/useCustomImages';
 
 export function ProductCard({ product }: { product: Product }) {
   const { addToCart, cart } = useCart();
   const inCart = cart.some((i) => i.slug === product.slug);
+  const customProductImages = useCustomStoreImages('tmc_gdrive_product_images');
+
+  const customProductImage = customProductImages[product.slug] || customProductImages[product.product_id] || null;
+  const activeImage = customProductImage || product.main_image || product.image;
 
   const formatPriceType = () => {
     if (!product.price_type) return 'AUD';
@@ -39,7 +44,7 @@ export function ProductCard({ product }: { product: Product }) {
       name: product.product_name || product.name,
       price: product.price || 0,
       category: product.main_category || product.category,
-      image: product.main_image || product.image,
+      image: activeImage,
     });
   };
 
@@ -52,7 +57,7 @@ export function ProductCard({ product }: { product: Product }) {
       {/* Product Image Frame */}
       <Link href={`/shop/${product.main_category || product.category}/${product.slug}/`} className="block relative aspect-[4/3] bg-white overflow-hidden p-2">
         <SmartImage
-          src={product.main_image || product.image}
+          src={activeImage}
           alt={product.product_name || product.name}
           fill
           className="object-contain p-2 group-hover:scale-105 transition-transform duration-500"

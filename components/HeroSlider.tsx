@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { SmartImage } from '@/components/SmartImage';
 import { ArrowRight, MessageSquare, Flame, ChevronLeft, ChevronRight } from 'lucide-react';
 import { CONTACT, SHOP } from '@/config/site';
+import { useCustomStoreImages } from '@/lib/useCustomImages';
 
 const HERO_SLIDES = [
   {
@@ -12,7 +13,7 @@ const HERO_SLIDES = [
     tag: "Sydney's Premier Craft Butcher Workshop",
     title: "Grass-Fed Beef Mince & Craft Butcher Delivery Sydney",
     description: "100% Australian pasture-raised beef, fresh gourmet beef mince, dry-aged Wagyu steaks, and custom freezer boxes delivered directly to your door in temperature-controlled cold-chain express trucks across Greater Sydney.",
-    image: "https://lh3.googleusercontent.com/d/10v5cHy2ak158WzwiJWYis7F8aYzgPmC0",
+    image: "https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?q=80&w=1600&auto=format&fit=crop",
     ctaText: "Shop Fresh Beef & Meats",
     ctaLink: "/shop/",
     isH1: true,
@@ -22,7 +23,7 @@ const HERO_SLIDES = [
     tag: "100% Australian Pasture-Raised Beef",
     title: "Prime Scotch Fillets, Wagyu & Dry-Aged Steaks",
     description: "Hand-selected by master butchers in Alexandria. Vacuum sealed for peak freshness and tenderness. Free cold-chain delivery across Sydney on orders $300+.",
-    image: "https://lh3.googleusercontent.com/d/1-4L7-LEnv6LTYnGVkVwtq-HqWQRNzrXe",
+    image: "https://images.unsplash.com/photo-1558030006-450675393462?q=80&w=1600&auto=format&fit=crop",
     ctaText: "Explore Steak Collection",
     ctaLink: "/beef/steaks/",
     isH1: false,
@@ -32,7 +33,7 @@ const HERO_SLIDES = [
     tag: "Freshly Ground Daily in Alexandria",
     title: "Artisanal Gourmet Mince, Sausages & Burgers",
     description: "Ground whole-carcass muscle cuts with optimal meat-to-fat ratios. Zero fillers, artificial preservatives, or binders.",
-    image: "https://lh3.googleusercontent.com/d/1xR20gyxNqigV451JOig6liMLPL1wjPoM",
+    image: "https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?q=80&w=1600&auto=format&fit=crop",
     ctaText: "Shop Mince & Diced",
     ctaLink: "/beef/mince-diced/",
     isH1: false,
@@ -42,7 +43,7 @@ const HERO_SLIDES = [
     tag: "Slow Cooking & Family Roasts",
     title: "Mouthwatering Briskets, Ribs & Oxtail Cuts",
     description: "Perfect for winter braising, smoker BBQ, or slow roasting. Australian pasture-raised cuts packed fresh for your kitchen.",
-    image: "https://lh3.googleusercontent.com/d/1uSGU31Cn3HSzOD9jjrpTa_cQCu5uZcqV",
+    image: "https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=1600&auto=format&fit=crop",
     ctaText: "Shop Slow Cooking Cuts",
     ctaLink: "/beef/slow-cook/",
     isH1: false,
@@ -51,24 +52,7 @@ const HERO_SLIDES = [
 
 export function HeroSlider() {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [customHeroImages, setCustomHeroImages] = useState<{ [key: string]: string }>({});
-
-  const loadCustomImages = () => {
-    try {
-      const stored = localStorage.getItem('tmc_gdrive_hero_images');
-      if (stored) {
-        setCustomHeroImages(JSON.parse(stored));
-      }
-    } catch (e) {
-      console.error(e);
-    }
-  };
-
-  useEffect(() => {
-    loadCustomImages();
-    window.addEventListener('tmc_images_updated', loadCustomImages);
-    return () => window.removeEventListener('tmc_images_updated', loadCustomImages);
-  }, []);
+  const customHeroImages = useCustomStoreImages('tmc_gdrive_hero_images');
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -87,7 +71,10 @@ export function HeroSlider() {
 
   const getSlideImage = (slideId: number, defaultImage: string) => {
     const custom = customHeroImages[`hero-${slideId}`];
-    return custom || defaultImage;
+    if (!custom) {
+      return defaultImage;
+    }
+    return custom;
   };
 
   return (

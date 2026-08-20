@@ -1,0 +1,27 @@
+{
+  "protocol": { "name": "acp", "version": "0.1.0" },
+  "name": "The Meat Cart",
+  "description": "Sydney's Premier Craft Butcher & Grass-Fed Beef Direct to Door",
+  "api_base_url": "https://themeatcart.com.au",
+  "homepage": "https://themeatcart.com.au",
+  "transports": ["https"],
+  "capabilities": {
+    "services": ["product-catalog", "wholesale", "blog", "faq", "mcp-server"],
+    "ordering": "human-assisted",
+    "payment_methods": ["PayID", "Direct Bank Transfer", "crypto-BTC", "crypto-USDT"],
+    "currency": "AUD",
+    "minimum_order_usd": 160,
+    "free_shipping_threshold_usd": 160
+  },
+  "contact": {
+    "whatsapp": "https://wa.me/61400000000",
+    "email": "orders@themeatcart.com.au"
+  },
+  "legal": {
+    "age_restriction": "none",
+    "region": "Sydney, NSW, Australia",
+    "ships_to": "Greater Sydney Metro, Wollongong, Central Coast NSW",
+    "product_type": "Fresh Grass-Fed Meat & Poultry",
+    "compliance": "100% Australian Grass-Fed & Hormone-Free Beef"
+  }
+}

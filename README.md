@@ -1,11 +1,38 @@
-<div align="center">
+# The Meat Cart — 100% Australian Grass-Fed Sydney Butcher
 
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
+The Meat Cart is a production-ready Next.js 15 App Router ecommerce site and AI-agent ready store for premium grass-fed beef mince, Wagyu steaks, pasture-raised lamb cutlets, and craft butcher boxes in Sydney.
 
-  <h1>Built with AI Studio</h2>
+## Features
+- **Mobile-First & Responsive**: Tailored for 380px+ viewports with zero horizontal overflow.
+- **Single Source of Truth**: All store data, categories, products, and blog posts are managed in `src/config/site.ts`.
+- **AI-Agent Ready**: Native MCP Streamable HTTP endpoint (`/api/mcp`), WebMCP browser script (`/js/webmcp.js`), `llms.txt`, `auth.md`, `api-catalog`, `acp.json`, `ucp` (v1.0), and agent skills index.
+- **PayID & Crypto Discounts**: Automated 10% discount calculation for direct PayID and Cryptocurrency (BTC, USDT) payments.
+- **Human-in-the-Loop Ordering**: Instant WhatsApp order draft generation and direct form submissions.
+- **SEO & Structured Data**: Dynamic Schema.org JSON-LD for `Store`, `Organization`, `Product`, `Offer`, `BreadcrumbList`, `FAQPage`, `BlogPosting`, and `AboutPage`.
 
-  <p>The fastest path from prompt to production with Gemini.</p>
+## Quick Start
+```bash
+# Install dependencies
+npm install
 
-  <a href="https://aistudio.google.com/apps">Start building</a>
+# Run dev server
+npm run dev
 
-</div>
+# Generate agent files from config
+npm run gen
+
+# Run pre-ship crosscheck verification
+npm run crosscheck
+
+# Production build
+npm run build
+```
+
+## Deployment
+1. Push to a GitHub repository.
+2. Import repo into Vercel.
+3. Ensure **Framework Preset** is set to **Next.js**.
+4. Set optional environment variable `RESEND_API_KEY` if using Resend email provider.
+
+## License
+Private Commercial License — The Meat Cart Sydney.

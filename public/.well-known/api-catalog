@@ -1,0 +1,11 @@
+{
+  "linkset": [
+    { "anchor": "https://themeatcart.com.au/", "https://www.iana.org/assignments/link-relations/service-doc": [{ "href": "https://themeatcart.com.au/faq/" }], "title": "The Meat Cart — Sydney's Premier Craft Butcher" },
+    { "anchor": "https://themeatcart.com.au/shop/", "type": "text/html", "title": "The Meat Cart Product Catalog" },
+    { "anchor": "https://themeatcart.com.au/wholesale/", "type": "text/html", "title": "The Meat Cart Wholesale Program" },
+    { "anchor": "https://themeatcart.com.au/api/products", "type": "application/json", "title": "The Meat Cart Products API" },
+    { "anchor": "https://themeatcart.com.au/api/categories", "type": "application/json", "title": "The Meat Cart Categories API" },
+    { "anchor": "https://themeatcart.com.au/api/search", "type": "application/json", "title": "The Meat Cart Search API" },
+    { "anchor": "https://themeatcart.com.au/api/mcp", "type": "application/json", "https://www.iana.org/assignments/link-relations/service-desc": [{ "href": "https://themeatcart.com.au/.well-known/mcp/server-card.json" }], "title": "The Meat Cart MCP Server" }
+  ]
+}

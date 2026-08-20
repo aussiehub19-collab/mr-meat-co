@@ -1,0 +1,41 @@
+# The Meat Cart
+> Sydney's Premier Craft Butcher & Grass-Fed Beef Direct to Door
+
+The Meat Cart is Sydney's artisanal craft butcher delivering 100% Australian grass-fed beef, premium beef mince, free-range poultry, grass-fed lamb, and custom butcher freezer boxes directly to your door with temperature-controlled cold-chain express delivery.
+
+## Contact & Business Info
+- Email: [orders@themeatcart.com.au](mailto:orders@themeatcart.com.au)
+- WhatsApp: [+61400000000](https://wa.me/61400000000)
+- Headquarters: Sydney, NSW, Australia
+- Minimum Order: $300 AUD
+- Free Shipping: Free refrigerated delivery on all orders ($300 min) across Sydney Metro
+- Payment Methods: PayID, Direct Bank Transfer, Bitcoin (BTC), Tether (USDT)
+- Crypto Discount: Instant 10% discount applied to PayID and Crypto direct checkouts
+
+## Product Categories
+- [Beef & Mince](https://themeatcart.com.au/shop/beef/): 100% Australian grass-fed beef, premium beef mince, dry-aged steaks, and slow-cooking roasts.
+- [Australian Lamb](https://themeatcart.com.au/shop/lamb/): Tender pasture-raised NSW grass-fed lamb cutlets, frenched racks, legs, and diced cuts.
+- [Pork & Poultry](https://themeatcart.com.au/shop/pork-poultry/): Free-range pasture-raised whole chicken, organic breasts, and free-range pork cuts.
+- [Sausages & Smallgoods](https://themeatcart.com.au/shop/smallgoods/): Artisanal gluten-free sausages, dry-cured bacon, smoked meats, and smallgoods.
+- [Bulk & Butcher Boxes](https://themeatcart.com.au/shop/bundles/): Curated freezer stocker boxes, household meat packs, and wholesale bulk bundles.
+
+## Primary Featured Products
+- [Grass-Fed Premium Beef Mince (1kg)](https://themeatcart.com.au/shop/beef/grass-fed-premium-beef-mince/): $28.50 AUD
+- [Wagyu Reserve Beef Mince Blend (1kg)](https://themeatcart.com.au/shop/beef/wagyu-reserve-beef-mince/): $36.00 AUD
+- [Dry-Aged Bone-In Ribeye Steak (500g)](https://themeatcart.com.au/shop/beef/dry-aged-ribeye-steak/): $64.00 AUD
+- [NSW Pasture-Raised Lamb Cutlets (800g)](https://themeatcart.com.au/shop/lamb/nsw-grass-fed-lamb-cutlets/): $52.00 AUD
+- [The Ultimate Sydney Butcher Box (10kg Pack)](https://themeatcart.com.au/shop/bundles/ultimate-sydney-butcher-box/): $295.00 AUD
+
+## Key Pages
+- [Full Product Catalog](https://themeatcart.com.au/shop/)
+- [Wholesale Inquiries](https://themeatcart.com.au/wholesale/)
+- [Butchery Blog & Guides](https://themeatcart.com.au/blog/)
+- [Frequently Asked Questions](https://themeatcart.com.au/faq/)
+- [About Our Sydney Butchery](https://themeatcart.com.au/about/)
+- [Contact Us](https://themeatcart.com.au/contact/)
+
+## Optional & Agent Resources
+- [API Catalog](https://themeatcart.com.au/.well-known/api-catalog): RFC 9727 API Linkset
+- [Agent Skills Index](https://themeatcart.com.au/.well-known/agent-skills/index.json): Declarative Agent Capabilities
+- [MCP Server Card](https://themeatcart.com.au/.well-known/mcp/server-card.json): Streamable HTTP MCP Server Spec
+- [Auth Specification](https://themeatcart.com.au/auth.md): Open Public Access Guidelines

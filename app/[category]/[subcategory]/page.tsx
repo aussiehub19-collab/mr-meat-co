@@ -1,0 +1,164 @@
+import React from 'react';
+import { notFound } from 'next/navigation';
+import { CATEGORIES, PRODUCTS, SITE } from '@/config/site';
+import { JsonLd } from '@/components/JsonLd';
+import { ProductCard } from '@/components/ProductCard';
+import Link from 'next/link';
+
+export async function generateStaticParams() {
+  const params: { category: string; subcategory: string }[] = [];
+  CATEGORIES.forEach((cat) => {
+    cat.subcategories.forEach((sub) => {
+      const subSlug = sub.toLowerCase().replace(/ & /g, '-').replace(/ \/ /g, '-').replace(/ /g, '-');
+      params.push({ category: cat.slug, subcategory: subSlug });
+    });
+  });
+  return params;
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ category: string; subcategory: string }>;
+}) {
+  const { category: categorySlug, subcategory: subSlug } = await params;
+  const category = CATEGORIES.find((c) => c.slug === categorySlug);
+  if (!category) return {};
+
+  const subcategory = category.subcategories.find(
+    (s) => s.toLowerCase().replace(/ & /g, '-').replace(/ \/ /g, '-').replace(/ /g, '-') === subSlug
+  );
+
+  if (!subcategory) return {};
+
+  return {
+    title: `${subcategory} — ${category.name} | The Meat Cart Australia`,
+    description: `Shop fresh Australian ${subcategory.toLowerCase()} cuts under our ${category.name} butcher selection. Delivered chilled to your door.`,
+    alternates: {
+      canonical: `https://${SITE.domain}/${category.slug}/${subSlug}/`,
+    },
+    other: {
+      'og:updated_time': new Date().toISOString(),
+    },
+  };
+}
+
+export default async function TopLevelSubcategoryPage({
+  params,
+}: {
+  params: Promise<{ category: string; subcategory: string }>;
+}) {
+  const { category: categorySlug, subcategory: subSlug } = await params;
+  const category = CATEGORIES.find((c) => c.slug === categorySlug);
+
+  if (!category) {
+    notFound();
+  }
+
+  const subcategory = category.subcategories.find(
+    (s) => s.toLowerCase().replace(/ & /g, '-').replace(/ \/ /g, '-').replace(/ /g, '-') === subSlug
+  );
+
+  if (!subcategory) {
+    notFound();
+  }
+
+  const subProducts = PRODUCTS.filter((p) => {
+    const categoryMatches =
+      p.category === category.slug ||
+      p.main_category === category.slug ||
+      p.primary_product_category?.toLowerCase().replace(/ & /g, '-').replace(/ /g, '-') === category.slug ||
+      (Array.isArray(p.collections) && p.collections.some((c) => c.toLowerCase().includes(category.name.toLowerCase())));
+
+    if (!categoryMatches) return false;
+
+    const matchPrimary =
+      p.subcategory &&
+      p.subcategory.toLowerCase().replace(/ & /g, '-').replace(/ \/ /g, '-').replace(/ /g, '-') === subSlug;
+    const matchSecondary =
+      Array.isArray(p.secondary_subcategories) &&
+      p.secondary_subcategories.some(
+        (s) => s.toLowerCase().replace(/ & /g, '-').replace(/ \/ /g, '-').replace(/ /g, '-') === subSlug
+      );
+    const matchCollection =
+      Array.isArray(p.collections) &&
+      p.collections.some((c) =>
+        c.toLowerCase().replace(/ & /g, '-').replace(/ \/ /g, '-').replace(/ /g, '-').includes(subSlug)
+      );
+
+    return Boolean(matchPrimary || matchSecondary || matchCollection);
+  });
+
+  const breadcrumbSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Home',
+        item: `https://${SITE.domain}/`,
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: category.name,
+        item: `https://${SITE.domain}/${category.slug}/`,
+      },
+      {
+        '@type': 'ListItem',
+        position: 3,
+        name: subcategory,
+        item: `https://${SITE.domain}/${category.slug}/${subSlug}/`,
+      },
+    ],
+  };
+
+  return (
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8">
+      <JsonLd data={breadcrumbSchema} />
+
+      {/* Header */}
+      <div className="space-y-3 border-b border-red-900/40 pb-6">
+        <div className="flex items-center space-x-2 text-xs font-bold uppercase tracking-wider text-red-500">
+          <Link href="/shop/" className="hover:underline text-gray-400">
+            Shop
+          </Link>
+          <span>/</span>
+          <Link href={`/${category.slug}/`} className="hover:underline text-gray-400">
+            {category.name}
+          </Link>
+          <span>/</span>
+          <span>{subcategory}</span>
+        </div>
+
+        <h1 className="text-3xl sm:text-4xl font-black text-white font-serif">
+          Australian {subcategory} Cuts ({category.name})
+        </h1>
+        <p className="text-gray-300 text-sm max-w-3xl leading-relaxed">
+          Premium fresh {subcategory.toLowerCase()} hand-selected and trimmed by our craft butchers. High-protein, pasture-raised, delivered cold-chain across Australia.
+        </p>
+      </div>
+
+      {/* Product Grid */}
+      {subProducts.length === 0 ? (
+        <div className="bg-[#141414] p-10 text-center rounded-2xl border border-red-900/40 space-y-3">
+          <h3 className="text-lg font-bold text-white">No products currently listed under {subcategory}</h3>
+          <p className="text-xs text-gray-400">Check back soon or explore our full {category.name} range.</p>
+          <Link
+            href={`/${category.slug}/`}
+            className="inline-block bg-red-700 hover:bg-red-800 text-white font-bold px-5 py-2 rounded-xl text-xs mt-2 transition-colors"
+          >
+            View All {category.name} Cuts
+          </Link>
+        </div>
+      ) : (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {subProducts.map((p) => (
+            <ProductCard key={p.slug} product={p} />
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}

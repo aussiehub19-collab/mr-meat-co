@@ -63,6 +63,7 @@ export default function BlogIndexPage() {
                 src={post.image}
                 alt={post.title}
                 fill
+                sizes="(max-width: 640px) 90vw, (max-width: 1024px) 45vw, 380px"
                 className="object-cover group-hover:scale-105 transition-transform duration-500"
               />
             </div>

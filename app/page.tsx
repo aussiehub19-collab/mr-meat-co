@@ -260,7 +260,7 @@ export default function HomePage() {
               className="bg-[#141414] rounded-2xl border border-[#991B1B]/40 overflow-hidden shadow-sm hover:shadow-red-950/50 transition-all flex flex-col"
             >
               <div className="relative aspect-[16/9] bg-gray-900">
-                <SmartImage src={post.image} alt={post.title} fill className="object-cover" />
+                <SmartImage src={post.image} alt={post.title} fill sizes="(max-width: 640px) 90vw, (max-width: 1024px) 45vw, 380px" className="object-cover" />
               </div>
               <div className="p-5 flex flex-col flex-1 justify-between space-y-3">
                 <div>

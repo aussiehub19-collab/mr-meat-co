@@ -52,6 +52,7 @@ export function CategoryGridClient() {
                   src={categoryImage}
                   alt={cat.name}
                   fill
+                  sizes="(max-width: 640px) 92vw, (max-width: 1024px) 46vw, 400px"
                   className="object-cover group-hover:scale-105 transition-transform duration-500"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent" />

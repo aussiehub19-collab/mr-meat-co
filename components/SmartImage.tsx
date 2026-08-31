@@ -12,6 +12,7 @@ interface SmartImageProps {
   className?: string;
   fill?: boolean;
   unoptimized?: boolean;
+  sizes?: string;
 }
 
 const FALLBACK_IMAGE = 'https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?q=80&w=1200&auto=format&fit=crop';
@@ -49,6 +50,7 @@ export function SmartImage({
   className = '',
   fill = false,
   unoptimized,
+  sizes,
 }: SmartImageProps) {
   const [prevSrc, setPrevSrc] = useState<string>(src);
   const [attempt, setAttempt] = useState<number>(0);
@@ -83,6 +85,7 @@ export function SmartImage({
         alt={alt}
         fill
         priority={priority}
+        sizes={sizes ?? '100vw'}
         className={className}
         referrerPolicy="no-referrer"
         unoptimized={shouldUnoptimize}
@@ -98,6 +101,7 @@ export function SmartImage({
       width={width}
       height={height}
       priority={priority}
+      sizes={sizes ?? `${width}px`}
       className={className}
       referrerPolicy="no-referrer"
       unoptimized={shouldUnoptimize}

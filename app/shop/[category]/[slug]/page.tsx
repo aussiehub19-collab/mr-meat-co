@@ -136,6 +136,7 @@ export default async function ProductDetailPage({
               alt={product.name}
               fill
               priority
+              sizes="(max-width: 1024px) 100vw, 600px"
               className="object-contain p-2"
             />
             {product.badge && (

@@ -13,7 +13,7 @@ const HERO_SLIDES = [
     tag: "Sydney's Premier Craft Butcher Workshop",
     title: "Grass-Fed Beef Mince & Craft Butcher Delivery Sydney",
     description: "100% Australian pasture-raised beef, fresh gourmet beef mince, dry-aged Wagyu steaks, and custom freezer boxes delivered directly to your door in temperature-controlled cold-chain express trucks across Greater Sydney.",
-    image: "https://lh3.googleusercontent.com/d/10v5cHy2ak158WzwiJWYis7F8aYzgPmC0=s1600",
+    image: "/images/hero/hero-1.webp",
     ctaText: "Shop Fresh Beef & Meats",
     ctaLink: "/shop/",
     isH1: true,
@@ -23,7 +23,7 @@ const HERO_SLIDES = [
     tag: "100% Australian Pasture-Raised Beef",
     title: "Prime Scotch Fillets, Wagyu & Dry-Aged Steaks",
     description: "Hand-selected by master butchers in Alexandria. Vacuum sealed for peak freshness and tenderness. Free cold-chain delivery across Sydney on orders $300+.",
-    image: "https://lh3.googleusercontent.com/d/1-4L7-LEnv6LTYnGVkVwtq-HqWQRNzrXe=s1600",
+    image: "/images/hero/hero-2.webp",
     ctaText: "Explore Steak Collection",
     ctaLink: "/beef/steaks/",
     isH1: false,
@@ -33,7 +33,7 @@ const HERO_SLIDES = [
     tag: "Freshly Ground Daily in Alexandria",
     title: "Artisanal Gourmet Mince, Sausages & Burgers",
     description: "Ground whole-carcass muscle cuts with optimal meat-to-fat ratios. Zero fillers, artificial preservatives, or binders.",
-    image: "https://lh3.googleusercontent.com/d/1xR20gyxNqigV451JOig6liMLPL1wjPoM=s1600",
+    image: "/images/hero/hero-3.webp",
     ctaText: "Shop Mince & Diced",
     ctaLink: "/beef/mince-diced/",
     isH1: false,
@@ -43,7 +43,7 @@ const HERO_SLIDES = [
     tag: "Slow Cooking & Family Roasts",
     title: "Mouthwatering Briskets, Ribs & Oxtail Cuts",
     description: "Perfect for winter braising, smoker BBQ, or slow roasting. Australian pasture-raised cuts packed fresh for your kitchen.",
-    image: "https://lh3.googleusercontent.com/d/1uSGU31Cn3HSzOD9jjrpTa_cQCu5uZcqV=s1600",
+    image: "/images/hero/hero-4.webp",
     ctaText: "Shop Slow Cooking Cuts",
     ctaLink: "/beef/slow-cook/",
     isH1: false,
@@ -94,6 +94,7 @@ export function HeroSlider() {
               alt={slide.title}
               fill
               priority={idx === 0}
+              sizes="100vw"
               className="object-cover object-center scale-105 transition-transform duration-10000"
             />
             {/* Multi-stage dark gradient scrim for readability */}

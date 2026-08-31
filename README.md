@@ -1,6 +1,6 @@
-# The Meat Cart — 100% Australian Grass-Fed Sydney Butcher
+# Mr Meat & Co — 100% Australian Grass-Fed Sydney Butcher
 
-The Meat Cart is a production-ready Next.js 15 App Router ecommerce site and AI-agent ready store for premium grass-fed beef mince, Wagyu steaks, pasture-raised lamb cutlets, and craft butcher boxes in Sydney.
+Mr Meat & Co is a production-ready Next.js 15 App Router ecommerce site and AI-agent ready store for premium grass-fed beef mince, Wagyu steaks, pasture-raised lamb cutlets, and craft butcher boxes in Sydney.
 
 ## Features
 - **Mobile-First & Responsive**: Tailored for 380px+ viewports with zero horizontal overflow.
@@ -35,4 +35,4 @@ npm run build
 4. Set optional environment variable `RESEND_API_KEY` if using Resend email provider.
 
 ## License
-Private Commercial License — The Meat Cart Sydney.
+Private Commercial License — Mr Meat & Co Sydney.

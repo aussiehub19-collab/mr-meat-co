@@ -91,7 +91,7 @@ export function ChatHub() {
             </a>
 
             <a
-              href="mailto:orders@themeatcart.com.au"
+              href="mailto:orders@mrmeatandco.com.au"
               className="flex items-center justify-between p-3 bg-[#281818] hover:bg-[#331E1E] border border-[#991B1B]/40 rounded-xl transition-colors text-white group"
             >
               <div className="flex items-center space-x-3">
@@ -100,7 +100,7 @@ export function ChatHub() {
                 </div>
                 <div>
                   <div className="text-xs font-bold text-white">Email Inquiry</div>
-                  <div className="text-[11px] text-gray-400">orders&#64;themeatcart.com.au</div>
+                  <div className="text-[11px] text-gray-400">orders&#64;mrmeatandco.com.au</div>
                 </div>
               </div>
               <ChevronRight className="w-4 h-4 text-gray-400 group-hover:translate-x-1 transition-transform" />

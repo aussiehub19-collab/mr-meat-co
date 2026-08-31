@@ -22,23 +22,26 @@ export function middleware(request: NextRequest) {
   if (prefersMarkdownOverHtml(accept)) {
     const url = request.nextUrl;
     // Serve Markdown summary for agent markdown negotiation requests
-    const mdContent = `# The Meat Cart — Sydney Grass-Fed Craft Butcher
+    const mdContent = `# Mr Meat & Co — Sydney Grass-Fed Craft Butcher
 Location: Alexandria, Sydney NSW, Australia
-URL: https://meatcart.com.au${url.pathname}
+URL: https://mrmeatandco.com.au${url.pathname}
 
 ## Overview
 100% Australian grass-fed beef mince, Wagyu steaks, pasture-raised lamb cutlets, and fresh poultry.
 Ground fresh daily in Sydney with zero preservatives or fillers.
 Refrigerated cold-chain express delivery across Sydney Metro, Wollongong, and Central Coast.
 
+## Business
+- Mr Meat & Co — ABN 71 635 847 908
+
 ## Key Services & Features
-- Minimum Order: $250 AUD
-- Free Cold-Chain Delivery on orders over $250 AUD
+- Minimum Order: $300 AUD
+- Free Cold-Chain Delivery on orders over $300 AUD
 - Direct PayID & Crypto (BTC, USDT) 10% instant discount
-- Human-in-the-loop WhatsApp order preparation: +61480000000
-- Public Agent MCP Server Endpoint: https://meatcart.com.au/api/mcp
-- API Catalog: https://meatcart.com.au/.well-known/api-catalog
-- LLMs Info: https://meatcart.com.au/llms.txt
+- Human-in-the-loop WhatsApp order preparation: +61400000000
+- Public Agent MCP Server Endpoint: https://mrmeatandco.com.au/api/mcp
+- API Catalog: https://mrmeatandco.com.au/.well-known/api-catalog
+- LLMs Info: https://mrmeatandco.com.au/llms.txt
 `;
 
     return new NextResponse(mdContent, {

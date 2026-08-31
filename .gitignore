@@ -5,3 +5,8 @@ coverage/
 *.log
 .env*
 !.env.example
+
+# WebForge additions
+docs/_contact-sheet.png
+out/
+package-lock.json

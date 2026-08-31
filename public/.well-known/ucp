@@ -23,7 +23,7 @@
     "llms_txt": "https://themeatcart.com.au/llms.txt"
   },
   "currency": "AUD",
-  "minimum_order_usd": 160,
+  "minimum_order_usd": 300,
   "payment_methods": ["PayID", "Direct Bank Transfer", "crypto-BTC", "crypto-USDT"],
   "legal": {
     "age_restriction": "none",

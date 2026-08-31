@@ -1,4 +1,4 @@
-# KEYWORD MAP & CONTENT STRATEGY — THE MEAT CART
+# KEYWORD MAP & CONTENT STRATEGY — MR MEAT & CO
 
 > Confidential Keyword Strategy — Internal Use Only.
 

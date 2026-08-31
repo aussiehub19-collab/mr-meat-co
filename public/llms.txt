@@ -1,10 +1,11 @@
-# The Meat Cart
+# Mr Meat & Co
 > Sydney's Premier Craft Butcher & Grass-Fed Beef Direct to Door
 
-The Meat Cart is Sydney's artisanal craft butcher delivering 100% Australian grass-fed beef, premium beef mince, free-range poultry, grass-fed lamb, and custom butcher freezer boxes directly to your door with temperature-controlled cold-chain express delivery.
+Mr Meat & Co is Sydney's artisanal craft butcher delivering 100% Australian grass-fed beef, premium beef mince, free-range poultry, grass-fed lamb, and custom butcher freezer boxes directly to your door with temperature-controlled cold-chain express delivery.
 
 ## Contact & Business Info
-- Email: [orders@themeatcart.com.au](mailto:orders@themeatcart.com.au)
+- Legal entity: Mr Meat & Co — ABN 71 635 847 908 (verify at https://abr.business.gov.au/ABN/View?abn=71635847908)
+- Email: [orders@mrmeatandco.com.au](mailto:orders@mrmeatandco.com.au)
 - WhatsApp: [+61400000000](https://wa.me/61400000000)
 - Headquarters: Sydney, NSW, Australia
 - Minimum Order: $300 AUD
@@ -13,29 +14,29 @@ The Meat Cart is Sydney's artisanal craft butcher delivering 100% Australian gra
 - Crypto Discount: Instant 10% discount applied to PayID and Crypto direct checkouts
 
 ## Product Categories
-- [Beef & Mince](https://themeatcart.com.au/shop/beef/): 100% Australian grass-fed beef, premium beef mince, dry-aged steaks, and slow-cooking roasts.
-- [Australian Lamb](https://themeatcart.com.au/shop/lamb/): Tender pasture-raised NSW grass-fed lamb cutlets, frenched racks, legs, and diced cuts.
-- [Pork & Poultry](https://themeatcart.com.au/shop/pork-poultry/): Free-range pasture-raised whole chicken, organic breasts, and free-range pork cuts.
-- [Sausages & Smallgoods](https://themeatcart.com.au/shop/smallgoods/): Artisanal gluten-free sausages, dry-cured bacon, smoked meats, and smallgoods.
-- [Bulk & Butcher Boxes](https://themeatcart.com.au/shop/bundles/): Curated freezer stocker boxes, household meat packs, and wholesale bulk bundles.
+- [Beef & Mince](https://mrmeatandco.com.au/shop/beef/): 100% Australian grass-fed beef, premium beef mince, dry-aged steaks, and slow-cooking roasts.
+- [Australian Lamb](https://mrmeatandco.com.au/shop/lamb/): Tender pasture-raised NSW grass-fed lamb cutlets, frenched racks, legs, and diced cuts.
+- [Pork & Poultry](https://mrmeatandco.com.au/shop/pork-poultry/): Free-range pasture-raised whole chicken, organic breasts, and free-range pork cuts.
+- [Sausages & Smallgoods](https://mrmeatandco.com.au/shop/smallgoods/): Artisanal gluten-free sausages, dry-cured bacon, smoked meats, and smallgoods.
+- [Bulk & Butcher Boxes](https://mrmeatandco.com.au/shop/bundles/): Curated freezer stocker boxes, household meat packs, and wholesale bulk bundles.
 
 ## Primary Featured Products
-- [Grass-Fed Premium Beef Mince (1kg)](https://themeatcart.com.au/shop/beef/grass-fed-premium-beef-mince/): $28.50 AUD
-- [Wagyu Reserve Beef Mince Blend (1kg)](https://themeatcart.com.au/shop/beef/wagyu-reserve-beef-mince/): $36.00 AUD
-- [Dry-Aged Bone-In Ribeye Steak (500g)](https://themeatcart.com.au/shop/beef/dry-aged-ribeye-steak/): $64.00 AUD
-- [NSW Pasture-Raised Lamb Cutlets (800g)](https://themeatcart.com.au/shop/lamb/nsw-grass-fed-lamb-cutlets/): $52.00 AUD
-- [The Ultimate Sydney Butcher Box (10kg Pack)](https://themeatcart.com.au/shop/bundles/ultimate-sydney-butcher-box/): $295.00 AUD
+- [Grass-Fed Premium Beef Mince (1kg)](https://mrmeatandco.com.au/shop/beef/grass-fed-premium-beef-mince/): $28.50 AUD
+- [Wagyu Reserve Beef Mince Blend (1kg)](https://mrmeatandco.com.au/shop/beef/wagyu-reserve-beef-mince/): $36.00 AUD
+- [Dry-Aged Bone-In Ribeye Steak (500g)](https://mrmeatandco.com.au/shop/beef/dry-aged-ribeye-steak/): $64.00 AUD
+- [NSW Pasture-Raised Lamb Cutlets (800g)](https://mrmeatandco.com.au/shop/lamb/nsw-grass-fed-lamb-cutlets/): $52.00 AUD
+- [The Ultimate Sydney Butcher Box (10kg Pack)](https://mrmeatandco.com.au/shop/bundles/ultimate-sydney-butcher-box/): $295.00 AUD
 
 ## Key Pages
-- [Full Product Catalog](https://themeatcart.com.au/shop/)
-- [Wholesale Inquiries](https://themeatcart.com.au/wholesale/)
-- [Butchery Blog & Guides](https://themeatcart.com.au/blog/)
-- [Frequently Asked Questions](https://themeatcart.com.au/faq/)
-- [About Our Sydney Butchery](https://themeatcart.com.au/about/)
-- [Contact Us](https://themeatcart.com.au/contact/)
+- [Full Product Catalog](https://mrmeatandco.com.au/shop/)
+- [Wholesale Inquiries](https://mrmeatandco.com.au/wholesale/)
+- [Butchery Blog & Guides](https://mrmeatandco.com.au/blog/)
+- [Frequently Asked Questions](https://mrmeatandco.com.au/faq/)
+- [About Our Sydney Butchery](https://mrmeatandco.com.au/about/)
+- [Contact Us](https://mrmeatandco.com.au/contact/)
 
 ## Optional & Agent Resources
-- [API Catalog](https://themeatcart.com.au/.well-known/api-catalog): RFC 9727 API Linkset
-- [Agent Skills Index](https://themeatcart.com.au/.well-known/agent-skills/index.json): Declarative Agent Capabilities
-- [MCP Server Card](https://themeatcart.com.au/.well-known/mcp/server-card.json): Streamable HTTP MCP Server Spec
-- [Auth Specification](https://themeatcart.com.au/auth.md): Open Public Access Guidelines
+- [API Catalog](https://mrmeatandco.com.au/.well-known/api-catalog): RFC 9727 API Linkset
+- [Agent Skills Index](https://mrmeatandco.com.au/.well-known/agent-skills/index.json): Declarative Agent Capabilities
+- [MCP Server Card](https://mrmeatandco.com.au/.well-known/mcp/server-card.json): Streamable HTTP MCP Server Spec
+- [Auth Specification](https://mrmeatandco.com.au/auth.md): Open Public Access Guidelines

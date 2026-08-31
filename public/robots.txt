@@ -2,7 +2,7 @@ User-agent: *
 Disallow: /thank-you-contact/
 Disallow: /thank-you-order/
 Disallow: /thank-you-wholesale/
-Sitemap: https://themeatcart.com.au/sitemap.xml
+Sitemap: https://mrmeatandco.com.au/sitemap.xml
 
 Content-Signal: search=yes, ai-input=yes, ai-train=no
 
@@ -44,7 +44,7 @@ User-agent: cohere-ai
 Allow: /
 
 # Agent-readable resources
-# llms.txt: https://themeatcart.com.au/llms.txt
-# API Catalog: https://themeatcart.com.au/.well-known/api-catalog
-# Agent Skills: https://themeatcart.com.au/.well-known/agent-skills/index.json
-# MCP Server Card: https://themeatcart.com.au/.well-known/mcp/server-card.json
+# llms.txt: https://mrmeatandco.com.au/llms.txt
+# API Catalog: https://mrmeatandco.com.au/.well-known/api-catalog
+# Agent Skills: https://mrmeatandco.com.au/.well-known/agent-skills/index.json
+# MCP Server Card: https://mrmeatandco.com.au/.well-known/mcp/server-card.json

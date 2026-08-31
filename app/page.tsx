@@ -16,7 +16,15 @@ export default function HomePage() {
     '@context': 'https://schema.org',
     '@type': ['Store', 'Organization'],
     name: SITE.name,
+    legalName: SITE.legalName,
     description: BRAND.description,
+    identifier: {
+      '@type': 'PropertyValue',
+      propertyID: 'ABN',
+      name: 'Australian Business Number',
+      value: SITE.abn,
+    },
+    vatID: `ABN ${SITE.abn}`,
     foundingDate: BRAND.foundingYear,
     foundingLocation: { '@type': 'Place', name: BRAND.foundingLocation },
     address: {
@@ -160,10 +168,10 @@ export default function HomePage() {
               Factual Brand Authority
             </span>
             <h2 className="text-3xl font-black text-white font-serif leading-tight">
-              About The Meat Cart Workshop in Alexandria, Sydney
+              About Mr Meat & Co Workshop in Alexandria, Sydney
             </h2>
             <p className="text-gray-300 text-sm leading-relaxed">
-              Founded in {BRAND.foundingYear} at {BRAND.foundingLocation}, The Meat Cart was built on an uncompromising principle: delivering 100% Australian pasture-raised and grass-fed meats directly from local farms to Sydney households with zero middlemen or artificial additives.
+              Founded in {BRAND.foundingYear} at {BRAND.foundingLocation}, Mr Meat & Co was built on an uncompromising principle: delivering 100% Australian pasture-raised and grass-fed meats directly from local farms to Sydney households with zero middlemen or artificial additives.
             </p>
 
             <div className="space-y-3 pt-2">

@@ -7,7 +7,7 @@ import Link from 'next/link';
 
 export const metadata = {
   title: 'About Our Sydney Craft Butcher Workshop',
-  description: 'Learn about The Meat Cart Alexandria workshop, our 100% Australian grass-fed beef commitment, whole-carcass butchery ethics, and refrigerated Sydney delivery.',
+  description: 'Learn about Mr Meat & Co Alexandria workshop, our 100% Australian grass-fed beef commitment, whole-carcass butchery ethics, and refrigerated Sydney delivery.',
   alternates: {
     canonical: `https://${SITE.domain}/about/`,
   },
@@ -26,6 +26,14 @@ export default function AboutPage() {
     mainEntity: {
       '@type': 'Organization',
       name: SITE.name,
+      legalName: SITE.legalName,
+      identifier: {
+        '@type': 'PropertyValue',
+        propertyID: 'ABN',
+        name: 'Australian Business Number',
+        value: SITE.abn,
+      },
+      vatID: `ABN ${SITE.abn}`,
       foundingDate: BRAND.foundingYear,
       foundingLocation: { '@type': 'Place', name: BRAND.foundingLocation },
       address: {
@@ -67,7 +75,7 @@ export default function AboutPage() {
           Artisanal Heritage Since {BRAND.foundingYear}
         </span>
         <h1 className="text-3xl sm:text-5xl font-black text-white font-serif leading-tight">
-          About The Meat Cart Workshop
+          About Mr Meat & Co Workshop
         </h1>
         <p className="text-gray-300 text-sm leading-relaxed">
           Craft butchery rooted in Australian pasture tradition, absolute transparency, and direct refrigerated cold-chain delivery across Greater Sydney.
@@ -78,7 +86,7 @@ export default function AboutPage() {
       <div className="relative aspect-[21/9] rounded-3xl overflow-hidden border border-[#991B1B]/40 shadow-2xl">
         <SmartImage
           src="https://picsum.photos/seed/about-butcher/1200/600"
-          alt="The Meat Cart Alexandria Sydney Workshop"
+          alt="Mr Meat & Co Alexandria Sydney Workshop"
           fill
           priority
           className="object-cover"
@@ -100,7 +108,7 @@ export default function AboutPage() {
             Our Founding Principles & Sydney Origins
           </h2>
           <p>
-            Established in {BRAND.foundingYear} in Alexandria, Sydney, The Meat Cart was created to solve a growing problem in modern Australian meat retail: the disconnect between pasture-raised farmers and urban home cooks. As industrial supermarkets pushed central processing, chemical preservatives, and water-pumped meats into pre-packaged trays, our founders set out to build a traditional, transparent, whole-carcass craft butcher workshop.
+            Established in {BRAND.foundingYear} in Alexandria, Sydney, Mr Meat & Co was created to solve a growing problem in modern Australian meat retail: the disconnect between pasture-raised farmers and urban home cooks. As industrial supermarkets pushed central processing, chemical preservatives, and water-pumped meats into pre-packaged trays, our founders set out to build a traditional, transparent, whole-carcass craft butcher workshop.
           </p>
           <p>
             We believe that extraordinary meals begin with extraordinary livestock stewardship. Every piece of beef, lamb, and poultry handled in our Sydney workshop originates from 100% Australian family farms that adhere to strict 100-day grass-fed and free-range pasture grazing standards. By working directly with producers across regional New South Wales, the Riverina, and the Central Tablelands, we guarantee complete traceability from paddock to plate.
@@ -124,7 +132,7 @@ export default function AboutPage() {
             Temperature-Controlled Cold-Chain Express Delivery
           </h2>
           <p>
-            Craft butchery is only half of the equation; maintaining an unbroken cold chain until the parcel arrives at your kitchen counter is equally crucial. To achieve this, The Meat Cart engineered a specialized refrigerated packaging and logistics framework.
+            Craft butchery is only half of the equation; maintaining an unbroken cold chain until the parcel arrives at your kitchen counter is equally crucial. To achieve this, Mr Meat & Co engineered a specialized refrigerated packaging and logistics framework.
           </p>
           <p>
             Every order is carefully packed inside 100% recyclable thermal insulated box liners alongside heavy-duty non-toxic gel ice packs capable of sustaining sub-4°C internal temperatures for up to 36 hours. Our fleet of specialized refrigerated delivery vehicles services Greater Sydney Metro, Wollongong, and the Central Coast. Whether you are home or at work, your meat order stays safely chilled until you are ready to transfer it to your refrigerator or freezer.

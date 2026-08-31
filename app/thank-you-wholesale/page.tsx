@@ -22,7 +22,7 @@ export default function ThankYouWholesalePage() {
           Wholesale Application Submitted!
         </h1>
         <p className="text-sm text-gray-600 max-w-md mx-auto leading-relaxed">
-          Thank you for applying for a B2B wholesale account with The Meat Cart Sydney. Our commercial director will review your requirements and send wholesale pricing sheets within 2 business hours.
+          Thank you for applying for a B2B wholesale account with Mr Meat & Co Sydney. Our commercial director will review your requirements and send wholesale pricing sheets within 2 business hours.
         </p>
       </div>
 

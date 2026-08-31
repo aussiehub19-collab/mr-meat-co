@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { ArrowLeft, AlertCircle } from 'lucide-react';
 
 export const metadata = {
-  title: '404 - Cut Not Found | The Meat Cart',
+  title: '404 - Cut Not Found | Mr Meat & Co',
   robots: {
     index: false,
     follow: true,

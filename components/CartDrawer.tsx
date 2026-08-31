@@ -46,7 +46,7 @@ export function CartDrawer() {
           <div className="p-4 bg-[#0D0D0D] text-white flex items-center justify-between border-b border-[#991B1B]/40">
             <div className="flex items-center space-x-2">
               <ShoppingBag className="w-5 h-5 text-red-500" />
-              <h2 className="text-lg font-extrabold tracking-tight font-serif text-white">Your Meat Cart ({totalCount})</h2>
+              <h2 className="text-lg font-extrabold tracking-tight font-serif text-white">Your Cart ({totalCount})</h2>
             </div>
             <button
               type="button"

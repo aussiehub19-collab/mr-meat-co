@@ -223,11 +223,11 @@ export function GoogleDriveImporter() {
 
   const fetchFolderAndImages = async (accessToken: string) => {
     setLoading(true);
-    setStatusMessage('Searching Google Drive for "the meat cart" folder...');
+    setStatusMessage('Searching Google Drive for "mr meat & co" folder...');
 
     try {
       const folderQuery = encodeURIComponent(
-        "name contains 'the meat cart' and mimeType = 'application/vnd.google-apps.folder' and trashed = false"
+        "name contains 'mr meat & co' and mimeType = 'application/vnd.google-apps.folder' and trashed = false"
       );
       const folderRes = await fetch(
         `https://www.googleapis.com/drive/v3/files?q=${folderQuery}&fields=files(id,name)`,
@@ -267,7 +267,7 @@ export function GoogleDriveImporter() {
       const rawFiles: DriveFile[] = filesData.files || [];
 
       if (rawFiles.length === 0) {
-        setStatusMessage('No images found in "the meat cart" folder. Showing all Drive images...');
+        setStatusMessage('No images found in "mr meat & co" folder. Showing all Drive images...');
         const allRes = await fetch(
           `https://www.googleapis.com/drive/v3/files?q=${encodeURIComponent(
             "mimeType contains 'image/' and trashed = false"
@@ -281,7 +281,7 @@ export function GoogleDriveImporter() {
           setDriveFiles(allData.files || []);
         }
       } else {
-        setStatusMessage(`Loaded ${rawFiles.length} images from "the meat cart" folder!`);
+        setStatusMessage(`Loaded ${rawFiles.length} images from "mr meat & co" folder!`);
         
         const processedFiles = await Promise.all(
           rawFiles.map(async (file) => {
@@ -448,7 +448,7 @@ export function GoogleDriveImporter() {
             <div>
               <div className="flex items-center space-x-2">
                 <span className="font-extrabold text-white text-xs sm:text-sm tracking-wide">
-                  Image Sync &amp; Drive Manager &mdash; &ldquo;the meat cart&rdquo;
+                  Image Sync &amp; Drive Manager &mdash; &ldquo;mr meat & co&rdquo;
                 </span>
                 <span className="bg-red-500/20 text-red-400 border border-red-500/30 text-[10px] font-bold px-2 py-0.5 rounded-full">
                   Live Customizer
@@ -540,7 +540,7 @@ export function GoogleDriveImporter() {
                   <div className="space-y-1">
                     <div className="flex items-center space-x-2 text-xs font-bold text-gray-300">
                       <Sparkles className="w-4 h-4 text-red-400" />
-                      <span>Google Drive Folder: <span className="text-white font-mono bg-black/60 px-2 py-0.5 rounded">&ldquo;the meat cart&rdquo;</span></span>
+                      <span>Google Drive Folder: <span className="text-white font-mono bg-black/60 px-2 py-0.5 rounded">&ldquo;mr meat & co&rdquo;</span></span>
                     </div>
                     <p className="text-xs text-gray-400 leading-relaxed">
                       {statusMessage || 'Click button below to scan your Google Drive account.'}

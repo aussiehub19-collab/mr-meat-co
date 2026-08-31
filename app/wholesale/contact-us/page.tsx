@@ -124,7 +124,7 @@ export default function WholesaleContactPage() {
 
           <form onSubmit={handleSubmit} className="space-y-4">
             <input type="hidden" name="access_key" value={FORMS.web3formsKey} />
-            <input type="hidden" name="subject" value="Large Bulk Order Inquiry - The Meat Cart" />
+            <input type="hidden" name="subject" value="Large Bulk Order Inquiry - Mr Meat & Co" />
             <input type="hidden" name="from_name" value={SITE.name} />
             <input type="text" name="botcheck" className="hidden" style={{ display: 'none' }} />
 

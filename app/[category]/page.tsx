@@ -28,7 +28,7 @@ export async function generateMetadata({
       ? `Seafood Catalogue | Fish, Prawns, Salmon & Value Packs`
       : isPetFood
       ? `Pet Food Catalogue | Raw Pet Mince, Bones, Offal & Pet Packs`
-      : `${category.name} Cuts & Products | The Meat Cart Australia`,
+      : `${category.name} Cuts & Products | Mr Meat & Co Australia`,
     description: isSeafood
       ? `Browse our seafood catalogue including Barramundi, Snapper, Flathead, King Prawns, Tasmanian Salmon portions, and mixed seafood value packs. Fresh chilled and frozen storage.`
       : isPetFood

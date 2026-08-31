@@ -121,7 +121,7 @@ export default function ContactPage() {
 
           <form onSubmit={handleSubmit} className="space-y-4">
             <input type="hidden" name="access_key" value={FORMS.web3formsKey} />
-            <input type="hidden" name="subject" value="Contact Form Inquiry - The Meat Cart" />
+            <input type="hidden" name="subject" value="Contact Form Inquiry - Mr Meat & Co" />
             <input type="hidden" name="from_name" value={SITE.name} />
             <input type="text" name="botcheck" className="hidden" style={{ display: 'none' }} />
 

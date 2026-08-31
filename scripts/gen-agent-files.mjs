@@ -3,7 +3,7 @@ import path from 'path';
 
 console.log('Running scripts/gen-agent-files.mjs...');
 
-const domain = 'meatcart.com.au';
+const domain = 'mrmeatandco.com.au';
 const publicDir = path.join(process.cwd(), 'public');
 
 // Verify public dir exists

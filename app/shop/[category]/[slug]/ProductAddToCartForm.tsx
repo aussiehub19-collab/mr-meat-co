@@ -71,7 +71,7 @@ export function ProductAddToCartForm({ product }: { product: Product }) {
         ) : (
           <>
             <ShoppingBag className="w-5 h-5 text-white" />
-            <span>Add to Meat Cart • {totalPrice}</span>
+            <span>Add to Cart • {totalPrice}</span>
           </>
         )}
       </button>

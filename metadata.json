@@ -1,5 +1,5 @@
 {
-  "name": "The Meat Cart",
+  "name": "Mr Meat & Co",
   "description": "Sydney's Premier Craft Butcher & Grass-Fed Beef Direct to Door",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]

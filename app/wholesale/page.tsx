@@ -341,7 +341,7 @@ export default function WholesalePage() {
 
           <form onSubmit={handleSubmit} className="space-y-4">
             <input type="hidden" name="access_key" value={FORMS.web3formsKey} />
-            <input type="hidden" name="subject" value="Wholesale Application - The Meat Cart" />
+            <input type="hidden" name="subject" value="Wholesale Application - Mr Meat & Co" />
             <input type="hidden" name="from_name" value={SITE.name} />
             <input type="text" name="botcheck" className="hidden" style={{ display: 'none' }} />
 

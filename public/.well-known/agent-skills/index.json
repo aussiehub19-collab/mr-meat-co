@@ -1,14 +1,14 @@
 {
   "$schema": "https://agentskills.io/schema/v0.2.0/index.json",
-  "name": "The Meat Cart",
-  "url": "https://themeatcart.com.au",
+  "name": "Mr Meat & Co",
+  "url": "https://mrmeatandco.com.au",
   "description": "Sydney's Premier Craft Butcher & Grass-Fed Beef Direct to Door",
   "skills": [
-    { "name": "search-products", "type": "commerce", "description": "Search products by keyword (e.g. beef mince), category, or max price", "url": "https://themeatcart.com.au/api/mcp", "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855" },
-    { "name": "browse-catalog", "type": "navigation", "description": "Browse the full butcher product catalog by category", "url": "https://themeatcart.com.au/shop/", "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855" },
-    { "name": "order-draft", "type": "commerce", "description": "Create a prefilled order draft URL for human WhatsApp or form checkout", "url": "https://themeatcart.com.au/api/mcp", "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855" },
-    { "name": "wholesale-inquiry", "type": "commerce", "description": "Wholesale pricing tiers and bulk restaurant ordering", "url": "https://themeatcart.com.au/wholesale/", "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855" },
-    { "name": "product-education", "type": "content", "description": "Educational butchery blog content and guides on beef mince fat ratios", "url": "https://themeatcart.com.au/blog/", "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855" },
-    { "name": "contact", "type": "support", "description": "Contact Sydney butchers for product questions or cold-chain delivery support", "url": "https://themeatcart.com.au/contact/", "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855" }
+    { "name": "search-products", "type": "commerce", "description": "Search products by keyword (e.g. beef mince), category, or max price", "url": "https://mrmeatandco.com.au/api/mcp", "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855" },
+    { "name": "browse-catalog", "type": "navigation", "description": "Browse the full butcher product catalog by category", "url": "https://mrmeatandco.com.au/shop/", "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855" },
+    { "name": "order-draft", "type": "commerce", "description": "Create a prefilled order draft URL for human WhatsApp or form checkout", "url": "https://mrmeatandco.com.au/api/mcp", "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855" },
+    { "name": "wholesale-inquiry", "type": "commerce", "description": "Wholesale pricing tiers and bulk restaurant ordering", "url": "https://mrmeatandco.com.au/wholesale/", "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855" },
+    { "name": "product-education", "type": "content", "description": "Educational butchery blog content and guides on beef mince fat ratios", "url": "https://mrmeatandco.com.au/blog/", "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855" },
+    { "name": "contact", "type": "support", "description": "Contact Sydney butchers for product questions or cold-chain delivery support", "url": "https://mrmeatandco.com.au/contact/", "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855" }
   ]
 }

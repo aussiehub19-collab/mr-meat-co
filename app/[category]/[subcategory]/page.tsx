@@ -41,7 +41,7 @@ export async function generateMetadata({
       ? `${subcategory} | Seafood Catalogue`
       : isPetFood
       ? `${subcategory} | Pet Food Catalogue`
-      : `${subcategory} — ${category.name} | The Meat Cart Australia`,
+      : `${subcategory} — ${category.name} | Mr Meat & Co Australia`,
     description: isSeafood
       ? `Browse our ${subcategory.toLowerCase()} seafood catalogue. Fresh chilled and frozen storage with market-reference starting prices in AUD.`
       : isPetFood

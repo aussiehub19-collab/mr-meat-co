@@ -96,19 +96,21 @@ export interface FAQItem {
 }
 
 export const SITE = {
-  name: "The Meat Cart",
+  name: "Mr Meat & Co",
+  legalName: "Mr Meat & Co",
+  abn: "71 635 847 908",
   tagline: "Australian Online Meat Shop & Craft Butcher Direct to Door",
-  domain: "themeatcart.com.au",
+  domain: "mrmeatandco.com.au",
   locale: "en-AU",
   currency: "AUD",
   primaryColor: "#B91C1C",
   gscVerification: "pending",
-  indexNowKey: "meatcart-indexnow-key-2026",
+  indexNowKey: "mrmeatandco-indexnow-key-2026",
   cartKey: "tmc-cart-v1",
 };
 
 export const CONTACT = {
-  email: "orders@themeatcart.com.au",
+  email: "orders@mrmeatandco.com.au",
   phone: "+61 2 9000 8888",
   whatsapp: "+61400000000",
   address: "Unit 4, 120 Sydney Butcher Way, Alexandria NSW 2015",
@@ -127,16 +129,16 @@ export const SHOP = {
 export const FORMS = {
   provider: "web3forms",
   web3formsKey: "pending",
-  contactEmail: "orders@themeatcart.com.au",
-  orderEmail: "orders@themeatcart.com.au",
-  wholesaleEmail: "wholesale@themeatcart.com.au",
+  contactEmail: "orders@mrmeatandco.com.au",
+  orderEmail: "orders@mrmeatandco.com.au",
+  wholesaleEmail: "wholesale@mrmeatandco.com.au",
   turnstileSiteKey: "",
 };
 
 export const CHAT = {
   channels: [
     { type: "whatsapp", label: "WhatsApp Direct", value: "+61400000000", url: "https://wa.me/61400000000" },
-    { type: "email", label: "Order Email", value: "orders@themeatcart.com.au", url: "mailto:orders@themeatcart.com.au" },
+    { type: "email", label: "Order Email", value: "orders@mrmeatandco.com.au", url: "mailto:orders@mrmeatandco.com.au" },
     { type: "phone", label: "Sydney Hotline", value: "+61 2 9000 8888", url: "tel:+61290008888" },
   ]
 };
@@ -144,7 +146,7 @@ export const CHAT = {
 export const BRAND = {
   foundingYear: "2018",
   foundingLocation: "Sydney, NSW, Australia",
-  description: "The Meat Cart is a simple, high-quality Australian online meat shop delivering craft butcher meats, pasture-raised beef, free-range poultry, sweet lamb, and family meat boxes directly to your door.",
+  description: "Mr Meat & Co is a simple, high-quality Australian online meat shop delivering craft butcher meats, pasture-raised beef, free-range poultry, sweet lamb, and family meat boxes directly to your door.",
   differentiation: [
     "Strict 12-Category Australian Meat Taxonomy",
     "Whole-Carcass Craft Butchery & Precision Cuts",
@@ -157,9 +159,9 @@ export const BRAND = {
     { year: "2024", event: "Standardized the 12-category Australian meat catalogue taxonomy." },
   ],
   sameAs: [
-    "https://facebook.com/themeatcart.sydney",
-    "https://instagram.com/themeatcart_sydney",
-    "https://linkedin.com/company/themeatcart"
+    "https://facebook.com/mrmeatandco.sydney",
+    "https://instagram.com/mrmeatandco_sydney",
+    "https://linkedin.com/company/mrmeatandco"
   ],
   awards: ["Sydney Fine Food Produce Gold Award 2024", "NSW Australian Meat Industry Council Retailer 2025"],
 };
@@ -430,7 +432,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled", "Vacuum Sealed"],
     null,
     ["Best Sellers", "Steaks", "Fresh Chilled"],
-    "https://images.unsplash.com/photo-1603048588665-791ca8aea617?q=80&w=800&auto=format&fit=crop",
+    "/images/scotch-fillet-steak.webp",
     { featured: true, badge: "Popular Cut" }
   ),
   createProduct(
@@ -450,7 +452,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled", "Vacuum Sealed"],
     null,
     ["Steaks", "Fresh Chilled"],
-    "https://picsum.photos/seed/porterhouse-steak/800/600"
+    "/images/porterhouse-steak.webp"
   ),
   createProduct(
     "PRD-BEEF-003",
@@ -469,7 +471,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled", "Vacuum Sealed"],
     null,
     ["Steaks", "BBQ", "Fresh Chilled"],
-    "https://picsum.photos/seed/rump-steak/800/600",
+    "/images/rump-steak.webp",
     { secondary_subcategories: ["BBQ"] }
   ),
   createProduct(
@@ -489,7 +491,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled", "Vacuum Sealed"],
     null,
     ["Steaks", "Fresh Chilled"],
-    "https://images.unsplash.com/photo-1558030006-450675393462?q=80&w=800&auto=format&fit=crop",
+    "/images/eye-fillet-steak.webp",
     { featured: true, badge: "Tender Cut" }
   ),
   createProduct(
@@ -509,7 +511,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled", "Vacuum Sealed"],
     null,
     ["Steaks", "Slow Cooking", "Fresh Chilled"],
-    "https://picsum.photos/seed/beef-chuck-steak/800/600"
+    "/images/beef-chuck-steak.webp"
   ),
   createProduct(
     "PRD-BEEF-006",
@@ -528,7 +530,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled", "Vacuum Sealed"],
     null,
     ["Steaks", "Fresh Chilled"],
-    "https://picsum.photos/seed/beef-minute-steak/800/600"
+    "/images/beef-minute-steak.webp"
   ),
   createProduct(
     "PRD-BEEF-007",
@@ -547,7 +549,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled"],
     null,
     ["Steaks", "Ready to Cook"],
-    "https://picsum.photos/seed/crumbed-beef-schnitzel/800/600"
+    "/images/crumbed-beef-schnitzel.webp"
   ),
   createProduct(
     "PRD-BEEF-008",
@@ -566,7 +568,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled"],
     null,
     ["Steaks", "Mince & Diced", "Ready to Cook"],
-    "https://picsum.photos/seed/beef-stir-fry-strips/800/600",
+    "/images/beef-stir-fry-strips.webp",
     { secondary_subcategories: ["Mince & Diced", "BBQ"] }
   ),
 
@@ -588,7 +590,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled", "Vacuum Sealed"],
     null,
     ["Roasts", "Fresh Chilled"],
-    "https://picsum.photos/seed/beef-topside-roast/800/600"
+    "/images/beef-topside-roast.webp"
   ),
   createProduct(
     "PRD-BEEF-010",
@@ -607,7 +609,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled", "Vacuum Sealed"],
     null,
     ["Roasts", "Slow Cooking"],
-    "https://picsum.photos/seed/beef-silverside-roast/800/600"
+    "/images/beef-silverside-roast.webp"
   ),
   createProduct(
     "PRD-BEEF-011",
@@ -626,7 +628,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled", "Vacuum Sealed"],
     null,
     ["Roasts", "Fresh Chilled"],
-    "https://picsum.photos/seed/beef-rump-roast/800/600"
+    "/images/beef-rump-roast.webp"
   ),
   createProduct(
     "PRD-BEEF-012",
@@ -645,7 +647,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled", "Vacuum Sealed"],
     null,
     ["Roasts", "Slow Cooking"],
-    "https://picsum.photos/seed/beef-blade-roast/800/600"
+    "/images/beef-blade-roast.webp"
   ),
   createProduct(
     "PRD-BEEF-013",
@@ -664,7 +666,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled", "Vacuum Sealed"],
     null,
     ["Roasts", "Slow Cooking"],
-    "https://picsum.photos/seed/corned-beef-silverside/800/600"
+    "/images/corned-beef-silverside.webp"
   ),
   createProduct(
     "PRD-BEEF-014",
@@ -683,7 +685,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled", "Vacuum Sealed"],
     null,
     ["Roasts", "Fresh Chilled"],
-    "https://picsum.photos/seed/rolled-beef-roast/800/600"
+    "/images/rolled-beef-roast.webp"
   ),
 
   // BEEF — MINCE & DICED
@@ -704,7 +706,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled"],
     null,
     ["Mince & Diced", "Family Meals"],
-    "https://picsum.photos/seed/regular-beef-mince/800/600"
+    "/images/regular-beef-mince.webp"
   ),
   createProduct(
     "PRD-BEEF-016",
@@ -723,7 +725,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled"],
     null,
     ["Mince & Diced", "Fresh Chilled"],
-    "https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?q=80&w=800&auto=format&fit=crop",
+    "/images/premium-beef-mince.webp",
     { featured: true, badge: "Popular Mince" }
   ),
   createProduct(
@@ -743,7 +745,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled"],
     null,
     ["Mince & Diced", "Meal Prep"],
-    "https://picsum.photos/seed/lean-beef-mince/800/600"
+    "/images/lean-beef-mince.webp"
   ),
   createProduct(
     "PRD-BEEF-018",
@@ -762,7 +764,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled"],
     null,
     ["Mince & Diced", "Meal Prep"],
-    "https://picsum.photos/seed/extra-lean-beef-mince/800/600"
+    "/images/extra-lean-beef-mince.webp"
   ),
   createProduct(
     "PRD-BEEF-019",
@@ -781,7 +783,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled", "Vacuum Sealed"],
     null,
     ["Mince & Diced", "Slow Cooking"],
-    "https://picsum.photos/seed/diced-beef/800/600",
+    "/images/diced-beef.webp",
     { secondary_subcategories: ["Slow Cook"] }
   ),
 
@@ -803,7 +805,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled", "Vacuum Sealed"],
     null,
     ["Slow Cooking", "BBQ"],
-    "https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=800&auto=format&fit=crop",
+    "/images/beef-brisket.webp",
     { featured: true, badge: "Slow Cook Cut" }
   ),
   createProduct(
@@ -823,7 +825,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled", "Vacuum Sealed"],
     null,
     ["Slow Cooking"],
-    "https://picsum.photos/seed/beef-chuck-roast/800/600"
+    "/images/beef-chuck-roast.webp"
   ),
   createProduct(
     "PRD-BEEF-022",
@@ -842,7 +844,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled", "Vacuum Sealed"],
     null,
     ["Slow Cooking", "BBQ"],
-    "https://picsum.photos/seed/beef-short-ribs/800/600",
+    "/images/beef-short-ribs.webp",
     { secondary_subcategories: ["BBQ"] }
   ),
   createProduct(
@@ -862,7 +864,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled", "Vacuum Sealed"],
     null,
     ["Slow Cooking", "BBQ"],
-    "https://picsum.photos/seed/beef-ribs/800/600",
+    "/images/beef-ribs.webp",
     { secondary_subcategories: ["BBQ"] }
   ),
   createProduct(
@@ -882,7 +884,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled", "Vacuum Sealed"],
     null,
     ["Slow Cooking"],
-    "https://picsum.photos/seed/beef-shin/800/600"
+    "/images/beef-shin.webp"
   ),
   createProduct(
     "PRD-BEEF-025",
@@ -901,7 +903,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled", "Vacuum Sealed"],
     null,
     ["Slow Cooking"],
-    "https://picsum.photos/seed/beef-osso-buco/800/600"
+    "/images/beef-osso-buco.webp"
   ),
   createProduct(
     "PRD-BEEF-026",
@@ -920,7 +922,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled", "Vacuum Sealed"],
     null,
     ["Slow Cooking"],
-    "https://picsum.photos/seed/beef-cheeks/800/600"
+    "/images/beef-cheeks.webp"
   ),
 
   // BEEF — BBQ
@@ -941,7 +943,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled"],
     null,
     ["BBQ", "Ready to Cook"],
-    "https://picsum.photos/seed/beef-burger-patties/800/600"
+    "/images/beef-burger-patties.webp"
   ),
   createProduct(
     "PRD-BEEF-028",
@@ -960,7 +962,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled"],
     null,
     ["BBQ", "Ready to Cook"],
-    "https://picsum.photos/seed/beef-kebabs/800/600"
+    "/images/beef-kebabs.webp"
   ),
   createProduct(
     "PRD-BEEF-029",
@@ -979,7 +981,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled"],
     null,
     ["BBQ", "Ready to Cook"],
-    "https://picsum.photos/seed/marinated-beef-strips/800/600"
+    "/images/marinated-beef-strips.webp"
   ),
 
   // BEEF — OFFAL
@@ -1000,7 +1002,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled"],
     null,
     ["Offal"],
-    "https://picsum.photos/seed/beef-liver/800/600"
+    "/images/beef-liver.webp"
   ),
   createProduct(
     "PRD-BEEF-031",
@@ -1019,7 +1021,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled"],
     null,
     ["Offal"],
-    "https://picsum.photos/seed/beef-kidney/800/600"
+    "/images/beef-kidney.webp"
   ),
   createProduct(
     "PRD-BEEF-032",
@@ -1038,7 +1040,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled"],
     null,
     ["Offal"],
-    "https://picsum.photos/seed/beef-heart/800/600"
+    "/images/beef-heart.webp"
   ),
   createProduct(
     "PRD-BEEF-033",
@@ -1057,7 +1059,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled"],
     null,
     ["Offal"],
-    "https://picsum.photos/seed/beef-marrow-bones/800/600"
+    "/images/beef-marrow-bones.webp"
   ),
   createProduct(
     "PRD-BEEF-034",
@@ -1076,7 +1078,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled"],
     null,
     ["Offal"],
-    "https://picsum.photos/seed/beef-tongue/800/600"
+    "/images/beef-tongue.webp"
   ),
 
   // 2. CHICKEN (33 PRODUCTS ACROSS 7 SUBCATEGORIES)
@@ -1098,7 +1100,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled"],
     ["None supplied"],
     ["Best Sellers", "Meal Prep", "Fresh Chilled"],
-    "https://images.unsplash.com/photo-1604503468506-a8da13d82791?q=80&w=800&auto=format&fit=crop",
+    "/images/chicken-breast-fillets.webp",
     { featured: true, badge: "Best Seller" }
   ),
   createProduct(
@@ -1118,7 +1120,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled"],
     ["None supplied"],
     ["Meal Prep", "Fresh Chilled"],
-    "https://images.unsplash.com/photo-1604503468506-a8da13d82791?q=80&w=800&auto=format&fit=crop"
+    "/images/skinless-chicken-breast-fillets.webp"
   ),
   createProduct(
     "PRD-CHICKEN-003",
@@ -1137,7 +1139,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled"],
     ["None supplied"],
     ["Fresh Chilled"],
-    "https://images.unsplash.com/photo-1604503468506-a8da13d82791?q=80&w=800&auto=format&fit=crop"
+    "/images/chicken-breast-butterfly.webp"
   ),
   createProduct(
     "PRD-CHICKEN-004",
@@ -1156,7 +1158,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled"],
     ["None supplied"],
     ["Meal Prep", "Fresh Chilled"],
-    "https://picsum.photos/seed/chicken-tenderloins/800/600"
+    "/images/chicken-tenderloins.webp"
   ),
   createProduct(
     "PRD-CHICKEN-005",
@@ -1175,7 +1177,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled"],
     ["None supplied"],
     ["Meal Prep", "Fresh Chilled"],
-    "https://picsum.photos/seed/diced-chicken-breast/800/600"
+    "/images/diced-chicken-breast.webp"
   ),
 
   // --- THIGHS ---
@@ -1196,7 +1198,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled"],
     ["None supplied"],
     ["Best Sellers", "Family Meals", "Fresh Chilled"],
-    "https://images.unsplash.com/photo-1587593810167-a84920ea0781?q=80&w=800&auto=format&fit=crop",
+    "/images/chicken-thigh-fillets.webp",
     { featured: true, badge: "Juicy & Tender" }
   ),
   createProduct(
@@ -1216,7 +1218,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled"],
     ["None supplied"],
     ["Fresh Chilled"],
-    "https://images.unsplash.com/photo-1587593810167-a84920ea0781?q=80&w=800&auto=format&fit=crop"
+    "/images/skinless-chicken-thigh-fillets.webp"
   ),
   createProduct(
     "PRD-CHICKEN-008",
@@ -1235,7 +1237,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled"],
     ["None supplied"],
     ["Budget Friendly", "Family Meals"],
-    "https://picsum.photos/seed/bone-in-thighs/800/600"
+    "/images/bone-in-chicken-thighs.webp"
   ),
   createProduct(
     "PRD-CHICKEN-009",
@@ -1254,7 +1256,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled"],
     ["None supplied"],
     ["Budget Friendly"],
-    "https://picsum.photos/seed/chicken-thigh-cutlets/800/600"
+    "/images/chicken-thigh-cutlets.webp"
   ),
   createProduct(
     "PRD-CHICKEN-010",
@@ -1273,7 +1275,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled"],
     ["None supplied"],
     ["Meal Prep"],
-    "https://picsum.photos/seed/diced-chicken-thigh/800/600"
+    "/images/diced-chicken-thigh.webp"
   ),
 
   // --- DRUMSTICKS ---
@@ -1294,7 +1296,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled"],
     ["None supplied"],
     ["Budget Friendly", "Family Meals"],
-    "https://images.unsplash.com/photo-1527477396000-e27163b481c2?q=80&w=800&auto=format&fit=crop"
+    "/images/chicken-drumsticks.webp"
   ),
   createProduct(
     "PRD-CHICKEN-012",
@@ -1313,7 +1315,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled"],
     ["None supplied"],
     ["Family Meals"],
-    "https://picsum.photos/seed/chicken-maryland/800/600"
+    "/images/chicken-maryland.webp"
   ),
   createProduct(
     "PRD-CHICKEN-013",
@@ -1332,7 +1334,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled"],
     ["None supplied"],
     ["Budget Friendly"],
-    "https://picsum.photos/seed/chicken-leg-quarters/800/600"
+    "/images/chicken-leg-quarters.webp"
   ),
   createProduct(
     "PRD-CHICKEN-014",
@@ -1351,7 +1353,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled"],
     ["None supplied"],
     ["Ready to Cook", "BBQ"],
-    "https://picsum.photos/seed/marinated-drumsticks/800/600"
+    "/images/marinated-chicken-drumsticks.webp"
   ),
 
   // --- WINGS ---
@@ -1372,7 +1374,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled"],
     ["None supplied"],
     ["BBQ", "Budget Friendly"],
-    "https://images.unsplash.com/photo-1567620832903-9fc6debc209f?q=80&w=800&auto=format&fit=crop"
+    "/images/chicken-wings.webp"
   ),
   createProduct(
     "PRD-CHICKEN-016",
@@ -1391,7 +1393,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled"],
     ["None supplied"],
     ["BBQ"],
-    "https://picsum.photos/seed/chicken-wingettes/800/600"
+    "/images/chicken-wingettes.webp"
   ),
   createProduct(
     "PRD-CHICKEN-017",
@@ -1410,7 +1412,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled"],
     ["None supplied"],
     ["BBQ", "Budget Friendly"],
-    "https://picsum.photos/seed/chicken-drumettes/800/600"
+    "/images/chicken-drumettes.webp"
   ),
   createProduct(
     "PRD-CHICKEN-018",
@@ -1429,7 +1431,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled"],
     ["None supplied"],
     ["Ready to Cook", "BBQ"],
-    "https://picsum.photos/seed/marinated-wings/800/600"
+    "/images/marinated-chicken-wings.webp"
   ),
   createProduct(
     "PRD-CHICKEN-019",
@@ -1448,7 +1450,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled"],
     ["None supplied"],
     ["BBQ", "Ready to Cook"],
-    "https://picsum.photos/seed/bbq-chicken-wings/800/600"
+    "/images/bbq-chicken-wings.webp"
   ),
 
   // --- WHOLE BIRDS ---
@@ -1469,7 +1471,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled"],
     ["None supplied"],
     ["Family Meals"],
-    "https://images.unsplash.com/photo-1587593810167-a84920ea0781?q=80&w=800&auto=format&fit=crop"
+    "/images/whole-chicken.webp"
   ),
   createProduct(
     "PRD-CHICKEN-021",
@@ -1488,7 +1490,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled"],
     ["None supplied"],
     ["Family Meals"],
-    "https://picsum.photos/seed/large-whole-chicken/800/600"
+    "/images/large-whole-chicken.webp"
   ),
   createProduct(
     "PRD-CHICKEN-022",
@@ -1507,7 +1509,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled"],
     ["None supplied"],
     ["BBQ"],
-    "https://picsum.photos/seed/spatchcock-chicken/800/600"
+    "/images/spatchcock-chicken.webp"
   ),
   createProduct(
     "PRD-CHICKEN-023",
@@ -1526,7 +1528,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled"],
     ["Free-Range"],
     ["Specials", "Family Meals"],
-    "https://picsum.photos/seed/free-range-whole-chicken/800/600",
+    "/images/free-range-whole-chicken.webp",
     { quality_claims: "Free-Range" }
   ),
 
@@ -1743,7 +1745,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled", "Vacuum Sealed"],
     null,
     ["Best Sellers", "BBQ", "Fresh Chilled"],
-    "https://images.unsplash.com/photo-1602498456745-e9503b30470b?q=80&w=800&auto=format&fit=crop",
+    "/images/lamb-cutlets.webp",
     { featured: true, badge: "Popular Cut", secondary_subcategories: ["BBQ"] }
   ),
   createProduct(
@@ -1763,7 +1765,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled", "Vacuum Sealed"],
     null,
     ["BBQ", "Fresh Chilled"],
-    "https://picsum.photos/seed/lamb-loin-chops/800/600"
+    "/images/lamb-loin-chops.webp"
   ),
   createProduct(
     "PRD-LAMB-003",
@@ -1782,7 +1784,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled", "Vacuum Sealed"],
     null,
     ["BBQ", "Slow Cooking"],
-    "https://picsum.photos/seed/lamb-forequarter-chops/800/600"
+    "/images/lamb-forequarter-chops.webp"
   ),
   createProduct(
     "PRD-LAMB-004",
@@ -1801,7 +1803,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled", "Vacuum Sealed"],
     null,
     ["BBQ", "Family Meals"],
-    "https://picsum.photos/seed/lamb-shoulder-chops/800/600"
+    "/images/lamb-shoulder-chops.webp"
   ),
   createProduct(
     "PRD-LAMB-005",
@@ -1820,7 +1822,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled", "Vacuum Sealed"],
     null,
     ["BBQ", "Fresh Chilled"],
-    "https://picsum.photos/seed/lamb-chump-chops/800/600"
+    "/images/lamb-chump-chops.webp"
   ),
   createProduct(
     "PRD-LAMB-006",
@@ -1839,7 +1841,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled", "Vacuum Sealed"],
     null,
     ["Best Sellers", "Weekend Roast", "Family Meals"],
-    "https://picsum.photos/seed/bone-in-leg-of-lamb/800/600",
+    "/images/bone-in-leg-of-lamb.webp",
     { featured: true, badge: "Sunday Roast" }
   ),
   createProduct(
@@ -1859,7 +1861,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled", "Vacuum Sealed"],
     null,
     ["Weekend Roast", "Family Meals"],
-    "https://picsum.photos/seed/boneless-leg-of-lamb/800/600"
+    "/images/boneless-leg-of-lamb.webp"
   ),
   createProduct(
     "PRD-LAMB-008",
@@ -1878,7 +1880,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled", "Vacuum Sealed"],
     null,
     ["Weekend Roast", "Slow Cooking"],
-    "https://picsum.photos/seed/lamb-shoulder-roast/800/600",
+    "/images/lamb-shoulder-roast.webp",
     { secondary_subcategories: ["Slow Cook"] }
   ),
   createProduct(
@@ -1898,7 +1900,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled", "Vacuum Sealed"],
     null,
     ["Weekend Roast", "Slow Cooking"],
-    "https://picsum.photos/seed/boneless-lamb-shoulder-roast/800/600",
+    "/images/boneless-lamb-shoulder-roast.webp",
     { secondary_subcategories: ["Slow Cook"] }
   ),
   createProduct(
@@ -1918,7 +1920,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled", "Vacuum Sealed"],
     null,
     ["Weekend Roast"],
-    "https://picsum.photos/seed/rolled-lamb-roast/800/600"
+    "/images/rolled-lamb-roast.webp"
   ),
   createProduct(
     "PRD-LAMB-011",
@@ -1937,7 +1939,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled", "Vacuum Sealed"],
     null,
     ["Best Sellers", "Weekend Roast", "Fresh Chilled"],
-    "https://picsum.photos/seed/lamb-rack/800/600",
+    "/images/lamb-rack.webp",
     { featured: true, badge: "Chef's Cut", secondary_subcategories: ["Chops & Cutlets"] }
   ),
   createProduct(
@@ -1957,7 +1959,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled", "Vacuum Sealed"],
     null,
     ["Best Sellers", "Slow Cooking"],
-    "https://picsum.photos/seed/lamb-shanks/800/600",
+    "/images/lamb-shanks.webp",
     { featured: true, badge: "Winter Classic" }
   ),
   createProduct(
@@ -1977,7 +1979,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled", "Vacuum Sealed"],
     null,
     ["Slow Cooking"],
-    "https://picsum.photos/seed/lamb-shoulder-piece/800/600"
+    "/images/lamb-shoulder.webp"
   ),
   createProduct(
     "PRD-LAMB-014",
@@ -1996,7 +1998,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled", "Vacuum Sealed"],
     null,
     ["Slow Cooking", "Meal Prep"],
-    "https://picsum.photos/seed/diced-lamb/800/600",
+    "/images/diced-lamb.webp",
     { secondary_subcategories: ["Mince & Diced"] }
   ),
   createProduct(
@@ -2016,7 +2018,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled", "Vacuum Sealed"],
     null,
     ["Slow Cooking"],
-    "https://picsum.photos/seed/lamb-neck-chops/800/600"
+    "/images/lamb-neck-chops.webp"
   ),
   createProduct(
     "PRD-LAMB-016",
@@ -2035,7 +2037,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled"],
     null,
     ["Slow Cooking", "BBQ"],
-    "https://picsum.photos/seed/lamb-ribs-slow/800/600",
+    "/images/lamb-ribs.webp",
     { secondary_subcategories: ["BBQ"] }
   ),
   createProduct(
@@ -2055,7 +2057,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled"],
     null,
     ["Slow Cooking"],
-    "https://picsum.photos/seed/lamb-breast/800/600"
+    "/images/lamb-breast.webp"
   ),
   createProduct(
     "PRD-LAMB-018",
@@ -2074,7 +2076,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled", "Vacuum Sealed"],
     null,
     ["Family Meals", "Meal Prep"],
-    "https://picsum.photos/seed/lamb-mince-1kg/800/600"
+    "/images/lamb-mince.webp"
   ),
   createProduct(
     "PRD-LAMB-019",
@@ -2093,7 +2095,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled", "Vacuum Sealed"],
     null,
     ["Meal Prep"],
-    "https://picsum.photos/seed/lean-lamb-mince/800/600"
+    "/images/lean-lamb-mince.webp"
   ),
   createProduct(
     "PRD-LAMB-020",
@@ -2112,7 +2114,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled", "Vacuum Sealed"],
     null,
     ["Quick Meals"],
-    "https://picsum.photos/seed/lamb-stir-fry-strips/800/600"
+    "/images/lamb-stir-fry-strips.webp"
   ),
   createProduct(
     "PRD-LAMB-021",
@@ -2131,7 +2133,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled"],
     null,
     ["BBQ", "Quick Meals"],
-    "https://picsum.photos/seed/lamb-burger-patties/800/600",
+    "/images/lamb-burger-patties.webp",
     { secondary_subcategories: ["BBQ"] }
   ),
   createProduct(
@@ -2151,7 +2153,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled", "Vacuum Sealed"],
     null,
     ["BBQ"],
-    "https://picsum.photos/seed/lamb-bbq-chops/800/600",
+    "/images/lamb-bbq-chops.webp",
     { secondary_subcategories: ["Chops & Cutlets"] }
   ),
   createProduct(
@@ -2171,7 +2173,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled"],
     null,
     ["BBQ", "Quick Meals"],
-    "https://picsum.photos/seed/lamb-skewers/800/600"
+    "/images/lamb-skewers.webp"
   ),
   createProduct(
     "PRD-LAMB-024",
@@ -2190,7 +2192,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled"],
     null,
     ["BBQ", "Quick Meals"],
-    "https://picsum.photos/seed/lamb-kofta-skewers/800/600"
+    "/images/lamb-kofta-skewers.webp"
   ),
   createProduct(
     "PRD-LAMB-025",
@@ -2209,7 +2211,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled"],
     null,
     ["BBQ"],
-    "https://picsum.photos/seed/marinated-lamb-chops/800/600",
+    "/images/marinated-lamb-chops.webp",
     { secondary_subcategories: ["Chops & Cutlets"] }
   ),
   createProduct(
@@ -2229,7 +2231,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled"],
     null,
     ["BBQ"],
-    "https://picsum.photos/seed/lamb-ribs-for-bbq/800/600",
+    "/images/lamb-ribs-for-bbq.webp",
     { secondary_subcategories: ["Slow Cook"] }
   ),
 
@@ -2252,7 +2254,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled", "Vacuum Sealed"],
     null,
     ["Best Sellers", "Weekend Roast", "Fresh Chilled"],
-    "https://picsum.photos/seed/pork-loin-roast/800/600",
+    "/images/pork-loin-roast.webp",
     { featured: true, badge: "Crispy Crackling" }
   ),
   createProduct(
@@ -2272,7 +2274,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled", "Vacuum Sealed"],
     null,
     ["Weekend Roast", "Slow Cooking", "Family Meals"],
-    "https://picsum.photos/seed/pork-shoulder-roast/800/600",
+    "/images/pork-shoulder-roast.webp",
     { secondary_subcategories: ["Slow Cook"] }
   ),
   createProduct(
@@ -2292,7 +2294,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled", "Vacuum Sealed"],
     null,
     ["Weekend Roast", "Family Meals"],
-    "https://picsum.photos/seed/rolled-pork-roast/800/600"
+    "/images/rolled-pork-roast.webp"
   ),
   createProduct(
     "PRD-PORK-004",
@@ -2311,7 +2313,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled", "Vacuum Sealed"],
     null,
     ["Weekend Roast", "Family Meals", "Budget Friendly"],
-    "https://picsum.photos/seed/pork-leg-roast/800/600"
+    "/images/pork-leg-roast.webp"
   ),
   createProduct(
     "PRD-PORK-005",
@@ -2330,7 +2332,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled", "Vacuum Sealed"],
     null,
     ["Slow Cooking", "Budget Friendly"],
-    "https://picsum.photos/seed/pork-hock/800/600",
+    "/images/pork-hock.webp",
     { secondary_subcategories: ["Slow Cook"] }
   ),
 
@@ -2352,7 +2354,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled", "Vacuum Sealed"],
     null,
     ["Best Sellers", "BBQ", "Weekend Roast"],
-    "https://picsum.photos/seed/pork-belly/800/600",
+    "/images/pork-belly.webp",
     { featured: true, badge: "Popular Cut" }
   ),
   createProduct(
@@ -2372,7 +2374,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled", "Vacuum Sealed"],
     null,
     ["BBQ", "Fresh Chilled"],
-    "https://picsum.photos/seed/pork-belly-slices/800/600"
+    "/images/pork-belly-slices.webp"
   ),
   createProduct(
     "PRD-PORK-008",
@@ -2391,7 +2393,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled", "Vacuum Sealed"],
     null,
     ["Best Sellers", "BBQ", "Slow Cooking"],
-    "https://picsum.photos/seed/pork-spare-ribs/800/600"
+    "/images/pork-spare-ribs.webp"
   ),
   createProduct(
     "PRD-PORK-009",
@@ -2410,7 +2412,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled", "Vacuum Sealed"],
     null,
     ["BBQ", "Slow Cooking"],
-    "https://picsum.photos/seed/american-style-pork-ribs/800/600"
+    "/images/american-style-pork-ribs.webp"
   ),
   createProduct(
     "PRD-PORK-010",
@@ -2429,7 +2431,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled"],
     null,
     ["BBQ", "Fresh Chilled"],
-    "https://picsum.photos/seed/pork-rashers/800/600"
+    "/images/pork-rashers.webp"
   ),
 
   // PORK — CHOPS & STEAKS
@@ -2450,7 +2452,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled", "Vacuum Sealed"],
     null,
     ["Best Sellers", "BBQ", "Family Meals"],
-    "https://picsum.photos/seed/pork-cutlets/800/600",
+    "/images/pork-cutlets.webp",
     { featured: true, badge: "Butcher's Cut" }
   ),
   createProduct(
@@ -2470,7 +2472,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled", "Vacuum Sealed"],
     null,
     ["Family Meals", "Meal Prep"],
-    "https://picsum.photos/seed/pork-loin-steaks/800/600"
+    "/images/pork-loin-steaks.webp"
   ),
   createProduct(
     "PRD-PORK-013",
@@ -2489,7 +2491,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled", "Vacuum Sealed"],
     null,
     ["Best Sellers", "BBQ", "Fresh Chilled"],
-    "https://picsum.photos/seed/pork-scotch-fillet/800/600"
+    "/images/pork-scotch-fillet.webp"
   ),
   createProduct(
     "PRD-PORK-014",
@@ -2508,7 +2510,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled", "Vacuum Sealed"],
     null,
     ["BBQ", "Family Meals"],
-    "https://picsum.photos/seed/pork-neck-steaks/800/600"
+    "/images/pork-neck-steaks.webp"
   ),
   createProduct(
     "PRD-PORK-015",
@@ -2527,7 +2529,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled"],
     null,
     ["Family Meals", "Quick Meals"],
-    "https://picsum.photos/seed/pork-schnitzel/800/600"
+    "/images/pork-schnitzel.webp"
   ),
 
   // PORK — MINCE
@@ -2548,7 +2550,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled", "Vacuum Sealed"],
     null,
     ["Best Sellers", "Budget Friendly", "Family Meals", "Meal Prep"],
-    "https://picsum.photos/seed/pork-mince-1kg/800/600"
+    "/images/pork-mince.webp"
   ),
   createProduct(
     "PRD-PORK-017",
@@ -2567,7 +2569,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled", "Vacuum Sealed"],
     null,
     ["Meal Prep", "Budget Friendly"],
-    "https://picsum.photos/seed/lean-pork-mince/800/600"
+    "/images/lean-pork-mince.webp"
   ),
   createProduct(
     "PRD-PORK-018",
@@ -2586,7 +2588,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled", "Vacuum Sealed"],
     null,
     ["Fresh Chilled", "Meal Prep"],
-    "https://picsum.photos/seed/premium-pork-mince/800/600"
+    "/images/premium-pork-mince.webp"
   ),
   createProduct(
     "PRD-PORK-019",
@@ -2605,7 +2607,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled", "Vacuum Sealed"],
     null,
     ["Slow Cooking", "Meal Prep"],
-    "https://picsum.photos/seed/diced-pork/800/600",
+    "/images/diced-pork.webp",
     { secondary_subcategories: ["Slow Cook"] }
   ),
 
@@ -2627,7 +2629,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled", "Sliced"],
     null,
     ["Deli & Cured > Bacon", "Best Sellers", "Breakfast", "Deli Favourites"],
-    "https://picsum.photos/seed/streaky-bacon/800/600",
+    "/images/streaky-bacon.webp",
     { primary_product_category: "Pork", secondary_subcategories: ["Bacon"] }
   ),
   createProduct(
@@ -2647,7 +2649,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled", "Sliced"],
     null,
     ["Deli & Cured > Bacon", "Breakfast", "Deli Favourites"],
-    "https://picsum.photos/seed/middle-bacon/800/600",
+    "/images/middle-bacon.webp",
     { featured: true, badge: "Breakfast Classic", primary_product_category: "Pork", secondary_subcategories: ["Bacon"] }
   ),
   createProduct(
@@ -2667,7 +2669,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled", "Sliced"],
     null,
     ["Deli & Cured > Bacon", "Breakfast", "Fresh Chilled"],
-    "https://picsum.photos/seed/short-cut-bacon/800/600",
+    "/images/rindless-short-cut-bacon.webp",
     { primary_product_category: "Pork", secondary_subcategories: ["Bacon"] }
   ),
   createProduct(
@@ -2687,7 +2689,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled", "Sliced", "Cooked"],
     null,
     ["Deli & Cured > Ham", "Best Sellers", "Deli Favourites"],
-    "https://picsum.photos/seed/leg-ham/800/600",
+    "/images/leg-ham-off-the-bone.webp",
     { primary_product_category: "Pork", secondary_subcategories: ["Ham"] }
   ),
   createProduct(
@@ -2707,7 +2709,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled", "Cooked"],
     null,
     ["Deli & Cured > Ham", "Deli Favourites"],
-    "https://picsum.photos/seed/ham-steaks/800/600",
+    "/images/ham-steaks.webp",
     { primary_product_category: "Pork", secondary_subcategories: ["Ham"] }
   ),
 
@@ -2730,7 +2732,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled"],
     null,
     ["Best Sellers", "BBQ", "Family Meals"],
-    "https://picsum.photos/seed/thick-beef-sausages/800/600",
+    "/images/thick-beef-sausages.webp",
     { featured: true, badge: "Family Favorite" }
   ),
   createProduct(
@@ -2750,7 +2752,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled"],
     null,
     ["BBQ", "Family Meals"],
-    "https://picsum.photos/seed/thin-beef-sausages/800/600"
+    "/images/thin-beef-sausages.webp"
   ),
   createProduct(
     "PRD-SAUSAGE-003",
@@ -2769,7 +2771,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled"],
     null,
     ["Breakfast", "Family Meals"],
-    "https://picsum.photos/seed/beef-chipolatas/800/600"
+    "/images/beef-chipolatas.webp"
   ),
   createProduct(
     "PRD-SAUSAGE-004",
@@ -2788,7 +2790,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled"],
     null,
     ["BBQ", "Breakfast", "Budget Friendly"],
-    "https://picsum.photos/seed/beef-sausage-patties/800/600"
+    "/images/beef-sausage-patties.webp"
   ),
 
   // SAUSAGES — PORK
@@ -2809,7 +2811,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled"],
     null,
     ["Best Sellers", "BBQ", "Family Meals"],
-    "https://picsum.photos/seed/pork-sausages-1kg/800/600"
+    "/images/pork-sausages.webp"
   ),
   createProduct(
     "PRD-SAUSAGE-006",
@@ -2828,7 +2830,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled"],
     null,
     ["Breakfast", "Family Meals"],
-    "https://picsum.photos/seed/pork-chipolatas/800/600"
+    "/images/pork-chipolatas.webp"
   ),
   createProduct(
     "PRD-SAUSAGE-007",
@@ -2847,7 +2849,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled"],
     null,
     ["Gourmet", "Specials"],
-    "https://picsum.photos/seed/pork-sage-sausages/800/600",
+    "/images/pork-sage-sausages.webp",
     { secondary_subcategories: ["Gourmet Flavours"] }
   ),
   createProduct(
@@ -2867,7 +2869,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled"],
     null,
     ["Best Sellers", "Gourmet", "BBQ"],
-    "https://picsum.photos/seed/italian-pork-sausages/800/600",
+    "/images/italian-pork-sausages.webp",
     { secondary_subcategories: ["Gourmet Flavours"], featured: true, badge: "Authentic Recipe" }
   ),
 
@@ -2889,7 +2891,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled"],
     null,
     ["Family Meals", "BBQ"],
-    "https://picsum.photos/seed/chicken-sausages-1kg/800/600"
+    "/images/chicken-sausages.webp"
   ),
   createProduct(
     "PRD-SAUSAGE-010",
@@ -2908,7 +2910,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled"],
     null,
     ["Breakfast", "Family Meals"],
-    "https://picsum.photos/seed/chicken-chipolatas/800/600"
+    "/images/chicken-chipolatas.webp"
   ),
   createProduct(
     "PRD-SAUSAGE-011",
@@ -2927,7 +2929,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled"],
     null,
     ["Gourmet", "Specials"],
-    "https://picsum.photos/seed/chicken-lemon-tarragon/800/600",
+    "/images/chicken-lemon-tarragon-sausages.webp",
     { secondary_subcategories: ["Gourmet Flavours"] }
   ),
   createProduct(
@@ -2947,7 +2949,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled"],
     null,
     ["Family Meals", "BBQ"],
-    "https://picsum.photos/seed/chicken-herb-sausages/800/600"
+    "/images/chicken-herb-sausages.webp"
   ),
 
   // SAUSAGES — LAMB
@@ -2968,7 +2970,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled"],
     null,
     ["Best Sellers", "BBQ"],
-    "https://picsum.photos/seed/lamb-sausages-1kg/800/600"
+    "/images/lamb-sausages.webp"
   ),
   createProduct(
     "PRD-SAUSAGE-014",
@@ -2987,7 +2989,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled"],
     null,
     ["Breakfast", "Gourmet"],
-    "https://picsum.photos/seed/lamb-chipolatas/800/600"
+    "/images/lamb-chipolatas.webp"
   ),
   createProduct(
     "PRD-SAUSAGE-015",
@@ -3006,7 +3008,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled"],
     null,
     ["Best Sellers", "Gourmet", "BBQ"],
-    "https://picsum.photos/seed/lamb-rosemary-sausages/800/600"
+    "/images/lamb-rosemary-sausages.webp"
   ),
 
   // SAUSAGES — GOURMET FLAVOURS
@@ -3027,7 +3029,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled"],
     null,
     ["Gourmet", "BBQ", "Specials"],
-    "https://picsum.photos/seed/beef-pepper-worcestershire/800/600",
+    "/images/beef-pepper-worcestershire-sausages.webp",
     { secondary_subcategories: ["Beef"] }
   ),
   createProduct(
@@ -3047,7 +3049,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled"],
     null,
     ["Gourmet", "BBQ"],
-    "https://picsum.photos/seed/merguez-sausages/800/600",
+    "/images/beef-lamb-merguez-sausages.webp",
     { secondary_subcategories: ["Beef", "Lamb"] }
   ),
   createProduct(
@@ -3067,7 +3069,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled"],
     null,
     ["Breakfast", "Family Meals"],
-    "https://picsum.photos/seed/breakfast-sausages-500g/800/600",
+    "/images/breakfast-sausages.webp",
     { secondary_subcategories: ["Pork"] }
   ),
 
@@ -3090,7 +3092,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled", "Vacuum Sealed"],
     null,
     ["BBQ", "Best Sellers"],
-    "https://picsum.photos/seed/bbq-rump-steak-pack/800/600",
+    "/images/bbq-rump-steak-pack.webp",
     { primary_product_category: "Beef" }
   ),
   createProduct(
@@ -3110,7 +3112,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled", "Vacuum Sealed"],
     null,
     ["BBQ", "Steak Packs"],
-    "https://picsum.photos/seed/bbq-porterhouse-steak-pack/800/600",
+    "/images/bbq-porterhouse-steak-pack.webp",
     { primary_product_category: "Beef" }
   ),
   createProduct(
@@ -3130,7 +3132,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled", "Vacuum Sealed"],
     null,
     ["BBQ", "Steak Packs", "Best Sellers"],
-    "https://picsum.photos/seed/bbq-scotch-fillet-steak-pack/800/600",
+    "/images/bbq-scotch-fillet-steak-pack.webp",
     { primary_product_category: "Beef" }
   ),
   createProduct(
@@ -3150,7 +3152,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled", "Vacuum Sealed"],
     null,
     ["BBQ", "Steak Packs", "Family Meals"],
-    "https://picsum.photos/seed/mixed-bbq-steak-pack/800/600",
+    "/images/mixed-bbq-steak-pack.webp",
     { primary_product_category: "Beef" }
   ),
   createProduct(
@@ -3170,7 +3172,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled", "Vacuum Sealed"],
     null,
     ["BBQ", "Steak Packs", "Family Meals"],
-    "https://picsum.photos/seed/family-bbq-steak-pack/800/600",
+    "/images/family-bbq-steak-pack.webp",
     { primary_product_category: "Beef" }
   ),
 
@@ -3192,7 +3194,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled"],
     null,
     ["BBQ", "Sausage Packs", "Best Sellers"],
-    "https://picsum.photos/seed/bbq-beef-sausage-pack/800/600",
+    "/images/bbq-beef-sausage-pack.webp",
     { primary_product_category: "Sausages" }
   ),
   createProduct(
@@ -3212,7 +3214,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled"],
     null,
     ["BBQ", "Sausage Packs"],
-    "https://picsum.photos/seed/bbq-thin-sausage-pack/800/600",
+    "/images/bbq-thin-sausage-pack.webp",
     { primary_product_category: "Sausages" }
   ),
   createProduct(
@@ -3232,7 +3234,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled"],
     null,
     ["BBQ", "Sausage Packs"],
-    "https://picsum.photos/seed/gourmet-sausage-pack/800/600",
+    "/images/gourmet-sausage-pack.webp",
     { primary_product_category: "Sausages" }
   ),
   createProduct(
@@ -3252,7 +3254,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled"],
     null,
     ["BBQ", "Sausage Packs"],
-    "https://picsum.photos/seed/mixed-sausage-pack/800/600",
+    "/images/mixed-sausage-pack.webp",
     { primary_product_category: "Sausages" }
   ),
   createProduct(
@@ -3272,7 +3274,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled"],
     null,
     ["BBQ", "Sausage Packs"],
-    "https://picsum.photos/seed/breakfast-sausage-pack/800/600",
+    "/images/breakfast-sausage-pack.webp",
     { primary_product_category: "Sausages" }
   ),
 
@@ -3294,7 +3296,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled"],
     null,
     ["BBQ", "Ribs"],
-    "https://picsum.photos/seed/beef-ribs-for-bbq/800/600",
+    "/images/beef-ribs-for-bbq.webp",
     { primary_product_category: "Beef" }
   ),
   createProduct(
@@ -3314,7 +3316,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled"],
     null,
     ["BBQ", "Ribs"],
-    "https://picsum.photos/seed/beef-short-ribs-for-bbq/800/600",
+    "/images/beef-short-ribs-for-bbq.webp",
     { primary_product_category: "Beef" }
   ),
   createProduct(
@@ -3334,7 +3336,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled"],
     null,
     ["BBQ", "Ribs"],
-    "https://picsum.photos/seed/pork-spare-ribs/800/600",
+    "/images/pork-spare-ribs.webp",
     { primary_product_category: "Pork" }
   ),
   createProduct(
@@ -3354,7 +3356,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled"],
     null,
     ["BBQ", "Ribs", "Best Sellers"],
-    "https://picsum.photos/seed/bbq-pork-ribs/800/600",
+    "/images/bbq-pork-ribs.webp",
     { primary_product_category: "Pork" }
   ),
   createProduct(
@@ -3374,7 +3376,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled"],
     null,
     ["BBQ", "Ribs"],
-    "https://picsum.photos/seed/lamb-ribs-for-bbq/800/600",
+    "/images/lamb-ribs-for-bbq.webp",
     { primary_product_category: "Lamb" }
   ),
 
@@ -3396,7 +3398,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled"],
     null,
     ["BBQ", "Skewers"],
-    "https://picsum.photos/seed/marinated-chicken-skewers/800/600",
+    "/images/marinated-chicken-skewers.webp",
     { primary_product_category: "Chicken" }
   ),
   createProduct(
@@ -3416,7 +3418,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled"],
     null,
     ["BBQ", "Skewers"],
-    "https://picsum.photos/seed/chicken-breast-kebabs/800/600",
+    "/images/chicken-breast-kebabs.webp",
     { primary_product_category: "Chicken" }
   ),
   createProduct(
@@ -3436,7 +3438,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled"],
     null,
     ["BBQ", "Skewers"],
-    "https://picsum.photos/seed/beef-kebabs/800/600",
+    "/images/beef-kebabs.webp",
     { primary_product_category: "Beef" }
   ),
   createProduct(
@@ -3456,7 +3458,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled"],
     null,
     ["BBQ", "Skewers"],
-    "https://picsum.photos/seed/beef-vegetable-kebabs/800/600",
+    "/images/beef-vegetable-kebabs.webp",
     { primary_product_category: "Beef" }
   ),
   createProduct(
@@ -3476,7 +3478,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled"],
     null,
     ["BBQ", "Skewers"],
-    "https://picsum.photos/seed/lamb-skewers/800/600",
+    "/images/lamb-skewers.webp",
     { primary_product_category: "Lamb" }
   ),
   createProduct(
@@ -3496,7 +3498,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled"],
     null,
     ["BBQ", "Skewers"],
-    "https://picsum.photos/seed/lamb-kofta-skewers/800/600",
+    "/images/lamb-kofta-skewers.webp",
     { primary_product_category: "Lamb" }
   ),
   createProduct(
@@ -3516,7 +3518,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled"],
     null,
     ["BBQ", "Skewers", "Family Meals"],
-    "https://picsum.photos/seed/mixed-bbq-skewer-pack/800/600",
+    "/images/mixed-bbq-skewer-pack.webp",
     { primary_product_category: "Mixed Meat" }
   ),
 
@@ -3538,7 +3540,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled"],
     null,
     ["BBQ", "Burgers", "Best Sellers"],
-    "https://picsum.photos/seed/beef-burger-patties/800/600",
+    "/images/beef-burger-patties.webp",
     { primary_product_category: "Beef" }
   ),
   createProduct(
@@ -3558,7 +3560,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled"],
     null,
     ["BBQ", "Burgers"],
-    "https://picsum.photos/seed/premium-beef-burger-patties/800/600",
+    "/images/premium-beef-burger-patties.webp",
     { primary_product_category: "Beef" }
   ),
   createProduct(
@@ -3578,7 +3580,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled"],
     null,
     ["BBQ", "Burgers"],
-    "https://picsum.photos/seed/chicken-burger-patties/800/600",
+    "/images/chicken-burger-patties.webp",
     { primary_product_category: "Chicken" }
   ),
   createProduct(
@@ -3598,7 +3600,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled"],
     null,
     ["BBQ", "Burgers"],
-    "https://picsum.photos/seed/lamb-burger-patties/800/600",
+    "/images/lamb-burger-patties.webp",
     { primary_product_category: "Lamb" }
   ),
   createProduct(
@@ -3618,7 +3620,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled"],
     null,
     ["BBQ", "Burgers", "Family Meals"],
-    "https://picsum.photos/seed/beef-chicken-burger-box/800/600",
+    "/images/beef-chicken-burger-box.webp",
     { primary_product_category: "Mixed Meat" }
   ),
 
@@ -3641,7 +3643,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled", "Vacuum Sealed"],
     ["Australian"],
     ["Best Sellers", "Family Meals", "Budget Friendly"],
-    "https://images.unsplash.com/photo-1588168333986-5078d3ae3976?q=80&w=800&auto=format&fit=crop",
+    "/images/family-meat-box.webp",
     {
       featured: true,
       badge: "Best Seller",
@@ -3673,7 +3675,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled", "Vacuum Sealed"],
     ["Australian"],
     ["Family Meals"],
-    "https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=800&auto=format&fit=crop",
+    "/images/weekly-family-meat-box.webp",
     {
       badge: "Weekly Value",
       approximate_total_weight: "7kg",
@@ -3706,7 +3708,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled", "Vacuum Sealed"],
     ["Australian"],
     ["Family Meals", "Budget Friendly"],
-    "https://images.unsplash.com/photo-1603048588665-791ca8aea617?q=80&w=800&auto=format&fit=crop",
+    "/images/large-family-meat-box.webp",
     {
       badge: "Bulk Saver",
       approximate_total_weight: "10kg",
@@ -3742,7 +3744,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled", "Vacuum Sealed"],
     ["Australian"],
     ["Budget Friendly", "Family Meals"],
-    "https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?q=80&w=800&auto=format&fit=crop",
+    "/images/value-meat-box.webp",
     {
       badge: "Great Value",
       approximate_total_weight: "5kg",
@@ -3773,7 +3775,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled", "Vacuum Sealed"],
     ["Australian"],
     ["Budget Friendly", "Family Meals"],
-    "https://images.unsplash.com/photo-1604503468506-a8da13d82791?q=80&w=800&auto=format&fit=crop",
+    "/images/freezer-filler-meat-box.webp",
     {
       badge: "Freezer Pack",
       approximate_total_weight: "10kg",
@@ -3807,7 +3809,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled", "Vacuum Sealed"],
     ["Australian"],
     ["Budget Friendly"],
-    "https://images.unsplash.com/photo-1529193591184-b1d58069ecdd?q=80&w=800&auto=format&fit=crop",
+    "/images/budget-meat-box.webp",
     {
       badge: "Budget Choice",
       approximate_total_weight: "7kg",
@@ -3842,7 +3844,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled", "Vacuum Sealed"],
     ["Australian"],
     ["BBQ"],
-    "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?q=80&w=800&auto=format&fit=crop",
+    "/images/bbq-meat-box.webp",
     {
       badge: "Grill Ready",
       approximate_total_weight: "5kg",
@@ -3873,7 +3875,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled", "Vacuum Sealed"],
     ["Australian"],
     ["BBQ", "Family Meals"],
-    "https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=800&auto=format&fit=crop",
+    "/images/family-bbq-meat-box.webp",
     {
       approximate_total_weight: "7kg",
       box_contents: [
@@ -3905,7 +3907,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled", "Vacuum Sealed"],
     ["Australian"],
     ["BBQ", "Specials"],
-    "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?q=80&w=800&auto=format&fit=crop",
+    "/images/entertainer-bbq-meat-box.webp",
     {
       badge: "Ultimate BBQ",
       approximate_total_weight: "10kg",
@@ -3941,7 +3943,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled", "Vacuum Sealed"],
     ["Australian"],
     ["Premium", "Best Sellers"],
-    "https://images.unsplash.com/photo-1603048588665-791ca8aea617?q=80&w=800&auto=format&fit=crop",
+    "/images/steak-lover-meat-box.webp",
     {
       badge: "Steak Lover",
       approximate_total_weight: "3kg",
@@ -3970,7 +3972,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled", "Vacuum Sealed"],
     ["Australian"],
     ["Premium"],
-    "https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=800&auto=format&fit=crop",
+    "/images/premium-steak-box.webp",
     {
       badge: "Premium Choice",
       approximate_total_weight: "4kg",
@@ -4000,7 +4002,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled", "Vacuum Sealed"],
     ["Australian"],
     ["Premium", "Specials"],
-    "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?q=80&w=800&auto=format&fit=crop",
+    "/images/ultimate-steak-box.webp",
     {
       featured: true,
       badge: "Ultimate Luxury",
@@ -4034,7 +4036,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled", "Vacuum Sealed"],
     ["Australian"],
     ["Meal Prep"],
-    "https://images.unsplash.com/photo-1604503468506-a8da13d82791?q=80&w=800&auto=format&fit=crop",
+    "/images/lean-protein-meat-box.webp",
     {
       badge: "Lean & Healthy",
       approximate_total_weight: "5kg",
@@ -4064,7 +4066,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled", "Vacuum Sealed"],
     ["Australian"],
     ["Meal Prep"],
-    "https://images.unsplash.com/photo-1588168333986-5078d3ae3976?q=80&w=800&auto=format&fit=crop",
+    "/images/meal-prep-meat-box.webp",
     {
       badge: "Batch Cooker",
       approximate_total_weight: "7kg",
@@ -4097,7 +4099,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled", "Vacuum Sealed"],
     ["Australian"],
     ["Meal Prep"],
-    "https://images.unsplash.com/photo-1604503468506-a8da13d82791?q=80&w=800&auto=format&fit=crop",
+    "/images/chicken-protein-box.webp",
     {
       approximate_total_weight: "5kg",
       box_contents: [
@@ -4397,7 +4399,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled", "Marinated", "Ready to Cook"],
     ["Australian"],
     ["BBQ", "Family Meals"],
-    "https://picsum.photos/seed/beef-kebabs/800/600",
+    "/images/beef-kebabs.webp",
     {
       ingredients: "Australian Diced Beef (75%), Fresh Red Capsicum, Fresh Red Onion, BBQ Marinade (Water, Sugar, Tomato Paste, Vinegar, Molasses, Spices, Salt, Garlic).",
       allergens: "Gluten-Free. May contain traces of Soy, Mustard."
@@ -4635,7 +4637,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled", "Ready to Cook", "Sliced"],
     ["Australian"],
     ["Meal Prep", "Family Meals"],
-    "https://picsum.photos/seed/beef-stirfry/800/600",
+    "/images/stir-fry-strips.webp",
     {
       ingredients: "100% Australian Beef Rump / Topside Strips.",
       allergens: "No added allergens. Gluten-Free."
@@ -8561,7 +8563,7 @@ export const POSTS: Post[] = [
     date: "2026-01-10",
     readTime: "4 min read",
     image: "https://picsum.photos/seed/blog-delivery/800/600",
-    content: `Ordering fresh butcher meat online requires absolute trust in cold-chain logistics. At The Meat Cart, we engineered an eco-friendly insulated packaging solution designed for Australian weather.`
+    content: `Ordering fresh butcher meat online requires absolute trust in cold-chain logistics. At Mr Meat & Co, we engineered an eco-friendly insulated packaging solution designed for Australian weather.`
   }
 ];
 

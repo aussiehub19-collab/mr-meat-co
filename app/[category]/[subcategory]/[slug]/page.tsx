@@ -41,7 +41,7 @@ export async function generateMetadata({
     : `https://${SITE.domain}/shop/${product.category}/${product.slug}/`;
 
   return {
-    title: product.SEO_title || product.seo_title || `${product.product_name || product.name} | The Meat Cart Australia`,
+    title: product.SEO_title || product.seo_title || `${product.product_name || product.name} | Mr Meat & Co Australia`,
     description: (product.SEO_meta_description || product.seo_meta_description || product.full_description || product.description).slice(0, 155),
     alternates: {
       canonical: canonicalUrl,
@@ -466,7 +466,7 @@ export default async function TopLevelProductDetailPage({
             <span>Special pack size or custom request?</span>
             <a
               href={`https://wa.me/${CONTACT.whatsapp.replace(/[^\d]/g, '')}?text=${encodeURIComponent(
-                `Hi The Meat Cart, I have a question about ${product.product_name || product.name}`
+                `Hi Mr Meat & Co, I have a question about ${product.product_name || product.name}`
               )}`}
               target="_blank"
               rel="noopener noreferrer"

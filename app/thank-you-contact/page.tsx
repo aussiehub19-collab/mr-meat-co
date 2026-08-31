@@ -23,7 +23,7 @@ export default function ThankYouContactPage() {
           Message Received!
         </h1>
         <p className="text-sm text-gray-600 max-w-md mx-auto leading-relaxed">
-          Thank you for contacting The Meat Cart Sydney. Our master butcher team will review your inquiry and reply within 1 business hour.
+          Thank you for contacting Mr Meat & Co Sydney. Our master butcher team will review your inquiry and reply within 1 business hour.
         </p>
       </div>
 

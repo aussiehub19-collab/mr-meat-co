@@ -1,6 +1,6 @@
 # Auth.md
 
-## Site: The Meat Cart — Sydney Craft Butcher
+## Site: Mr Meat & Co — Sydney Craft Butcher
 
 ## Agent Registration
 No authentication required. All product catalog and butcher resources are publicly accessible.
@@ -8,11 +8,11 @@ No authentication required. All product catalog and butcher resources are public
 ## Public Resources
 | Resource | URL |
 |---|---|
-| Product Catalog | https://themeatcart.com.au/shop/ |
-| Wholesale Inquiries | https://themeatcart.com.au/wholesale/ |
-| Butchery Blog | https://themeatcart.com.au/blog/ |
-| FAQ | https://themeatcart.com.au/faq/ |
-| MCP Streamable HTTP Endpoint | https://themeatcart.com.au/api/mcp |
+| Product Catalog | https://mrmeatandco.com.au/shop/ |
+| Wholesale Inquiries | https://mrmeatandco.com.au/wholesale/ |
+| Butchery Blog | https://mrmeatandco.com.au/blog/ |
+| FAQ | https://mrmeatandco.com.au/faq/ |
+| MCP Streamable HTTP Endpoint | https://mrmeatandco.com.au/api/mcp |
 
 ## Authentication
 

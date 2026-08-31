@@ -3,6 +3,7 @@ import './globals.css';
 import { SITE } from '@/config/site';
 import { CartProvider } from '@/lib/cart';
 import { Nav } from '@/components/Nav';
+import { AbnBar } from '@/components/AbnBar';
 import { Footer } from '@/components/Footer';
 import { CartDrawer } from '@/components/CartDrawer';
 import { ChatHub } from '@/components/ChatHub';
@@ -54,6 +55,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className="min-h-screen flex flex-col bg-[#0D0D0D] text-[#F3F3F3] antialiased selection:bg-red-800 selection:text-white" suppressHydrationWarning>
         <CartProvider>
           <Nav />
+          <AbnBar />
           <main id="main" className="flex-1">
             {children}
           </main>

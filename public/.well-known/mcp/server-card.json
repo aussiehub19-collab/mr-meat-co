@@ -1,15 +1,15 @@
 {
   "$schema": "https://modelcontextprotocol.io/schemas/server-card/v1.json",
   "serverInfo": {
-    "name": "The Meat Cart",
+    "name": "Mr Meat & Co",
     "version": "1.0.0",
     "description": "Sydney's Premier Craft Butcher & Grass-Fed Beef Direct to Door",
-    "homepage": "https://themeatcart.com.au",
-    "contact": { "email": "orders@themeatcart.com.au", "whatsapp": "+61400000000" }
+    "homepage": "https://mrmeatandco.com.au",
+    "contact": { "email": "orders@mrmeatandco.com.au", "whatsapp": "+61400000000" }
   },
   "transport": {
     "type": "streamable-http",
-    "endpoint": "https://themeatcart.com.au/api/mcp"
+    "endpoint": "https://mrmeatandco.com.au/api/mcp"
   },
   "capabilities": {
     "tools": [
@@ -57,9 +57,9 @@
       }
     ],
     "resources": [
-      { "name": "product-catalog", "description": "Full butcher product catalog", "uri": "https://themeatcart.com.au/shop/" },
-      { "name": "wholesale", "description": "Restaurant & bulk wholesale pricing", "uri": "https://themeatcart.com.au/wholesale/" },
-      { "name": "blog", "description": "Butchery education and guides", "uri": "https://themeatcart.com.au/blog/" }
+      { "name": "product-catalog", "description": "Full butcher product catalog", "uri": "https://mrmeatandco.com.au/shop/" },
+      { "name": "wholesale", "description": "Restaurant & bulk wholesale pricing", "uri": "https://mrmeatandco.com.au/wholesale/" },
+      { "name": "blog", "description": "Butchery education and guides", "uri": "https://mrmeatandco.com.au/blog/" }
     ],
     "commerce": {
       "ordering": "human-assisted-whatsapp-or-form",
@@ -70,6 +70,8 @@
     }
   },
   "legal": {
+    "businessName": "Mr Meat & Co",
+    "abn": "71 635 847 908",
     "ageRestriction": "none",
     "productType": "Fresh Grass-Fed Australian Meat & Poultry",
     "compliance": "100% Australian Grass-Fed & Hormone-Free Beef"

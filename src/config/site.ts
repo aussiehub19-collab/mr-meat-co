@@ -926,45 +926,7 @@ export const PRODUCTS: Product[] = [
   ),
 
   // BEEF — BBQ
-  createProduct(
-    "PRD-BEEF-027",
-    "Beef Burger Patties",
-    "beef",
-    "BBQ",
-    "beef-burger-patties",
-    15.99,
-    "4 patties",
-    "4 patties",
-    "per_pack",
-    "Fresh beef burger patties prepared for barbecue, grill or pan-frying.",
-    "Seasoned beef burger patties formed for quick cooking on the barbecue plate or grill.",
-    "Burger",
-    ["BBQ", "Grill", "Pan-Fry"],
-    ["Fresh Chilled"],
-    null,
-    ["BBQ", "Ready to Cook"],
-    "/images/beef-burger-patties.webp"
-  ),
-  createProduct(
-    "PRD-BEEF-028",
-    "Beef Kebabs",
-    "beef",
-    "BBQ",
-    "beef-kebabs",
-    14.99,
-    "500g",
-    "500g",
-    "per_pack",
-    "Hand-threaded beef kebabs for barbecue grilling.",
-    "Diced beef skewers ready for grilling or barbecue hotplate cooking.",
-    "Skewer",
-    ["BBQ", "Grill"],
-    ["Fresh Chilled"],
-    null,
-    ["BBQ", "Ready to Cook"],
-    "/images/beef-kebabs.webp"
-  ),
-  createProduct(
+    createProduct(
     "PRD-BEEF-029",
     "Marinated Beef Strips",
     "beef",
@@ -2116,27 +2078,7 @@ export const PRODUCTS: Product[] = [
     ["Quick Meals"],
     "/images/lamb-stir-fry-strips.webp"
   ),
-  createProduct(
-    "PRD-LAMB-021",
-    "Lamb Burger Patties",
-    "lamb",
-    "Mince & Diced",
-    "lamb-burger-patties",
-    15.99,
-    "500g",
-    "4 patties",
-    "per_pack",
-    "Seasoned lamb burger patties ready to cook for barbecue lunches.",
-    "Handcrafted lamb burger patties lightly seasoned. Quick and easy on the barbecue grill or pan for delicious burgers.",
-    "Burger",
-    ["BBQ", "Grill", "Pan-Fry"],
-    ["Fresh Chilled"],
-    null,
-    ["BBQ", "Quick Meals"],
-    "/images/lamb-burger-patties.webp",
-    { secondary_subcategories: ["BBQ"] }
-  ),
-  createProduct(
+   createProduct(
     "PRD-LAMB-022",
     "Lamb BBQ Chops",
     "lamb",
@@ -2156,45 +2098,7 @@ export const PRODUCTS: Product[] = [
     "/images/lamb-bbq-chops.webp",
     { secondary_subcategories: ["Chops & Cutlets"] }
   ),
-  createProduct(
-    "PRD-LAMB-023",
-    "Lamb Skewers",
-    "lamb",
-    "BBQ",
-    "lamb-skewers",
-    18.99,
-    "500g",
-    "500g Pack",
-    "per_pack",
-    "Diced lamb leg or shoulder pieces threaded onto skewers ready for the grill.",
-    "Hand-threaded lamb skewers made with tender diced lamb leg. Perfect for souvlaki, kebabs, or quick barbecue grilling.",
-    "Skewer",
-    ["BBQ", "Grill"],
-    ["Fresh Chilled"],
-    null,
-    ["BBQ", "Quick Meals"],
-    "/images/lamb-skewers.webp"
-  ),
-  createProduct(
-    "PRD-LAMB-024",
-    "Lamb Kofta Skewers",
-    "lamb",
-    "BBQ",
-    "lamb-kofta-skewers",
-    14.99,
-    "400g",
-    "4 pieces",
-    "per_pack",
-    "Spiced ground lamb kofta skewers, authentic Mediterranean barbecue flavor.",
-    "Seasoned minced lamb kofta skewers with garlic, cumin, and herbs. Grill on the barbecue for Mediterranean style souvlaki and wraps.",
-    "Kofta",
-    ["BBQ", "Grill"],
-    ["Fresh Chilled"],
-    null,
-    ["BBQ", "Quick Meals"],
-    "/images/lamb-kofta-skewers.webp"
-  ),
-  createProduct(
+    createProduct(
     "PRD-LAMB-025",
     "Marinated Lamb Chops",
     "lamb",
@@ -2214,28 +2118,7 @@ export const PRODUCTS: Product[] = [
     "/images/marinated-lamb-chops.webp",
     { secondary_subcategories: ["Chops & Cutlets"] }
   ),
-  createProduct(
-    "PRD-LAMB-026",
-    "Lamb Ribs for BBQ",
-    "lamb",
-    "BBQ",
-    "lamb-ribs-for-bbq",
-    24.99,
-    "1kg",
-    "1kg Pack",
-    "per_kg",
-    "Meaty lamb ribs trimmed for charcoal grilling and barbecue glazing.",
-    "Juicy lamb ribs specially trimmed for barbecue grilling and smoky glazes. High heat caramelises fat for incredible flavor.",
-    "Ribs",
-    ["BBQ", "Grill", "Slow Cook"],
-    ["Fresh Chilled"],
-    null,
-    ["BBQ"],
-    "/images/lamb-ribs-for-bbq.webp",
-    { secondary_subcategories: ["Slow Cook"] }
-  ),
-
-  // 4. PORK
+    // 4. PORK
   // PORK — ROASTS
   createProduct(
     "PRD-PORK-001",
@@ -3319,27 +3202,7 @@ export const PRODUCTS: Product[] = [
     "/images/beef-short-ribs-for-bbq.webp",
     { primary_product_category: "Beef" }
   ),
-  createProduct(
-    "PRD-BBQ-013",
-    "Pork Spare Ribs",
-    "bbq-grill",
-    "Ribs",
-    "pork-spare-ribs",
-    24.99,
-    "1kg",
-    "1kg Pack",
-    "per_kg",
-    "Classic pork spare ribs ready for spice rubs and grill smoking.",
-    "Fleshy pork spare ribs with balanced meat and fat structure, suitable for dry rubs and sticky barbecue glazes.",
-    "Pork Ribs",
-    ["BBQ", "Grill", "Slow Cook"],
-    ["Fresh Chilled"],
-    null,
-    ["BBQ", "Ribs"],
-    "/images/pork-spare-ribs.webp",
-    { primary_product_category: "Pork" }
-  ),
-  createProduct(
+   createProduct(
     "PRD-BBQ-014",
     "BBQ Pork Ribs",
     "bbq-grill",
@@ -3649,13 +3512,13 @@ export const PRODUCTS: Product[] = [
       badge: "Best Seller",
       approximate_total_weight: "5kg",
       box_contents: [
-        { name: "Beef Mince", quantity: "1kg", slug: "grass-fed-beef-mince" },
+        { name: "Premium Beef Mince", quantity: "1kg", slug: "premium-beef-mince" },
         { name: "Chicken Breast Fillets", quantity: "1kg", slug: "chicken-breast-fillets" },
-        { name: "Pork Loin Chops", quantity: "1kg", slug: "pork-loin-chops" },
+        { name: "Pork Loin Steaks", quantity: "1kg", slug: "pork-loin-steaks" },
         { name: "Beef Sausages", quantity: "1kg", slug: "thick-beef-sausages" },
         { name: "Chicken Drumsticks", quantity: "1kg", slug: "chicken-drumsticks" }
       ],
-      included_product_references: ["grass-fed-beef-mince", "chicken-breast-fillets", "pork-loin-chops", "thick-beef-sausages", "chicken-drumsticks"]
+      included_product_references: ["premium-beef-mince", "chicken-breast-fillets", "pork-loin-steaks", "thick-beef-sausages", "chicken-drumsticks"]
     }
   ),
   createProduct(
@@ -3680,15 +3543,15 @@ export const PRODUCTS: Product[] = [
       badge: "Weekly Value",
       approximate_total_weight: "7kg",
       box_contents: [
-        { name: "Beef Mince", quantity: "1kg", slug: "grass-fed-beef-mince" },
+        { name: "Premium Beef Mince", quantity: "1kg", slug: "premium-beef-mince" },
         { name: "Chicken Breast Fillets", quantity: "1kg", slug: "chicken-breast-fillets" },
         { name: "Chicken Thigh Fillets", quantity: "1kg", slug: "chicken-thigh-fillets" },
         { name: "Beef Sausages", quantity: "1kg", slug: "thick-beef-sausages" },
-        { name: "Pork Loin Chops", quantity: "1kg", slug: "pork-loin-chops" },
+        { name: "Pork Loin Steaks", quantity: "1kg", slug: "pork-loin-steaks" },
         { name: "Lamb Forequarter Chops", quantity: "1kg", slug: "lamb-forequarter-chops" },
         { name: "Rump Steak", quantity: "1kg", slug: "bbq-rump-steak-pack" }
       ],
-      included_product_references: ["grass-fed-beef-mince", "chicken-breast-fillets", "chicken-thigh-fillets", "thick-beef-sausages", "pork-loin-chops", "lamb-forequarter-chops", "bbq-rump-steak-pack"]
+      included_product_references: ["premium-beef-mince", "chicken-breast-fillets", "chicken-thigh-fillets", "thick-beef-sausages", "pork-loin-steaks", "lamb-forequarter-chops", "bbq-rump-steak-pack"]
     }
   ),
   createProduct(
@@ -3713,16 +3576,16 @@ export const PRODUCTS: Product[] = [
       badge: "Bulk Saver",
       approximate_total_weight: "10kg",
       box_contents: [
-        { name: "Beef Mince", quantity: "2kg", slug: "grass-fed-beef-mince" },
+        { name: "Premium Beef Mince", quantity: "2kg", slug: "premium-beef-mince" },
         { name: "Chicken Breast Fillets", quantity: "2kg", slug: "chicken-breast-fillets" },
         { name: "Chicken Drumsticks", quantity: "1kg", slug: "chicken-drumsticks" },
         { name: "Beef Sausages", quantity: "1kg", slug: "thick-beef-sausages" },
-        { name: "Pork Loin Chops", quantity: "1kg", slug: "pork-loin-chops" },
+        { name: "Pork Loin Steaks", quantity: "1kg", slug: "pork-loin-steaks" },
         { name: "Lamb Forequarter Chops", quantity: "1kg", slug: "lamb-forequarter-chops" },
         { name: "Rump Steak", quantity: "1kg", slug: "bbq-rump-steak-pack" },
         { name: "Diced Beef", quantity: "1kg", slug: "diced-beef" }
       ],
-      included_product_references: ["grass-fed-beef-mince", "chicken-breast-fillets", "chicken-drumsticks", "thick-beef-sausages", "pork-loin-chops", "lamb-forequarter-chops", "bbq-rump-steak-pack", "diced-beef"]
+      included_product_references: ["premium-beef-mince", "chicken-breast-fillets", "chicken-drumsticks", "thick-beef-sausages", "pork-loin-steaks", "lamb-forequarter-chops", "bbq-rump-steak-pack", "diced-beef"]
     }
   ),
 
@@ -3749,13 +3612,13 @@ export const PRODUCTS: Product[] = [
       badge: "Great Value",
       approximate_total_weight: "5kg",
       box_contents: [
-        { name: "Beef Mince", quantity: "1kg", slug: "grass-fed-beef-mince" },
+        { name: "Premium Beef Mince", quantity: "1kg", slug: "premium-beef-mince" },
         { name: "Beef Sausages", quantity: "1kg", slug: "thick-beef-sausages" },
         { name: "Chicken Drumsticks", quantity: "1kg", slug: "chicken-drumsticks" },
-        { name: "Pork Loin Chops", quantity: "1kg", slug: "pork-loin-chops" },
+        { name: "Pork Loin Steaks", quantity: "1kg", slug: "pork-loin-steaks" },
         { name: "Diced Beef", quantity: "1kg", slug: "diced-beef" }
       ],
-      included_product_references: ["grass-fed-beef-mince", "thick-beef-sausages", "chicken-drumsticks", "pork-loin-chops", "diced-beef"]
+      included_product_references: ["premium-beef-mince", "thick-beef-sausages", "chicken-drumsticks", "pork-loin-steaks", "diced-beef"]
     }
   ),
   createProduct(
@@ -3780,16 +3643,16 @@ export const PRODUCTS: Product[] = [
       badge: "Freezer Pack",
       approximate_total_weight: "10kg",
       box_contents: [
-        { name: "Beef Mince", quantity: "2kg", slug: "grass-fed-beef-mince" },
+        { name: "Premium Beef Mince", quantity: "2kg", slug: "premium-beef-mince" },
         { name: "Chicken Breast Fillets", quantity: "2kg", slug: "chicken-breast-fillets" },
         { name: "Chicken Drumsticks", quantity: "1kg", slug: "chicken-drumsticks" },
         { name: "Beef Sausages", quantity: "1kg", slug: "thick-beef-sausages" },
         { name: "Pork Mince", quantity: "1kg", slug: "pork-mince" },
-        { name: "Pork Loin Chops", quantity: "1kg", slug: "pork-loin-chops" },
+        { name: "Pork Loin Steaks", quantity: "1kg", slug: "pork-loin-steaks" },
         { name: "Lamb Forequarter Chops", quantity: "1kg", slug: "lamb-forequarter-chops" },
         { name: "Diced Beef", quantity: "1kg", slug: "diced-beef" }
       ],
-      included_product_references: ["grass-fed-beef-mince", "chicken-breast-fillets", "chicken-drumsticks", "thick-beef-sausages", "pork-mince", "pork-loin-chops", "lamb-forequarter-chops", "diced-beef"]
+      included_product_references: ["premium-beef-mince", "chicken-breast-fillets", "chicken-drumsticks", "thick-beef-sausages", "pork-mince", "pork-loin-steaks", "lamb-forequarter-chops", "diced-beef"]
     }
   ),
   createProduct(
@@ -3814,15 +3677,15 @@ export const PRODUCTS: Product[] = [
       badge: "Budget Choice",
       approximate_total_weight: "7kg",
       box_contents: [
-        { name: "Beef Mince", quantity: "1kg", slug: "grass-fed-beef-mince" },
+        { name: "Premium Beef Mince", quantity: "1kg", slug: "premium-beef-mince" },
         { name: "Chicken Drumsticks", quantity: "1kg", slug: "chicken-drumsticks" },
         { name: "Chicken Wings", quantity: "1kg", slug: "chicken-wings" },
         { name: "Beef Sausages", quantity: "1kg", slug: "thick-beef-sausages" },
-        { name: "Pork Loin Chops", quantity: "1kg", slug: "pork-loin-chops" },
+        { name: "Pork Loin Steaks", quantity: "1kg", slug: "pork-loin-steaks" },
         { name: "Lamb Forequarter Chops", quantity: "1kg", slug: "lamb-forequarter-chops" },
         { name: "Diced Beef", quantity: "1kg", slug: "diced-beef" }
       ],
-      included_product_references: ["grass-fed-beef-mince", "chicken-drumsticks", "chicken-wings", "thick-beef-sausages", "pork-loin-chops", "lamb-forequarter-chops", "diced-beef"]
+      included_product_references: ["premium-beef-mince", "chicken-drumsticks", "chicken-wings", "thick-beef-sausages", "pork-loin-steaks", "lamb-forequarter-chops", "diced-beef"]
     }
   ),
 
@@ -3977,12 +3840,12 @@ export const PRODUCTS: Product[] = [
       badge: "Premium Choice",
       approximate_total_weight: "4kg",
       box_contents: [
-        { name: "Eye Fillet Steak", quantity: "1kg", slug: "beef-eye-fillet-steak" },
+        { name: "Eye Fillet Steak", quantity: "1kg", slug: "eye-fillet-steak" },
         { name: "Scotch Fillet Steak", quantity: "1kg", slug: "bbq-scotch-fillet-steak-pack" },
         { name: "Porterhouse Steak", quantity: "1kg", slug: "bbq-porterhouse-steak-pack" },
         { name: "Rump Steak", quantity: "1kg", slug: "bbq-rump-steak-pack" }
       ],
-      included_product_references: ["beef-eye-fillet-steak", "bbq-scotch-fillet-steak-pack", "bbq-porterhouse-steak-pack", "bbq-rump-steak-pack"]
+      included_product_references: ["eye-fillet-steak", "bbq-scotch-fillet-steak-pack", "bbq-porterhouse-steak-pack", "bbq-rump-steak-pack"]
     }
   ),
   createProduct(
@@ -4008,13 +3871,13 @@ export const PRODUCTS: Product[] = [
       badge: "Ultimate Luxury",
       approximate_total_weight: "5kg",
       box_contents: [
-        { name: "Eye Fillet Steak", quantity: "1kg", slug: "beef-eye-fillet-steak" },
+        { name: "Eye Fillet Steak", quantity: "1kg", slug: "eye-fillet-steak" },
         { name: "Scotch Fillet Steak", quantity: "1kg", slug: "bbq-scotch-fillet-steak-pack" },
         { name: "Porterhouse Steak", quantity: "1kg", slug: "bbq-porterhouse-steak-pack" },
         { name: "Rump Steak", quantity: "1kg", slug: "bbq-rump-steak-pack" },
-        { name: "T-Bone Steak", quantity: "1kg", slug: "beef-t-bone-steak" }
+        { name: "Porterhouse Steak", quantity: "1kg", slug: "porterhouse-steak" }
       ],
-      included_product_references: ["beef-eye-fillet-steak", "bbq-scotch-fillet-steak-pack", "bbq-porterhouse-steak-pack", "bbq-rump-steak-pack", "beef-t-bone-steak"]
+      included_product_references: ["eye-fillet-steak", "bbq-scotch-fillet-steak-pack", "bbq-porterhouse-steak-pack", "bbq-rump-steak-pack", "porterhouse-steak"]
     }
   ),
 
@@ -4387,7 +4250,7 @@ export const PRODUCTS: Product[] = [
     "BBQ Beef Kebabs",
     "ready-to-cook",
     "Kebabs",
-    "beef-kebabs",
+    "bbq-beef-kebabs",
     27.00,
     "800g",
     "8 Kebabs",

@@ -9,6 +9,12 @@ interface ShopFilterClientProps {
   initialCategory?: string;
 }
 
+// Wholesale / bulk-share products live in their own /wholesale/ section and must
+// never appear in the retail shop (different pricing model + checkout).
+const RETAIL_PRODUCTS = PRODUCTS.filter(
+  (p) => (p.main_category || p.category || '').toLowerCase() !== 'wholesale' && !p.is_wholesale
+);
+
 export function ShopFilterClient({ initialCategory = 'all' }: ShopFilterClientProps) {
   const [prevInitialCategory, setPrevInitialCategory] = useState<string>(initialCategory);
   const [selectedCategory, setSelectedCategory] = useState<string>(initialCategory);
@@ -44,7 +50,7 @@ export function ShopFilterClient({ initialCategory = 'all' }: ShopFilterClientPr
     }
     // Aggregate unique subcategories across all products
     const subs = new Set<string>();
-    PRODUCTS.forEach((p) => {
+    RETAIL_PRODUCTS.forEach((p) => {
       if (p.subcategory) subs.add(p.subcategory);
     });
     return Array.from(subs);
@@ -52,7 +58,7 @@ export function ShopFilterClient({ initialCategory = 'all' }: ShopFilterClientPr
 
   // Filter products based on all filter parameters
   const filteredProducts = useMemo(() => {
-    return PRODUCTS.filter((product) => {
+    return RETAIL_PRODUCTS.filter((product) => {
       // 1. Category Filter
       if (selectedCategory !== 'all' && product.category !== selectedCategory) {
         return false;
@@ -172,9 +178,9 @@ export function ShopFilterClient({ initialCategory = 'all' }: ShopFilterClientPr
 
   // Category counts
   const categoryCounts = useMemo(() => {
-    const counts: Record<string, number> = { all: PRODUCTS.length };
+    const counts: Record<string, number> = { all: RETAIL_PRODUCTS.length };
     CATEGORIES.forEach((cat) => {
-      counts[cat.slug] = PRODUCTS.filter((p) => p.category === cat.slug).length;
+      counts[cat.slug] = RETAIL_PRODUCTS.filter((p) => p.category === cat.slug).length;
     });
     return counts;
   }, []);

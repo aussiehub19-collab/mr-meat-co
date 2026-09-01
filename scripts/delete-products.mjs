@@ -10,14 +10,10 @@ const CONFIG = path.join(process.cwd(), 'src/config/site.ts');
 let text = fs.readFileSync(CONFIG, 'utf8');
 
 const DELETE_IF = (b) =>
-  (b.mainCategory === 'seafood' && b.subcategory === 'Value Packs') ||
-  (b.mainCategory === 'pet-food' && b.subcategory === 'Pet Packs');
+  b.mainCategory === 'Wholesale' && b.subcategory === 'Bulk Mixed Meat Packs';
 
-// [categorySlug, "Subcategory Name"] pairs to strip from CATEGORIES[].subcategories
-const SUBCAT_REMOVALS = [
-  ['seafood', 'Value Packs'],
-  ['pet-food', 'Pet Packs'],
-];
+// remove { slug: X } objects from WHOLESALE_BULK_SUBCATEGORIES by slug
+const BULK_SUBCAT_SLUG_REMOVALS = ['bulk-mixed-meat-packs'];
 
 function parseBlocks(src) {
   const blocks = [];
@@ -47,20 +43,16 @@ function parseBlocks(src) {
 
 const del = parseBlocks(text).filter(DELETE_IF).sort((a, b) => b.start - a.start);
 for (const b of del) {
-  console.log(`DELETE ${b.slug.padEnd(26)} [${b.mainCategory}/${b.subcategory}] "${b.name}"`);
+  console.log(`DELETE ${b.slug.padEnd(30)} [${b.mainCategory}/${b.subcategory}] "${b.name}"`);
   text = text.slice(0, b.start) + text.slice(b.end);
 }
 
-for (const [slug, sub] of SUBCAT_REMOVALS) {
-  const catRe = new RegExp(`(slug: "${slug}",[\\s\\S]*?subcategories: \\[)([^\\]]*)(\\])`);
-  text = text.replace(catRe, (full, pre, list, post) => {
-    const items = list
-      .split(',')
-      .map((x) => x.trim())
-      .filter((x) => x && x.replace(/"/g, '') !== sub);
-    console.log(`SUBCAT  ${slug}: removed "${sub}" -> [${items.join(', ')}]`);
-    return pre + items.join(', ') + post;
-  });
+for (const slug of BULK_SUBCAT_SLUG_REMOVALS) {
+  const re = new RegExp(`\\s*\\{\\s*slug: "${slug}",[\\s\\S]*?\\},`);
+  if (re.test(text)) {
+    text = text.replace(re, '');
+    console.log(`SUBCAT  removed WHOLESALE_BULK_SUBCATEGORIES entry "${slug}"`);
+  }
 }
 
 fs.writeFileSync(CONFIG, text, 'utf8');

@@ -60,7 +60,13 @@ const cleanBase = (s) =>
 const byName = new Map(); // normalised basename -> filepath (first wins)
 for (const f of sources) {
   const base = path.basename(f);
-  for (const key of [norm(base.replace(EXT_RE, '')), norm(cleanBase(base))]) {
+  const variants = [
+    norm(base.replace(EXT_RE, '')),
+    norm(cleanBase(base)),
+    // "full X share" and "whole X share" are used interchangeably by the client
+    norm(cleanBase(base).replace(/\bfull\b/i, 'whole')),
+  ];
+  for (const key of variants) {
     if (key && !byName.has(key)) byName.set(key, f);
   }
 }

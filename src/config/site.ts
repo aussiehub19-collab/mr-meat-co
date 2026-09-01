@@ -6356,7 +6356,7 @@ export const PRODUCTS: Product[] = [
     ["Bulk Carton", "Ground Meat"],
     null,
     ["Bulk Meat Orders", "Bulk Beef", "Bulk Mince"],
-    "https://images.unsplash.com/photo-1588168333986-5078d3ae3976?q=80&w=1200&auto=format&fit=crop",
+    "/images/bulk-beef-mince-box-5kg.webp",
     {
       storageType: "Fresh Chilled",
       animal_protein: "Beef",
@@ -6385,7 +6385,7 @@ export const PRODUCTS: Product[] = [
     ["Bulk Carton", "Ground Meat"],
     null,
     ["Bulk Meat Orders", "Bulk Beef", "Bulk Mince"],
-    "https://images.unsplash.com/photo-1588168333986-5078d3ae3976?q=80&w=1200&auto=format&fit=crop",
+    "/images/bulk-beef-mince-box-10kg.webp",
     {
       storageType: "Fresh Chilled",
       animal_protein: "Beef",
@@ -6414,7 +6414,7 @@ export const PRODUCTS: Product[] = [
     ["Whole Sub-primal", "Bulk Cut"],
     null,
     ["Bulk Meat Orders", "Bulk Beef", "Bulk Cuts"],
-    "https://images.unsplash.com/photo-1558030006-450675393462?q=80&w=1200&auto=format&fit=crop",
+    "/images/bulk-whole-rump.webp",
     {
       storageType: "Fresh Chilled",
       animal_protein: "Beef",
@@ -6444,7 +6444,7 @@ export const PRODUCTS: Product[] = [
     ["Whole Carcass Share", "Assorted Portioned Cuts"],
     null,
     ["Bulk Meat Orders", "Animal Shares", "Bulk Lamb"],
-    "https://images.unsplash.com/photo-1602498456745-e9503b30470b?q=80&w=1200&auto=format&fit=crop",
+    "/images/half-lamb-share.webp",
     {
       storageType: "Fresh Chilled",
       animal_protein: "Lamb",
@@ -6476,7 +6476,7 @@ export const PRODUCTS: Product[] = [
     ["Whole Carcass Share", "Assorted Portioned Cuts"],
     null,
     ["Bulk Meat Orders", "Animal Shares", "Bulk Lamb"],
-    "https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=1200&auto=format&fit=crop",
+    "/images/whole-lamb-share.webp",
     {
       storageType: "Fresh Chilled",
       animal_protein: "Lamb",
@@ -6508,7 +6508,7 @@ export const PRODUCTS: Product[] = [
     ["Whole Carcass Share", "Assorted Portioned Cuts"],
     null,
     ["Bulk Meat Orders", "Animal Shares", "Bulk Lamb"],
-    "https://images.unsplash.com/photo-1602498456745-e9503b30470b?q=80&w=1200&auto=format&fit=crop",
+    "/images/whole-lamb-share-13-17kg.webp",
     {
       storageType: "Fresh Chilled",
       animal_protein: "Lamb",
@@ -6540,7 +6540,7 @@ export const PRODUCTS: Product[] = [
     ["Bulk Carton", "Assorted Cuts"],
     null,
     ["Bulk Meat Orders", "Bulk Lamb", "Bulk Cuts"],
-    "https://images.unsplash.com/photo-1602498456745-e9503b30470b?q=80&w=1200&auto=format&fit=crop",
+    "/images/bulk-lamb-variety-pack.webp",
     {
       storageType: "Fresh Chilled",
       animal_protein: "Lamb",
@@ -6571,7 +6571,7 @@ export const PRODUCTS: Product[] = [
     ["Whole Carcass Share", "Assorted Portioned Cuts"],
     null,
     ["Bulk Meat Orders", "Animal Shares", "Bulk Pork"],
-    "https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?q=80&w=1200&auto=format&fit=crop",
+    "/images/half-pork-share.webp",
     {
       storageType: "Fresh Chilled",
       animal_protein: "Pork",
@@ -6603,7 +6603,7 @@ export const PRODUCTS: Product[] = [
     ["Bulk Carton", "Assorted Cuts"],
     null,
     ["Bulk Meat Orders", "Bulk Pork", "Bulk Cuts"],
-    "https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?q=80&w=1200&auto=format&fit=crop",
+    "/images/bulk-pork-variety-pack.webp",
     {
       storageType: "Fresh Chilled",
       animal_protein: "Pork",
@@ -6633,7 +6633,7 @@ export const PRODUCTS: Product[] = [
     ["Whole Fillet", "Lean Cut"],
     null,
     ["Bulk Meat Orders", "Bulk Pork", "Bulk Cuts"],
-    "https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?q=80&w=1200&auto=format&fit=crop",
+    "/images/bulk-pork-fillet.webp",
     {
       storageType: "Fresh Chilled",
       animal_protein: "Pork",
@@ -6663,7 +6663,7 @@ export const PRODUCTS: Product[] = [
     ["Bulk Pack", "Boneless"],
     null,
     ["Bulk Meat Orders", "Bulk Chicken", "Bulk Cuts"],
-    "https://images.unsplash.com/photo-1604503468506-a8da13d82791?q=80&w=1200&auto=format&fit=crop",
+    "/images/bulk-chicken-breast-fillets-2kg.webp",
     {
       storageType: "Fresh Chilled",
       animal_protein: "Chicken",
@@ -6692,7 +6692,7 @@ export const PRODUCTS: Product[] = [
     ["Bulk Pack", "Boneless"],
     null,
     ["Bulk Meat Orders", "Bulk Chicken", "Bulk Cuts"],
-    "https://images.unsplash.com/photo-1604503468506-a8da13d82791?q=80&w=1200&auto=format&fit=crop",
+    "/images/bulk-chicken-breast-fillets-2kg-portion.webp",
     {
       storageType: "Fresh Chilled",
       animal_protein: "Chicken",
@@ -6721,7 +6721,7 @@ export const PRODUCTS: Product[] = [
     ["Bulk Pack", "Bone-In"],
     null,
     ["Bulk Meat Orders", "Bulk Chicken", "Bulk Cuts"],
-    "https://images.unsplash.com/photo-1587593810167-a84920ea0781?q=80&w=1200&auto=format&fit=crop",
+    "/images/bulk-chicken-drumsticks-2kg.webp",
     {
       storageType: "Fresh Chilled",
       animal_protein: "Chicken",
@@ -6750,7 +6750,7 @@ export const PRODUCTS: Product[] = [
     ["Bulk Carton", "Crumbed"],
     null,
     ["Bulk Meat Orders", "Bulk Chicken", "Bulk Carton"],
-    "https://images.unsplash.com/photo-1598515214211-89d3c73ae83b?q=80&w=1200&auto=format&fit=crop",
+    "/images/bulk-chicken-breast-schnitzel-box-5kg.webp",
     {
       storageType: "Frozen",
       animal_protein: "Chicken",
@@ -6779,7 +6779,7 @@ export const PRODUCTS: Product[] = [
     ["Bulk Carton", "Boneless"],
     null,
     ["Bulk Meat Orders", "Bulk Chicken", "Bulk Cuts"],
-    "https://images.unsplash.com/photo-1604503468506-a8da13d82791?q=80&w=1200&auto=format&fit=crop",
+    "/images/bulk-chicken-thigh-fillets-5kg.webp",
     {
       storageType: "Fresh Chilled",
       animal_protein: "Chicken",
@@ -6808,7 +6808,7 @@ export const PRODUCTS: Product[] = [
     ["Bulk Carton", "Bone-In"],
     null,
     ["Bulk Meat Orders", "Bulk Chicken", "Bulk Cuts"],
-    "https://images.unsplash.com/photo-1567620832903-9fc6debc209f?q=80&w=1200&auto=format&fit=crop",
+    "/images/bulk-chicken-wings-5kg.webp",
     {
       storageType: "Fresh Chilled",
       animal_protein: "Chicken",
@@ -6819,11 +6819,11 @@ export const PRODUCTS: Product[] = [
     }
   ),
 
-  // --- 5. BULK GOAT (4 Products) ---
-  // Product 21: Bulk Goat Side (~11kg - $282.15)
+  // --- 5. BULK GOAT (5 Products) ---
+  // Product 21: Half Goat Share (~11kg - $282.15)
   createProduct(
     "bulk-goat-side",
-    "Bulk Goat Side",
+    "Half Goat Share",
     "Wholesale",
     "Bulk Goat",
     "bulk-goat-side",
@@ -6831,14 +6831,14 @@ export const PRODUCTS: Product[] = [
     "Approximately 11kg",
     "Approximately 11kg",
     "fixed_pack_price",
-    "Bulk Goat Side (approx. 11kg). Half goat carcass portioned into legs, shoulder, ribs, and curry pieces.",
-    "Bulk Goat Side (approximately 11kg). Half goat carcass portioned into primal cuts including leg roasts, shoulder, ribs, shanks, and diced bone-in curry pieces.",
+    "Half Goat Share (approx. 11kg). Half goat carcass portioned into legs, shoulder, ribs, and curry pieces.",
+    "Half Goat Share (approximately 11kg). Half goat carcass portioned into primal cuts including leg roasts, shoulder, ribs, shanks, and diced bone-in curry pieces.",
     "Bulk Goat Share",
     ["Slow Cook", "Curry", "Roast", "Stew"],
     ["Whole Carcass Share", "Assorted Portioned Cuts"],
     null,
     ["Bulk Meat Orders", "Animal Shares", "Bulk Goat"],
-    "https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=1200&auto=format&fit=crop",
+    "/images/bulk-goat-side.webp",
     {
       storageType: "To be confirmed",
       animal_protein: "Goat",
@@ -6846,9 +6846,9 @@ export const PRODUCTS: Product[] = [
       approximate_weight: "Approximately 11kg",
       product_contents: ["Goat leg", "Goat shoulder", "Goat shanks", "Goat ribs", "Goat curry pieces"],
       bulk_order_notice: "Weight is approximate and can vary by animal size, trimming, cut selection and processing yield. Please ensure you have sufficient freezer capacity before ordering.",
-      seo_title: "Bulk Goat Side (~11kg) | Bulk Goat Orders",
-      seo_meta_description: "Bulk Goat Side (Approximately 11kg) for $282.15 AUD fixed pack price. Half goat carcass portioned into legs, shoulder, ribs, and curry pieces.",
-      breadcrumb_path: "Home > Wholesale > Bulk Meat Orders > Bulk Goat > Bulk Goat Side"
+      seo_title: "Half Goat Share (~11kg) | Bulk Goat Orders",
+      seo_meta_description: "Half Goat Share (Approximately 11kg) for $282.15 AUD fixed pack price. Half goat carcass portioned into legs, shoulder, ribs, and curry pieces.",
+      breadcrumb_path: "Home > Wholesale > Bulk Meat Orders > Bulk Goat > Half Goat Share"
     }
   ),
 
@@ -6870,7 +6870,7 @@ export const PRODUCTS: Product[] = [
     ["Bulk Pack", "Bone-In", "Diced"],
     null,
     ["Bulk Meat Orders", "Bulk Goat", "Bulk Cuts"],
-    "https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=1200&auto=format&fit=crop",
+    "/images/bulk-goat-curry-pieces-2-5kg.webp",
     {
       storageType: "Fresh Chilled",
       animal_protein: "Goat",
@@ -6899,7 +6899,7 @@ export const PRODUCTS: Product[] = [
     ["Bulk Carton", "Bone-In", "Diced"],
     null,
     ["Bulk Meat Orders", "Bulk Goat", "Bulk Cuts"],
-    "https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=1200&auto=format&fit=crop",
+    "/images/bulk-goat-curry-pieces-5kg.webp",
     {
       storageType: "Fresh Chilled",
       animal_protein: "Goat",
@@ -6928,7 +6928,7 @@ export const PRODUCTS: Product[] = [
     ["Bone-In", "Bulk Ribs"],
     null,
     ["Bulk Meat Orders", "Bulk Goat", "Bulk Cuts"],
-    "https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=1200&auto=format&fit=crop",
+    "/images/bulk-goat-ribs.webp",
     {
       storageType: "Fresh Chilled",
       animal_protein: "Goat",
@@ -6958,7 +6958,7 @@ export const PRODUCTS: Product[] = [
     ["Bulk Carton", "Fresh Sausages"],
     null,
     ["Bulk Meat Orders", "Bulk Sausages", "Bulk Cuts"],
-    "https://images.unsplash.com/photo-1585325701165-351af916e581?q=80&w=1200&auto=format&fit=crop",
+    "/images/bulk-beef-sausages-5kg.webp",
     {
       storageType: "Fresh Chilled",
       animal_protein: "Sausages",
@@ -6987,7 +6987,7 @@ export const PRODUCTS: Product[] = [
     ["Bulk Carton", "Fresh Sausages"],
     null,
     ["Bulk Meat Orders", "Bulk Sausages", "Bulk Cuts"],
-    "https://images.unsplash.com/photo-1585325701165-351af916e581?q=80&w=1200&auto=format&fit=crop",
+    "/images/bulk-beef-sausages-10kg.webp",
     {
       storageType: "Fresh Chilled",
       animal_protein: "Sausages",
@@ -7016,7 +7016,7 @@ export const PRODUCTS: Product[] = [
     ["Bulk Carton", "Gourmet Sausages"],
     null,
     ["Bulk Meat Orders", "Bulk Sausages", "Bulk Cuts"],
-    "https://images.unsplash.com/photo-1585325701165-351af916e581?q=80&w=1200&auto=format&fit=crop",
+    "/images/bulk-gourmet-sausages-5kg.webp",
     {
       storageType: "Fresh Chilled",
       animal_protein: "Sausages",
@@ -7027,94 +7027,318 @@ export const PRODUCTS: Product[] = [
     }
   ),
 
-  // --- 7. BULK MIXED MEAT PACKS (3 Products) ---
-  // Product 28: Chicken & Beef Mince Bulk Pack (20kg - $365.00)
+  // --- 7. BULK PORK (whole carcass share) ---
   createProduct(
-    "chicken-beef-mince-bulk-pack",
-    "Chicken & Beef Mince Bulk Pack",
+    "whole-pork-share",
+    "Whole Pork Share",
     "Wholesale",
-    "Bulk Mixed Meat Packs",
-    "chicken-beef-mince-bulk-pack",
-    365.00,
-    "20kg",
-    "20kg",
+    "Bulk Pork",
+    "whole-pork-share",
+    520.00,
+    "Approximately 45kg",
+    "Approximately 45kg",
     "fixed_pack_price",
-    "Chicken & Beef Mince Bulk Pack (20kg). 10kg Chicken Mince and 10kg Beef Mince.",
-    "Chicken & Beef Mince Bulk Pack (20kg). Combined high-volume freezer carton featuring 10kg of fresh chilled Chicken Mince and 10kg of fresh chilled Beef Mince.",
-    "Bulk Mixed Meat Pack",
-    ["Pan Fry", "Bake", "Slow Cook", "Grill"],
-    ["Bulk Carton", "Mixed Meat Pack"],
+    "Whole Pork Share (approx. 45kg). Full pork carcass portioned into roasts, belly, ribs, chops, and mince.",
+    "Whole Pork Share (approximately 45kg). A full pork carcass broken down by our butchers into leg and shoulder roasts, pork belly, spare ribs, loin chops, and mince. Vacuum sealed and snap frozen in labelled family portions.",
+    "Bulk Pork Share",
+    ["Roast", "Slow Cook", "BBQ", "Pan-Fry"],
+    ["Whole Carcass Share", "Assorted Portioned Cuts"],
     null,
-    ["Bulk Meat Orders", "Bulk Mixed Meat Packs", "Bulk Mince"],
-    "https://images.unsplash.com/photo-1588168333986-5078d3ae3976?q=80&w=1200&auto=format&fit=crop",
+    ["Bulk Meat Orders", "Animal Shares", "Bulk Pork"],
+    "/images/whole-pork-share.webp",
     {
-      storageType: "Fresh Chilled",
-      animal_protein: "Mixed Meat",
-      approximate_weight: "20kg",
-      product_contents: ["Chicken Mince — 10kg", "Beef Mince — 10kg"],
-      seo_title: "Chicken & Beef Mince Bulk Pack (20kg) | Bulk Mixed Packs",
-      seo_meta_description: "Chicken & Beef Mince Bulk Pack (20kg) for $365.00 AUD fixed pack price. 10kg Chicken Mince and 10kg Beef Mince.",
-      breadcrumb_path: "Home > Wholesale > Bulk Meat Orders > Bulk Mixed Meat Packs > Chicken & Beef Mince Bulk Pack"
+      storageType: "Frozen",
+      animal_protein: "Pork",
+      is_animal_share: true,
+      approximate_weight: "Approximately 45kg",
+      product_contents: ["Pork leg roast", "Pork shoulder roast", "Pork belly", "Spare ribs", "Loin chops", "Pork mince"],
+      bulk_order_notice: "Weight is approximate and can vary by animal size, trimming, cut selection and processing yield. Please ensure you have sufficient freezer capacity before ordering.",
+      seo_title: "Whole Pork Share (~45kg) | Bulk Pork Orders",
+      seo_meta_description: "Whole Pork Share (Approximately 45kg) for $520.00 AUD fixed pack price. Full pork carcass portioned into roasts, belly, ribs, chops, and mince.",
+      breadcrumb_path: "Home > Wholesale > Bulk Meat Orders > Bulk Pork > Whole Pork Share"
     }
   ),
 
-  // Product 29: Family Freezer Meat Pack (8kg - $130.00)
+  // --- 8. BULK GOAT (whole carcass share) ---
   createProduct(
-    "family-freezer-meat-pack",
-    "Family Freezer Meat Pack",
+    "whole-goat-share",
+    "Whole Goat Share",
     "Wholesale",
-    "Bulk Mixed Meat Packs",
-    "family-freezer-meat-pack",
-    130.00,
-    "8kg",
-    "8kg",
+    "Bulk Goat",
+    "whole-goat-share",
+    540.00,
+    "Approximately 22kg",
+    "Approximately 22kg",
     "fixed_pack_price",
-    "Family Freezer Meat Pack (8kg). 7 essential butcher cuts for family meal storage.",
-    "Family Freezer Meat Pack (8kg). 7 essential butcher cuts packed for complete weekly family meals. Includes Leg of Lamb, Rump Steak, Beef Mince, Chicken Breast Fillets, Pork Loin Chops, Thin Sausages, and Chicken Schnitzel.",
-    "Bulk Mixed Meat Pack",
-    ["Roast", "Grill", "Pan Fry", "Bake"],
-    ["Bulk Carton", "Family Pack"],
+    "Whole Goat Share (approx. 22kg). Full goat carcass portioned into legs, shoulders, ribs, shanks, and curry pieces.",
+    "Whole Goat Share (approximately 22kg). A full goat carcass portioned by our butchers into leg roasts, shoulders, ribs, shanks, and bone-in diced curry pieces. Ideal for large families, restaurants, and catering.",
+    "Bulk Goat Share",
+    ["Slow Cook", "Curry", "Roast", "Stew"],
+    ["Whole Carcass Share", "Assorted Portioned Cuts"],
     null,
-    ["Bulk Meat Orders", "Bulk Mixed Meat Packs", "Family Freezer Pack"],
-    "https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=1200&auto=format&fit=crop",
+    ["Bulk Meat Orders", "Animal Shares", "Bulk Goat"],
+    "/images/whole-goat-share.webp",
     {
-      storageType: "Fresh Chilled",
-      animal_protein: "Mixed Meat",
-      approximate_weight: "8kg",
-      product_contents: ["Leg of Lamb", "Rump Steak", "Beef Mince", "Chicken Breast Fillets", "Pork Loin Chops", "Thin Sausages", "Chicken Schnitzel"],
-      seo_title: "Family Freezer Meat Pack (8kg) | Bulk Mixed Meat Packs",
-      seo_meta_description: "Family Freezer Meat Pack (8kg) for $130.00 AUD fixed pack price. 7 essential butcher cuts for family meal storage.",
-      breadcrumb_path: "Home > Wholesale > Bulk Meat Orders > Bulk Mixed Meat Packs > Family Freezer Meat Pack"
+      storageType: "To be confirmed",
+      animal_protein: "Goat",
+      is_animal_share: true,
+      approximate_weight: "Approximately 22kg",
+      product_contents: ["Goat leg", "Goat shoulder", "Goat shanks", "Goat ribs", "Goat curry pieces"],
+      bulk_order_notice: "Weight is approximate and can vary by animal size, trimming, cut selection and processing yield. Please ensure you have sufficient freezer capacity before ordering.",
+      seo_title: "Whole Goat Share (~22kg) | Bulk Goat Orders",
+      seo_meta_description: "Whole Goat Share (Approximately 22kg) for $540.00 AUD fixed pack price. Full goat carcass portioned into legs, shoulders, ribs, shanks, and curry pieces.",
+      breadcrumb_path: "Home > Wholesale > Bulk Meat Orders > Bulk Goat > Whole Goat Share"
     }
   ),
 
-  // Product 30: Bulk BBQ Meat Pack (5kg - $85.00)
+  // --- 9. BULK VEAL (3 Products) ---
   createProduct(
-    "bulk-bbq-meat-pack",
-    "Bulk BBQ Meat Pack",
+    "bulk-veal-mince",
+    "Bulk Veal Mince",
     "Wholesale",
-    "Bulk Mixed Meat Packs",
-    "bulk-bbq-meat-pack",
-    85.00,
+    "Bulk Veal",
+    "bulk-veal-mince",
+    109.95,
     "5kg",
     "5kg",
     "fixed_pack_price",
-    "Bulk BBQ Meat Pack (5kg). Fresh chilled BBQ steak, beef sausages, patties, drumsticks, and ribs.",
-    "Bulk BBQ Meat Pack (5kg). Ready-to-cook fresh chilled barbecue selection featuring BBQ Steak, Beef Sausages, Beef Burger Patties, Chicken Drumsticks, and Pork Ribs.",
-    "Bulk BBQ Meat Pack",
-    ["Grill", "BBQ", "Roast"],
-    ["Bulk Pack", "BBQ Pack"],
+    "Bulk Veal Mince (5kg). Fresh chilled premium veal mince carton.",
+    "Bulk Veal Mince (5kg). Lean, delicately flavoured milk-fed veal mince packed in a 5kg wholesale carton for ragu, meatballs, and fine-dining service.",
+    "Bulk Veal",
+    ["Pan-Fry", "Slow Cook", "Pasta Sauce"],
+    ["Bulk Carton", "Minced"],
     null,
-    ["Bulk Meat Orders", "Bulk Mixed Meat Packs", "BBQ Pack"],
-    "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?q=80&w=1200&auto=format&fit=crop",
+    ["Bulk Meat Orders", "Bulk Veal", "Bulk Cuts"],
+    "/images/veal-mince.webp",
     {
       storageType: "Fresh Chilled",
-      animal_protein: "Mixed Meat",
+      animal_protein: "Veal",
       approximate_weight: "5kg",
-      product_contents: ["BBQ Steak", "Beef Sausages", "Beef Burger Patties", "Chicken Drumsticks", "Pork Ribs"],
-      seo_title: "Bulk BBQ Meat Pack (5kg) | Bulk Mixed Meat Packs",
-      seo_meta_description: "Bulk BBQ Meat Pack (5kg) for $85.00 AUD fixed pack price. Fresh chilled BBQ steak, beef sausages, patties, drumsticks, and ribs.",
-      breadcrumb_path: "Home > Wholesale > Bulk Meat Orders > Bulk Mixed Meat Packs > Bulk BBQ Meat Pack"
+      seo_title: "Bulk Veal Mince (5kg) | Bulk Veal Orders",
+      seo_meta_description: "Bulk Veal Mince (5kg) for $109.95 AUD fixed pack price. Fresh chilled premium veal mince carton.",
+      breadcrumb_path: "Home > Wholesale > Bulk Meat Orders > Bulk Veal > Bulk Veal Mince"
+    }
+  ),
+  createProduct(
+    "bulk-veal-schnitzel",
+    "Bulk Veal Schnitzel",
+    "Wholesale",
+    "Bulk Veal",
+    "bulk-veal-schnitzel",
+    139.95,
+    "5kg",
+    "5kg",
+    "fixed_pack_price",
+    "Bulk Veal Schnitzel (5kg). Fresh chilled thinly sliced veal schnitzel carton.",
+    "Bulk Veal Schnitzel (5kg). Thinly sliced, tenderised leg veal schnitzel steaks packed in a 5kg wholesale carton. Crumb in-house or pan-fry plain.",
+    "Bulk Veal",
+    ["Pan-Fry", "Oven", "Air Fryer"],
+    ["Bulk Carton", "Thinly Sliced"],
+    null,
+    ["Bulk Meat Orders", "Bulk Veal", "Bulk Cuts"],
+    "/images/veal-schnitzel.webp",
+    {
+      storageType: "Fresh Chilled",
+      animal_protein: "Veal",
+      approximate_weight: "5kg",
+      seo_title: "Bulk Veal Schnitzel (5kg) | Bulk Veal Orders",
+      seo_meta_description: "Bulk Veal Schnitzel (5kg) for $139.95 AUD fixed pack price. Fresh chilled thinly sliced veal schnitzel carton.",
+      breadcrumb_path: "Home > Wholesale > Bulk Meat Orders > Bulk Veal > Bulk Veal Schnitzel"
+    }
+  ),
+  createProduct(
+    "bulk-diced-veal",
+    "Bulk Diced Veal",
+    "Wholesale",
+    "Bulk Veal",
+    "bulk-diced-veal",
+    124.95,
+    "5kg",
+    "5kg",
+    "fixed_pack_price",
+    "Bulk Diced Veal (5kg). Fresh chilled diced veal shoulder carton.",
+    "Bulk Diced Veal (5kg). Trimmed diced veal shoulder in a 5kg wholesale carton, cut for osso buco-style braises, blanquette, and slow-cooked casseroles.",
+    "Bulk Veal",
+    ["Slow Cook", "Braise", "Stew"],
+    ["Bulk Carton", "Diced"],
+    null,
+    ["Bulk Meat Orders", "Bulk Veal", "Bulk Cuts"],
+    "/images/veal-diced.webp",
+    {
+      storageType: "Fresh Chilled",
+      animal_protein: "Veal",
+      approximate_weight: "5kg",
+      seo_title: "Bulk Diced Veal (5kg) | Bulk Veal Orders",
+      seo_meta_description: "Bulk Diced Veal (5kg) for $124.95 AUD fixed pack price. Fresh chilled diced veal shoulder carton.",
+      breadcrumb_path: "Home > Wholesale > Bulk Meat Orders > Bulk Veal > Bulk Diced Veal"
+    }
+  ),
+
+  // --- 10. BULK KANGAROO (3 Products) ---
+  createProduct(
+    "bulk-kangaroo-mince",
+    "Bulk Kangaroo Mince",
+    "Wholesale",
+    "Bulk Kangaroo",
+    "bulk-kangaroo-mince",
+    74.95,
+    "5kg",
+    "5kg",
+    "fixed_pack_price",
+    "Bulk Kangaroo Mince (5kg). Frozen lean wild kangaroo mince carton.",
+    "Bulk Kangaroo Mince (5kg). Ultra-lean, high-protein wild-harvested Australian kangaroo mince, snap frozen in a 5kg wholesale carton for meal-prep kitchens and pet-diet formulators.",
+    "Bulk Kangaroo",
+    ["Pan-Fry", "BBQ", "Pasta Sauce"],
+    ["Bulk Carton", "Minced", "Frozen"],
+    null,
+    ["Bulk Meat Orders", "Bulk Kangaroo", "Bulk Cuts"],
+    "/images/kangaroo-mince.webp",
+    {
+      storageType: "Frozen",
+      animal_protein: "Kangaroo",
+      approximate_weight: "5kg",
+      seo_title: "Bulk Kangaroo Mince (5kg) | Bulk Kangaroo Orders",
+      seo_meta_description: "Bulk Kangaroo Mince (5kg) for $74.95 AUD fixed pack price. Frozen lean wild kangaroo mince carton.",
+      breadcrumb_path: "Home > Wholesale > Bulk Meat Orders > Bulk Kangaroo > Bulk Kangaroo Mince"
+    }
+  ),
+  createProduct(
+    "bulk-kangaroo-fillets",
+    "Bulk Kangaroo Fillets",
+    "Wholesale",
+    "Bulk Kangaroo",
+    "bulk-kangaroo-fillets",
+    109.95,
+    "5kg",
+    "5kg",
+    "fixed_pack_price",
+    "Bulk Kangaroo Fillets (5kg). Frozen wild kangaroo fillet (rump) carton.",
+    "Bulk Kangaroo Fillets (5kg). Prime wild-harvested kangaroo fillets (rump), snap frozen in a 5kg wholesale carton. Best served rare to medium-rare over high heat.",
+    "Bulk Kangaroo",
+    ["BBQ", "Grill", "Pan-Fry"],
+    ["Bulk Carton", "Frozen"],
+    null,
+    ["Bulk Meat Orders", "Bulk Kangaroo", "Bulk Cuts"],
+    "/images/kangaroo-fillets.webp",
+    {
+      storageType: "Frozen",
+      animal_protein: "Kangaroo",
+      approximate_weight: "5kg",
+      seo_title: "Bulk Kangaroo Fillets (5kg) | Bulk Kangaroo Orders",
+      seo_meta_description: "Bulk Kangaroo Fillets (5kg) for $109.95 AUD fixed pack price. Frozen wild kangaroo fillet carton.",
+      breadcrumb_path: "Home > Wholesale > Bulk Meat Orders > Bulk Kangaroo > Bulk Kangaroo Fillets"
+    }
+  ),
+  createProduct(
+    "bulk-kangaroo-sausages",
+    "Bulk Kangaroo Sausages",
+    "Wholesale",
+    "Bulk Kangaroo",
+    "bulk-kangaroo-sausages",
+    84.95,
+    "5kg",
+    "5kg",
+    "fixed_pack_price",
+    "Bulk Kangaroo Sausages (5kg). Frozen lean kangaroo sausage carton.",
+    "Bulk Kangaroo Sausages (5kg). Lean wild kangaroo sausages with a light seasoning blend, snap frozen in a 5kg wholesale carton for barbecue caterers and lean-diet menus.",
+    "Bulk Kangaroo",
+    ["Grill", "BBQ", "Pan-Fry"],
+    ["Bulk Carton", "Frozen"],
+    null,
+    ["Bulk Meat Orders", "Bulk Kangaroo", "Bulk Cuts"],
+    "/images/kangaroo-sausages.webp",
+    {
+      storageType: "Frozen",
+      animal_protein: "Kangaroo",
+      approximate_weight: "5kg",
+      seo_title: "Bulk Kangaroo Sausages (5kg) | Bulk Kangaroo Orders",
+      seo_meta_description: "Bulk Kangaroo Sausages (5kg) for $84.95 AUD fixed pack price. Frozen lean kangaroo sausage carton.",
+      breadcrumb_path: "Home > Wholesale > Bulk Meat Orders > Bulk Kangaroo > Bulk Kangaroo Sausages"
+    }
+  ),
+
+  // --- 11. BULK GAME (3 Products) ---
+  createProduct(
+    "bulk-venison-mince",
+    "Bulk Venison Mince",
+    "Wholesale",
+    "Bulk Game",
+    "bulk-venison-mince",
+    99.95,
+    "5kg",
+    "5kg",
+    "fixed_pack_price",
+    "Bulk Venison Mince (5kg). Frozen lean farmed venison mince carton.",
+    "Bulk Venison Mince (5kg). Rich, lean farmed venison mince snap frozen in a 5kg wholesale carton for game ragu, sausage rolls, burgers, and terrines.",
+    "Bulk Game",
+    ["Pan-Fry", "Slow Cook", "Pasta Sauce"],
+    ["Bulk Carton", "Minced", "Frozen"],
+    null,
+    ["Bulk Meat Orders", "Bulk Game", "Bulk Cuts"],
+    "/images/venison-mince.webp",
+    {
+      storageType: "Frozen",
+      animal_protein: "Venison",
+      approximate_weight: "5kg",
+      seo_title: "Bulk Venison Mince (5kg) | Bulk Game Orders",
+      seo_meta_description: "Bulk Venison Mince (5kg) for $99.95 AUD fixed pack price. Frozen lean farmed venison mince carton.",
+      breadcrumb_path: "Home > Wholesale > Bulk Meat Orders > Bulk Game > Bulk Venison Mince"
+    }
+  ),
+  createProduct(
+    "bulk-venison-osso-buco",
+    "Bulk Venison Osso Buco",
+    "Wholesale",
+    "Bulk Game",
+    "bulk-venison-osso-buco",
+    134.95,
+    "5kg",
+    "5kg",
+    "fixed_pack_price",
+    "Bulk Venison Osso Buco (5kg). Frozen bone-in venison shank slices carton.",
+    "Bulk Venison Osso Buco (5kg). Cross-cut bone-in farmed venison shank, snap frozen in a 5kg wholesale carton for long, red-wine braises and winter game menus.",
+    "Bulk Game",
+    ["Slow Cook", "Braise", "Stew"],
+    ["Bulk Carton", "Bone-In", "Frozen"],
+    null,
+    ["Bulk Meat Orders", "Bulk Game", "Bulk Cuts"],
+    "/images/venison-osso-buco.webp",
+    {
+      storageType: "Frozen",
+      animal_protein: "Venison",
+      approximate_weight: "5kg",
+      seo_title: "Bulk Venison Osso Buco (5kg) | Bulk Game Orders",
+      seo_meta_description: "Bulk Venison Osso Buco (5kg) for $134.95 AUD fixed pack price. Frozen bone-in venison shank slices carton.",
+      breadcrumb_path: "Home > Wholesale > Bulk Meat Orders > Bulk Game > Bulk Venison Osso Buco"
+    }
+  ),
+  createProduct(
+    "bulk-game-meat-box",
+    "Bulk Game Meat Box",
+    "Wholesale",
+    "Bulk Game",
+    "bulk-game-meat-box",
+    189.95,
+    "Approximately 8kg",
+    "Approximately 8kg",
+    "fixed_pack_price",
+    "Bulk Game Meat Box (approx. 8kg). Mixed frozen game selection — venison, kangaroo, and wild boar.",
+    "Bulk Game Meat Box (approximately 8kg). A mixed wholesale selection of frozen game — venison backstrap and mince, kangaroo fillets, and wild boar — portioned and labelled for restaurant game menus and adventurous home cooks.",
+    "Bulk Game",
+    ["BBQ", "Slow Cook", "Roast", "Pan-Fry"],
+    ["Bulk Box", "Assorted Portioned Cuts", "Frozen"],
+    null,
+    ["Bulk Meat Orders", "Bulk Game", "Bulk Cuts"],
+    "/images/game-meat-selection-box.webp",
+    {
+      storageType: "Frozen",
+      animal_protein: "Mixed Game",
+      approximate_weight: "Approximately 8kg",
+      product_contents: ["Venison backstrap", "Venison mince", "Kangaroo fillets", "Wild boar"],
+      bulk_order_notice: "Contents and weight are approximate and vary with seasonal game availability.",
+      seo_title: "Bulk Game Meat Box (~8kg) | Bulk Game Orders",
+      seo_meta_description: "Bulk Game Meat Box (Approximately 8kg) for $189.95 AUD fixed pack price. Mixed frozen game selection of venison, kangaroo, and wild boar.",
+      breadcrumb_path: "Home > Wholesale > Bulk Meat Orders > Bulk Game > Bulk Game Meat Box"
     }
   ),
 ];
@@ -7142,7 +7366,7 @@ export const WHOLESALE_BULK_SUBCATEGORIES: WholesaleSubcategory[] = [
   {
     slug: "bulk-pork",
     name: "Bulk Pork",
-    description: "Half pork carcass shares, 11kg pork variety packs and whole pork fillets.",
+    description: "Half and whole pork carcass shares, 11kg pork variety packs and whole pork fillets.",
     image: "https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?q=80&w=1200&auto=format&fit=crop",
   },
   {
@@ -7154,7 +7378,7 @@ export const WHOLESALE_BULK_SUBCATEGORIES: WholesaleSubcategory[] = [
   {
     slug: "bulk-goat",
     name: "Bulk Goat",
-    description: "Bulk half goat sides, 2.5kg and 5kg diced goat curry cartons, and bone-in goat ribs.",
+    description: "Half and whole goat carcass shares, 2.5kg and 5kg diced goat curry cartons, and bone-in goat ribs.",
     image: "https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=1200&auto=format&fit=crop",
   },
   {
@@ -7164,10 +7388,22 @@ export const WHOLESALE_BULK_SUBCATEGORIES: WholesaleSubcategory[] = [
     image: "https://images.unsplash.com/photo-1585325701165-351af916e581?q=80&w=1200&auto=format&fit=crop",
   },
   {
-    slug: "bulk-mixed-meat-packs",
-    name: "Bulk Mixed Meat Packs",
-    description: "20kg chicken and beef mince cartons, 8kg family freezer packs, and 5kg bulk BBQ packs.",
-    image: "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?q=80&w=1200&auto=format&fit=crop",
+    slug: "bulk-veal",
+    name: "Bulk Veal",
+    description: "5kg wholesale cartons of premium veal mince, tenderised leg schnitzel, and diced veal shoulder.",
+    image: "/images/veal-schnitzel.webp",
+  },
+  {
+    slug: "bulk-kangaroo",
+    name: "Bulk Kangaroo",
+    description: "5kg frozen wholesale cartons of lean wild kangaroo mince, prime fillets, and sausages.",
+    image: "/images/kangaroo-fillets.webp",
+  },
+  {
+    slug: "bulk-game",
+    name: "Bulk Game",
+    description: "Frozen wholesale venison mince and osso buco, plus mixed game boxes of venison, kangaroo, and wild boar.",
+    image: "/images/venison-backstrap.webp",
   },
 ];
 

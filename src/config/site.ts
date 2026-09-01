@@ -7109,7 +7109,7 @@ export const PRODUCTS: Product[] = [
     ["Whole Carcass Share", "Assorted Portioned Cuts"],
     null,
     ["Bulk Meat Orders", "Animal Shares", "Bulk Veal"],
-    "/images/veal-cutlets.webp",
+    "/images/half-veal-share.webp",
     {
       storageType: "Frozen",
       animal_protein: "Veal",
@@ -7139,7 +7139,7 @@ export const PRODUCTS: Product[] = [
     ["Whole Carcass Share", "Assorted Portioned Cuts"],
     null,
     ["Bulk Meat Orders", "Animal Shares", "Bulk Veal"],
-    "/images/veal-cutlets.webp",
+    "/images/whole-veal-share.webp",
     {
       storageType: "Frozen",
       animal_protein: "Veal",

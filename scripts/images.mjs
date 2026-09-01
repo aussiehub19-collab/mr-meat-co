@@ -50,10 +50,19 @@ if (!fs.existsSync(SRC)) {
   process.exit(1);
 }
 const sources = walk(SRC);
+// strip trailing photo-descriptor words a client sometimes appends to a filename
+const cleanBase = (s) =>
+  s
+    .replace(EXT_RE, '')
+    .replace(/\b(raw|cooked)?\s*white background$/i, '')
+    .replace(/\s+raw$/i, '')
+    .trim();
 const byName = new Map(); // normalised basename -> filepath (first wins)
 for (const f of sources) {
-  const key = norm(path.basename(f).replace(EXT_RE, ''));
-  if (!byName.has(key)) byName.set(key, f);
+  const base = path.basename(f);
+  for (const key of [norm(base.replace(EXT_RE, '')), norm(cleanBase(base))]) {
+    if (key && !byName.has(key)) byName.set(key, f);
+  }
 }
 console.log(`[images] ${sources.length} source files, ${byName.size} unique names`);
 
@@ -162,10 +171,12 @@ const usedKeys = new Set();
 const reshoot = [];
 
 for (const p of products) {
-  const key = byName.has(norm(p.name))
-    ? norm(p.name)
-    : byName.has(norm(p.slug))
+  // slug first (more specific — disambiguates e.g. whole-beef-share-250kg),
+  // then fall back to the display name
+  const key = byName.has(norm(p.slug))
     ? norm(p.slug)
+    : byName.has(norm(p.name))
+    ? norm(p.name)
     : null;
   if (!key) {
     unmatched.push(p);

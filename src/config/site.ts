@@ -234,15 +234,15 @@ export const CATEGORIES: Category[] = [
   {
     slug: "seafood",
     name: "Seafood",
-    description: "Fish fillets and portions, raw and cooked prawns, salmon portions, and mixed seafood value packs.",
-    subcategories: ["Fish", "Prawns", "Salmon", "Value Packs"],
+    description: "Fish fillets and portions, raw and cooked prawns, and salmon portions.",
+    subcategories: ["Fish", "Prawns", "Salmon"],
     image: "/images/categories/seafood.webp",
   },
   {
     slug: "pet-food",
     name: "Pet Food",
-    description: "Natural raw BARF pet food—pet mince, beef marrow bones, chicken frames, and pet meat boxes.",
-    subcategories: ["Raw Mince", "Bones", "Offal", "Pet Packs"],
+    description: "Natural raw BARF pet food—pet mince, beef marrow bones, and chicken frames.",
+    subcategories: ["Raw Mince", "Bones", "Offal"],
     image: "/images/categories/pet-food.webp",
   },
 ];
@@ -4495,7 +4495,7 @@ export const PRODUCTS: Product[] = [
     ["Frozen"],
     null,
     ["Specialty Meat > Veal", "Frozen Meat", "Ready to Cook"],
-    "https://picsum.photos/seed/veal-schnitzel/800/600",
+    "/images/veal-schnitzel.webp",
     {
       storageType: "Frozen",
       primary_product_category: "Specialty Meat",
@@ -4524,7 +4524,7 @@ export const PRODUCTS: Product[] = [
     ["Frozen", "Crumbed"],
     null,
     ["Specialty Meat > Veal", "Frozen Meat", "Ready to Cook"],
-    "https://picsum.photos/seed/crumbed-veal-schnitzel/800/600",
+    "/images/crumbed-veal-schnitzel.webp",
     {
       storageType: "Frozen",
       primary_product_category: "Specialty Meat",
@@ -4553,7 +4553,7 @@ export const PRODUCTS: Product[] = [
     ["Frozen"],
     null,
     ["Specialty Meat > Veal", "Frozen Meat", "Gourmet Cooking", "BBQ"],
-    "https://picsum.photos/seed/veal-cutlets/800/600",
+    "/images/veal-cutlets.webp",
     {
       storageType: "Frozen",
       primary_product_category: "Specialty Meat",
@@ -4582,7 +4582,7 @@ export const PRODUCTS: Product[] = [
     ["Frozen"],
     null,
     ["Specialty Meat > Veal", "Frozen Meat", "Slow Cooking"],
-    "https://picsum.photos/seed/veal-osso-buco/800/600",
+    "/images/veal-osso-buco.webp",
     {
       storageType: "Frozen",
       primary_product_category: "Specialty Meat",
@@ -4611,7 +4611,7 @@ export const PRODUCTS: Product[] = [
     ["Frozen"],
     null,
     ["Specialty Meat > Veal", "Frozen Meat", "Family Meals"],
-    "https://picsum.photos/seed/veal-mince/800/600",
+    "/images/veal-mince.webp",
     {
       storageType: "Frozen",
       primary_product_category: "Specialty Meat",
@@ -4640,7 +4640,7 @@ export const PRODUCTS: Product[] = [
     ["Frozen"],
     null,
     ["Specialty Meat > Veal", "Frozen Meat", "Slow Cooking"],
-    "https://picsum.photos/seed/veal-diced/800/600",
+    "/images/veal-diced.webp",
     {
       storageType: "Frozen",
       primary_product_category: "Specialty Meat",
@@ -4669,7 +4669,7 @@ export const PRODUCTS: Product[] = [
     ["Frozen"],
     null,
     ["Specialty Meat > Goat", "Frozen Meat", "Slow Cooking"],
-    "https://picsum.photos/seed/goat-shoulder/800/600",
+    "/images/goat-shoulder.webp",
     {
       storageType: "Frozen",
       primary_product_category: "Specialty Meat",
@@ -4698,7 +4698,7 @@ export const PRODUCTS: Product[] = [
     ["Frozen"],
     null,
     ["Specialty Meat > Goat", "Frozen Meat", "Slow Cooking"],
-    "https://picsum.photos/seed/goat-leg/800/600",
+    "/images/goat-leg.webp",
     {
       storageType: "Frozen",
       primary_product_category: "Specialty Meat",
@@ -4727,7 +4727,7 @@ export const PRODUCTS: Product[] = [
     ["Frozen"],
     null,
     ["Specialty Meat > Goat", "Frozen Meat", "Slow Cooking"],
-    "https://picsum.photos/seed/goat-curry-pieces/800/600",
+    "/images/goat-curry-pieces.webp",
     {
       storageType: "Frozen",
       primary_product_category: "Specialty Meat",
@@ -4756,7 +4756,7 @@ export const PRODUCTS: Product[] = [
     ["Frozen"],
     null,
     ["Specialty Meat > Goat", "Frozen Meat", "Slow Cooking"],
-    "https://picsum.photos/seed/diced-goat-meat/800/600",
+    "/images/diced-goat-meat.webp",
     {
       storageType: "Frozen",
       primary_product_category: "Specialty Meat",
@@ -4785,7 +4785,7 @@ export const PRODUCTS: Product[] = [
     ["Frozen"],
     null,
     ["Specialty Meat > Goat", "Frozen Meat", "BBQ"],
-    "https://picsum.photos/seed/goat-loin-chops/800/600",
+    "/images/goat-loin-chops.webp",
     {
       storageType: "Frozen",
       primary_product_category: "Specialty Meat",
@@ -4814,7 +4814,7 @@ export const PRODUCTS: Product[] = [
     ["Frozen"],
     null,
     ["Specialty Meat > Goat", "Frozen Meat", "Gourmet Cooking", "BBQ"],
-    "https://picsum.photos/seed/goat-rack/800/600",
+    "/images/goat-rack.webp",
     {
       storageType: "Frozen",
       primary_product_category: "Specialty Meat",
@@ -4843,7 +4843,7 @@ export const PRODUCTS: Product[] = [
     ["Frozen"],
     null,
     ["Specialty Meat > Kangaroo", "Frozen Meat", "BBQ", "Game Meat"],
-    "https://picsum.photos/seed/kangaroo-fillets/800/600",
+    "/images/kangaroo-fillets.webp",
     {
       storageType: "Frozen",
       primary_product_category: "Specialty Meat",
@@ -4872,7 +4872,7 @@ export const PRODUCTS: Product[] = [
     ["Frozen"],
     null,
     ["Specialty Meat > Kangaroo", "Frozen Meat", "BBQ", "Game Meat"],
-    "https://picsum.photos/seed/kangaroo-steaks/800/600",
+    "/images/kangaroo-steaks.webp",
     {
       storageType: "Frozen",
       primary_product_category: "Specialty Meat",
@@ -4901,7 +4901,7 @@ export const PRODUCTS: Product[] = [
     ["Frozen"],
     null,
     ["Specialty Meat > Kangaroo", "Frozen Meat", "Game Meat"],
-    "https://picsum.photos/seed/kangaroo-mince/800/600",
+    "/images/kangaroo-mince.webp",
     {
       storageType: "Frozen",
       primary_product_category: "Specialty Meat",
@@ -4930,7 +4930,7 @@ export const PRODUCTS: Product[] = [
     ["Frozen"],
     null,
     ["Specialty Meat > Kangaroo", "Frozen Meat", "BBQ", "Game Meat"],
-    "https://picsum.photos/seed/kangaroo-sausages/800/600",
+    "/images/kangaroo-sausages.webp",
     {
       storageType: "Frozen",
       primary_product_category: "Specialty Meat",
@@ -4959,7 +4959,7 @@ export const PRODUCTS: Product[] = [
     ["Frozen"],
     null,
     ["Specialty Meat > Kangaroo", "Frozen Meat", "Game Meat"],
-    "https://picsum.photos/seed/kangaroo-stir-fry-strips/800/600",
+    "/images/kangaroo-stir-fry-strips.webp",
     {
       storageType: "Frozen",
       primary_product_category: "Specialty Meat",
@@ -4988,7 +4988,7 @@ export const PRODUCTS: Product[] = [
     ["Frozen"],
     null,
     ["Specialty Meat > Game", "Frozen Meat", "Game Meat", "Gourmet Cooking"],
-    "https://picsum.photos/seed/venison-backstrap/800/600",
+    "/images/venison-backstrap.webp",
     {
       storageType: "Frozen",
       primary_product_category: "Specialty Meat",
@@ -5017,7 +5017,7 @@ export const PRODUCTS: Product[] = [
     ["Frozen"],
     null,
     ["Specialty Meat > Game", "Frozen Meat", "Game Meat"],
-    "https://picsum.photos/seed/venison-mince/800/600",
+    "/images/venison-mince.webp",
     {
       storageType: "Frozen",
       primary_product_category: "Specialty Meat",
@@ -5046,7 +5046,7 @@ export const PRODUCTS: Product[] = [
     ["Frozen"],
     null,
     ["Specialty Meat > Game", "Frozen Meat", "Slow Cooking", "Game Meat"],
-    "https://picsum.photos/seed/venison-osso-buco/800/600",
+    "/images/venison-osso-buco.webp",
     {
       storageType: "Frozen",
       primary_product_category: "Specialty Meat",
@@ -5075,7 +5075,7 @@ export const PRODUCTS: Product[] = [
     ["Frozen"],
     null,
     ["Specialty Meat > Game", "Frozen Meat", "Slow Cooking", "Game Meat"],
-    "https://picsum.photos/seed/venison-shanks/800/600",
+    "/images/venison-shanks.webp",
     {
       storageType: "Frozen",
       primary_product_category: "Specialty Meat",
@@ -5104,7 +5104,7 @@ export const PRODUCTS: Product[] = [
     ["Frozen"],
     null,
     ["Specialty Meat > Game", "Frozen Meat", "Game Meat", "Gourmet Cooking"],
-    "https://picsum.photos/seed/wild-boar-fillet/800/600",
+    "/images/wild-boar-fillet.webp",
     {
       storageType: "Frozen",
       primary_product_category: "Specialty Meat",
@@ -5133,7 +5133,7 @@ export const PRODUCTS: Product[] = [
     ["Frozen"],
     null,
     ["Specialty Meat > Game", "Frozen Meat", "Meat Boxes", "Game Meat"],
-    "https://picsum.photos/seed/game-meat-selection-box/800/600",
+    "/images/game-meat-selection-box.webp",
     {
       storageType: "Frozen",
       primary_product_category: "Specialty Meat",
@@ -5173,7 +5173,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled", "Vacuum Sealed"],
     null,
     ["Best Sellers", "Fresh Seafood", "Weeknight Meals"],
-    "https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?q=80&w=1200&auto=format&fit=crop",
+    "/images/barramundi-fillets.webp",
     {
       storageType: "Fresh Chilled",
       seo_title: "Barramundi Fillets | Seafood Catalogue",
@@ -5198,7 +5198,7 @@ export const PRODUCTS: Product[] = [
     ["Frozen"],
     null,
     ["Frozen Seafood", "Weeknight Meals"],
-    "https://images.unsplash.com/photo-1534939561126-855b8675edd7?q=80&w=1200&auto=format&fit=crop",
+    "/images/barramundi-portions.webp",
     {
       storageType: "Frozen",
       seo_title: "Barramundi Portions | Seafood Catalogue",
@@ -5223,7 +5223,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled"],
     null,
     ["Fresh Seafood", "Family Meals", "Weeknight Meals"],
-    "https://images.unsplash.com/photo-1599084993091-1cb5c0721cc6?q=80&w=1200&auto=format&fit=crop",
+    "/images/barramundi-bites.webp",
     {
       storageType: "Fresh Chilled",
       seo_title: "Barramundi Bites | Seafood Catalogue",
@@ -5248,7 +5248,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled", "Vacuum Sealed"],
     null,
     ["Fresh Seafood", "Best Sellers", "Weeknight Meals"],
-    "https://images.unsplash.com/photo-1534939561126-855b8675edd7?q=80&w=1200&auto=format&fit=crop",
+    "/images/snapper-fillets.webp",
     {
       storageType: "Fresh Chilled",
       seo_title: "Snapper Fillets | Seafood Catalogue",
@@ -5273,7 +5273,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled"],
     null,
     ["Fresh Seafood", "Family Meals", "Weeknight Meals"],
-    "https://images.unsplash.com/photo-1599084993091-1cb5c0721cc6?q=80&w=1200&auto=format&fit=crop",
+    "/images/flathead-fillets.webp",
     {
       storageType: "Fresh Chilled",
       seo_title: "Flathead Fillets | Seafood Catalogue",
@@ -5298,7 +5298,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled"],
     null,
     ["Fresh Seafood", "Weeknight Meals"],
-    "https://images.unsplash.com/photo-1534939561126-855b8675edd7?q=80&w=1200&auto=format&fit=crop",
+    "/images/threadfin-salmon-fillets.webp",
     {
       storageType: "Fresh Chilled",
       seo_title: "Threadfin Salmon Fillets | Seafood Catalogue",
@@ -5325,7 +5325,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled"],
     null,
     ["Fresh Seafood", "BBQ Seafood", "Entertaining"],
-    "https://images.unsplash.com/photo-1565680018434-b513d5e5fd47?q=80&w=1200&auto=format&fit=crop",
+    "/images/school-prawns.webp",
     {
       storageType: "Fresh Chilled",
       seo_title: "School Prawns | Seafood Catalogue",
@@ -5350,7 +5350,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled"],
     null,
     ["Fresh Seafood", "BBQ Seafood", "Best Sellers", "Entertaining"],
-    "https://images.unsplash.com/photo-1559742811-822873691df8?q=80&w=1200&auto=format&fit=crop",
+    "/images/medium-green-king-prawns.webp",
     {
       storageType: "Fresh Chilled",
       seo_title: "Medium Green King Prawns | Seafood Catalogue",
@@ -5375,7 +5375,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled"],
     null,
     ["Fresh Seafood", "BBQ Seafood", "Entertaining"],
-    "https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=1200&auto=format&fit=crop",
+    "/images/large-green-king-prawns.webp",
     {
       storageType: "Fresh Chilled",
       seo_title: "Large Green King Prawns | Seafood Catalogue",
@@ -5400,7 +5400,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled"],
     null,
     ["Fresh Seafood", "BBQ Seafood", "Entertaining"],
-    "https://images.unsplash.com/photo-1559742811-822873691df8?q=80&w=1200&auto=format&fit=crop",
+    "/images/xl-raw-king-prawns.webp",
     {
       storageType: "Fresh Chilled",
       seo_title: "XL Raw King Prawns | Seafood Catalogue",
@@ -5425,7 +5425,7 @@ export const PRODUCTS: Product[] = [
     ["Frozen", "Cooked"],
     null,
     ["Frozen Seafood", "Entertaining", "Best Sellers"],
-    "https://images.unsplash.com/photo-1565680018434-b513d5e5fd47?q=80&w=1200&auto=format&fit=crop",
+    "/images/whole-cooked-prawns.webp",
     {
       storageType: "Frozen",
       seo_title: "Whole Cooked Prawns | Seafood Catalogue",
@@ -5450,7 +5450,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled"],
     null,
     ["Fresh Seafood", "Specials", "Weeknight Meals"],
-    "https://images.unsplash.com/photo-1559742811-822873691df8?q=80&w=1200&auto=format&fit=crop",
+    "/images/raw-banana-prawns.webp",
     {
       storageType: "Fresh Chilled",
       seo_title: "Raw Banana Prawns | Seafood Catalogue",
@@ -5475,7 +5475,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled"],
     null,
     ["Fresh Seafood", "Weeknight Meals"],
-    "https://images.unsplash.com/photo-1565680018434-b513d5e5fd47?q=80&w=1200&auto=format&fit=crop",
+    "/images/prawn-meat.webp",
     {
       storageType: "Fresh Chilled",
       seo_title: "Prawn Meat | Seafood Catalogue",
@@ -5502,7 +5502,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled", "Vacuum Sealed"],
     null,
     ["Fresh Seafood", "Best Sellers", "Weeknight Meals"],
-    "https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?q=80&w=1200&auto=format&fit=crop",
+    "/images/tasmanian-salmon-portions.webp",
     {
       storageType: "Fresh Chilled",
       seo_title: "Tasmanian Salmon Portions | Seafood Catalogue",
@@ -5527,7 +5527,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled"],
     null,
     ["Fresh Seafood", "Weeknight Meals"],
-    "https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?q=80&w=1200&auto=format&fit=crop",
+    "/images/skin-on-salmon-portions.webp",
     {
       storageType: "Fresh Chilled",
       seo_title: "Skin-On Salmon Portions | Seafood Catalogue",
@@ -5552,7 +5552,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled"],
     null,
     ["Fresh Seafood", "Weeknight Meals"],
-    "https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?q=80&w=1200&auto=format&fit=crop",
+    "/images/skinless-salmon-portions.webp",
     {
       storageType: "Fresh Chilled",
       seo_title: "Skinless Salmon Portions | Seafood Catalogue",
@@ -5577,7 +5577,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled"],
     null,
     ["Fresh Seafood", "Family Meals"],
-    "https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?q=80&w=1200&auto=format&fit=crop",
+    "/images/salmon-fillets.webp",
     {
       storageType: "Fresh Chilled",
       seo_title: "Salmon Fillets | Seafood Catalogue",
@@ -5602,7 +5602,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled"],
     null,
     ["Fresh Seafood", "Entertaining", "Family Meals"],
-    "https://images.unsplash.com/photo-1534939561126-855b8675edd7?q=80&w=1200&auto=format&fit=crop",
+    "/images/whole-salmon.webp",
     {
       storageType: "Fresh Chilled",
       seo_title: "Whole Salmon | Seafood Catalogue",
@@ -5627,7 +5627,7 @@ export const PRODUCTS: Product[] = [
     ["Refrigerated"],
     null,
     ["Specials", "Entertaining"],
-    "https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?q=80&w=1200&auto=format&fit=crop",
+    "/images/hot-smoked-salmon.webp",
     {
       storageType: "Refrigerated",
       seo_title: "Hot Smoked Salmon | Seafood Catalogue",
@@ -5637,182 +5637,7 @@ export const PRODUCTS: Product[] = [
   ),
 
   // SEAFOOD — VALUE PACKS
-  createProduct(
-    "PRD-SEA-020",
-    "Seafood Pack for Two",
-    "seafood",
-    "Value Packs",
-    "seafood-pack-for-two",
-    39.00,
-    "1kg",
-    "1kg",
-    "fixed_pack_price",
-    "Mixed seafood pack for two (1kg) with Fish Fillets, Calamari Rings, Prawn Cutlets & Seafood Sticks.",
-    "Frozen 1kg mixed seafood pack sized for two. Contains Fish Fillets (400g), Calamari Rings (200g), Prawn Cutlets (200g), and Seafood Sticks (200g).",
-    "Mixed Seafood Pack",
-    ["Pan-Fry", "Grill", "Air Fryer", "Oven"],
-    ["Frozen"],
-    null,
-    ["Frozen Seafood", "Seafood Packs", "Value Packs", "Weeknight Meals"],
-    "https://images.unsplash.com/photo-1551024709-8f23befc6f87?q=80&w=1200&auto=format&fit=crop",
-    {
-      storageType: "Frozen",
-      box_contents: [
-        { name: "Fish Fillets", quantity: "400g" },
-        { name: "Calamari Rings", quantity: "200g" },
-        { name: "Prawn Cutlets", quantity: "200g" },
-        { name: "Seafood Sticks", quantity: "200g" }
-      ],
-      seo_title: "Seafood Pack for Two | Seafood Catalogue",
-      seo_meta_description: "Seafood Pack for Two in 1kg pack size for $39.00 AUD fixed pack price. Frozen mixed seafood pack with fish fillets, calamari, prawn cutlets and seafood sticks.",
-      breadcrumb_path: "Home > Seafood > Value Packs > Seafood Pack for Two"
-    }
-  ),
-  createProduct(
-    "PRD-SEA-021",
-    "Family Seafood Pack",
-    "seafood",
-    "Value Packs",
-    "family-seafood-pack",
-    65.00,
-    "2kg",
-    "2kg",
-    "fixed_pack_price",
-    "Family seafood pack (2kg) with Fish Fillets, Calamari Rings, Prawn Cutlets & Seafood Sticks.",
-    "Frozen 2kg family-sized mixed seafood pack. Contains Fish Fillets (800g), Calamari Rings (400g), Prawn Cutlets (400g), and Seafood Sticks (400g).",
-    "Mixed Seafood Pack",
-    ["Pan-Fry", "Grill", "Air Fryer", "Oven"],
-    ["Frozen"],
-    null,
-    ["Frozen Seafood", "Family Meals", "Seafood Packs", "Value Packs"],
-    "https://images.unsplash.com/photo-1551024709-8f23befc6f87?q=80&w=1200&auto=format&fit=crop",
-    {
-      storageType: "Frozen",
-      box_contents: [
-        { name: "Fish Fillets", quantity: "800g" },
-        { name: "Calamari Rings", quantity: "400g" },
-        { name: "Prawn Cutlets", quantity: "400g" },
-        { name: "Seafood Sticks", quantity: "400g" }
-      ],
-      seo_title: "Family Seafood Pack | Seafood Catalogue",
-      seo_meta_description: "Family Seafood Pack in 2kg pack size for $65.00 AUD fixed pack price. Frozen mixed seafood pack with fish fillets, calamari, prawn cutlets and seafood sticks.",
-      breadcrumb_path: "Home > Seafood > Value Packs > Family Seafood Pack"
-    }
-  ),
-  createProduct(
-    "PRD-SEA-022",
-    "Barramundi Value Pack",
-    "seafood",
-    "Value Packs",
-    "barramundi-value-pack",
-    38.00,
-    "1kg",
-    "1kg",
-    "per_pack",
-    "Barramundi value pack (1kg) with 4 fresh chilled barramundi portions.",
-    "Fresh chilled 1kg Barramundi Value Pack containing 4 barramundi portions. Suitable for pan-frying, barbecue grilling, or oven baking.",
-    "Barramundi Pack",
-    ["Pan-Fry", "Grill", "BBQ", "Oven"],
-    ["Fresh Chilled"],
-    null,
-    ["Fresh Seafood", "Seafood Packs", "Family Meals"],
-    "https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?q=80&w=1200&auto=format&fit=crop",
-    {
-      storageType: "Fresh Chilled",
-      box_contents: [
-        { name: "Barramundi Portions", quantity: "4 portions" }
-      ],
-      seo_title: "Barramundi Value Pack | Seafood Catalogue",
-      seo_meta_description: "Barramundi Value Pack in 1kg pack size for $38.00 AUD. Fresh Chilled barramundi pack with 4 portions for pan-fry, grill, BBQ and oven.",
-      breadcrumb_path: "Home > Seafood > Value Packs > Barramundi Value Pack"
-    }
-  ),
-  createProduct(
-    "PRD-SEA-023",
-    "Salmon Value Pack",
-    "seafood",
-    "Value Packs",
-    "salmon-value-pack",
-    49.90,
-    "1kg",
-    "1kg",
-    "per_pack",
-    "Salmon value pack (1kg) with 4 fresh chilled salmon portions.",
-    "Fresh chilled 1kg Salmon Value Pack containing 4 salmon portions. Suitable for pan-frying, barbecue grilling, or oven baking.",
-    "Salmon Pack",
-    ["Pan-Fry", "Grill", "BBQ", "Oven"],
-    ["Fresh Chilled"],
-    null,
-    ["Fresh Seafood", "Seafood Packs", "Family Meals"],
-    "https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?q=80&w=1200&auto=format&fit=crop",
-    {
-      storageType: "Fresh Chilled",
-      box_contents: [
-        { name: "Salmon Portions", quantity: "4 portions" }
-      ],
-      seo_title: "Salmon Value Pack | Seafood Catalogue",
-      seo_meta_description: "Salmon Value Pack in 1kg pack size for $49.90 AUD. Fresh Chilled salmon pack with 4 portions for pan-fry, grill, BBQ and oven.",
-      breadcrumb_path: "Home > Seafood > Value Packs > Salmon Value Pack"
-    }
-  ),
-  createProduct(
-    "PRD-SEA-024",
-    "Prawn Entertainer Pack",
-    "seafood",
-    "Value Packs",
-    "prawn-entertainer-pack",
-    56.90,
-    "2kg",
-    "2kg",
-    "per_pack",
-    "Frozen raw tiger prawn entertainer pack (2kg) for BBQ, grill, pan-fry or boil.",
-    "Frozen 2kg Prawn Entertainer Pack containing raw tiger prawns. Suitable for barbecue entertaining, grilling, pan-frying, or boiling.",
-    "Raw Tiger Prawn Pack",
-    ["BBQ", "Grill", "Pan-Fry", "Boil"],
-    ["Frozen"],
-    null,
-    ["Frozen Seafood", "Entertaining", "Seafood Packs", "BBQ Seafood"],
-    "https://images.unsplash.com/photo-1559742811-822873691df8?q=80&w=1200&auto=format&fit=crop",
-    {
-      storageType: "Frozen",
-      seo_title: "Prawn Entertainer Pack | Seafood Catalogue",
-      seo_meta_description: "Prawn Entertainer Pack in 2kg pack size for $56.90 AUD. Frozen raw tiger prawn pack for BBQ, grill, pan-fry and boil.",
-      breadcrumb_path: "Home > Seafood > Value Packs > Prawn Entertainer Pack"
-    }
-  ),
-  createProduct(
-    "PRD-SEA-025",
-    "Mixed Seafood Value Pack",
-    "seafood",
-    "Value Packs",
-    "mixed-seafood-value-pack",
-    90.00,
-    "Approximately 3kg",
-    "Approximately 3kg",
-    "fixed_pack_price",
-    "Mixed seafood value pack (approx. 3kg) with Barramundi Fillets, Salmon Portions, Raw Prawns & Calamari Rings.",
-    "Frozen approx. 3kg mixed seafood pack. Contains Barramundi Fillets (1kg), Salmon Portions (500g), Raw Prawns (1kg), and Calamari Rings (500g).",
-    "Mixed Seafood Pack",
-    ["Pan-Fry", "Grill", "Air Fryer", "Oven"],
-    ["Frozen"],
-    null,
-    ["Frozen Seafood", "Entertaining", "Family Meals", "Seafood Packs", "Value Packs"],
-    "https://images.unsplash.com/photo-1551024709-8f23befc6f87?q=80&w=1200&auto=format&fit=crop",
-    {
-      storageType: "Frozen",
-      box_contents: [
-        { name: "Barramundi Fillets", quantity: "1kg" },
-        { name: "Salmon Portions", quantity: "500g" },
-        { name: "Raw Prawns", quantity: "1kg" },
-        { name: "Calamari Rings", quantity: "500g" }
-      ],
-      seo_title: "Mixed Seafood Value Pack | Seafood Catalogue",
-      seo_meta_description: "Mixed Seafood Value Pack (Approximately 3kg) for $90.00 AUD fixed pack price. Frozen pack with barramundi, salmon, raw prawns and calamari.",
-      breadcrumb_path: "Home > Seafood > Value Packs > Mixed Seafood Value Pack"
-    }
-  ),
-
-  // 12. PET FOOD (24 Approved Catalogue Products)
+   // 12. PET FOOD (24 Approved Catalogue Products)
   // Raw Mince (7 items)
   createProduct(
     "PRD-PET-001",
@@ -5831,7 +5656,7 @@ export const PRODUCTS: Product[] = [
     ["Frozen"],
     null,
     ["Raw Mince", "Frozen Pet Food", "Best Sellers"],
-    "https://images.unsplash.com/photo-1588168333986-5078d3ae3976?q=80&w=1200&auto=format&fit=crop",
+    "/images/beef-pet-mince.webp",
     {
       storageType: "Frozen",
       animal_protein: "Beef",
@@ -5859,7 +5684,7 @@ export const PRODUCTS: Product[] = [
     ["Frozen"],
     null,
     ["Raw Mince", "Bulk Pet Food", "Frozen Pet Food"],
-    "https://images.unsplash.com/photo-1588168333986-5078d3ae3976?q=80&w=1200&auto=format&fit=crop",
+    "/images/beef-and-offal-pet-mince.webp",
     {
       storageType: "Frozen",
       animal_protein: "Beef",
@@ -5887,7 +5712,7 @@ export const PRODUCTS: Product[] = [
     ["Frozen"],
     null,
     ["Raw Mince", "Frozen Pet Food", "Best Sellers"],
-    "https://images.unsplash.com/photo-1604503468506-a8da13d82791?q=80&w=1200&auto=format&fit=crop",
+    "/images/chicken-pet-mince.webp",
     {
       storageType: "Frozen",
       animal_protein: "Chicken",
@@ -5915,7 +5740,7 @@ export const PRODUCTS: Product[] = [
     ["Frozen"],
     null,
     ["Raw Mince", "Frozen Pet Food"],
-    "https://images.unsplash.com/photo-1588168333986-5078d3ae3976?q=80&w=1200&auto=format&fit=crop",
+    "/images/chicken-and-beef-pet-mince.webp",
     {
       storageType: "Frozen",
       animal_protein: "Mixed Protein",
@@ -5943,7 +5768,7 @@ export const PRODUCTS: Product[] = [
     ["Frozen"],
     null,
     ["Raw Mince", "Frozen Pet Food", "Best Sellers"],
-    "https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=1200&auto=format&fit=crop",
+    "/images/kangaroo-pet-mince.webp",
     {
       storageType: "Frozen",
       animal_protein: "Kangaroo",
@@ -5971,7 +5796,7 @@ export const PRODUCTS: Product[] = [
     ["Frozen"],
     null,
     ["Raw Mince", "Bulk Pet Food", "Frozen Pet Food"],
-    "https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=1200&auto=format&fit=crop",
+    "/images/kangaroo-and-chicken-pet-mince.webp",
     {
       storageType: "Frozen",
       animal_protein: "Mixed Protein",
@@ -5999,7 +5824,7 @@ export const PRODUCTS: Product[] = [
     ["Frozen"],
     null,
     ["Raw Mince", "Frozen Pet Food"],
-    "https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=1200&auto=format&fit=crop",
+    "/images/diced-kangaroo-and-beef-pet-mince.webp",
     {
       storageType: "Frozen",
       animal_protein: "Mixed Protein",
@@ -6029,7 +5854,7 @@ export const PRODUCTS: Product[] = [
     ["Frozen"],
     null,
     ["Bones", "Frozen Pet Food", "Best Sellers"],
-    "https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=1200&auto=format&fit=crop",
+    "/images/beef-marrow-bones-for-dogs.webp",
     {
       storageType: "Frozen",
       animal_protein: "Beef",
@@ -6057,7 +5882,7 @@ export const PRODUCTS: Product[] = [
     ["Frozen"],
     null,
     ["Bones", "Frozen Pet Food"],
-    "https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=1200&auto=format&fit=crop",
+    "/images/beef-brisket-bones-for-dogs.webp",
     {
       storageType: "Frozen",
       animal_protein: "Beef",
@@ -6085,7 +5910,7 @@ export const PRODUCTS: Product[] = [
     ["Frozen"],
     null,
     ["Bones", "Frozen Pet Food", "Best Sellers"],
-    "https://images.unsplash.com/photo-1587593810167-a84920ea0781?q=80&w=1200&auto=format&fit=crop",
+    "/images/chicken-frames.webp",
     {
       storageType: "Frozen",
       animal_protein: "Chicken",
@@ -6113,7 +5938,7 @@ export const PRODUCTS: Product[] = [
     ["Frozen"],
     null,
     ["Bones", "Bulk Pet Food", "Frozen Pet Food"],
-    "https://images.unsplash.com/photo-1587593810167-a84920ea0781?q=80&w=1200&auto=format&fit=crop",
+    "/images/chicken-frames-bulk-box.webp",
     {
       storageType: "Frozen",
       animal_protein: "Chicken",
@@ -6141,7 +5966,7 @@ export const PRODUCTS: Product[] = [
     ["Frozen"],
     null,
     ["Bones", "Frozen Pet Food"],
-    "https://images.unsplash.com/photo-1587593810167-a84920ea0781?q=80&w=1200&auto=format&fit=crop",
+    "/images/chicken-necks.webp",
     {
       storageType: "Frozen",
       animal_protein: "Chicken",
@@ -6169,7 +5994,7 @@ export const PRODUCTS: Product[] = [
     ["Frozen"],
     null,
     ["Bones", "Frozen Pet Food"],
-    "https://images.unsplash.com/photo-1587593810167-a84920ea0781?q=80&w=1200&auto=format&fit=crop",
+    "/images/chicken-feet.webp",
     {
       storageType: "Frozen",
       animal_protein: "Chicken",
@@ -6197,7 +6022,7 @@ export const PRODUCTS: Product[] = [
     ["Frozen"],
     null,
     ["Bones", "Frozen Pet Food"],
-    "https://images.unsplash.com/photo-1516684732162-798a0062be99?q=80&w=1200&auto=format&fit=crop",
+    "/images/turkey-necks.webp",
     {
       storageType: "Frozen",
       animal_protein: "Turkey",
@@ -6225,7 +6050,7 @@ export const PRODUCTS: Product[] = [
     ["Frozen"],
     null,
     ["Bones", "Frozen Pet Food"],
-    "https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=1200&auto=format&fit=crop",
+    "/images/kangaroo-tails.webp",
     {
       storageType: "Frozen",
       animal_protein: "Kangaroo",
@@ -6255,7 +6080,7 @@ export const PRODUCTS: Product[] = [
     ["Frozen"],
     null,
     ["Offal", "Frozen Pet Food"],
-    "https://images.unsplash.com/photo-1603048588665-791ca8aea617?q=80&w=1200&auto=format&fit=crop",
+    "/images/beef-liver-for-pets.webp",
     {
       storageType: "Frozen",
       animal_protein: "Beef",
@@ -6283,7 +6108,7 @@ export const PRODUCTS: Product[] = [
     ["Frozen"],
     null,
     ["Offal", "Frozen Pet Food"],
-    "https://images.unsplash.com/photo-1603048588665-791ca8aea617?q=80&w=1200&auto=format&fit=crop",
+    "/images/beef-heart-for-pets.webp",
     {
       storageType: "Frozen",
       animal_protein: "Beef",
@@ -6311,7 +6136,7 @@ export const PRODUCTS: Product[] = [
     ["Frozen"],
     null,
     ["Offal", "Frozen Pet Food"],
-    "https://images.unsplash.com/photo-1603048588665-791ca8aea617?q=80&w=1200&auto=format&fit=crop",
+    "/images/beef-kidney-for-pets.webp",
     {
       storageType: "Frozen",
       animal_protein: "Beef",
@@ -6339,7 +6164,7 @@ export const PRODUCTS: Product[] = [
     ["Frozen"],
     null,
     ["Offal", "Frozen Pet Food"],
-    "https://images.unsplash.com/photo-1603048588665-791ca8aea617?q=80&w=1200&auto=format&fit=crop",
+    "/images/mixed-beef-offal-for-pets.webp",
     {
       storageType: "Frozen",
       animal_protein: "Beef",
@@ -6367,7 +6192,7 @@ export const PRODUCTS: Product[] = [
     ["Frozen"],
     null,
     ["Offal", "Frozen Pet Food"],
-    "https://images.unsplash.com/photo-1603048588665-791ca8aea617?q=80&w=1200&auto=format&fit=crop",
+    "/images/chicken-livers-for-pets.webp",
     {
       storageType: "Frozen",
       animal_protein: "Chicken",
@@ -6380,151 +6205,7 @@ export const PRODUCTS: Product[] = [
   ),
 
   // Pet Packs (4 items)
-  createProduct(
-    "PRD-PET-021",
-    "Starter Pet Meat Box",
-    "pet-food",
-    "Pet Packs",
-    "starter-pet-meat-box",
-    30.00,
-    "Approximately 3kg",
-    "Approximately 3kg",
-    "fixed_box_price",
-    "Frozen Starter Pet Meat Box (approx. 3kg) with Beef Pet Mince, Chicken Pet Mince, Chicken Frames & Beef Liver.",
-    "Frozen Starter Pet Meat Box (approx. 3kg total weight). Pet food only — not for human consumption.",
-    "Pet Pack",
-    ["Pet Food Only — Serve According to Verified Supplier Instructions"],
-    ["Frozen"],
-    null,
-    ["Pet Packs", "Frozen Pet Food", "Best Sellers"],
-    "https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=1200&auto=format&fit=crop",
-    {
-      storageType: "Frozen",
-      animal_protein: "Mixed Protein",
-      pet_food_only: true,
-      human_consumption_warning: "Pet Food Only — Not for Human Consumption",
-      approximate_total_weight: "Approximately 3kg",
-      box_contents: [
-        { name: "Beef Pet Mince", quantity: "1kg", slug: "beef-pet-mince" },
-        { name: "Chicken Pet Mince", quantity: "1kg", slug: "chicken-pet-mince" },
-        { name: "Chicken Frames", quantity: "2 frames", slug: "chicken-frames" },
-        { name: "Beef Liver for Pets", quantity: "250g", slug: "beef-liver-for-pets" }
-      ],
-      seo_title: "Starter Pet Meat Box | Pet Food Catalogue",
-      seo_meta_description: "Starter Pet Meat Box (Approximately 3kg) for $30.00 AUD fixed box price. Frozen raw pet food box with beef mince, chicken mince, frames and liver.",
-      breadcrumb_path: "Home > Pet Food > Pet Packs > Starter Pet Meat Box"
-    }
-  ),
-  createProduct(
-    "PRD-PET-022",
-    "Pet Meat Box",
-    "pet-food",
-    "Pet Packs",
-    "pet-meat-box",
-    55.00,
-    "Approximately 5kg",
-    "Approximately 5kg",
-    "fixed_box_price",
-    "Frozen Pet Meat Box (approx. 5kg) with Beef, Chicken & Kangaroo Pet Mince, Chicken Frames, Beef Marrow Bones & Beef Liver.",
-    "Frozen Pet Meat Box (approx. 5kg total weight). Pet food only — not for human consumption.",
-    "Pet Pack",
-    ["Pet Food Only — Serve According to Verified Supplier Instructions"],
-    ["Frozen"],
-    null,
-    ["Pet Packs", "Frozen Pet Food", "Best Sellers"],
-    "https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=1200&auto=format&fit=crop",
-    {
-      storageType: "Frozen",
-      animal_protein: "Mixed Protein",
-      pet_food_only: true,
-      human_consumption_warning: "Pet Food Only — Not for Human Consumption",
-      approximate_total_weight: "Approximately 5kg",
-      box_contents: [
-        { name: "Beef Pet Mince", quantity: "1kg", slug: "beef-pet-mince" },
-        { name: "Chicken Pet Mince", quantity: "1kg", slug: "chicken-pet-mince" },
-        { name: "Kangaroo Pet Mince", quantity: "1kg", slug: "kangaroo-pet-mince" },
-        { name: "Chicken Frames", quantity: "2 frames", slug: "chicken-frames" },
-        { name: "Beef Marrow Bones for Dogs", quantity: "1kg", slug: "beef-marrow-bones-for-dogs" },
-        { name: "Beef Liver for Pets", quantity: "250g", slug: "beef-liver-for-pets" }
-      ],
-      seo_title: "Pet Meat Box | Pet Food Catalogue",
-      seo_meta_description: "Pet Meat Box (Approximately 5kg) for $55.00 AUD fixed box price. Frozen raw pet food box with beef, chicken, kangaroo mince, bones and liver.",
-      breadcrumb_path: "Home > Pet Food > Pet Packs > Pet Meat Box"
-    }
-  ),
-  createProduct(
-    "PRD-PET-023",
-    "Bulk Raw Pet Food Box",
-    "pet-food",
-    "Pet Packs",
-    "bulk-raw-pet-food-box",
-    85.00,
-    "Approximately 10kg",
-    "Approximately 10kg",
-    "fixed_box_price",
-    "Frozen Bulk Raw Pet Food Box (approx. 10kg) with Beef & Offal Pet Mince, Chicken Pet Mince, Chicken Frames & Beef Marrow Bones.",
-    "Bulk 10kg box of frozen raw pet food. Pet food only — not for human consumption.",
-    "Pet Pack",
-    ["Pet Food Only — Serve According to Verified Supplier Instructions"],
-    ["Frozen"],
-    null,
-    ["Pet Packs", "Bulk Pet Food", "Frozen Pet Food"],
-    "https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=1200&auto=format&fit=crop",
-    {
-      storageType: "Frozen",
-      animal_protein: "Mixed Protein",
-      pet_food_only: true,
-      human_consumption_warning: "Pet Food Only — Not for Human Consumption",
-      approximate_total_weight: "Approximately 10kg",
-      box_contents: [
-        { name: "Beef & Offal Pet Mince", quantity: "5kg", slug: "beef-and-offal-pet-mince" },
-        { name: "Chicken Pet Mince", quantity: "2kg", slug: "chicken-pet-mince" },
-        { name: "Chicken Frames", quantity: "2kg", slug: "chicken-frames" },
-        { name: "Beef Marrow Bones for Dogs", quantity: "1kg", slug: "beef-marrow-bones-for-dogs" }
-      ],
-      seo_title: "Bulk Raw Pet Food Box | Pet Food Catalogue",
-      seo_meta_description: "Bulk Raw Pet Food Box (Approximately 10kg) for $85.00 AUD fixed box price. Frozen bulk raw pet food box.",
-      breadcrumb_path: "Home > Pet Food > Pet Packs > Bulk Raw Pet Food Box"
-    }
-  ),
-  createProduct(
-    "PRD-PET-024",
-    "Kangaroo Pet Food Box",
-    "pet-food",
-    "Pet Packs",
-    "kangaroo-pet-food-box",
-    70.00,
-    "Approximately 5kg",
-    "Approximately 5kg",
-    "fixed_box_price",
-    "Frozen Kangaroo Pet Food Box (approx. 5kg) with Kangaroo Pet Mince, Kangaroo Tails, Diced Kangaroo & Beef Mince, Beef Liver & Marrow Bones.",
-    "Frozen Kangaroo Pet Food Box (approx. 5kg total weight). Pet food only — not for human consumption.",
-    "Pet Pack",
-    ["Pet Food Only — Serve According to Verified Supplier Instructions"],
-    ["Frozen"],
-    null,
-    ["Pet Packs", "Frozen Pet Food"],
-    "https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=1200&auto=format&fit=crop",
-    {
-      storageType: "Frozen",
-      animal_protein: "Mixed Protein",
-      pet_food_only: true,
-      human_consumption_warning: "Pet Food Only — Not for Human Consumption",
-      approximate_total_weight: "Approximately 5kg",
-      box_contents: [
-        { name: "Kangaroo Pet Mince", quantity: "2kg", slug: "kangaroo-pet-mince" },
-        { name: "Kangaroo Tails", quantity: "1kg", slug: "kangaroo-tails" },
-        { name: "Diced Kangaroo & Beef Pet Mince", quantity: "1.2kg", slug: "diced-kangaroo-and-beef-pet-mince" },
-        { name: "Beef Liver for Pets", quantity: "250g", slug: "beef-liver-for-pets" },
-        { name: "Beef Marrow Bones for Dogs", quantity: "1kg", slug: "beef-marrow-bones-for-dogs" }
-      ],
-      seo_title: "Kangaroo Pet Food Box | Pet Food Catalogue",
-      seo_meta_description: "Kangaroo Pet Food Box (Approximately 5kg) for $70.00 AUD fixed box price. Frozen raw pet food box with kangaroo mince, tails, diced mince, liver and bones.",
-      breadcrumb_path: "Home > Pet Food > Pet Packs > Kangaroo Pet Food Box"
-    }
-  ),
-
-  // ==========================================
+   // ==========================================
   // WHOLESALE — BULK MEAT ORDERS & ANIMAL SHARES (30 PRODUCTS)
   // ==========================================
 
@@ -6547,7 +6228,7 @@ export const PRODUCTS: Product[] = [
     ["Whole Carcass Share", "Assorted Portioned Cuts"],
     null,
     ["Bulk Meat Orders", "Animal Shares", "Bulk Beef"],
-    "https://images.unsplash.com/photo-1558030006-450675393462?q=80&w=1200&auto=format&fit=crop",
+    "/images/quarter-beef-share.webp",
     {
       storageType: "To be confirmed",
       animal_protein: "Beef",
@@ -6579,7 +6260,7 @@ export const PRODUCTS: Product[] = [
     ["Whole Carcass Share", "Assorted Portioned Cuts"],
     null,
     ["Bulk Meat Orders", "Animal Shares", "Bulk Beef"],
-    "https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=1200&auto=format&fit=crop",
+    "/images/half-beef-share.webp",
     {
       storageType: "To be confirmed",
       animal_protein: "Beef",
@@ -6611,7 +6292,7 @@ export const PRODUCTS: Product[] = [
     ["Whole Carcass Share", "Assorted Portioned Cuts"],
     null,
     ["Bulk Meat Orders", "Animal Shares", "Bulk Beef"],
-    "https://images.unsplash.com/photo-1603048588665-791ca8aea617?q=80&w=1200&auto=format&fit=crop",
+    "/images/whole-beef-share-200kg.webp",
     {
       storageType: "To be confirmed",
       animal_protein: "Beef",
@@ -6643,7 +6324,7 @@ export const PRODUCTS: Product[] = [
     ["Whole Carcass Share", "Assorted Portioned Cuts"],
     null,
     ["Bulk Meat Orders", "Animal Shares", "Bulk Beef"],
-    "https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=1200&auto=format&fit=crop",
+    "/images/whole-beef-share-250kg.webp",
     {
       storageType: "To be confirmed",
       animal_protein: "Beef",

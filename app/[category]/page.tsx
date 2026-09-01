@@ -25,14 +25,14 @@ export async function generateMetadata({
 
   return {
     title: isSeafood
-      ? `Seafood Catalogue | Fish, Prawns, Salmon & Value Packs`
+      ? `Seafood Catalogue | Fish, Prawns & Salmon`
       : isPetFood
-      ? `Pet Food Catalogue | Raw Pet Mince, Bones, Offal & Pet Packs`
+      ? `Pet Food Catalogue | Raw Pet Mince, Bones & Offal`
       : `${category.name} Cuts & Products | Mr Meat & Co Australia`,
     description: isSeafood
-      ? `Browse our seafood catalogue including Barramundi, Snapper, Flathead, King Prawns, Tasmanian Salmon portions, and mixed seafood value packs. Fresh chilled and frozen storage.`
+      ? `Browse our seafood catalogue including Barramundi, Snapper, Flathead, King Prawns, and Tasmanian Salmon portions. Fresh chilled and frozen storage.`
       : isPetFood
-      ? `Explore our raw pet food catalogue featuring Raw Mince, Bones, Offal, and Pet Packs. Pet food only — not for human consumption.`
+      ? `Explore our raw pet food catalogue featuring Raw Mince, Bones, and Offal. Pet food only — not for human consumption.`
       : category.description,
     alternates: {
       canonical: `https://${SITE.domain}/${category.slug}/`,
@@ -136,9 +136,9 @@ export default async function TopLevelCategoryPage({
         </h1>
         <p className="text-gray-300 text-sm max-w-3xl leading-relaxed">
           {isSeafood
-            ? 'Explore our complete seafood catalogue featuring fresh chilled and frozen fish fillets, raw and cooked prawns, salmon portions, and value packs. All prices are in AUD with clear storage and allergen information.'
+            ? 'Explore our complete seafood catalogue featuring fresh chilled and frozen fish fillets, raw and cooked prawns, and salmon portions. All prices are in AUD with clear storage and allergen information.'
             : isPetFood
-            ? 'Raw pet meat, bones, offal, and pet packs prepared strictly for animal diets. Pet food only — not for human consumption. Keep frozen until use.'
+            ? 'Raw pet meat, bones, and offal prepared strictly for animal diets. Pet food only — not for human consumption. Keep frozen until use.'
             : category.description}
         </p>
 

@@ -41,7 +41,6 @@ const FORMAT_TYPES = [
   'Heart',
   'Kidney',
   'Mixed Offal',
-  'Pet Pack',
 ];
 
 const SUBCATEGORIES = [
@@ -49,7 +48,6 @@ const SUBCATEGORIES = [
   { slug: 'raw-mince', name: 'Raw Mince' },
   { slug: 'bones', name: 'Bones' },
   { slug: 'offal', name: 'Offal' },
-  { slug: 'pet-packs', name: 'Pet Packs' },
 ];
 
 export function PetFoodCatalogueClient({ initialSubcategory = 'all' }: PetFoodCatalogueClientProps) {
@@ -195,7 +193,7 @@ export function PetFoodCatalogueClient({ initialSubcategory = 'all' }: PetFoodCa
                 Pet Food Only — Not for Human Consumption
               </h2>
               <p className="text-xs sm:text-sm text-gray-300 mt-1 max-w-2xl leading-relaxed">
-                All raw pet mince, bones, offal, and pet packs in this category are formulated and prepared strictly for animal diets. Keep frozen until use, thaw in refrigeration, and wash hands/surfaces thoroughly after handling.
+                All raw pet mince, bones, and offal in this category are formulated and prepared strictly for animal diets. Keep frozen until use, thaw in refrigeration, and wash hands/surfaces thoroughly after handling.
               </p>
             </div>
           </div>

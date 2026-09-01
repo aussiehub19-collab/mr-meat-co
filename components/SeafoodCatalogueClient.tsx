@@ -27,7 +27,6 @@ const SEAFOOD_TYPES = [
   'Threadfin Salmon',
   'Salmon',
   'Prawns',
-  'Mixed Seafood',
 ];
 
 const PRODUCT_TYPES = [
@@ -39,7 +38,6 @@ const PRODUCT_TYPES = [
   'Cooked Prawns',
   'Prawn Meat',
   'Smoked Salmon',
-  'Seafood Pack',
 ];
 
 const COOKING_METHODS = [
@@ -63,7 +61,6 @@ const PACK_TYPES = [
   '2kg Pack',
   '3kg Pack',
   'Whole Fish',
-  'Value Pack',
 ];
 
 const STORAGE_TYPES = ['All Storage', 'Fresh Chilled', 'Frozen', 'Refrigerated'];
@@ -73,7 +70,6 @@ const SUBCATEGORIES = [
   { slug: 'fish', name: 'Fish' },
   { slug: 'prawns', name: 'Prawns' },
   { slug: 'salmon', name: 'Salmon' },
-  { slug: 'value-packs', name: 'Value Packs' },
 ];
 
 export function SeafoodCatalogueClient({ initialSubcategory = 'all' }: SeafoodCatalogueClientProps) {
@@ -118,7 +114,6 @@ export function SeafoodCatalogueClient({ initialSubcategory = 'all' }: SeafoodCa
         if (selectedType === 'Threadfin Salmon' && !full.includes('threadfin')) return false;
         if (selectedType === 'Salmon' && !full.includes('salmon') && !pType.includes('salmon')) return false;
         if (selectedType === 'Prawns' && !full.includes('prawn')) return false;
-        if (selectedType === 'Mixed Seafood' && !full.includes('mixed') && !full.includes('pack')) return false;
       }
 
       // 3. Product type filter
@@ -134,7 +129,6 @@ export function SeafoodCatalogueClient({ initialSubcategory = 'all' }: SeafoodCa
         if (target === 'cooked prawns' && (!pType.includes('cooked') || !pType.includes('prawn')) && !name.includes('cooked')) return false;
         if (target === 'prawn meat' && !pType.includes('meat') && !name.includes('meat')) return false;
         if (target === 'smoked salmon' && !pType.includes('smoked') && !name.includes('smoked')) return false;
-        if (target === 'seafood pack' && !pType.includes('pack') && !name.includes('pack')) return false;
       }
 
       // 4. Cooking method
@@ -159,7 +153,6 @@ export function SeafoodCatalogueClient({ initialSubcategory = 'all' }: SeafoodCa
         if (target === '2kg pack' && !packSize.includes('2kg')) return false;
         if (target === '3kg pack' && !packSize.includes('3kg')) return false;
         if (target === 'whole fish' && !name.includes('whole') && !packSize.includes('whole')) return false;
-        if (target === 'value pack' && !name.includes('value pack') && !name.includes('pack for two') && !name.includes('family seafood')) return false;
       }
 
       // 6. Storage filter
@@ -288,7 +281,7 @@ export function SeafoodCatalogueClient({ initialSubcategory = 'all' }: SeafoodCa
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Search fish fillets, king prawns, salmon portions, value packs..."
+              placeholder="Search fish fillets, king prawns, salmon portions..."
               className="w-full pl-10 pr-4 py-2.5 bg-[#141414] border border-[#991B1B]/40 rounded-xl text-xs sm:text-sm font-medium text-white placeholder-gray-500 focus:outline-none focus:border-red-500"
             />
             <Search className="w-4 h-4 text-red-400 absolute left-3.5 top-3" />

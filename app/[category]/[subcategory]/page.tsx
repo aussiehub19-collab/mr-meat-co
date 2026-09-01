@@ -201,7 +201,7 @@ export default async function TopLevelSubcategoryPage({
           {isSeafood
             ? `Browse our selection of ${subcategory.toLowerCase()} products with transparent pack sizes, starting prices in AUD, and clear storage requirements.`
             : isPetFood
-            ? `Raw pet meat, bones, offal, or pet packs for ${subcategory.toLowerCase()}. Prepared strictly for animal dietary consumption only. Not for human consumption.`
+            ? `Raw pet meat, bones, or offal for ${subcategory.toLowerCase()}. Prepared strictly for animal dietary consumption only. Not for human consumption.`
             : `Premium fresh ${subcategory.toLowerCase()} hand-selected and trimmed by our craft butchers. High-protein, pasture-raised, delivered cold-chain across Australia.`}
         </p>
       </div>

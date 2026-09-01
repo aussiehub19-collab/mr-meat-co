@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useMemo } from 'react';
-import { PRODUCTS, CATEGORIES } from '@/config/site';
+import { PRODUCTS, CATEGORIES, type Product } from '@/config/site';
 import { ProductCard } from '@/components/ProductCard';
 import { Search, Filter, X, RotateCcw, ChevronDown, Check, SlidersHorizontal, Flame } from 'lucide-react';
 
@@ -14,6 +14,91 @@ interface ShopFilterClientProps {
 const RETAIL_PRODUCTS = PRODUCTS.filter(
   (p) => (p.main_category || p.category || '').toLowerCase() !== 'wholesale' && !p.is_wholesale
 );
+
+/* ------------------------------------------------------------------ *
+ * Strict filter rules.
+ * These match on STRUCTURED fields (main_category, subcategory,
+ * product_type, product_format, cooking_methods, collections,
+ * pet_food_only) — never on a blob of concatenated marketing copy —
+ * so the result set is predictable and stable.
+ * ------------------------------------------------------------------ */
+
+const arr = (v: unknown): string[] => (Array.isArray(v) ? (v as string[]) : []);
+const has = (list: unknown, re: RegExp) => arr(list).some((x) => re.test(x));
+const rx = (p: Product, re: RegExp) =>
+  re.test(p.product_name || '') || re.test(p.full_description || p.description || '');
+
+export const CUT_STYLE_RULES: Record<string, (p: Product) => boolean> = {
+  steaks: (p) =>
+    ['Steaks', 'Chops & Cutlets', 'Chops & Steaks'].includes(p.subcategory) ||
+    (/\b(steak|chop|cutlet)\b/i.test(p.product_type || '') &&
+      !/pack|mince|schnitzel/i.test(p.product_type || '')),
+
+  mince: (p) =>
+    !p.pet_food_only &&
+    (['Mince & Diced', 'Mince', 'Stir-Fry'].includes(p.subcategory) ||
+      /\b(mince|diced|strips)\b/i.test(p.product_type || '') ||
+      has(p.product_format, /diced/i) ||
+      has(p.cooking_methods, /stir.?fry/i)),
+
+  slowcook: (p) =>
+    ['Roasts', 'Slow Cook', 'Whole Birds'].includes(p.subcategory) ||
+    has(p.cooking_methods, /slow cook|braise/i) ||
+    /\b(roast|brisket|osso buco|shank|shin|cheek|silverside|corned|hock|chuck)\b/i.test(p.product_type || ''),
+
+  bbq: (p) =>
+    p.main_category === 'bbq-grill' ||
+    p.subcategory === 'BBQ' ||
+    /\b(skewer|kebab|kofta|burger|rib|patties|patty)\b/i.test(p.product_type || ''),
+
+  ready: (p) =>
+    p.main_category === 'ready-to-cook' ||
+    p.subcategory === 'Crumbed' ||
+    has(p.product_format, /crumbed|marinated|ready to cook/i) ||
+    /\b(schnitzel|crumbed|kiev|cordon bleu|tenders)\b/i.test(p.product_type || ''),
+
+  cured: (p) =>
+    p.main_category === 'deli-cured' ||
+    has(p.product_format, /cured|dried|air dried/i) ||
+    /\b(bacon|ham|salami|jerky|biltong|prosciutto|speck|cabanossi|kabana|chorizo|pastrami|pancetta|kransky)\b/i.test(
+      p.product_type || ''
+    ),
+
+  boxes: (p) =>
+    p.main_category === 'meat-boxes' ||
+    /\bpacks?\b/i.test(p.subcategory || '') ||
+    /\b(box|pack)\b/i.test(p.product_type || ''),
+
+  pet: (p) => Boolean(p.pet_food_only) || p.main_category === 'pet-food',
+};
+
+export const PROVENANCE_RULES: Record<string, (p: Product) => boolean> = {
+  'grass-fed': (p) =>
+    ['beef', 'lamb'].includes(p.main_category) ||
+    (p.main_category === 'sausages' && ['Beef', 'Lamb'].includes(p.subcategory)) ||
+    rx(p, /grass.?fed|pasture.?raised/i),
+
+  'free-range': (p) =>
+    p.main_category === 'chicken' ||
+    (p.main_category === 'sausages' && p.subcategory === 'Chicken') ||
+    /free.?range/i.test(p.product_type || '') ||
+    rx(p, /free.?range/i),
+
+  wagyu: (p) =>
+    rx(p, /wagyu|dry.?aged/i) ||
+    /wagyu|dry.?aged/i.test(p.badge || '') ||
+    has(p.collections, /^premium$/i),
+
+  frozen: (p) =>
+    p.storage_type === 'Frozen' || has(p.product_format, /^frozen$/i),
+
+  'high-protein': (p) =>
+    has(p.collections, /meal prep/i) ||
+    /\b(lean|high.?protein|meal.?prep)\b/i.test(p.product_name || '') ||
+    (p.main_category === 'specialty-meat' &&
+      /kangaroo|venison/i.test(`${p.subcategory} ${p.product_type}`)) ||
+    (p.main_category === 'meat-boxes' && /lean|meal prep|protein/i.test(`${p.subcategory} ${p.product_name}`)),
+};
 
 export function ShopFilterClient({ initialCategory = 'all' }: ShopFilterClientProps) {
   const [prevInitialCategory, setPrevInitialCategory] = useState<string>(initialCategory);
@@ -74,53 +159,16 @@ export function ShopFilterClient({ initialCategory = 'all' }: ShopFilterClientPr
         }
       }
 
-      // 3. Cut & Cooking Style Filter
+      // 3. Cut & Cooking Style Filter (strict, structured)
       if (selectedCutStyle !== 'all') {
-        const text = `${product.name} ${product.subcategory} ${product.category} ${product.description} ${product.shortDescription}`.toLowerCase();
-        if (selectedCutStyle === 'steaks' && !text.includes('steak') && !text.includes('cutlet') && !text.includes('ribeye') && !text.includes('porterhouse') && !text.includes('rump') && !text.includes('fillet')) {
-          return false;
-        }
-        if (selectedCutStyle === 'mince' && !text.includes('mince') && !text.includes('diced') && !text.includes('stir-fry') && !text.includes('ground')) {
-          return false;
-        }
-        if (selectedCutStyle === 'slowcook' && !text.includes('slow') && !text.includes('roast') && !text.includes('brisket') && !text.includes('osso buco') && !text.includes('shank') && !text.includes('chuck')) {
-          return false;
-        }
-        if (selectedCutStyle === 'bbq' && !text.includes('bbq') && !text.includes('rib') && !text.includes('skewer') && !text.includes('burger') && !text.includes('patties') && !text.includes('sausage') && !text.includes('grill')) {
-          return false;
-        }
-        if (selectedCutStyle === 'ready' && !text.includes('schnitzel') && !text.includes('crumbed') && !text.includes('marinated') && !text.includes('kebab') && !text.includes('ready to cook')) {
-          return false;
-        }
-        if (selectedCutStyle === 'cured' && !text.includes('bacon') && !text.includes('ham') && !text.includes('salami') && !text.includes('jerky') && !text.includes('smoked') && !text.includes('cured')) {
-          return false;
-        }
-        if (selectedCutStyle === 'boxes' && product.category !== 'meat-boxes' && !text.includes('box') && !text.includes('pack') && !text.includes('bundle')) {
-          return false;
-        }
-        if (selectedCutStyle === 'pet' && product.category !== 'pet-food' && !text.includes('pet') && !text.includes('marrow') && !text.includes('barf')) {
-          return false;
-        }
+        const rule = CUT_STYLE_RULES[selectedCutStyle];
+        if (rule && !rule(product)) return false;
       }
 
-      // 4. Craft Provenance & Attribute Filter
+      // 4. Craft Provenance & Attribute Filter (strict, structured)
       if (selectedProvenance !== 'all') {
-        const text = `${product.name} ${product.badge || ''} ${product.description} ${product.shortDescription}`.toLowerCase();
-        if (selectedProvenance === 'grass-fed' && !text.includes('grass-fed') && !text.includes('pasture-raised') && !text.includes('grass fed') && !text.includes('pasture raised')) {
-          return false;
-        }
-        if (selectedProvenance === 'free-range' && !text.includes('free-range') && !text.includes('free range')) {
-          return false;
-        }
-        if (selectedProvenance === 'wagyu' && !text.includes('wagyu') && !text.includes('dry-aged') && !text.includes('premium cut') && !text.includes('tenderloin')) {
-          return false;
-        }
-        if (selectedProvenance === 'gluten-free' && !text.includes('gluten-free') && !text.includes('preservative-free') && !text.includes('100% natural') && !text.includes('zero preservative')) {
-          return false;
-        }
-        if (selectedProvenance === 'high-protein' && !text.includes('high protein') && !text.includes('lean') && !text.includes('prep') && !text.includes('kangaroo') && !text.includes('fitness')) {
-          return false;
-        }
+        const rule = PROVENANCE_RULES[selectedProvenance];
+        if (rule && !rule(product)) return false;
       }
 
       // 5. Price Range Filter
@@ -471,8 +519,8 @@ export function ShopFilterClient({ initialCategory = 'all' }: ShopFilterClientPr
                 { id: 'all', label: 'All Attributes' },
                 { id: 'grass-fed', label: '🌿 100% Grass-Fed / Pasture-Raised' },
                 { id: 'free-range', label: '🐔 Free-Range Poultry' },
-                { id: 'wagyu', label: '🌟 Wagyu & Premium MB5+' },
-                { id: 'gluten-free', label: '🌾 Gluten-Free / Preservative-Free' },
+                { id: 'wagyu', label: '🌟 Wagyu & Dry-Aged Premium' },
+                { id: 'frozen', label: '❄️ Frozen' },
                 { id: 'high-protein', label: '💪 High Protein / Meal Prep' },
               ].map((item) => (
                 <button
@@ -641,8 +689,8 @@ export function ShopFilterClient({ initialCategory = 'all' }: ShopFilterClientPr
                   <option value="all">All Attributes</option>
                   <option value="grass-fed">🌿 100% Grass-Fed / Pasture-Raised</option>
                   <option value="free-range">🐔 Free-Range Poultry</option>
-                  <option value="wagyu">🌟 Wagyu & Premium MB5+</option>
-                  <option value="gluten-free">🌾 Gluten-Free / Preservative-Free</option>
+                  <option value="wagyu">🌟 Wagyu & Dry-Aged Premium</option>
+                  <option value="frozen">❄️ Frozen</option>
                   <option value="high-protein">💪 High Protein / Meal Prep</option>
                 </select>
               </div>

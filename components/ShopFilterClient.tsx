@@ -57,12 +57,9 @@ export const CUT_STYLE_RULES: Record<string, (p: Product) => boolean> = {
     has(p.product_format, /crumbed|marinated|ready to cook/i) ||
     /\b(schnitzel|crumbed|kiev|cordon bleu|tenders)\b/i.test(p.product_type || ''),
 
-  cured: (p) =>
-    p.main_category === 'deli-cured' ||
-    has(p.product_format, /cured|dried|air dried/i) ||
-    /\b(bacon|ham|salami|jerky|biltong|prosciutto|speck|cabanossi|kabana|chorizo|pastrami|pancetta|kransky)\b/i.test(
-      p.product_type || ''
-    ),
+  bacon: (p) =>
+    ['Bacon & Ham'].includes(p.subcategory) ||
+    /\b(bacon|ham)\b/i.test(p.product_type || ''),
 
   boxes: (p) =>
     p.main_category === 'meat-boxes' ||
@@ -488,7 +485,7 @@ export function ShopFilterClient({ initialCategory = 'all' }: ShopFilterClientPr
                 { id: 'slowcook', label: '🍲 Slow Cook & Roasts' },
                 { id: 'bbq', label: '🔥 BBQ, Ribs & Skewers' },
                 { id: 'ready', label: '🥖 Crumbed & Ready-to-Cook' },
-                { id: 'cured', label: '🥓 Smoked Bacon & Deli' },
+                { id: 'bacon', label: '🥓 Bacon & Ham' },
                 { id: 'boxes', label: '📦 Meat Boxes & Bundles' },
                 { id: 'pet', label: '🐶 BARF Raw Pet Food' },
               ].map((item) => (
@@ -672,7 +669,7 @@ export function ShopFilterClient({ initialCategory = 'all' }: ShopFilterClientPr
                   <option value="slowcook">🍲 Slow Cook & Roasts</option>
                   <option value="bbq">🔥 BBQ, Ribs & Skewers</option>
                   <option value="ready">🥖 Crumbed & Ready-to-Cook</option>
-                  <option value="cured">🥓 Smoked Bacon & Deli</option>
+                  <option value="bacon">🥓 Bacon & Ham</option>
                   <option value="boxes">📦 Meat Boxes & Bundles</option>
                   <option value="pet">🐶 BARF Raw Pet Food</option>
                 </select>

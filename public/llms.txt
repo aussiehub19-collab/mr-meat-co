@@ -14,18 +14,26 @@ Mr Meat & Co is Sydney's artisanal craft butcher delivering 100% Australian gras
 - Crypto Discount: Instant 10% discount applied to PayID and Crypto direct checkouts
 
 ## Product Categories
-- [Beef & Mince](https://mrmeatandco.com.au/shop/beef/): 100% Australian grass-fed beef, premium beef mince, dry-aged steaks, and slow-cooking roasts.
-- [Australian Lamb](https://mrmeatandco.com.au/shop/lamb/): Tender pasture-raised NSW grass-fed lamb cutlets, frenched racks, legs, and diced cuts.
-- [Pork & Poultry](https://mrmeatandco.com.au/shop/pork-poultry/): Free-range pasture-raised whole chicken, organic breasts, and free-range pork cuts.
-- [Sausages & Smallgoods](https://mrmeatandco.com.au/shop/smallgoods/): Artisanal gluten-free sausages, dry-cured bacon, smoked meats, and smallgoods.
-- [Bulk & Butcher Boxes](https://mrmeatandco.com.au/shop/bundles/): Curated freezer stocker boxes, household meat packs, and wholesale bulk bundles.
+- [Beef](https://mrmeatandco.com.au/shop/beef/): Australian beef cuts, dry-aged steaks, fresh beef mince, slow-cook roasts, and offal.
+- [Chicken](https://mrmeatandco.com.au/shop/chicken/): Australian chicken breasts, thighs, drumsticks, wings, whole birds, lean mince, and crumbed schnitzels.
+- [Lamb](https://mrmeatandco.com.au/shop/lamb/): Australian lamb cutlets, loin chops, leg roasts, shoulder, shanks, and mince.
+- [Pork](https://mrmeatandco.com.au/shop/pork/): Australian pork cuts, crispy pork belly, ribs, pork shoulder roasts, cutlets, mince, bacon, and ham.
+- [Sausages](https://mrmeatandco.com.au/shop/sausages/): Australian craft sausages made with beef, pork, chicken, lamb, and gourmet flavour blends.
+- [BBQ & Grill](https://mrmeatandco.com.au/shop/bbq-grill/): Barbecue essentials — steak packs, sausage packs, ribs, skewers, and burger patties.
+- [Meat Boxes](https://mrmeatandco.com.au/shop/meat-boxes/): Household meat boxes, value freezer stockers, BBQ boxes, premium steak bundles, and lean protein prep.
+- [Ready to Cook](https://mrmeatandco.com.au/shop/ready-to-cook/): Chef-prepared weeknight dinners — chicken schnitzels, crumbed steak, marinated cuts, kebabs, and burger patties.
+- [Specialty Meat](https://mrmeatandco.com.au/shop/specialty-meat/): Specialty cuts including veal, goat, wild kangaroo, and game.
+- [Seafood](https://mrmeatandco.com.au/shop/seafood/): Fish fillets and portions, raw and cooked prawns, salmon portions, and mixed seafood value packs.
+- [Pet Food](https://mrmeatandco.com.au/shop/pet-food/): Natural raw BARF pet food — pet mince, beef marrow bones, chicken frames, and pet meat boxes.
 
 ## Primary Featured Products
-- [Grass-Fed Premium Beef Mince (1kg)](https://mrmeatandco.com.au/shop/beef/grass-fed-premium-beef-mince/): $28.50 AUD
-- [Wagyu Reserve Beef Mince Blend (1kg)](https://mrmeatandco.com.au/shop/beef/wagyu-reserve-beef-mince/): $36.00 AUD
-- [Dry-Aged Bone-In Ribeye Steak (500g)](https://mrmeatandco.com.au/shop/beef/dry-aged-ribeye-steak/): $64.00 AUD
-- [NSW Pasture-Raised Lamb Cutlets (800g)](https://mrmeatandco.com.au/shop/lamb/nsw-grass-fed-lamb-cutlets/): $52.00 AUD
-- [The Ultimate Sydney Butcher Box (10kg Pack)](https://mrmeatandco.com.au/shop/bundles/ultimate-sydney-butcher-box/): $295.00 AUD
+- [Scotch Fillet Steak](https://mrmeatandco.com.au/shop/beef/scotch-fillet-steak/): $36.99 AUD
+- [Eye Fillet Steak](https://mrmeatandco.com.au/shop/beef/eye-fillet-steak/): $45.99 AUD
+- [Premium Beef Mince](https://mrmeatandco.com.au/shop/beef/premium-beef-mince/): $19.99 AUD
+- [Beef Brisket](https://mrmeatandco.com.au/shop/beef/beef-brisket/): $19.99 AUD
+- [Chicken Breast Fillets](https://mrmeatandco.com.au/shop/chicken/chicken-breast-fillets/): $13.50 AUD
+- [Crumbed Chicken Schnitzel](https://mrmeatandco.com.au/shop/chicken/crumbed-chicken-schnitzel/): $17.99 AUD
+- [Bone-In Leg of Lamb](https://mrmeatandco.com.au/shop/lamb/bone-in-leg-of-lamb/): $47.50 AUD
 
 ## Key Pages
 - [Full Product Catalog](https://mrmeatandco.com.au/shop/)

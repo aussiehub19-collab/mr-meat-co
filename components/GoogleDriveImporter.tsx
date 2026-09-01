@@ -35,7 +35,6 @@ export function GoogleDriveImporter() {
     'bbq-grill': 'https://lh3.googleusercontent.com/d/1HM0Ds8tlN1E1iJaM-xXfHRrdtqxl_R7G=s1600',
     'meat-boxes': 'https://lh3.googleusercontent.com/d/1Lu078x0uI5mJlKKBKsvUgMuWOd_hIM9t=s1600',
     'ready-to-cook': 'https://lh3.googleusercontent.com/d/1FvrTICIb3LUOzprGGkc1xpKo8gCCcMiq=s1600',
-    'deli-cured': 'https://lh3.googleusercontent.com/d/14RwyTYmojT8ahAkDdMe_Xb857OxRp_sd=s1600',
     'specialty-meat': 'https://lh3.googleusercontent.com/d/1t5E5nORfMd12SvLUZJbB0V4Codmg6P3z=s1600',
     'seafood': 'https://lh3.googleusercontent.com/d/1e7vMDbqZ9Bcbz8lQvznXDHTroLinHdd-=s1600',
     'pet-food': 'https://lh3.googleusercontent.com/d/1EA5D2vhLL8D1hhoHrvrpozGMONw1P4wf=s1600',

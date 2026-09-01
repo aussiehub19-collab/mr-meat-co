@@ -25,11 +25,14 @@ const SRC = process.argv[2] || DEFAULT_SOURCE;
 const ROOT = process.cwd();
 const CONFIG = path.join(ROOT, 'src/config/site.ts');
 const OUT_DIR = path.join(ROOT, 'public/images');
-const CANVAS_W = 1600;
-const CANVAS_H = 1200;
-const INNER_W = 1440; // ~90%
-const INNER_H = 1080;
-const SIZE_BUDGET = 145 * 1024;
+// Kept deliberately modest: these files are served straight from the CDN
+// (unoptimized) so the on-disk size IS the delivered size. 1200px wide is
+// ~2x the largest slot they render in (the ~600px PDP image).
+const CANVAS_W = 1200;
+const CANVAS_H = 900;
+const INNER_W = 1080; // ~90%
+const INNER_H = 810;
+const SIZE_BUDGET = 78 * 1024;
 const EXT_RE = /\.(jpe?g|png|webp|avif|tiff?)$/i;
 
 const norm = (s) => s.toLowerCase().replace(/[^a-z0-9]/g, '');
@@ -151,7 +154,7 @@ async function processImage(srcFile, slug) {
     background: '#ffffff',
   });
 
-  let q = 88;
+  let q = 82;
   let buf = await canvas.clone().webp({ quality: q }).toBuffer();
   while (buf.length > SIZE_BUDGET && q > 40) {
     q -= 6;

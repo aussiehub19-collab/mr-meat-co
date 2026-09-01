@@ -1583,7 +1583,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled"],
     ["None supplied"],
     ["Best Sellers", "Family Meals", "Ready to Cook"],
-    "https://images.unsplash.com/photo-1598515214211-89d3c73ae83b?q=80&w=800&auto=format&fit=crop",
+    "/images/chicken-breast-schnitzel.webp",
     { featured: true, badge: "Family Favorite" }
   ),
   createProduct(
@@ -3986,7 +3986,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled", "Vacuum Sealed"],
     ["Australian"],
     ["Specials", "New Arrivals"],
-    "https://images.unsplash.com/photo-1588168333986-5078d3ae3976?q=80&w=800&auto=format&fit=crop",
+    "/images/family-meat-box.webp",
     {
       featured: true,
       badge: "Custom Builder",
@@ -4016,7 +4016,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled", "Crumbed", "Ready to Cook"],
     ["Australian"],
     ["Best Sellers", "Family Meals"],
-    "https://picsum.photos/seed/ready-schnitzel/800/600",
+    "/images/parmesan-herb-chicken-schnitzel.webp",
     {
       featured: true,
       badge: "Chef Prepared",
@@ -7091,7 +7091,67 @@ export const PRODUCTS: Product[] = [
     }
   ),
 
-  // --- 9. BULK VEAL (3 Products) ---
+  // --- 9. BULK VEAL (5 Products) ---
+  createProduct(
+    "half-veal-share",
+    "Half Veal Share",
+    "Wholesale",
+    "Bulk Veal",
+    "half-veal-share",
+    260.00,
+    "Approximately 14kg",
+    "Approximately 14kg",
+    "fixed_pack_price",
+    "Half Veal Share (approx. 14kg). Half milk-fed veal carcass portioned into schnitzel, cutlets, roasts, osso buco, and mince.",
+    "Half Veal Share (approximately 14kg). Half a milk-fed veal carcass broken down by our butchers into leg schnitzel, cutlets, shoulder roast, osso buco shanks, and mince. Vacuum sealed and snap frozen in labelled portions.",
+    "Bulk Veal Share",
+    ["Pan-Fry", "Slow Cook", "Braise", "Roast"],
+    ["Whole Carcass Share", "Assorted Portioned Cuts"],
+    null,
+    ["Bulk Meat Orders", "Animal Shares", "Bulk Veal"],
+    "/images/veal-cutlets.webp",
+    {
+      storageType: "Frozen",
+      animal_protein: "Veal",
+      is_animal_share: true,
+      approximate_weight: "Approximately 14kg",
+      product_contents: ["Veal schnitzel", "Veal cutlets", "Shoulder roast", "Osso buco", "Veal mince"],
+      bulk_order_notice: "Weight is approximate and can vary by animal size, trimming, cut selection and processing yield. Please ensure you have sufficient freezer capacity before ordering.",
+      seo_title: "Half Veal Share (~14kg) | Bulk Veal Orders",
+      seo_meta_description: "Half Veal Share (Approximately 14kg) for $260.00 AUD fixed pack price. Half milk-fed veal carcass portioned into schnitzel, cutlets, roasts, osso buco, and mince.",
+      breadcrumb_path: "Home > Wholesale > Bulk Meat Orders > Bulk Veal > Half Veal Share"
+    }
+  ),
+  createProduct(
+    "whole-veal-share",
+    "Whole Veal Share",
+    "Wholesale",
+    "Bulk Veal",
+    "whole-veal-share",
+    495.00,
+    "Approximately 28kg",
+    "Approximately 28kg",
+    "fixed_pack_price",
+    "Whole Veal Share (approx. 28kg). Full milk-fed veal carcass portioned into schnitzel, cutlets, roasts, osso buco, and mince.",
+    "Whole Veal Share (approximately 28kg). A full milk-fed veal carcass portioned by our butchers into leg schnitzel, cutlets, rack, shoulder and leg roasts, osso buco shanks, and mince. Vacuum sealed and snap frozen in labelled portions.",
+    "Bulk Veal Share",
+    ["Pan-Fry", "Slow Cook", "Braise", "Roast"],
+    ["Whole Carcass Share", "Assorted Portioned Cuts"],
+    null,
+    ["Bulk Meat Orders", "Animal Shares", "Bulk Veal"],
+    "/images/veal-cutlets.webp",
+    {
+      storageType: "Frozen",
+      animal_protein: "Veal",
+      is_animal_share: true,
+      approximate_weight: "Approximately 28kg",
+      product_contents: ["Veal schnitzel", "Veal cutlets", "Veal rack", "Shoulder & leg roasts", "Osso buco", "Veal mince"],
+      bulk_order_notice: "Weight is approximate and can vary by animal size, trimming, cut selection and processing yield. Please ensure you have sufficient freezer capacity before ordering.",
+      seo_title: "Whole Veal Share (~28kg) | Bulk Veal Orders",
+      seo_meta_description: "Whole Veal Share (Approximately 28kg) for $495.00 AUD fixed pack price. Full milk-fed veal carcass portioned into schnitzel, cutlets, roasts, osso buco, and mince.",
+      breadcrumb_path: "Home > Wholesale > Bulk Meat Orders > Bulk Veal > Whole Veal Share"
+    }
+  ),
   createProduct(
     "bulk-veal-mince",
     "Bulk Veal Mince",
@@ -7174,7 +7234,67 @@ export const PRODUCTS: Product[] = [
     }
   ),
 
-  // --- 10. BULK KANGAROO (3 Products) ---
+  // --- 10. BULK KANGAROO (5 Products) ---
+  createProduct(
+    "half-kangaroo-share",
+    "Half Kangaroo Share",
+    "Wholesale",
+    "Bulk Kangaroo",
+    "half-kangaroo-share",
+    159.00,
+    "Approximately 10kg",
+    "Approximately 10kg",
+    "fixed_pack_price",
+    "Half Kangaroo Share (approx. 10kg). Boned-out wild kangaroo portioned into fillets, steaks, diced, mince, and sausages.",
+    "Half Kangaroo Share (approximately 10kg). Boned-out wild-harvested Australian kangaroo, portioned into rump fillets, leg steaks, diced, mince, and sausages. Snap frozen in labelled family portions.",
+    "Bulk Kangaroo Share",
+    ["BBQ", "Grill", "Pan-Fry", "Slow Cook"],
+    ["Whole Carcass Share", "Assorted Portioned Cuts", "Frozen"],
+    null,
+    ["Bulk Meat Orders", "Animal Shares", "Bulk Kangaroo"],
+    "/images/kangaroo-steaks.webp",
+    {
+      storageType: "Frozen",
+      animal_protein: "Kangaroo",
+      is_animal_share: true,
+      approximate_weight: "Approximately 10kg",
+      product_contents: ["Kangaroo fillets", "Leg steaks", "Diced kangaroo", "Kangaroo mince", "Kangaroo sausages"],
+      bulk_order_notice: "Weight is approximate and can vary by animal size, trimming, cut selection and processing yield. Please ensure you have sufficient freezer capacity before ordering.",
+      seo_title: "Half Kangaroo Share (~10kg) | Bulk Kangaroo Orders",
+      seo_meta_description: "Half Kangaroo Share (Approximately 10kg) for $159.00 AUD fixed pack price. Boned-out wild kangaroo portioned into fillets, steaks, diced, mince, and sausages.",
+      breadcrumb_path: "Home > Wholesale > Bulk Meat Orders > Bulk Kangaroo > Half Kangaroo Share"
+    }
+  ),
+  createProduct(
+    "whole-kangaroo-share",
+    "Whole Kangaroo Share",
+    "Wholesale",
+    "Bulk Kangaroo",
+    "whole-kangaroo-share",
+    299.00,
+    "Approximately 20kg",
+    "Approximately 20kg",
+    "fixed_pack_price",
+    "Whole Kangaroo Share (approx. 20kg). Boned-out wild kangaroo portioned into fillets, steaks, diced, mince, and sausages.",
+    "Whole Kangaroo Share (approximately 20kg). A full boned-out wild-harvested Australian kangaroo, portioned into rump fillets, leg steaks, diced, mince, and sausages. Snap frozen in labelled family portions for lean high-protein eating.",
+    "Bulk Kangaroo Share",
+    ["BBQ", "Grill", "Pan-Fry", "Slow Cook"],
+    ["Whole Carcass Share", "Assorted Portioned Cuts", "Frozen"],
+    null,
+    ["Bulk Meat Orders", "Animal Shares", "Bulk Kangaroo"],
+    "/images/kangaroo-steaks.webp",
+    {
+      storageType: "Frozen",
+      animal_protein: "Kangaroo",
+      is_animal_share: true,
+      approximate_weight: "Approximately 20kg",
+      product_contents: ["Kangaroo fillets", "Leg steaks", "Diced kangaroo", "Kangaroo mince", "Kangaroo sausages"],
+      bulk_order_notice: "Weight is approximate and can vary by animal size, trimming, cut selection and processing yield. Please ensure you have sufficient freezer capacity before ordering.",
+      seo_title: "Whole Kangaroo Share (~20kg) | Bulk Kangaroo Orders",
+      seo_meta_description: "Whole Kangaroo Share (Approximately 20kg) for $299.00 AUD fixed pack price. Boned-out wild kangaroo portioned into fillets, steaks, diced, mince, and sausages.",
+      breadcrumb_path: "Home > Wholesale > Bulk Meat Orders > Bulk Kangaroo > Whole Kangaroo Share"
+    }
+  ),
   createProduct(
     "bulk-kangaroo-mince",
     "Bulk Kangaroo Mince",
@@ -7257,7 +7377,67 @@ export const PRODUCTS: Product[] = [
     }
   ),
 
-  // --- 11. BULK GAME (3 Products) ---
+  // --- 11. BULK GAME (5 Products) ---
+  createProduct(
+    "half-venison-share",
+    "Half Venison Share",
+    "Wholesale",
+    "Bulk Game",
+    "half-venison-share",
+    440.00,
+    "Approximately 20kg",
+    "Approximately 20kg",
+    "fixed_pack_price",
+    "Half Venison Share (approx. 20kg). Half farmed venison carcass portioned into backstrap, roasts, osso buco, diced, and mince.",
+    "Half Venison Share (approximately 20kg). Half a farmed deer carcass broken down by our butchers into backstrap, leg and shoulder roasts, osso buco shanks, diced, and mince. Snap frozen in labelled portions for game menus.",
+    "Bulk Game Share",
+    ["BBQ", "Roast", "Slow Cook", "Braise"],
+    ["Whole Carcass Share", "Assorted Portioned Cuts", "Frozen"],
+    null,
+    ["Bulk Meat Orders", "Animal Shares", "Bulk Game"],
+    "/images/venison-backstrap.webp",
+    {
+      storageType: "Frozen",
+      animal_protein: "Venison",
+      is_animal_share: true,
+      approximate_weight: "Approximately 20kg",
+      product_contents: ["Venison backstrap", "Leg & shoulder roasts", "Osso buco", "Diced venison", "Venison mince"],
+      bulk_order_notice: "Weight is approximate and can vary by animal size, trimming, cut selection and processing yield. Please ensure you have sufficient freezer capacity before ordering.",
+      seo_title: "Half Venison Share (~20kg) | Bulk Game Orders",
+      seo_meta_description: "Half Venison Share (Approximately 20kg) for $440.00 AUD fixed pack price. Half farmed venison carcass portioned into backstrap, roasts, osso buco, diced, and mince.",
+      breadcrumb_path: "Home > Wholesale > Bulk Meat Orders > Bulk Game > Half Venison Share"
+    }
+  ),
+  createProduct(
+    "whole-venison-share",
+    "Whole Venison Share",
+    "Wholesale",
+    "Bulk Game",
+    "whole-venison-share",
+    835.00,
+    "Approximately 40kg",
+    "Approximately 40kg",
+    "fixed_pack_price",
+    "Whole Venison Share (approx. 40kg). Full farmed venison carcass portioned into backstrap, roasts, osso buco, diced, and mince.",
+    "Whole Venison Share (approximately 40kg). A full farmed deer carcass portioned by our butchers into backstrap, rack, leg and shoulder roasts, osso buco shanks, diced, and mince. Snap frozen in labelled portions for restaurant game menus and stocked freezers.",
+    "Bulk Game Share",
+    ["BBQ", "Roast", "Slow Cook", "Braise"],
+    ["Whole Carcass Share", "Assorted Portioned Cuts", "Frozen"],
+    null,
+    ["Bulk Meat Orders", "Animal Shares", "Bulk Game"],
+    "/images/venison-backstrap.webp",
+    {
+      storageType: "Frozen",
+      animal_protein: "Venison",
+      is_animal_share: true,
+      approximate_weight: "Approximately 40kg",
+      product_contents: ["Venison backstrap", "Venison rack", "Leg & shoulder roasts", "Osso buco", "Diced venison", "Venison mince"],
+      bulk_order_notice: "Weight is approximate and can vary by animal size, trimming, cut selection and processing yield. Please ensure you have sufficient freezer capacity before ordering.",
+      seo_title: "Whole Venison Share (~40kg) | Bulk Game Orders",
+      seo_meta_description: "Whole Venison Share (Approximately 40kg) for $835.00 AUD fixed pack price. Full farmed venison carcass portioned into backstrap, roasts, osso buco, diced, and mince.",
+      breadcrumb_path: "Home > Wholesale > Bulk Meat Orders > Bulk Game > Whole Venison Share"
+    }
+  ),
   createProduct(
     "bulk-venison-mince",
     "Bulk Venison Mince",
@@ -7390,19 +7570,19 @@ export const WHOLESALE_BULK_SUBCATEGORIES: WholesaleSubcategory[] = [
   {
     slug: "bulk-veal",
     name: "Bulk Veal",
-    description: "5kg wholesale cartons of premium veal mince, tenderised leg schnitzel, and diced veal shoulder.",
+    description: "Half and whole milk-fed veal carcass shares, plus 5kg cartons of veal mince, schnitzel, and diced veal.",
     image: "/images/veal-schnitzel.webp",
   },
   {
     slug: "bulk-kangaroo",
     name: "Bulk Kangaroo",
-    description: "5kg frozen wholesale cartons of lean wild kangaroo mince, prime fillets, and sausages.",
+    description: "Half and whole boned-out kangaroo shares, plus 5kg frozen cartons of kangaroo mince, fillets, and sausages.",
     image: "/images/kangaroo-fillets.webp",
   },
   {
     slug: "bulk-game",
     name: "Bulk Game",
-    description: "Frozen wholesale venison mince and osso buco, plus mixed game boxes of venison, kangaroo, and wild boar.",
+    description: "Half and whole farmed venison carcass shares, frozen venison mince and osso buco, plus mixed game boxes.",
     image: "/images/venison-backstrap.webp",
   },
 ];

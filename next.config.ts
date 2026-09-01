@@ -10,7 +10,9 @@ const nextConfig: NextConfig = {
     ignoreBuildErrors: false,
   },
   images: {
-    formats: ['image/avif', 'image/webp'],
+    // Local product/hero images are pre-optimised and served unoptimized
+    // (see SmartImage). This only affects the few remaining remote images.
+    formats: ['image/webp'],
     minimumCacheTTL: 2678400,
     remotePatterns: [
       {

@@ -1,4 +1,6 @@
 import React from 'react';
+import Link from 'next/link';
+import { Beef, ArrowRight } from 'lucide-react';
 import { SITE } from '@/config/site';
 import { JsonLd } from '@/components/JsonLd';
 import { ShopFilterClient } from '@/components/ShopFilterClient';
@@ -47,9 +49,31 @@ export default function ShopIndexPage() {
           Craft Butcher Meat Market
         </h1>
         <p className="text-gray-300 text-sm max-w-3xl leading-relaxed">
-          Filter through all 12 artisanal butcher categories, subcategories, and specialty meat cuts. Ground fresh daily in Alexandria with zero preservatives or fillers. Cold-chain refrigerated express delivery across Greater Sydney.
+          Filter through all 11 artisanal butcher categories, subcategories, and specialty meat cuts. Ground fresh daily in Alexandria with zero preservatives or fillers. Cold-chain refrigerated express delivery across Greater Sydney.
         </p>
       </div>
+
+      {/* Carcass / bulk pointer */}
+      <Link
+        href="/wholesale/bulk-meat-orders/"
+        className="group flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4 rounded-2xl border border-red-500/40 bg-gradient-to-r from-[#2A1212] via-[#1C1414] to-[#1C1414] p-4 sm:p-5 hover:border-red-500 transition-colors"
+      >
+        <div className="w-11 h-11 shrink-0 rounded-xl bg-red-900/50 border border-red-500/40 flex items-center justify-center text-red-300">
+          <Beef className="w-5 h-5" />
+        </div>
+        <div className="flex-1">
+          <div className="text-sm sm:text-base font-black text-white">
+            Looking for whole &amp; half carcasses, animal shares or bulk cartons?
+          </div>
+          <p className="text-xs text-gray-300 mt-0.5">
+            Quarter / half / whole beef, lamb, pork &amp; goat shares plus 5&ndash;10kg wholesale cartons are in the Bulk Meat &amp; Animal Shares section.
+          </p>
+        </div>
+        <span className="shrink-0 inline-flex items-center gap-1.5 text-xs font-black text-red-300 group-hover:text-red-200 border border-red-500/40 rounded-lg px-3 py-2">
+          Shop Bulk &amp; Carcasses
+          <ArrowRight className="w-4 h-4" />
+        </span>
+      </Link>
 
       {/* Interactive Shop Filter System */}
       <ShopFilterClient initialCategory="all" />

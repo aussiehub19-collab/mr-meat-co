@@ -76,7 +76,12 @@ export function SmartImage({
   };
 
   const isGoogleDrive = Boolean(extractGoogleDriveId(src) || (imgSrc && (imgSrc.includes('googleusercontent.com') || imgSrc.includes('drive.google.com'))));
-  const shouldUnoptimize = unoptimized !== undefined ? unoptimized : isGoogleDrive;
+  // Our own /images/* files are already sized + webp-compressed by
+  // scripts/images.mjs, so skip Vercel's on-demand optimizer entirely — the
+  // file is served straight from the CDN with zero transform latency.
+  const isLocalOptimised = typeof imgSrc === 'string' && imgSrc.startsWith('/images/');
+  const shouldUnoptimize =
+    unoptimized !== undefined ? unoptimized : isGoogleDrive || isLocalOptimised;
 
   if (fill) {
     return (

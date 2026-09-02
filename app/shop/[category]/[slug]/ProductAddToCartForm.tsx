@@ -84,7 +84,7 @@ export function ProductAddToCartForm({ product }: { product: Product }) {
         <div className="flex items-center gap-2 rounded-xl border border-emerald-500/40 bg-emerald-950/30 px-3 py-2 text-xs font-bold text-emerald-300">
           <Bitcoin className="w-4 h-4 shrink-0 text-emerald-400" />
           <span>
-            Pay with PayID or Crypto (BTC / USDT) and pay{' '}
+            Pay with crypto (BTC / USDT) and pay{' '}
             <span className="text-white">${cryptoTotal.toFixed(2)} AUD</span> — save {SHOP.cryptoDiscount}%
           </span>
         </div>

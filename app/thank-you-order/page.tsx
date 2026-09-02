@@ -28,9 +28,9 @@ export default function ThankYouOrderPage() {
       </div>
 
       <div className="p-6 bg-red-50 border border-red-200 rounded-2xl text-left space-y-2 text-xs text-red-900 max-w-md mx-auto">
-        <strong className="block font-bold">💡 PayID / Crypto 10% Discount Reminder:</strong>
+        <strong className="block font-bold">💡 Crypto 10% Discount Reminder:</strong>
         <p>
-          If paying via PayID or Crypto, please complete payment to <strong>{CONTACT.email}</strong> or check your WhatsApp chat. Your 10% discount is automatically verified upon payment receipt.
+          If paying with crypto (BTC / USDT), please complete payment to <strong>{CONTACT.email}</strong> or check your WhatsApp chat — your 10% discount is automatically verified on receipt. PayID and bank transfer are also accepted at the standard total.
         </p>
       </div>
 

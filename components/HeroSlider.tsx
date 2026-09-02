@@ -159,7 +159,7 @@ export function HeroSlider() {
             </span>
             <span className="flex items-center space-x-1.5">
               <span className="w-2 h-2 rounded-full bg-red-500"></span>
-              <span>10% Crypto / PayID Off</span>
+              <span>10% Off with Crypto</span>
             </span>
           </div>
         </div>

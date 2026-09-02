@@ -4,7 +4,7 @@ Mr Meat & Co is a Next.js App Router ecommerce store for 100% Australian grass-f
 
 ## Non-negotiable Compliance
 - Banned Terms: preservative 223, nitrogen flushing, water pumping, synthetic binders, imported beef trim.
-- Required Framings: 100% Australian grass-fed, pasture-raised, zero artificial preservatives, ground fresh daily in Alexandria Sydney, cold-chain refrigerated delivery, instant 10% discount for PayID & Crypto.
+- Required Framings: 100% Australian grass-fed, pasture-raised, zero artificial preservatives, ground fresh daily in Alexandria Sydney, cold-chain refrigerated delivery, instant 10% discount for CRYPTO (BTC/USDT) only — PayID is fee-free but NOT discounted.
 - Prohibited Claims: Never claim organic certification unless audited; never claim same-day delivery outside Greater Sydney Metro.
 - If a request would require breaking any of the above, stop and say so rather than complying.
 
@@ -30,6 +30,6 @@ Never hand-edit generated files (`llms.txt`, `.well-known/*`, `vercel.json`) —
 - Founded: 2018 in Alexandria, Sydney NSW, Australia
 - Ships: Greater Sydney Metro, Wollongong, Central Coast (Refrigerated Cold-Chain Van)
 - Minimum Order: $300 AUD (Free Refrigerated Delivery on orders $300+)
-- Payment: PayID, Crypto (BTC, USDT - 10% instant discount), Bank Transfer, WhatsApp Order Draft
+- Payment: Crypto BTC/USDT (10% instant discount), PayID, Bank Transfer, WhatsApp Order Draft. The 10% is CRYPTO ONLY.
 - Awards retained from prior brand per owner instruction: "Sydney Fine Food Produce Gold Award 2024", "NSW AMIC Retailer 2025".
 No further invented statistics, awards, press, or named clients. Ever.

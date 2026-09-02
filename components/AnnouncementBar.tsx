@@ -5,7 +5,7 @@ import { Truck, ShieldCheck, Percent, PhoneCall } from 'lucide-react';
 
 const announcements = [
   { icon: Truck, text: 'FREE Cold-Chain Refrigerated Delivery on All Sydney Orders ($300 Minimum Order)' },
-  { icon: Percent, text: 'Instant 10% Discount when paying via PayID or Crypto (BTC / USDT)' },
+  { icon: Percent, text: 'Instant 10% Discount when you pay with Crypto (BTC / USDT)' },
   { icon: ShieldCheck, text: '100% Australian Pasture-Raised & Hormone-Free Beef Guaranteed' },
   { icon: PhoneCall, text: 'Same-Day Butcher Dispatch Available Across Greater Sydney' },
 ];

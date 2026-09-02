@@ -18,4 +18,4 @@
 ## Content Pillars
 1. **The Pure Beef Mince Pillar**: Highlighting fresh daily grinding, zero preservative 223, 85/15 vs 80/20 fat ratios.
 2. **Refrigerated Cold-Chain Trust**: Educating consumers on thermal insulated packaging and temperature monitoring.
-3. **Value & Payment Direct**: Promoting PayID 10% instant discount savings.
+3. **Value & Payment Direct**: Promoting the 10% instant crypto (BTC/USDT) discount.

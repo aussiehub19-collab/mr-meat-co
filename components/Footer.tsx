@@ -50,7 +50,7 @@ export function Footer() {
           {/* Categories Col */}
           <div className="space-y-3">
             <h4 className="text-sm font-bold uppercase tracking-wider text-red-400 font-serif border-b border-[#991B1B]/30 pb-2">
-              12 Main Categories
+              Shop by Category
             </h4>
             <ul className="space-y-1.5 text-xs text-gray-300 max-h-56 overflow-y-auto pr-1">
               {CATEGORIES.map((cat) => (
@@ -103,7 +103,7 @@ export function Footer() {
               PayID & Direct Payment
             </h4>
             <p className="text-xs text-gray-300">
-              Save 10% on your meat order when paying via PayID or Cryptocurrency.
+              Save 10% on your meat order when you pay with cryptocurrency (BTC / USDT).
             </p>
             <div className="flex flex-wrap gap-2 pt-1">
               <span className="px-2.5 py-1 bg-[#1C1414] rounded-lg text-[11px] font-bold text-red-300 border border-[#991B1B]/40">

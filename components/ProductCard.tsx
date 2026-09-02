@@ -179,7 +179,7 @@ export function ProductCard({ product }: { product: Product }) {
               <span className="mt-0.5 flex items-center gap-1 text-[11px] font-bold text-emerald-400 leading-tight">
                 <Bitcoin className="w-3 h-3 shrink-0" />
                 <span>
-                  ${cryptoPrice.toFixed(2)} with PayID / Crypto
+                  ${cryptoPrice.toFixed(2)} paying with crypto
                   <span className="text-emerald-500/80 font-semibold"> (−{SHOP.cryptoDiscount}%)</span>
                 </span>
               </span>

@@ -11,7 +11,7 @@ Mr Meat & Co is Sydney's artisanal craft butcher delivering 100% Australian gras
 - Minimum Order: $300 AUD
 - Free Shipping: Free refrigerated delivery on all orders ($300 min) across Sydney Metro
 - Payment Methods: PayID, Direct Bank Transfer, Bitcoin (BTC), Tether (USDT)
-- Crypto Discount: Instant 10% discount applied to PayID and Crypto direct checkouts
+- Crypto Discount: Instant 10% discount when paying with cryptocurrency (BTC, USDT). PayID and bank transfer accepted with no surcharge but no discount.
 
 ## Product Categories
 - [Beef](https://mrmeatandco.com.au/shop/beef/): Australian beef cuts, dry-aged steaks, fresh beef mince, slow-cook roasts, and offal.

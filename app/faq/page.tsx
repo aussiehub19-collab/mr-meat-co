@@ -6,7 +6,7 @@ import Link from 'next/link';
 
 export const metadata = {
   title: 'Frequently Asked Questions | Beef Delivery & Payment FAQ',
-  description: 'Answers to top questions regarding our $300 AUD minimum order, free Sydney cold-chain delivery routes, PayID and 10% Crypto discounts, and beef mince freshness.',
+  description: 'Answers to top questions regarding our $300 AUD minimum order, free Sydney cold-chain delivery routes, the 10% crypto discount, and beef mince freshness.',
   alternates: {
     canonical: `https://${SITE.domain}/faq/`,
   },

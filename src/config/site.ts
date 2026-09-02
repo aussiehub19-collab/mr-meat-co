@@ -156,7 +156,7 @@ export const BRAND = {
   milestones: [
     { year: "2018", event: "Founded in Sydney as an Australian craft butcher committed to local livestock." },
     { year: "2020", event: "Launched cold-chain online ordering for Australian home cooks." },
-    { year: "2024", event: "Standardized the 12-category Australian meat catalogue taxonomy." },
+    { year: "2024", event: "Standardised a clean Australian meat catalogue taxonomy across 11 core categories." },
   ],
   sameAs: [
     "https://facebook.com/mrmeatandco.sydney",
@@ -7591,7 +7591,7 @@ export const POSTS: Post[] = [
   {
     slug: "australian-meat-taxonomy-guide",
     title: "Understanding Australian Meat Terminology: Cut Names, Cooking Methods & Taxonomy",
-    excerpt: "Learn how Australian butchers define Scotch Fillet, Porterhouse, Rump, and Schnitzels across our 12 standardized categories.",
+    excerpt: "Learn how Australian butchers define Scotch Fillet, Porterhouse, Rump, and Schnitzels across our standardised categories.",
     category: "Meat Education",
     date: "2026-02-18",
     readTime: "5 min read",

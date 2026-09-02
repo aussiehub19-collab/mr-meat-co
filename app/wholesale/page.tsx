@@ -323,7 +323,7 @@ export default function WholesalePage() {
             <Percent className="w-8 h-8 text-red-500" />
             <h3 className="font-bold text-white font-serif text-lg">Tiered Volume Pricing</h3>
             <p className="text-xs text-gray-300 leading-relaxed">
-              Tiered discounts starting at 50kg+ weekly commitments. Additional 10% instant discount for PayID & Crypto settlement.
+              Tiered discounts starting at 50kg+ weekly commitments. Additional 10% instant discount for crypto (BTC / USDT) settlement.
             </p>
           </div>
         </div>

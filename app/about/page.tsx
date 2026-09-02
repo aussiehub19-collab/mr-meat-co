@@ -147,7 +147,7 @@ export default function AboutPage() {
             We believe in passing operational savings directly back to our customers. By streamlining our ordering process through direct web-assisted order drafts, WhatsApp messaging, PayID, and direct Cryptocurrency payments (Bitcoin BTC and Tether USDT), we bypass expensive credit card processing fees.
           </p>
           <p>
-            We pass those savings directly to you: every customer who selects PayID or Crypto direct checkout automatically receives an instant 10% discount off their total order. Combined with our free refrigerated express delivery on all orders ($300 AUD min order), Sydney households enjoy premium restaurant-grade butcher meats at fair, transparent pricing.
+            We pass those savings directly to you: every customer who pays with cryptocurrency (Bitcoin BTC or Tether USDT) automatically receives an instant 10% discount off their total order. PayID and bank transfer are also accepted with no card surcharge. Combined with our free refrigerated express delivery on all orders ($300 AUD min order), Sydney households enjoy premium restaurant-grade butcher meats at fair, transparent pricing.
           </p>
         </section>
 

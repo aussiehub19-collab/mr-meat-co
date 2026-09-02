@@ -113,8 +113,8 @@ export default function HomePage() {
               <Percent className="w-6 h-6" />
             </div>
             <div>
-              <h4 className="font-bold text-white text-sm">10% Crypto & PayID Off</h4>
-              <p className="text-xs text-gray-400 mt-1">Instant 10% discount on PayID or Crypto (BTC/USDT) direct checkout.</p>
+              <h4 className="font-bold text-white text-sm">10% Off with Crypto</h4>
+              <p className="text-xs text-gray-400 mt-1">Instant 10% discount when you pay with crypto (BTC / USDT). PayID &amp; bank transfer also accepted.</p>
             </div>
           </div>
 

@@ -11,6 +11,13 @@ import {
 
 const subSlug = subcategorySlug;
 
+/** Only our own optimised /images/* files go in the image sitemap. Remote
+ *  placeholder URLs carry query strings whose `&` breaks the XML (Next does
+ *  not entity-escape <image:loc>), and Google won't crawl cross-origin
+ *  images from a sitemap anyway. */
+const cleanImage = (src?: string | null): string[] | undefined =>
+  src && src.startsWith('/images/') ? [abs(src)] : undefined;
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = `https://${SITE.domain}`;
   const now = new Date().toISOString();
@@ -68,23 +75,27 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url = `${baseUrl}/pet-food/${sub}/${p.slug}/`;
     }
 
+    const images = cleanImage(p.main_image || p.image);
     return {
       url,
       lastModified: now,
       changeFrequency: 'daily' as const,
       priority: 0.9,
-      images: [abs(p.main_image || p.image)],
+      ...(images ? { images } : {}),
     };
   });
 
   // Blog post pages with absolute image URLs
-  const blogRoutes: MetadataRoute.Sitemap = POSTS.map((post) => ({
-    url: `${baseUrl}/blog/${post.slug}/`,
-    lastModified: post.date ? new Date(post.date).toISOString() : now,
-    changeFrequency: 'weekly',
-    priority: 0.75,
-    images: [abs(post.image)],
-  }));
+  const blogRoutes: MetadataRoute.Sitemap = POSTS.map((post) => {
+    const images = cleanImage(post.image);
+    return {
+      url: `${baseUrl}/blog/${post.slug}/`,
+      lastModified: post.date ? new Date(post.date).toISOString() : now,
+      changeFrequency: 'weekly' as const,
+      priority: 0.75,
+      ...(images ? { images } : {}),
+    };
+  });
 
   return [
     ...staticRoutes,

@@ -142,14 +142,44 @@ export async function POST(req: NextRequest) {
   }
 }
 
-// Health check — no secrets, just whether the SMTP env vars reached this deployment.
-export async function GET() {
-  return NextResponse.json({
+// Health check — no secrets. Reports whether the SMTP env vars reached this
+// deployment. Add ?verify=1 to actually open an SMTP connection and authenticate
+// (no email is sent) — this surfaces the exact Zoho error (auth vs TLS vs host).
+export async function GET(req: NextRequest) {
+  const base = {
     smtpConfigured,
     host: EMAIL_SERVER_HOST ? "set" : "missing",
     port: EMAIL_SERVER_PORT ? "set" : "missing",
+    secure: EMAIL_SERVER_SECURE ?? "(unset)",
     user: EMAIL_SERVER_USER ? "set" : "missing",
     password: EMAIL_SERVER_PASSWORD ? "set" : "missing",
     from: EMAIL_FROM ? "set" : "missing",
-  });
+  };
+
+  if (new URL(req.url).searchParams.get("verify") !== "1" || !smtpConfigured) {
+    return NextResponse.json(base);
+  }
+
+  const port = Number(EMAIL_SERVER_PORT) || 465;
+  const secure =
+    EMAIL_SERVER_SECURE != null
+      ? String(EMAIL_SERVER_SECURE).toLowerCase() === "true"
+      : port === 465;
+  try {
+    const transporter = nodemailer.createTransport({
+      host: EMAIL_SERVER_HOST,
+      port,
+      secure,
+      auth: { user: EMAIL_SERVER_USER, pass: EMAIL_SERVER_PASSWORD },
+    });
+    await transporter.verify();
+    return NextResponse.json({ ...base, verify: "ok" });
+  } catch (err) {
+    const error = err as Error & { code?: string; responseCode?: number };
+    console.error("[contact] verify failed:", error?.message, error);
+    return NextResponse.json(
+      { ...base, verify: "failed", error: error?.message, code: error?.code },
+      { status: 502 }
+    );
+  }
 }

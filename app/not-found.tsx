@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { ArrowLeft, AlertCircle } from 'lucide-react';
 
 export const metadata = {
-  title: '404 - Cut Not Found | Mr Meat & Co',
+  title: { absolute: '404 — Page Not Found | Mr Meat & Co' },
   robots: {
     index: false,
     follow: true,
@@ -21,10 +21,10 @@ export default function NotFoundPage() {
         <span className="text-xs font-bold uppercase text-[#7A1C1C] tracking-widest">
           404 Error
         </span>
-        <h1 className="text-3xl font-black font-serif text-gray-900">
+        <h1 className="text-3xl font-black font-serif text-white">
           This Cut Is Off The Board
         </h1>
-        <p className="text-sm text-gray-600 max-w-md mx-auto leading-relaxed">
+        <p className="text-sm text-gray-300 max-w-md mx-auto leading-relaxed">
           The page or butcher cut you were looking for could not be found. Explore our primary fresh meat categories below.
         </p>
       </div>

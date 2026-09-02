@@ -11,8 +11,10 @@ const nextConfig: NextConfig = {
   },
   images: {
     // Local product/hero images are pre-optimised and served unoptimized
-    // (see SmartImage). This only affects the few remaining remote images.
-    formats: ['image/webp'],
+    // (see SmartImage). This only affects images that DO go through the
+    // optimiser (remote hosts). Re-run scripts/images.mjs to emit .avif
+    // siblings for the local set — see the audit follow-up (F15).
+    formats: ['image/avif', 'image/webp'],
     minimumCacheTTL: 2678400,
     remotePatterns: [
       {

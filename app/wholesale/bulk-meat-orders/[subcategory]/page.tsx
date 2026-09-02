@@ -1,7 +1,7 @@
 import React from 'react';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
-import { PRODUCTS, WHOLESALE_BULK_SUBCATEGORIES, SITE, PAGE_SEO } from '@/config/site';
+import { PRODUCTS, WHOLESALE_BULK_SUBCATEGORIES, SITE, PAGE_SEO, metaDesc } from '@/config/site';
 import { ProductCard } from '@/components/ProductCard';
 import { WholesaleNav } from '@/components/WholesaleNav';
 import { BulkOrderContactSection } from '@/components/BulkOrderContactSection';
@@ -31,9 +31,10 @@ export async function generateMetadata({
     title: seo?.title
       ? { absolute: seo.title }
       : `${subcategory.name} - Bulk Meat Orders & Animal Shares | ${SITE.name}`,
-    description:
+    description: metaDesc(
       seo?.description ??
-      `Shop large-quantity ${subcategory.name.toLowerCase()} orders, freezer cartons, and animal shares. Add directly to cart or request custom bulk pricing.`,
+        `Shop large-quantity ${subcategory.name.toLowerCase()} orders, freezer cartons and animal shares. Add to cart or request custom bulk pricing.`
+    ),
     alternates: {
       canonical: `https://${SITE.domain}/wholesale/bulk-meat-orders/${subcategory.slug}/`,
     },

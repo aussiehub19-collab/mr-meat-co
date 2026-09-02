@@ -2,7 +2,7 @@
   "$schema": "https://agentskills.io/schema/v0.2.0/index.json",
   "name": "Mr Meat & Co",
   "url": "https://mrmeatandco.com.au",
-  "description": "Sydney's Premier Craft Butcher & Grass-Fed Beef Direct to Door",
+  "description": "Australian online meat shop and craft butcher — fresh daily in Alexandria, Sydney, delivered cold-chain across NSW and nationwide",
   "skills": [
     { "name": "search-products", "type": "commerce", "description": "Search products by keyword (e.g. beef mince), category, or max price", "url": "https://mrmeatandco.com.au/api/mcp", "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855" },
     { "name": "browse-catalog", "type": "navigation", "description": "Browse the full butcher product catalog by category", "url": "https://mrmeatandco.com.au/shop/", "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855" },

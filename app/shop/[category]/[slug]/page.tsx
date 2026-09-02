@@ -1,6 +1,6 @@
 import React from 'react';
 import { notFound } from 'next/navigation';
-import { PRODUCTS, CATEGORIES, SITE, SHOP, CONTACT } from '@/config/site';
+import { PRODUCTS, CATEGORIES, SITE, SHOP, CONTACT, abs } from '@/config/site';
 import { JsonLd } from '@/components/JsonLd';
 import { SmartImage } from '@/components/SmartImage';
 import { ProductAddToCartForm } from './ProductAddToCartForm';
@@ -58,11 +58,12 @@ export default async function ProductDetailPage({
     (p) => p.category === product.category && p.slug !== product.slug
   ).slice(0, 3);
 
+  const priceValidUntil = new Date(Date.now() + 365 * 864e5).toISOString().slice(0, 10);
   const productSchema = {
     '@context': 'https://schema.org',
     '@type': 'Product',
     name: product.name,
-    image: [product.image],
+    image: [abs(product.main_image || product.image)],
     description: product.description,
     sku: product.slug,
     brand: {
@@ -74,11 +75,25 @@ export default async function ProductDetailPage({
       url: `https://${SITE.domain}/shop/${product.category}/${product.slug}/`,
       priceCurrency: SITE.currency,
       price: product.price || 0,
+      priceValidUntil,
       itemCondition: 'https://schema.org/NewCondition',
       availability: 'https://schema.org/InStock',
       seller: {
         '@type': 'Organization',
         name: SITE.name,
+      },
+      shippingDetails: {
+        '@type': 'OfferShippingDetails',
+        shippingRate: {
+          '@type': 'MonetaryAmount',
+          value: 0,
+          currency: SITE.currency,
+        },
+        shippingDestination: {
+          '@type': 'DefinedRegion',
+          addressCountry: 'AU',
+          addressRegion: 'NSW',
+        },
       },
     },
   };
@@ -96,18 +111,12 @@ export default async function ProductDetailPage({
       {
         '@type': 'ListItem',
         position: 2,
-        name: 'Shop',
-        item: `https://${SITE.domain}/shop/`,
+        name: category ? category.name : 'Category',
+        item: `https://${SITE.domain}/${product.category}/`,
       },
       {
         '@type': 'ListItem',
         position: 3,
-        name: category ? category.name : 'Category',
-        item: `https://${SITE.domain}/shop/${product.category}/`,
-      },
-      {
-        '@type': 'ListItem',
-        position: 4,
         name: product.name,
         item: `https://${SITE.domain}/shop/${product.category}/${product.slug}/`,
       },
@@ -120,7 +129,7 @@ export default async function ProductDetailPage({
 
       {/* Back Link & Breadcrumb */}
       <div className="flex items-center space-x-2 text-xs font-bold text-gray-400">
-        <Link href={`/shop/${product.category}/`} className="flex items-center space-x-1 hover:text-red-400">
+        <Link href={`/${product.category}/`} className="flex items-center space-x-1 hover:text-red-400">
           <ArrowLeft className="w-3.5 h-3.5" />
           <span>Back to {category ? category.name : 'Category'}</span>
         </Link>

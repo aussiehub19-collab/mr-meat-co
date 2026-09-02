@@ -3,7 +3,7 @@
   "name": "Mr Meat & Co",
   "legal_name": "Mr Meat & Co",
   "abn": "71 635 847 908",
-  "description": "Sydney's Premier Craft Butcher & Grass-Fed Beef Direct to Door",
+  "description": "Australian online meat shop and craft butcher — fresh daily in Alexandria, Sydney, delivered cold-chain across NSW and nationwide",
   "api_base_url": "https://mrmeatandco.com.au",
   "homepage": "https://mrmeatandco.com.au",
   "transports": ["https"],

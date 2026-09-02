@@ -82,7 +82,11 @@ export interface Category {
 export interface Post {
   slug: string;
   title: string;
+  /** Optional ≤60-char title for <title>/SERP; falls back to `title`. */
+  seoTitle?: string;
   excerpt: string;
+  /** Optional ~150-char meta description; falls back to `excerpt`. */
+  metaDescription?: string;
   category: string;
   date: string;
   updated?: string;
@@ -115,10 +119,49 @@ export const SITE = {
   gscVerification: "pending",
   indexNowKey: "mrmeatandco-indexnow-key-2026",
   cartKey: "tmc-cart-v1",
+  // 1200x630 social card — used as the default OG/Twitter image sitewide.
+  ogImage: "/og-card.png",
 };
+
+/** Absolute-URL helper — schema.org image fields, sitemap image entries and
+ *  OG tags all need a full https:// URL, never a site-relative path. */
+export function abs(path: string | undefined | null): string {
+  if (!path) return `https://${SITE.domain}/`;
+  if (/^https?:\/\//.test(path)) return path;
+  return `https://${SITE.domain}${path.startsWith("/") ? "" : "/"}${path}`;
+}
+
+/** One canonical brand sentence — reuse verbatim in llms.txt, agent files,
+ *  hero copy and schema descriptions so the entity reads consistently. */
+export const BRAND_STATEMENT =
+  "Mr Meat & Co is an Australian online meat shop and craft butcher, grinding and cutting fresh daily in Alexandria, Sydney and delivering cold-chain across NSW and — snap-frozen by express courier — nationwide.";
+
+/** Turn a subcategory display name into its URL slug — must match the logic
+ *  in app/[category]/[subcategory]/page.tsx exactly. */
+export function subcategorySlug(name: string): string {
+  return name
+    .toLowerCase()
+    .replace(/ & /g, "-")
+    .replace(/ \/ /g, "-")
+    .replace(/ /g, "-");
+}
+
+/** Clamp a meta description to a search-safe length (~155 chars) at a word
+ *  boundary. Descriptions in PAGE_SEO are written long-form; this trims them
+ *  for the <meta> tag without touching the on-page copy. */
+export function metaDesc(s?: string | null, fallback?: string): string {
+  const t = (s || fallback || SITE.tagline).replace(/\s+/g, " ").trim();
+  if (t.length <= 158) return t;
+  const cut = t.slice(0, 156);
+  const at = cut.lastIndexOf(" ");
+  return (at > 110 ? cut.slice(0, at) : cut).replace(/[\s,;:.–—-]+$/, "");
+}
 
 export const CONTACT = {
   email: "orders@mrmeatandco.com.au",
+  /** Entity-encoded form for rendering the address as visible text
+   *  (use with dangerouslySetInnerHTML). The plain `email` stays for mailto: links. */
+  emailHtml: "orders&#64;mrmeatandco.com.au",
   phone: "+61 420 126 562",
   whatsapp: "+61 420 126 562",
   address: "Unit 4, 120 Sydney Butcher Way, Alexandria NSW 2015",

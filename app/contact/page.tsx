@@ -70,7 +70,7 @@ export default function ContactPage() {
               <Mail className="w-5 h-5 text-red-500 shrink-0 mt-0.5" />
               <div>
                 <strong className="block font-bold text-white">Email:</strong>
-                <span>{CONTACT.email}</span>
+                <span dangerouslySetInnerHTML={{ __html: CONTACT.emailHtml }} />
               </div>
             </div>
 

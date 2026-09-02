@@ -1,6 +1,6 @@
 {
   "linkset": [
-    { "anchor": "https://mrmeatandco.com.au/", "https://www.iana.org/assignments/link-relations/service-doc": [{ "href": "https://mrmeatandco.com.au/faq/" }], "title": "Mr Meat & Co — Sydney's Premier Craft Butcher" },
+    { "anchor": "https://mrmeatandco.com.au/", "https://www.iana.org/assignments/link-relations/service-doc": [{ "href": "https://mrmeatandco.com.au/faq/" }], "title": "Mr Meat & Co — Australian online meat shop & craft butcher" },
     { "anchor": "https://mrmeatandco.com.au/shop/", "type": "text/html", "title": "Mr Meat & Co Product Catalog" },
     { "anchor": "https://mrmeatandco.com.au/wholesale/", "type": "text/html", "title": "Mr Meat & Co Wholesale Program" },
     { "anchor": "https://mrmeatandco.com.au/api/products", "type": "application/json", "title": "Mr Meat & Co Products API" },

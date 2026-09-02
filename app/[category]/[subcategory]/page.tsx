@@ -1,6 +1,6 @@
 import React from 'react';
 import { notFound } from 'next/navigation';
-import { CATEGORIES, PRODUCTS, SITE, PAGE_SEO } from '@/config/site';
+import { CATEGORIES, PRODUCTS, SITE, PAGE_SEO, metaDesc } from '@/config/site';
 import { JsonLd } from '@/components/JsonLd';
 import { SeoFaqSection } from '@/components/SeoFaqSection';
 import { ProductCard } from '@/components/ProductCard';
@@ -46,13 +46,14 @@ export async function generateMetadata({
       : isPetFood
       ? `${subcategory} | Pet Food Catalogue`
       : `${subcategory} — ${category.name} | Mr Meat & Co Australia`,
-    description: seo?.description
-      ? seo.description
-      : isSeafood
-      ? `Browse our ${subcategory.toLowerCase()} seafood catalogue. Fresh chilled and frozen storage with market-reference starting prices in AUD.`
-      : isPetFood
-      ? `Explore our ${subcategory.toLowerCase()} pet food catalogue. Pet food only — not for human consumption.`
-      : `Shop fresh Australian ${subcategory.toLowerCase()} cuts under our ${category.name} butcher selection. Delivered chilled to your door.`,
+    description: metaDesc(
+      seo?.description ??
+        (isSeafood
+          ? `Browse our ${subcategory.toLowerCase()} seafood catalogue — fresh chilled and frozen, with market-reference starting prices in AUD.`
+          : isPetFood
+          ? `Our ${subcategory.toLowerCase()} pet food catalogue. Pet food only — not for human consumption.`
+          : `Shop fresh Australian ${subcategory.toLowerCase()} cuts from our ${category.name} selection. Cold-chain delivery across NSW, frozen courier nationwide.`)
+    ),
     alternates: {
       canonical: `https://${SITE.domain}/${category.slug}/${subSlug}/`,
     },

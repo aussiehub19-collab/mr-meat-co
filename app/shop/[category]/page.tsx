@@ -21,11 +21,10 @@ export async function generateMetadata({
   return {
     title: `${category.name} — Grass-Fed Butcher Sydney`,
     description: category.description,
+    // The /{slug}/ page is the canonical category page (nav + PAGE_SEO target).
+    // This /shop/{slug}/ filter view points at it to avoid duplicate content.
     alternates: {
-      canonical: `https://${SITE.domain}/shop/${category.slug}/`,
-    },
-    other: {
-      'og:updated_time': new Date().toISOString(),
+      canonical: `https://${SITE.domain}/${category.slug}/`,
     },
   };
 }

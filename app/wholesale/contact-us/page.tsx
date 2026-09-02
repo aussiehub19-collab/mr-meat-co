@@ -81,7 +81,7 @@ export default function WholesaleContactPage() {
                 <Mail className="w-4 h-4 text-red-400 shrink-0" />
                 <div>
                   <span className="text-gray-400 block text-[10px] uppercase">Email</span>
-                  <span className="font-bold text-white">{CONTACT.email}</span>
+                  <span className="font-bold text-white" dangerouslySetInnerHTML={{ __html: CONTACT.emailHtml }} />
                 </div>
               </a>
 

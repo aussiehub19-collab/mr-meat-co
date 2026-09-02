@@ -25,11 +25,13 @@ export const metadata: Metadata = {
     siteName: SITE.name,
     locale: 'en_AU',
     type: 'website',
+    images: [{ url: SITE.ogImage, width: 1200, height: 630, alt: SITE.name }],
   },
   twitter: {
     card: 'summary_large_image',
     title: SITE.name,
     description: SITE.tagline,
+    images: [SITE.ogImage],
   },
   icons: {
     icon: [
@@ -39,9 +41,11 @@ export const metadata: Metadata = {
     apple: '/apple-icon',
   },
   other: {
-    'og:updated_time': new Date().toISOString(),
-    'google-site-verification': SITE.gscVerification,
     'indexnow-key': SITE.indexNowKey,
+    // Only emit the GSC token once it's real — a "pending" value is a junk tag.
+    ...(SITE.gscVerification && SITE.gscVerification !== 'pending'
+      ? { 'google-site-verification': SITE.gscVerification }
+      : {}),
   },
 };
 
@@ -53,6 +57,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <script src="/js/webmcp.js" defer />
       </head>
       <body className="min-h-screen flex flex-col bg-[#0D0D0D] text-[#F3F3F3] antialiased selection:bg-red-800 selection:text-white" suppressHydrationWarning>
+        <a
+          href="#main"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100] focus:rounded-lg focus:bg-red-700 focus:px-4 focus:py-2 focus:text-sm focus:font-bold focus:text-white"
+        >
+          Skip to content
+        </a>
         <CartProvider>
           <Nav />
           <AbnBar />

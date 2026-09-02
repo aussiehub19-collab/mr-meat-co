@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import type { Metadata } from 'next';
-import { SITE, CATEGORIES, PRODUCTS, POSTS, FAQ, BRAND, CONTACT, SHOP, PAGE_SEO } from '@/config/site';
+import { SITE, CATEGORIES, PRODUCTS, POSTS, FAQ, BRAND, CONTACT, SHOP, PAGE_SEO, metaDesc, abs } from '@/config/site';
 import { ProductCard } from '@/components/ProductCard';
 import { JsonLd } from '@/components/JsonLd';
 import { SmartImage } from '@/components/SmartImage';
@@ -14,9 +14,13 @@ export function generateMetadata(): Metadata {
   if (!seo) return {};
   return {
     title: { absolute: seo.title },
-    description: seo.description,
+    description: metaDesc(seo.description),
     alternates: { canonical: `https://${SITE.domain}/` },
-    openGraph: { title: seo.title, description: seo.description },
+    openGraph: {
+      title: seo.title,
+      description: metaDesc(seo.description),
+      images: [{ url: abs(SITE.ogImage), width: 1200, height: 630 }],
+    },
   };
 }
 
@@ -48,6 +52,14 @@ export default function HomePage() {
       addressCountry: CONTACT.country,
     },
     url: `https://${SITE.domain}/`,
+    telephone: CONTACT.phone,
+    contactPoint: {
+      '@type': 'ContactPoint',
+      contactType: 'customer service',
+      telephone: CONTACT.phone,
+      areaServed: 'AU',
+      availableLanguage: 'en',
+    },
     sameAs: BRAND.sameAs,
     areaServed: ['New South Wales', 'Sydney Metro', 'Central Coast NSW', 'Wollongong', 'Australia'],
     numberOfItems: PRODUCTS.length,

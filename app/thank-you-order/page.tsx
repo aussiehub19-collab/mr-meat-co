@@ -33,7 +33,7 @@ export default function ThankYouOrderPage() {
       <div className="p-6 bg-red-50 border border-red-200 rounded-2xl text-left space-y-2 text-xs text-red-900 max-w-md mx-auto">
         <strong className="block font-bold">💡 Crypto 10% Discount Reminder:</strong>
         <p>
-          If paying with crypto (BTC / USDT), complete payment to <strong>{CONTACT.email}</strong> or
+          If paying with crypto (BTC / USDT), complete payment to <strong dangerouslySetInnerHTML={{ __html: CONTACT.emailHtml }} /> or
           via your WhatsApp chat — your 10% discount is automatically verified on receipt. PayID and
           bank transfer are also accepted at the standard total.
         </p>

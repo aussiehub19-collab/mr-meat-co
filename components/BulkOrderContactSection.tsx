@@ -60,7 +60,7 @@ export function BulkOrderContactSection({ productContext, defaultCategory }: Bul
             className="px-5 py-3 bg-[#120E0E] hover:bg-[#1E1E1E] text-white font-bold text-xs sm:text-sm rounded-xl border border-[#991B1B]/40 flex items-center justify-center gap-2 transition-all"
           >
             <Mail className="w-4 h-4 text-red-400" />
-            <span>{CONTACT.email}</span>
+            <span dangerouslySetInnerHTML={{ __html: CONTACT.emailHtml }} />
           </a>
         </div>
       </div>

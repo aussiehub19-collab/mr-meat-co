@@ -1,6 +1,6 @@
 import React from 'react';
 import { notFound } from 'next/navigation';
-import { CATEGORIES, PRODUCTS, SITE, PAGE_SEO } from '@/config/site';
+import { CATEGORIES, PRODUCTS, SITE, PAGE_SEO, metaDesc } from '@/config/site';
 import { JsonLd } from '@/components/JsonLd';
 import { SeoFaqSection } from '@/components/SeoFaqSection';
 import { ProductCard } from '@/components/ProductCard';
@@ -34,13 +34,14 @@ export async function generateMetadata({
       : isPetFood
       ? `Pet Food Catalogue | Raw Pet Mince, Bones & Offal`
       : `${category.name} Cuts & Products | Mr Meat & Co Australia`,
-    description: seo?.description
-      ? seo.description
-      : isSeafood
-      ? `Browse our seafood catalogue including Barramundi, Snapper, Flathead, King Prawns, and Tasmanian Salmon portions. Fresh chilled and frozen storage.`
-      : isPetFood
-      ? `Explore our raw pet food catalogue featuring Raw Mince, Bones, and Offal. Pet food only — not for human consumption.`
-      : category.description,
+    description: metaDesc(
+      seo?.description ??
+        (isSeafood
+          ? `Browse our seafood catalogue — Barramundi, Snapper, Flathead, King Prawns and Tasmanian Salmon portions. Fresh chilled and frozen.`
+          : isPetFood
+          ? `Raw pet food catalogue — raw mince, bones and offal. Pet food only, not for human consumption.`
+          : category.description)
+    ),
     alternates: {
       canonical: `https://${SITE.domain}/${category.slug}/`,
     },

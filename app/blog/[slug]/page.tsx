@@ -1,6 +1,6 @@
 import React from 'react';
 import { notFound } from 'next/navigation';
-import { POSTS, SITE } from '@/config/site';
+import { POSTS, SITE, abs } from '@/config/site';
 import { JsonLd } from '@/components/JsonLd';
 import { SmartImage } from '@/components/SmartImage';
 import { Article } from '@/components/Article';
@@ -21,18 +21,17 @@ export async function generateMetadata({
   if (!post) return {};
 
   return {
-    title: `${post.title} | ${SITE.name}`,
-    description: post.excerpt,
+    // plain string → the layout template adds " | Mr Meat & Co" exactly once
+    title: post.seoTitle || post.title,
+    description: (post.metaDescription || post.excerpt || '').slice(0, 155),
     alternates: {
       canonical: `https://${SITE.domain}/blog/${post.slug}/`,
     },
     openGraph: {
       title: post.title,
       description: post.excerpt,
-      images: [{ url: post.image }],
-    },
-    other: {
-      'og:updated_time': new Date().toISOString(),
+      images: [{ url: abs(post.image) }],
+      type: 'article',
     },
   };
 }
@@ -53,7 +52,7 @@ export default async function BlogArticlePage({
     '@context': 'https://schema.org',
     '@type': 'BlogPosting',
     headline: post.title,
-    image: [post.image],
+    image: [abs(post.image)],
     datePublished: post.date,
     dateModified: post.updated || post.date,
     author: {

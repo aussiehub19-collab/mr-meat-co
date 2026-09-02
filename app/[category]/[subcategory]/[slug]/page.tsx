@@ -1,6 +1,6 @@
 import React from 'react';
 import { notFound } from 'next/navigation';
-import { PRODUCTS, CATEGORIES, SITE, SHOP, CONTACT } from '@/config/site';
+import { PRODUCTS, CATEGORIES, SITE, SHOP, CONTACT, abs } from '@/config/site';
 import { JsonLd } from '@/components/JsonLd';
 import { SmartImage } from '@/components/SmartImage';
 import { ProductAddToCartForm } from '@/app/shop/[category]/[slug]/ProductAddToCartForm';
@@ -86,7 +86,7 @@ export default async function TopLevelProductDetailPage({
     '@context': 'https://schema.org',
     '@type': 'Product',
     name: product.product_name || product.name,
-    image: [product.main_image || product.image],
+    image: [abs(product.main_image || product.image)],
     description: product.full_description || product.description,
     sku: product.SKU || product.product_id || product.slug,
     brand: {

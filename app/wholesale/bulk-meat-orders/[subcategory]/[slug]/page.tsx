@@ -1,7 +1,7 @@
 import React from 'react';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
-import { PRODUCTS, WHOLESALE_BULK_SUBCATEGORIES, SITE } from '@/config/site';
+import { PRODUCTS, WHOLESALE_BULK_SUBCATEGORIES, SITE, abs } from '@/config/site';
 import { JsonLd } from '@/components/JsonLd';
 import { SmartImage } from '@/components/SmartImage';
 import { ProductAddToCartForm } from '@/app/shop/[category]/[slug]/ProductAddToCartForm';
@@ -99,7 +99,7 @@ export default async function BulkProductDetailPage({
     '@context': 'https://schema.org',
     '@type': 'Product',
     name: product.product_name || product.name,
-    image: [product.main_image || product.image],
+    image: [abs(product.main_image || product.image)],
     description: product.full_description || product.description,
     sku: product.SKU || product.slug,
     brand: {

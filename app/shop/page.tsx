@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { Beef, ArrowRight } from 'lucide-react';
-import { SITE, PAGE_SEO } from '@/config/site';
+import { SITE, PAGE_SEO, metaDesc } from '@/config/site';
 import { JsonLd } from '@/components/JsonLd';
 import { SeoFaqSection } from '@/components/SeoFaqSection';
 import { ShopFilterClient } from '@/components/ShopFilterClient';
@@ -12,9 +12,10 @@ export const metadata = {
   title: shopSeo?.title
     ? { absolute: shopSeo.title }
     : 'Shop All Fresh Beef, Lamb, Poultry & Butcher Boxes',
-  description:
+  description: metaDesc(
     shopSeo?.description ??
-    'Browse 100% Australian grass-fed beef mince, Wagyu steaks, pasture-raised lamb cutlets, and bulk butcher boxes. Cold-chain delivery across NSW; frozen courier Australia-wide.',
+      'Browse 100% Australian grass-fed beef mince, Wagyu steaks, pasture-raised lamb cutlets and bulk butcher boxes. Cold-chain across NSW, frozen courier nationwide.'
+  ),
   alternates: {
     canonical: `https://${SITE.domain}/shop/`,
   },

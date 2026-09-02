@@ -1,7 +1,7 @@
 import React from 'react';
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { PRODUCTS, SITE, PAGE_SEO } from '@/config/site';
+import { PRODUCTS, SITE, PAGE_SEO, metaDesc } from '@/config/site';
 import { JsonLd } from '@/components/JsonLd';
 import { SeoFaqSection } from '@/components/SeoFaqSection';
 import { ProductCard } from '@/components/ProductCard';
@@ -11,9 +11,9 @@ const seo = PAGE_SEO['/christmas-ham/'];
 export const metadata: Metadata = seo
   ? {
       title: { absolute: seo.title },
-      description: seo.description,
+      description: metaDesc(seo.description),
       alternates: { canonical: `https://${SITE.domain}/christmas-ham/` },
-      openGraph: { title: seo.title, description: seo.description },
+      openGraph: { title: seo.title, description: metaDesc(seo.description) },
       other: { 'og:updated_time': new Date().toISOString() },
     }
   : {};

@@ -195,12 +195,14 @@ export function ProductCard({ product }: { product: Product }) {
 
             {cartQty > 0 ? (
               <QtyStepper
+                size="sm"
                 quantity={cartQty}
                 onIncrement={() => updateQuantity(product.slug, 1)}
                 onDecrement={() => updateQuantity(product.slug, -1)}
               />
             ) : (
               <QtyStepper
+                size="sm"
                 quantity={pendingQty}
                 allowRemove={false}
                 onIncrement={() => setPendingQty((q) => Math.min(99, q + 1))}

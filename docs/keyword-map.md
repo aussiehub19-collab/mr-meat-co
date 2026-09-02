@@ -69,15 +69,22 @@ is the human-readable index of that allocation.
 |---|---|---|
 | `/christmas-ham/` | christmas ham | buy christmas ham · whole leg ham · half leg ham · christmas ham delivery sydney · boneless christmas ham **(new page)** |
 
-## 5. Wholesale bulk subcategory pages
+## 5. Wholesale bulk subcategory pages — all 9 bespoke
 
 | URL | Primary | Supporting |
 |---|---|---|
-| `/wholesale/bulk-meat-orders/bulk-beef/` | wholesale beef | bulk beef · wholesale/bulk beef mince · quarter beef share · half beef box · buy whole eye fillet |
-| `/wholesale/bulk-meat-orders/bulk-chicken/` | bulk chicken breast | chicken breast bulk · bulk chicken · wholesale chicken · bulk chicken thigh fillets · 5kg chicken carton |
+| `.../bulk-beef/` | wholesale beef | bulk beef · wholesale/bulk beef mince · quarter beef share · half beef box · buy whole eye fillet |
+| `.../bulk-lamb/` | wholesale lamb | bulk lamb · half lamb box · whole lamb share · buy half a lamb · bulk lamb mince · lamb carcass price |
+| `.../bulk-pork/` | wholesale pork | bulk pork · half pig share · whole pork carcass · buy half a pig · bulk pork belly · bulk pork mince |
+| `.../bulk-chicken/` | bulk chicken breast | chicken breast bulk · bulk chicken · wholesale chicken · bulk chicken thigh fillets · 5kg chicken carton |
+| `.../bulk-goat/` | wholesale goat meat | bulk goat meat · half goat share · whole goat carcass · buy goat meat in bulk · goat curry cartons |
+| `.../bulk-sausages/` | bulk sausages | wholesale sausages · bulk sausages for bbq · 5kg sausages · 10kg sausage carton · catering sausages |
+| `.../bulk-veal/` | wholesale veal | bulk veal · veal schnitzel bulk · bulk veal mince · veal osso buco carton · rose veal wholesale |
+| `.../bulk-kangaroo/` | wholesale kangaroo meat | bulk kangaroo meat · kangaroo mince bulk · 5kg kangaroo carton · kangaroo fillet wholesale · bulk kangaroo for dogs |
+| `.../bulk-game/` | wholesale game meat | bulk venison · venison carcass share · wholesale venison · bulk game meat box · wild boar wholesale |
 
-Remaining bulk subcats (lamb, pork, goat, veal, kangaroo, game) inherit the hub keyword set and
-their own generated titles until bespoke entries are added.
+Each has 1 primary + 5–6 supporting + 4 FAQs in `PAGE_SEO`, rendered by
+`app/wholesale/bulk-meat-orders/[subcategory]/page.tsx`.
 
 ## 6. Geo strategy
 

@@ -5,7 +5,25 @@
 > - **Every category / bespoke subcategory / landing page**: `PAGE_SEO[url].faqs` (3–6 each),
 >   rendered by `components/SeoFaqSection.tsx` (visible block + FAQPage JSON-LD).
 > - **Every blog post**: `POSTS[].faqs` (4–7 each), rendered on `app/blog/[slug]/page.tsx` + FAQPage JSON-LD.
-> - **FAQ page** (`app/faq/page.tsx`): standalone bank — see that file.
+> - **FAQ page** (`app/faq/page.tsx`): renders `FAQ_GROUPS` from `site.ts` — 9 themed
+>   sections, ~52 Q&As, with an anchor-nav and one combined de-duplicated FAQPage JSON-LD
+>   block (homepage `FAQ[]` + every group item).
+
+## FAQ page — themed groups (`FAQ_GROUPS`)
+
+| # | Group | Q count |
+|---|---|---|
+| 1 | Delivery, freshness & storage | 7 |
+| 2 | Ordering, pricing & payment | 6 |
+| 3 | Quality & provenance | 7 |
+| 4 | Cuts & cooking | 7 |
+| 5 | Kangaroo & specialty meat | 8 |
+| 6 | Seafood | 4 |
+| 7 | Wholesale & bulk orders | 6 |
+| 8 | Live poultry | 5 |
+| 9 | Raw pet feeding | 6 |
+
+No halal references anywhere (owner instruction — "not halal, don't mention it").
 
 ## Homepage FAQ (FAQ[])
 

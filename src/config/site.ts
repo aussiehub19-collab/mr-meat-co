@@ -8130,7 +8130,7 @@ export const WHOLESALE_BULK_SUBCATEGORIES: WholesaleSubcategory[] = [
   {
     slug: "bulk-veal",
     name: "Bulk Veal",
-    description: "Half and whole milk-fed veal carcass shares, plus 5kg cartons of veal mince, schnitzel, and diced veal.",
+    description: "Half and whole rose veal carcass shares, plus 5kg cartons of veal mince, schnitzel, and diced veal.",
     image: "/images/veal-schnitzel.webp",
   },
   {
@@ -10084,6 +10084,104 @@ export const PAGE_SEO: Record<string, PageSeo> = {
       { question: "What's the bulk price per kg?", answer: "It's meaningfully below retail per-kg — see the current carton pricing on each product, or contact us for account rates." },
     ],
   },
+  "/wholesale/bulk-meat-orders/bulk-lamb/": {
+    title: "Wholesale Lamb | Half & Whole Lamb Shares, Bulk Packs — Mr Meat & Co",
+    description: "Wholesale and bulk lamb — half and whole Australian grass-fed lamb carcass shares cut to your sheet, plus 6kg lamb variety packs and bulk lamb mince. Snap-frozen, delivered across Sydney.",
+    h1: "Wholesale & Bulk Lamb",
+    primaryKeyword: "wholesale lamb",
+    supportingKeywords: ["bulk lamb", "half lamb box", "whole lamb share", "buy half a lamb", "bulk lamb mince", "lamb carcass price"],
+    intro: "Australian grass-fed lamb by the half (9–13kg packed) or whole animal (18–26kg), broken down to your cut sheet — chops, cutlets, leg and shoulder roasts, shanks, neck and mince — plus 6kg mixed lamb variety packs. Typically 20–30% below individual-cut pricing.",
+    faqs: [
+      { question: "What's in a half or whole lamb share?", answer: "A spread across the whole animal: loin chops and cutlets, chump chops, a leg and a shoulder (bone-in or boned and rolled), shanks, neck chops or diced, and mince and BBQ chops from the trim. You choose the split on a cut sheet." },
+      { question: "How much does a lamb share weigh, and feed?", answer: "A half lamb is about 9–13kg of packed meat, a whole 18–26kg. A whole lamb feeds a family of four for roughly 2–3 months of lamb meals. Weight varies with the animal, so it's sold as 'approximately'." },
+      { question: "How much freezer space for half a lamb?", answer: "About 20–25 litres for a half, 40–50 litres for a whole — a half fits in the freezer drawer of a large fridge-freezer; a whole wants a small chest freezer or an empty upright." },
+      { question: "Is the lamb grass-fed?", answer: "Yes — 100% Australian grass-fed and pasture-raised, the same lambs as our retail range, just bought by the carcass." },
+    ],
+  },
+  "/wholesale/bulk-meat-orders/bulk-pork/": {
+    title: "Wholesale Pork | Half & Whole Pork Shares, Bulk Packs — Mr Meat & Co",
+    description: "Wholesale and bulk pork — half and whole Australian pork carcass shares cut to your sheet, 11kg pork variety packs, bulk belly, shoulder and whole fillets. Snap-frozen, delivered across Sydney.",
+    h1: "Wholesale & Bulk Pork",
+    primaryKeyword: "wholesale pork",
+    supportingKeywords: ["bulk pork", "half pig share", "whole pork carcass", "buy half a pig", "bulk pork belly", "bulk pork mince"],
+    intro: "Australian pork by the half (25–35kg packed) or whole pig (55–75kg), cut to your sheet — leg and shoulder roasts, belly, loin and cutlets, ribs, hocks, mince and sausages made from the trim — plus 11kg mixed pork variety packs and bulk belly and shoulder for smokers and caterers.",
+    faqs: [
+      { question: "What's in a half or whole pig share?", answer: "Leg (roasts or ham), shoulder (roasts or diced), whole or portioned belly, loin and cutlets, spare ribs, hocks, and mince and sausages made from the trim. Ask us to cure some of the leg and belly into bacon and ham, or leave it fresh." },
+      { question: "Can I have some of it cured into bacon and ham?", answer: "Yes — that's one of the best reasons to buy a pig share. Nominate on the cut sheet how much leg you want as ham and how much belly as bacon, and we cure it for you." },
+      { question: "How much freezer space for half a pig?", answer: "Roughly 50–60 litres for a half, 100–120 litres for a whole — a half needs a dedicated freezer drawer or small chest freezer; a whole wants a 200L+ freezer." },
+      { question: "Is the pork Australian?", answer: "Yes — 100% Australian pork, never imported, the same pigs as our retail range." },
+    ],
+  },
+  "/wholesale/bulk-meat-orders/bulk-goat/": {
+    title: "Wholesale Goat | Half & Whole Goat Shares, Curry Cartons — Mr Meat & Co",
+    description: "Wholesale and bulk goat — half and whole Australian goat carcass shares, 2.5kg and 5kg diced goat curry cartons, and bulk bone-in goat ribs. Lean, full-flavoured, delivered across Sydney.",
+    h1: "Wholesale & Bulk Goat",
+    primaryKeyword: "wholesale goat meat",
+    supportingKeywords: ["bulk goat meat", "half goat share", "whole goat carcass", "buy goat meat in bulk", "goat curry cartons", "goat meat wholesale australia"],
+    intro: "Australian goat by the half or whole carcass, cut for curry, roasting and the grill, plus 2.5kg and 5kg cartons of bone-in curry pieces and bulk goat ribs — for restaurants, caterers and large households cooking goat regularly.",
+    faqs: [
+      { question: "How is a goat share cut?", answer: "Usually mostly bone-in curry pieces (chopped shoulder, leg and neck), with the loin left as chops or a rack and the ribs kept whole. Tell us if you want more roasting cuts and fewer curry pieces." },
+      { question: "What does a half or whole goat weigh?", answer: "A whole goat carcass yields roughly 10–16kg of packed meat depending on the animal; a half, 5–8kg. It's sold by finished weight." },
+      { question: "Is goat cheaper in bulk?", answer: "Yes — carton and carcass pricing is well below buying curry pieces by the pack, which is why restaurants and big families order it this way." },
+      { question: "How should I cook bulk goat?", answer: "Bone-in curry pieces reward a slow 2-hour simmer with spice — the bones add body to the sauce. Loin and rack can be grilled fast. Goat is lean, so keep braises moist and don't dry-roast the lean cuts." },
+    ],
+  },
+  "/wholesale/bulk-meat-orders/bulk-sausages/": {
+    title: "Wholesale Sausages | 5kg & 10kg Bulk Sausage Cartons — Mr Meat & Co",
+    description: "Wholesale and bulk sausages — 5kg and 10kg cartons of butcher beef sausages, thick and thin, plus 5kg gourmet sausage links. Made fresh, snap-frozen, delivered across Sydney for events and venues.",
+    h1: "Wholesale & Bulk Sausages",
+    primaryKeyword: "bulk sausages",
+    supportingKeywords: ["wholesale sausages", "bulk sausages for bbq", "5kg sausages", "10kg sausage carton", "sausages in bulk", "catering sausages"],
+    intro: "Butcher sausages by the 5kg and 10kg carton — traditional thick and thin beef snags, plus gourmet flavour links — made fresh with meat, fat, seasoning and natural casings. For sausage sizzles, clubs, caterers and fundraisers.",
+    faqs: [
+      { question: "How many sausages in a 5kg or 10kg carton?", answer: "Roughly 60–70 thick sausages or 110–130 thin ones per 5kg, double that for 10kg. Exact count depends on the link size — it's on the product page." },
+      { question: "Are they fresh or frozen?", answer: "Made fresh, then snap-frozen for bulk cartons so you can portion what you need. Ask for fresh chilled if you're using the lot within a couple of days." },
+      { question: "Can you do a specific flavour or recipe for an event?", answer: "Yes — for larger orders we can run a specific flavour, casing or gluten-free recipe. Contact us with your quantity and date." },
+      { question: "What's in the sausages?", answer: "Meat, fat, seasoning, a little rusk in the traditional recipes, and a natural casing. Nothing pumped in to add weight, and no artificial preservative numbers." },
+    ],
+  },
+  "/wholesale/bulk-meat-orders/bulk-veal/": {
+    title: "Wholesale Veal | Rose Veal Shares & 5kg Cartons — Mr Meat & Co",
+    description: "Wholesale and bulk Australian rose veal — half and whole carcass shares, and 5kg cartons of veal schnitzel, mince, diced veal and osso buco. For restaurants and caterers. Delivered across Sydney.",
+    h1: "Wholesale & Bulk Veal",
+    primaryKeyword: "wholesale veal",
+    supportingKeywords: ["bulk veal", "veal schnitzel bulk", "bulk veal mince", "veal osso buco carton", "rose veal wholesale", "restaurant veal supplier"],
+    intro: "Australian rose veal in volume — half and whole carcass shares cut to a restaurant sheet, and 5kg cartons of pre-cut schnitzel, scaloppine, diced veal, mince and osso buco. Rose veal from group-raised calves, not the crate system.",
+    faqs: [
+      { question: "Is this rose veal or white veal?", answer: "Rose veal — pale pink, from calves raised in groups with room to move. The immobilised-crate 'white veal' system is not used in Australia." },
+      { question: "What carton options are there?", answer: "5kg cartons of crumbed schnitzel, plain scaloppine, diced veal, veal mince, and cross-cut osso buco. Half and whole carcass shares are cut to your specification." },
+      { question: "Do you supply veal to restaurants?", answer: "Yes — standing weekly orders with consistent portion sizing for schnitzel and scaloppine, plus osso buco and shanks to order. Set up an account through the wholesale contact page." },
+      { question: "Fresh or frozen?", answer: "Carcass shares and cut cartons are supplied snap-frozen. Fresh chilled is available for standing restaurant accounts on a delivery schedule." },
+    ],
+  },
+  "/wholesale/bulk-meat-orders/bulk-kangaroo/": {
+    title: "Wholesale Kangaroo | Bulk Shares & 5kg Frozen Cartons — Mr Meat & Co",
+    description: "Wholesale and bulk Australian kangaroo — boned-out half and whole shares, and 5kg frozen cartons of kangaroo mince, fillets, diced and sausages. Lean, high-protein, delivered across Sydney.",
+    h1: "Wholesale & Bulk Kangaroo",
+    primaryKeyword: "wholesale kangaroo meat",
+    supportingKeywords: ["bulk kangaroo meat", "kangaroo mince bulk", "5kg kangaroo carton", "kangaroo fillet wholesale", "bulk kangaroo for dogs", "kangaroo meat supplier"],
+    intro: "Wild-harvested Australian kangaroo in volume — boned-out half and whole shares, and 5kg frozen cartons of mince, fillets, diced and sausages. For restaurants, meal-prep businesses, gyms, and raw-feeding dog owners buying by the carton.",
+    faqs: [
+      { question: "What bulk kangaroo formats are available?", answer: "5kg frozen cartons of kangaroo mince, loin fillets, diced kangaroo and kangaroo sausages, plus boned-out half and whole shares that mix all of the above." },
+      { question: "Is bulk kangaroo cheaper than retail?", answer: "Yes — carton pricing is well below the per-pack retail price, which is why meal-prep businesses and raw feeders buy it this way." },
+      { question: "Can I buy bulk kangaroo for my dogs?", answer: "Yes — kangaroo is a popular single novel protein for raw feeding. Bulk cartons suit multi-dog households and breeders. It's the same meat as the human range; feed it raw or lightly cooked per your vet's advice." },
+      { question: "How is it delivered?", answer: "Snap-frozen, in cold-chain packaging. Keep it at or below -18°C and thaw portions in the fridge." },
+    ],
+  },
+  "/wholesale/bulk-meat-orders/bulk-game/": {
+    title: "Wholesale Game Meat | Venison Shares, Mixed Game Boxes — Mr Meat & Co",
+    description: "Wholesale and bulk game meat — half and whole farmed venison carcass shares, frozen venison mince and osso buco cartons, and mixed game boxes with wild boar and more. Delivered across Sydney.",
+    h1: "Wholesale & Bulk Game Meat",
+    primaryKeyword: "wholesale game meat",
+    supportingKeywords: ["bulk venison", "venison carcass share", "wholesale venison", "bulk game meat box", "wild boar wholesale", "game meat supplier australia"],
+    intro: "Game meat in volume — half and whole farmed venison carcass shares cut to your sheet, 5kg frozen cartons of venison mince, backstrap and osso buco, and large mixed game boxes bringing in wild boar, rabbit and more. For restaurants and serious home cooks.",
+    faqs: [
+      { question: "What's in a venison carcass share?", answer: "Backstrap and fillet as premium cuts, leg as roasts or diced, shoulder and shank for braising, osso buco from the shanks, and mince and sausages from the trim. Cut to your sheet." },
+      { question: "Is the venison farmed or wild?", answer: "Farmed — Australian farmed venison from licensed producers, consistent in size and supply, unlike wild-shot deer. Wild boar in the mixed boxes is wild-harvested." },
+      { question: "What carton sizes are there?", answer: "5kg frozen cartons of venison mince, backstrap and osso buco, and mixed game boxes from 5kg upward. Larger and custom volumes on account." },
+      { question: "Do you supply game to restaurants?", answer: "Yes — standing orders of venison backstrap, osso buco and mince with consistent portioning. Contact us through the wholesale page to set up an account." },
+    ],
+  },
 };
 
 export const FAQ: FAQItem[] = [
@@ -10110,6 +10208,122 @@ export const FAQ: FAQItem[] = [
   {
     question: "Can I order wholesale or in bulk?",
     answer: "Yes — see the wholesale page for quarter, half and whole beef, lamb and pork shares cut to your sheet, 5kg and 10kg cartons, and standing restaurant supply. Bulk pricing is per kg at a rate below individual cuts.",
+  },
+];
+
+/* ------------------------------------------------------------------ *
+ * FAQ_GROUPS — the full themed FAQ bank shown on /faq/.
+ * All items are also emitted as one combined FAQPage JSON-LD block.
+ * Answers are concrete (never "it depends"), 40–90 words, crypto-only
+ * discount wording, and steer to the relevant section by name.
+ * ------------------------------------------------------------------ */
+export interface FaqGroup {
+  heading: string;
+  intro?: string;
+  items: FAQItem[];
+}
+
+export const FAQ_GROUPS: FaqGroup[] = [
+  {
+    heading: "Delivery, freshness & storage",
+    items: [
+      { question: "What days do you deliver and how far do you ship?", answer: "We run refrigerated vans across Greater Sydney Metro most weekdays, with set weekly runs to Wollongong and the Central Coast. You pick an available delivery day at checkout. Larger and bulk orders can be sent snap-frozen by courier further afield in NSW — ask us first." },
+      { question: "Is the meat fresh or frozen when it arrives?", answer: "Most retail cuts arrive fresh chilled and vacuum-sealed. Some items — game, specialty meat, bulk cartons and anything travelling a long distance — arrive snap-frozen. Each product page states its storage type, and frozen items are labelled clearly." },
+      { question: "How is the cold chain maintained — will it still be cold at my door?", answer: "Orders are packed into insulated liners with frozen gel packs and carried on temperature-controlled vans. A typical Sydney Metro delivery keeps meat below 4°C the whole way. If your order ever arrives above temperature, photograph it and contact us the same day for a replacement or refund." },
+      { question: "How long does the meat last once delivered?", answer: "Fresh chilled cuts keep 3–4 days in the coldest part of your fridge in their unopened vacuum pack; mince and sausages, 2–3 days. Freeze anything you won't use in that window — vacuum-sealed cuts hold quality 6–12 months at -18°C." },
+      { question: "Can I freeze the meat when it arrives?", answer: "Yes. Freeze it on the day of delivery while it's at peak freshness, ideally in its original vacuum pack. Portion mince and sausages into meal-size amounts first. Thaw in the fridge overnight, never on the bench, and don't refreeze raw meat once thawed." },
+      { question: "What happens if I'm not home for delivery?", answer: "Leave delivery notes at checkout — most customers have the box left in a shaded spot or with a neighbour. The insulated packaging holds temperature for a few hours. If you know you'll be out all day, choose a different delivery date; we can't guarantee safety for a box left in the sun." },
+      { question: "Do you deliver to Wollongong, the Central Coast or Newcastle?", answer: "Wollongong and the Central Coast are on scheduled weekly runs — the checkout will show the next available date. Newcastle and the wider Hunter aren't on a standing route yet, but larger orders can be sent frozen by courier. Contact us with your postcode before ordering." },
+    ],
+  },
+  {
+    heading: "Ordering, pricing & payment",
+    items: [
+      { question: "What's the minimum order value?", answer: "$300 AUD. Orders at or above $300 get free temperature-controlled delivery across Sydney Metro and the scheduled NSW runs, so there's no delivery fee on top." },
+      { question: "How do I get the 10% discount?", answer: "Pay in cryptocurrency — Bitcoin (BTC) or Tether (USDT). The 10% comes off automatically when you choose crypto at checkout. It's crypto only: PayID and bank transfer are fee-free but don't earn the discount." },
+      { question: "Do you charge a card or payment surcharge?", answer: "No. PayID and direct bank transfer are completely fee-free. We don't accept credit cards at all, so there's no card surcharge to worry about. Crypto payments additionally get the 10% discount." },
+      { question: "Can I change or cancel an order?", answer: "Yes, up until your order is packed — usually the afternoon before your delivery date. Contact us as early as you can. Once an order is cut, packed and loaded we can't recall it, but we'll always sort out genuine mistakes." },
+      { question: "How does WhatsApp ordering work?", answer: "Message us your list on WhatsApp and we'll build the order, confirm weights and the total, and send payment details. It suits big or unusual orders and cut-sheet requests. Payment is still PayID, bank transfer or crypto — the crypto discount still applies." },
+      { question: "How do your prices compare to the supermarket?", answer: "On everyday mince and chicken we're usually a little above supermarket special pricing and comparable to their standard pricing — but for whole-muscle cuts, and especially for bulk cartons and animal shares, we're well below butcher retail. The trade-off is named-cut quality, real fat ratios and nothing added." },
+    ],
+  },
+  {
+    heading: "Quality & provenance",
+    items: [
+      { question: "Is your beef grass-fed or grain-fed?", answer: "Our standard beef is 100% Australian grass-fed and pasture-raised for its whole life. Where a product is grain-finished or Wagyu we say so on the product page. See our grass-fed vs grain-fed guide on the blog for what the difference means on the plate." },
+      { question: "Where do your animals come from?", answer: "From verified Australian farms, with beef and lamb from pasture-based NSW and Victorian producers. We buy whole and primal and break it down in our Alexandria butchery, so there's no imported trim and no anonymous blended product." },
+      { question: "Are there any added preservatives, water or fillers?", answer: "No. Our fresh meat and mince are just meat — nothing pumped in to add weight, no cereal fillers, no artificial preservative numbers. Sausages contain meat, fat, seasoning, a little rusk in the traditional recipes, and a natural casing. Cured items (bacon, ham) are listed with their exact cure." },
+      { question: "Is your chicken free-range?", answer: "Yes — our chicken is Australian free-range with genuine outdoor access, delivered fresh chilled. Bulk chicken cartons are the same birds at a lower per-kg price." },
+      { question: "Is your pork Australian?", answer: "Yes, 100% Australian pork — never imported. That includes the bacon, the ham and the Christmas hams, which are cured here from Australian legs." },
+      { question: "Are your sausages gluten-free?", answer: "Some are and some aren't. The traditional recipes contain a little rusk (wheat). We make dedicated gluten-free sausages with no wheat rusk — they're labelled as such on the product page. If you need certainty for coeliac disease, message us and we'll confirm the current batch." },
+      { question: "Is your bacon nitrate-free?", answer: "We offer a salt-and-sugar cure with no added nitrates, nitrites or celery powder — genuinely additive-free, with the shorter shelf life that implies — alongside a lightly-cured traditional bacon. Both are Australian pork and neither is water-pumped. See the nitrate-free bacon explainer on the blog." },
+    ],
+  },
+  {
+    heading: "Cuts & cooking",
+    items: [
+      { question: "What's the difference between a lamb chop and a cutlet?", answer: "A cutlet comes from the rack — small, lean, with a long frenched bone, best grilled fast. A loin chop is a mini T-bone with a tender eye and a strip of belly. A chump chop comes from the rump and is larger and meatier. See the lamb chops page for all three." },
+      { question: "Scotch fillet vs porterhouse vs eye fillet — which is which?", answer: "Scotch fillet (ribeye) is from the fore-rib: well-marbled, rich and forgiving. Porterhouse (sirloin) is from the loin: firmer, leaner and beefier, with a fat cap on one edge. Eye fillet (tenderloin) is the lean, ultra-tender muscle that does no work — mild and buttery. All three are on the beef steaks page." },
+      { question: "What's the best beef cut for a slow cooker?", answer: "Chuck is the most forgiving all-rounder. Beef cheek gives the silkiest result. Gravy beef or shin thickens the sauce by itself thanks to its collagen. Avoid lean cuts like rump — they go dry and stringy. The beef slow-cook page groups these together." },
+      { question: "Which pork roast gives the best crackling?", answer: "A bone-in or boneless pork shoulder or a pork rack with the rind on. Ask us to score the rind, dry it uncovered in the fridge overnight, rub with salt, and start the roast at 240°C for 25–30 minutes before dropping the heat. Full method is in the pork crackling guide on the blog." },
+      { question: "What fat ratio is your mince?", answer: "Beef: premium is about 80/20, lean around 90/10, extra-lean around 95/5. Lamb and pork mince are about 80/20 standard and 90/10 lean. Every pack is labelled with its actual ratio — we grind from named muscles, not to a blended target." },
+      { question: "How many chops, sausages or patties per kilo?", answer: "Roughly: 6–8 lamb loin chops or 10–14 cutlets per kg; 5–6 thick pork chops per kg; 6–8 thick sausages per 500g pack (12–16 thin); and 6 standard 150–180g burger patties per kg." },
+      { question: "Bone-in or boneless leg of lamb for roasting?", answer: "Bone-in has slightly better flavour and cooks a touch more evenly. Boneless carves into clean slices, cooks faster and can be stuffed or butterflied. We'll bone, roll or butterfly any leg at no extra charge — just add a note. See the how-to-roast-a-leg-of-lamb guide." },
+    ],
+  },
+  {
+    heading: "Kangaroo & specialty meat",
+    items: [
+      { question: "Is kangaroo meat healthy?", answer: "It's one of the leanest red meats available — typically under 2% fat, around 22g protein per 100g, and higher in iron and zinc than beef, with a natural source of CLA. The main catch is that it overcooks easily, so it's best served rare to medium-rare." },
+      { question: "How much does kangaroo meat cost per kg?", answer: "Kangaroo generally sits below premium beef and around mid-range beef. Mince and diced are the best value; fillet is the premium cut but still usually cheaper than beef eye fillet. Current pricing is on each product on the kangaroo page." },
+      { question: "Is kangaroo cheaper than beef?", answer: "Cut for cut, usually yes — especially mince, sausages and diced — because kangaroo is wild-harvested under quota rather than raised, fed and housed." },
+      { question: "Is kangaroo meat sustainable and ethical?", answer: "Kangaroo is wild-harvested from abundant species under government quotas, with no land clearing, feedlots or methane footprint of farmed cattle. It's widely regarded as one of the lower-impact red meats available in Australia." },
+      { question: "How do you cook kangaroo so it stays tender?", answer: "Steaks and fillet: sear hard and fast, about 2 minutes a side for a 2cm steak, pull at 52–55°C internal, then rest 5 minutes. Diced kangaroo needs the opposite — a slow 2-hour braise. A little oil in a marinade replaces the fat the meat lacks." },
+      { question: "Does kangaroo taste gamey?", answer: "Only mildly — a clean, slightly sweet, iron-rich flavour that's closer to good grass-fed beef than to venison. Cooking it past medium is what makes it taste strong and livery." },
+      { question: "What is veal and is yours ethically raised?", answer: "Veal is meat from young cattle. Ours is Australian rose veal — calves raised in groups with room to move, producing pale pink meat, not the immobilised-crate 'white veal' system that's been abandoned here. It's mild, lean and fine-grained. See the veal page and the veal explainer on the blog." },
+      { question: "Where can I buy goat, rabbit or game meat in Australia?", answer: "All of them are on our specialty meat pages — goat (curry pieces, shoulder, ribs), farmed rabbit (whole, jointed, loin), and game including venison, wild boar, crocodile and emu. Retail delivery is Sydney and nearby NSW; larger orders ship frozen Australia-wide." },
+    ],
+  },
+  {
+    heading: "Seafood",
+    items: [
+      { question: "Are the prawns raw or cooked, fresh or frozen?", answer: "Both raw (green) and cooked prawns are available, and each product page says which. Most are snap-frozen at their peak, which for prawns is genuinely as good as — often better than — 'fresh' prawns that have been thawed on ice at a counter for days." },
+      { question: "What's the difference between king, tiger and banana prawns?", answer: "King prawns are large, sweet and firm — the premium eating prawn. Tiger prawns are striped, meaty and hold up well on the grill. Banana prawns are smaller, softer and milder, and are the value choice for curries and fried rice. See the prawn comparison guide on the blog." },
+      { question: "Can I freeze prawns at home?", answer: "If they arrived frozen and you've kept them frozen, just keep them that way. If they arrived thawed, use them within a day and don't refreeze raw. Cooked prawns can be frozen once for up to a month." },
+      { question: "Where is your seafood from?", answer: "Origin varies by product and season and is listed on each product page. We prioritise Australian where the species and supply allow, and label imported product honestly." },
+    ],
+  },
+  {
+    heading: "Wholesale & bulk orders",
+    items: [
+      { question: "What's your minimum wholesale order?", answer: "Bulk cartons start at 5kg per line. Carcass shares start at a quarter beast. Standing restaurant supply is arranged per account — contact us with your weekly volumes and we'll quote." },
+      { question: "Do you supply restaurants and cafés?", answer: "Yes — standing weekly orders, custom cuts and cut sheets, consistent portion control, and delivery timed around your service. Get in touch through the wholesale contact page to set up an account." },
+      { question: "What's in a quarter, half or whole beef share, and how much freezer space do I need?", answer: "A share is a spread of premium steaks, roasting and casserole cuts, and mince and diced from the trim — roughly 25–30% premium, 30–35% roasts, 25–30% mince. A quarter is about 40–55kg of packed meat (needs ~85L of freezer), a half 80–110kg (a dedicated 200–250L chest freezer), a whole 160–220kg." },
+      { question: "How does carcass or bulk pricing work?", answer: "Carcass shares are priced per kg of hanging weight and cut to your sheet — typically 20–35% below buying the same cuts individually. Bulk cartons are priced per kg at a flat bulk rate. You pay for the actual finished weight." },
+      { question: "Can I choose my own cuts with a cut sheet?", answer: "Yes. For an animal share you specify steak thickness, roast sizes, the mince-to-diced ratio, and whether you want the bones, offal and sausages made from the trim. We have a sensible standard sheet if you'd rather not decide every line." },
+      { question: "Do you deliver bulk orders Australia-wide?", answer: "Cold-chain delivery covers Sydney Metro and the scheduled NSW runs. For a full carcass share, be home with freezer space cleared. Larger frozen cartons can be sent interstate by courier — ask for a freight quote." },
+    ],
+  },
+  {
+    heading: "Live poultry",
+    items: [
+      { question: "What does 'point of lay' mean?", answer: "Point-of-lay (POL) pullets are 16–20 weeks old — either just started laying or within a few weeks of it. They're past the fragile brooder stage and are the quickest, lowest-effort way to start a laying flock." },
+      { question: "How do I collect live birds — do you deliver them?", answer: "Live poultry is collected from our farm partner by appointment, or delivered within a limited radius of Sydney for a fee. It's completely separate from the $300 cold-chain meat delivery. We confirm collection or delivery options with you when you order." },
+      { question: "Are the hens vaccinated and sexed?", answer: "Point-of-lay hens and pullets are sold as sexed females, vaccinated against Marek's disease and typically Newcastle disease and infectious bronchitis. Each listing states its vaccinations. Straight-run (unsexed) meat birds are noted as such." },
+      { question: "Is there a minimum number of birds?", answer: "Yes — chickens are flock animals and shouldn't be kept alone, so most listings have a minimum of two or three birds (six for meat birds). Bantam and rare breeds may vary." },
+      { question: "What breeds do you stock?", answer: "Commonly ISA Brown and Hyline for reliable brown eggs, Australorp and Plymouth Rock as dual-purpose birds, fast-growing meat strains, and a rotating seasonal selection of Silkie and Pekin bantams. Availability changes through the year — contact us for the current list." },
+    ],
+  },
+  {
+    heading: "Raw pet feeding",
+    items: [
+      { question: "Is this raw pet food or for human consumption?", answer: "The pet food range is prepared specifically for animal diets and is labelled 'Pet Food Only — Not for Human Consumption'. It's kept separate from our retail meat. Our human-grade beef and pork stock bones are listed under Bones & Broth in the beef and pork categories instead." },
+      { question: "What proteins do you offer for raw or BARF feeding?", answer: "Raw pet mince across beef, chicken, kangaroo and mixed blends, plus raw meaty bones and offal. Kangaroo is popular as a single novel protein for dogs with chicken or beef sensitivities. See the pet food category and the raw feeding starter guide on the blog." },
+      { question: "How much raw mince per day for my dog?", answer: "About 2–3% of ideal adult body weight per day — roughly 375g for a 15kg dog to maintain weight, 750g for a 30kg dog. Active dogs need more, less active dogs less. Puppies eat 5–8% of current weight, split across 3–4 meals." },
+      { question: "Which bones are safe — and why never cooked bones?", answer: "Raw meaty bones sized to your dog (never smaller than their muzzle) are safe for supervised chewing. Never feed cooked bones of any kind — cooking makes them brittle so they splinter into sharp fragments that can pierce the gut. Weight-bearing beef leg bones can crack teeth on hard chewers." },
+      { question: "How is raw pet food delivered?", answer: "Frozen, in the same insulated cold-chain packaging as the rest of your order. Keep it frozen at or below -18°C and thaw portions in the fridge as needed." },
+      { question: "Is kangaroo good for dogs with allergies?", answer: "It's one of the leading novel proteins for elimination diets — many dogs reactive to chicken, beef or lamb tolerate kangaroo well because they've never been exposed to it. It's also very lean. Introduce any new protein gradually over a week." },
+    ],
   },
 ];
 

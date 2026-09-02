@@ -18,6 +18,7 @@ interface CartContextType {
   removeFromCart: (slug: string) => void;
   updateQuantity: (slug: string, delta: number) => void;
   clearCart: () => void;
+  isCartLoaded: boolean;
   isCartOpen: boolean;
   setIsCartOpen: (open: boolean) => void;
   subtotal: number;
@@ -106,6 +107,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
         removeFromCart,
         updateQuantity,
         clearCart,
+        isCartLoaded: isLoaded,
         isCartOpen,
         setIsCartOpen,
         subtotal,

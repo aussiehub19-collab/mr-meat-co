@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
+import { SmartImage } from '@/components/SmartImage';
 import { useCart } from '@/lib/cart';
 import { SITE, SHOP, CONTACT } from '@/config/site';
 import {
@@ -31,6 +31,7 @@ export default function CheckoutPage() {
     cryptoDiscountAmount,
     totalCount,
     isMinOrderMet,
+    isCartLoaded,
     clearCart,
     updateQuantity,
     removeFromCart
@@ -118,6 +119,17 @@ export default function CheckoutPage() {
     window.location.href = '/thank-you-order/';
   };
 
+  // Cart is restored from localStorage on mount — hold the empty state until
+  // that's done so a real cart doesn't flash "empty" on a checkout refresh.
+  if (!isCartLoaded) {
+    return (
+      <div className="max-w-4xl mx-auto px-4 py-32 text-center">
+        <div className="w-10 h-10 border-2 border-red-500/40 border-t-red-500 rounded-full animate-spin mx-auto" />
+        <p className="text-gray-400 text-sm mt-4">Loading your cart…</p>
+      </div>
+    );
+  }
+
   if (cart.length === 0) {
     return (
       <div className="max-w-4xl mx-auto px-4 py-20 text-center space-y-6">
@@ -147,7 +159,7 @@ export default function CheckoutPage() {
       <div className="border-b border-[#991B1B]/40 pb-6 space-y-2">
         <div className="flex items-center space-x-2 text-xs font-bold uppercase text-red-400 tracking-widest">
           <Lock className="w-4 h-4 text-red-500" />
-          <span>Cold-Chain Express Delivery Sydney</span>
+          <span>Cold-Chain Delivery Across NSW &middot; Frozen Courier Australia-Wide</span>
         </div>
         <h1 className="text-3xl sm:text-5xl font-black font-serif text-white">
           Secure Order Checkout
@@ -458,10 +470,11 @@ export default function CheckoutPage() {
                   className="bg-[#1C1212] p-3 rounded-2xl border border-[#991B1B]/30 flex items-center space-x-3 text-xs"
                 >
                   <div className="relative w-14 h-14 rounded-xl overflow-hidden bg-white shrink-0">
-                    <Image
+                    <SmartImage
                       src={item.image}
                       alt={item.name}
                       fill
+                      sizes="56px"
                       className="object-cover"
                     />
                   </div>

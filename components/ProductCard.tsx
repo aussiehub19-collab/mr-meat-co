@@ -5,7 +5,8 @@ import Link from 'next/link';
 import { Product, SHOP } from '@/config/site';
 import { useCart } from '@/lib/cart';
 import { SmartImage } from '@/components/SmartImage';
-import { Plus, Check, Snowflake, ShieldAlert, Bitcoin } from 'lucide-react';
+import { QtyStepper } from '@/components/QtyStepper';
+import { Plus, Snowflake, ShieldAlert, Bitcoin } from 'lucide-react';
 import { useCustomStoreImages } from '@/lib/useCustomImages';
 
 function getProductHref(product: Product): string {
@@ -24,8 +25,8 @@ function getProductHref(product: Product): string {
 }
 
 export function ProductCard({ product }: { product: Product }) {
-  const { addToCart, cart } = useCart();
-  const inCart = cart.some((i) => i.slug === product.slug);
+  const { addToCart, updateQuantity, cart } = useCart();
+  const cartQty = cart.find((i) => i.slug === product.slug)?.quantity ?? 0;
   const customProductImages = useCustomStoreImages('tmc_gdrive_product_images');
 
   const customProductImage = customProductImages[product.slug] || customProductImages[product.product_id] || null;
@@ -186,27 +187,22 @@ export function ProductCard({ product }: { product: Product }) {
             )}
           </div>
 
-          <button
-            type="button"
-            onClick={handleAddToCart}
-            className={`px-3.5 py-2.5 rounded-xl font-black text-xs flex items-center space-x-1.5 transition-all shadow-sm ${
-              inCart
-                ? 'bg-red-900 hover:bg-red-800 text-white border border-red-500/40'
-                : 'bg-gradient-to-r from-[#B91C1C] via-[#DC2626] to-[#991B1B] text-white hover:brightness-110 border border-red-400/30 shadow-md shadow-red-950/50'
-            }`}
-          >
-            {inCart ? (
-              <>
-                <Check className="w-4 h-4 text-white" />
-                <span>Added (+1)</span>
-              </>
-            ) : (
-              <>
-                <Plus className="w-4 h-4 text-white" />
-                <span>Add to Cart</span>
-              </>
-            )}
-          </button>
+          {cartQty > 0 ? (
+            <QtyStepper
+              quantity={cartQty}
+              onIncrement={() => updateQuantity(product.slug, 1)}
+              onDecrement={() => updateQuantity(product.slug, -1)}
+            />
+          ) : (
+            <button
+              type="button"
+              onClick={handleAddToCart}
+              className="px-3.5 py-2.5 rounded-xl font-black text-xs flex items-center space-x-1.5 transition-all bg-gradient-to-r from-[#B91C1C] via-[#DC2626] to-[#991B1B] text-white hover:brightness-110 border border-red-400/30 shadow-md shadow-red-950/50"
+            >
+              <Plus className="w-4 h-4 text-white" />
+              <span>Add to Cart</span>
+            </button>
+          )}
         </div>
       </div>
     </div>

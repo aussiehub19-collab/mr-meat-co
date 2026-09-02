@@ -95,6 +95,12 @@ export async function POST(req: NextRequest) {
 
     // Pre-launch / preview fallback: no SMTP env vars → don't fail the form.
     if (!smtpConfigured) {
+      console.error(
+        "[contact] SMTP env vars missing — email NOT sent.",
+        `host=${Boolean(EMAIL_SERVER_HOST)} user=${Boolean(EMAIL_SERVER_USER)} pass=${Boolean(
+          EMAIL_SERVER_PASSWORD
+        )}`
+      );
       return NextResponse.json({
         success: true,
         simulated: true,
@@ -115,7 +121,7 @@ export async function POST(req: NextRequest) {
       auth: { user: EMAIL_SERVER_USER, pass: EMAIL_SERVER_PASSWORD },
     });
 
-    await transporter.sendMail({
+    const info = await transporter.sendMail({
       from: EMAIL_FROM || EMAIL_SERVER_USER,
       to: destFor(formType),
       replyTo: submitterEmail,
@@ -124,12 +130,26 @@ export async function POST(req: NextRequest) {
       html,
     });
 
+    console.log(`[contact] sent ${formType} -> ${destFor(formType)} (${info.messageId})`);
     return NextResponse.json({ success: true });
   } catch (err) {
     const error = err as Error;
+    console.error("[contact] send failed:", error?.message, error);
     return NextResponse.json(
       { success: false, message: error.message || "Send failed" },
       { status: 500 }
     );
   }
+}
+
+// Health check — no secrets, just whether the SMTP env vars reached this deployment.
+export async function GET() {
+  return NextResponse.json({
+    smtpConfigured,
+    host: EMAIL_SERVER_HOST ? "set" : "missing",
+    port: EMAIL_SERVER_PORT ? "set" : "missing",
+    user: EMAIL_SERVER_USER ? "set" : "missing",
+    password: EMAIL_SERVER_PASSWORD ? "set" : "missing",
+    from: EMAIL_FROM ? "set" : "missing",
+  });
 }

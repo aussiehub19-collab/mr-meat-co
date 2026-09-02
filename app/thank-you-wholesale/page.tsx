@@ -18,11 +18,11 @@ export default function ThankYouWholesalePage() {
       </div>
 
       <div className="space-y-2">
-        <h1 className="text-3xl font-black font-serif text-gray-900">
-          Wholesale Application Submitted!
+        <h1 className="text-3xl font-black font-serif text-white">
+          Wholesale Enquiry Received
         </h1>
-        <p className="text-sm text-gray-600 max-w-md mx-auto leading-relaxed">
-          Thank you for applying for a B2B wholesale account with Mr Meat & Co Sydney. Our commercial director will review your requirements and send wholesale pricing sheets within 2 business hours.
+        <p className="text-sm text-gray-300 max-w-md mx-auto leading-relaxed">
+          Thanks for your wholesale enquiry with Mr Meat &amp; Co. Our team will review your requirements and reply by email with pricing and next steps within 1 business day.
         </p>
       </div>
 

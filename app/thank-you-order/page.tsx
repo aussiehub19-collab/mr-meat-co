@@ -1,10 +1,10 @@
 import React from 'react';
 import Link from 'next/link';
-import { CheckCircle2, ArrowRight, MessageSquare, CreditCard } from 'lucide-react';
-import { SITE, CONTACT } from '@/config/site';
+import { CheckCircle2, ArrowRight, MessageSquare } from 'lucide-react';
+import { CONTACT } from '@/config/site';
 
 export const metadata = {
-  title: 'Order Draft Submitted',
+  title: 'Order Received',
   robots: {
     index: false,
     follow: true,
@@ -19,18 +19,23 @@ export default function ThankYouOrderPage() {
       </div>
 
       <div className="space-y-3">
-        <h1 className="text-3xl font-black font-serif text-gray-900">
-          Order Draft Received!
+        <h1 className="text-3xl font-black font-serif text-white">
+          Order Received
         </h1>
-        <p className="text-sm text-gray-600 max-w-md mx-auto leading-relaxed">
-          Your order draft has been generated. If you selected PayID or Bank Transfer, our Sydney butcher team will confirm receipt and dispatch your refrigerated cold-chain order on your scheduled delivery date.
+        <p className="text-sm text-gray-300 max-w-md mx-auto leading-relaxed">
+          Thanks — we&rsquo;ve received your order. Our Sydney butcher team will send you an
+          order confirmation by email or WhatsApp shortly, with payment details and
+          instructions to complete your order. Your refrigerated cold-chain delivery is
+          scheduled once payment is confirmed.
         </p>
       </div>
 
       <div className="p-6 bg-red-50 border border-red-200 rounded-2xl text-left space-y-2 text-xs text-red-900 max-w-md mx-auto">
         <strong className="block font-bold">💡 Crypto 10% Discount Reminder:</strong>
         <p>
-          If paying with crypto (BTC / USDT), please complete payment to <strong>{CONTACT.email}</strong> or check your WhatsApp chat — your 10% discount is automatically verified on receipt. PayID and bank transfer are also accepted at the standard total.
+          If paying with crypto (BTC / USDT), complete payment to <strong>{CONTACT.email}</strong> or
+          via your WhatsApp chat — your 10% discount is automatically verified on receipt. PayID and
+          bank transfer are also accepted at the standard total.
         </p>
       </div>
 

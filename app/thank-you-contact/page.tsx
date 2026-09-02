@@ -19,11 +19,11 @@ export default function ThankYouContactPage() {
       </div>
 
       <div className="space-y-2">
-        <h1 className="text-3xl font-black font-serif text-gray-900">
-          Message Received!
+        <h1 className="text-3xl font-black font-serif text-white">
+          Message Received
         </h1>
-        <p className="text-sm text-gray-600 max-w-md mx-auto leading-relaxed">
-          Thank you for contacting Mr Meat & Co Sydney. Our master butcher team will review your inquiry and reply within 1 business hour.
+        <p className="text-sm text-gray-300 max-w-md mx-auto leading-relaxed">
+          Thanks for contacting Mr Meat &amp; Co. Our Sydney butcher team will review your enquiry and reply by email within 1 business hour.
         </p>
       </div>
 

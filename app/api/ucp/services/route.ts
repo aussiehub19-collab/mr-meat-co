@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { SITE, SHOP } from "@/config/site";
+import { SITE, SHOP, CONTACT } from "@/config/site";
 
 export async function GET() {
   return NextResponse.json(
@@ -22,7 +22,7 @@ export async function GET() {
         {
           id: "order",
           type: "commerce",
-          url: `https://wa.me/61400000000`,
+          url: `https://wa.me/${CONTACT.whatsapp.replace(/[^\d]/g, "")}`,
           description: "Place butcher orders via WhatsApp or online draft",
         },
         {

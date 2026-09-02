@@ -1,21 +1,21 @@
 {
-  "issuer": "https://themeatcart.com.au",
+  "issuer": "https://mrmeatandco.com.au",
   "authorization_endpoint": null,
   "token_endpoint": null,
   "jwks_uri": null,
   "grant_types_supported": [],
   "response_types_supported": [],
   "scopes_supported": [],
-  "note": "The Meat Cart has no protected APIs. All resources publicly accessible.",
+  "note": "Mr Meat & Co has no protected APIs. All resources publicly accessible.",
   "public_resources": [
-    "https://themeatcart.com.au/shop/",
-    "https://themeatcart.com.au/blog/",
-    "https://themeatcart.com.au/faq/",
-    "https://themeatcart.com.au/wholesale/",
-    "https://themeatcart.com.au/llms.txt",
-    "https://themeatcart.com.au/.well-known/api-catalog",
-    "https://themeatcart.com.au/.well-known/agent-skills/index.json",
-    "https://themeatcart.com.au/.well-known/mcp/server-card.json"
+    "https://mrmeatandco.com.au/shop/",
+    "https://mrmeatandco.com.au/blog/",
+    "https://mrmeatandco.com.au/faq/",
+    "https://mrmeatandco.com.au/wholesale/",
+    "https://mrmeatandco.com.au/llms.txt",
+    "https://mrmeatandco.com.au/.well-known/api-catalog",
+    "https://mrmeatandco.com.au/.well-known/agent-skills/index.json",
+    "https://mrmeatandco.com.au/.well-known/mcp/server-card.json"
   ],
   "agent_auth": {
     "register_uri": null,

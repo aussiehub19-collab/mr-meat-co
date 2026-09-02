@@ -3,24 +3,24 @@
   "protocol_version": "1.0",
   "spec": "https://ucp.dev/specification/overview/",
   "schema": "https://ucp.dev/schema/v1.json",
-  "site": "https://themeatcart.com.au",
-  "name": "The Meat Cart",
+  "site": "https://mrmeatandco.com.au",
+  "name": "Mr Meat & Co",
   "description": "Sydney's Premier Craft Butcher & Grass-Fed Beef Direct to Door",
   "services": [
-    { "id": "product-catalog", "type": "catalog", "url": "https://themeatcart.com.au/shop/", "description": "Full fresh meat product catalog" },
-    { "id": "mcp-server", "type": "mcp", "url": "https://themeatcart.com.au/api/mcp", "description": "Streamable HTTP MCP Server" },
-    { "id": "order", "type": "commerce", "url": "https://wa.me/61400000000", "description": "Place orders via WhatsApp or online draft" },
-    { "id": "wholesale", "type": "b2b", "url": "https://themeatcart.com.au/wholesale/", "description": "Wholesale restaurant & bulk ordering" }
+    { "id": "product-catalog", "type": "catalog", "url": "https://mrmeatandco.com.au/shop/", "description": "Full fresh meat product catalog" },
+    { "id": "mcp-server", "type": "mcp", "url": "https://mrmeatandco.com.au/api/mcp", "description": "Streamable HTTP MCP Server" },
+    { "id": "order", "type": "commerce", "url": "https://wa.me/61420126562", "description": "Place orders via WhatsApp or online draft" },
+    { "id": "wholesale", "type": "b2b", "url": "https://mrmeatandco.com.au/wholesale/", "description": "Wholesale restaurant & bulk ordering" }
   ],
   "capabilities": ["browse", "search", "inquiry", "wholesale", "content", "mcp"],
   "endpoints": {
-    "mcp": "https://themeatcart.com.au/api/mcp",
-    "catalog": "https://themeatcart.com.au/shop/",
-    "contact": "https://themeatcart.com.au/contact/",
-    "agent_skills": "https://themeatcart.com.au/.well-known/agent-skills/index.json",
-    "mcp_server_card": "https://themeatcart.com.au/.well-known/mcp/server-card.json",
-    "api_catalog": "https://themeatcart.com.au/.well-known/api-catalog",
-    "llms_txt": "https://themeatcart.com.au/llms.txt"
+    "mcp": "https://mrmeatandco.com.au/api/mcp",
+    "catalog": "https://mrmeatandco.com.au/shop/",
+    "contact": "https://mrmeatandco.com.au/contact/",
+    "agent_skills": "https://mrmeatandco.com.au/.well-known/agent-skills/index.json",
+    "mcp_server_card": "https://mrmeatandco.com.au/.well-known/mcp/server-card.json",
+    "api_catalog": "https://mrmeatandco.com.au/.well-known/api-catalog",
+    "llms_txt": "https://mrmeatandco.com.au/llms.txt"
   },
   "currency": "AUD",
   "minimum_order_usd": 300,

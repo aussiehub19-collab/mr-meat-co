@@ -119,8 +119,8 @@ export const SITE = {
 
 export const CONTACT = {
   email: "orders@mrmeatandco.com.au",
-  phone: "+61 2 9000 8888",
-  whatsapp: "+61400000000",
+  phone: "+61 420 126 562",
+  whatsapp: "+61 420 126 562",
   address: "Unit 4, 120 Sydney Butcher Way, Alexandria NSW 2015",
   hq: "Sydney, NSW, Australia",
   country: "Australia",
@@ -136,18 +136,21 @@ export const SHOP = {
 
 export const FORMS = {
   provider: "web3forms",
-  web3formsKey: "pending",
+  // Set NEXT_PUBLIC_WEB3FORMS_KEY in Vercel env vars (Production + Preview).
+  // Web3Forms access keys are public by design, so NEXT_PUBLIC_ is correct.
+  // Falls back to "pending" (forms redirect straight to thank-you, no email) until set.
+  web3formsKey: process.env.NEXT_PUBLIC_WEB3FORMS_KEY || "pending",
   contactEmail: "orders@mrmeatandco.com.au",
   orderEmail: "orders@mrmeatandco.com.au",
-  wholesaleEmail: "wholesale@mrmeatandco.com.au",
+  wholesaleEmail: "orders@mrmeatandco.com.au",
   turnstileSiteKey: "",
 };
 
 export const CHAT = {
   channels: [
-    { type: "whatsapp", label: "WhatsApp Direct", value: "+61400000000", url: "https://wa.me/61400000000" },
+    { type: "whatsapp", label: "WhatsApp Direct", value: "+61 420 126 562", url: "https://wa.me/61420126562" },
     { type: "email", label: "Order Email", value: "orders@mrmeatandco.com.au", url: "mailto:orders@mrmeatandco.com.au" },
-    { type: "phone", label: "Sydney Hotline", value: "+61 2 9000 8888", url: "tel:+61290008888" },
+    { type: "phone", label: "Call or Text", value: "+61 420 126 562", url: "tel:+61420126562" },
   ]
 };
 

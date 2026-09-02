@@ -38,7 +38,7 @@ Refrigerated cold-chain express delivery across Sydney Metro, Wollongong, and Ce
 - Minimum Order: $300 AUD
 - Free Cold-Chain Delivery on orders over $300 AUD
 - 10% instant discount when paying with crypto (BTC, USDT); PayID and bank transfer also accepted
-- Human-in-the-loop WhatsApp order preparation: +61400000000
+- Human-in-the-loop WhatsApp order preparation: +61420126562
 - Public Agent MCP Server Endpoint: https://mrmeatandco.com.au/api/mcp
 - API Catalog: https://mrmeatandco.com.au/.well-known/api-catalog
 - LLMs Info: https://mrmeatandco.com.au/llms.txt

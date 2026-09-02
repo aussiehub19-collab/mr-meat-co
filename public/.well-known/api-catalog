@@ -1,11 +1,11 @@
 {
   "linkset": [
-    { "anchor": "https://themeatcart.com.au/", "https://www.iana.org/assignments/link-relations/service-doc": [{ "href": "https://themeatcart.com.au/faq/" }], "title": "The Meat Cart — Sydney's Premier Craft Butcher" },
-    { "anchor": "https://themeatcart.com.au/shop/", "type": "text/html", "title": "The Meat Cart Product Catalog" },
-    { "anchor": "https://themeatcart.com.au/wholesale/", "type": "text/html", "title": "The Meat Cart Wholesale Program" },
-    { "anchor": "https://themeatcart.com.au/api/products", "type": "application/json", "title": "The Meat Cart Products API" },
-    { "anchor": "https://themeatcart.com.au/api/categories", "type": "application/json", "title": "The Meat Cart Categories API" },
-    { "anchor": "https://themeatcart.com.au/api/search", "type": "application/json", "title": "The Meat Cart Search API" },
-    { "anchor": "https://themeatcart.com.au/api/mcp", "type": "application/json", "https://www.iana.org/assignments/link-relations/service-desc": [{ "href": "https://themeatcart.com.au/.well-known/mcp/server-card.json" }], "title": "The Meat Cart MCP Server" }
+    { "anchor": "https://mrmeatandco.com.au/", "https://www.iana.org/assignments/link-relations/service-doc": [{ "href": "https://mrmeatandco.com.au/faq/" }], "title": "Mr Meat & Co — Sydney's Premier Craft Butcher" },
+    { "anchor": "https://mrmeatandco.com.au/shop/", "type": "text/html", "title": "Mr Meat & Co Product Catalog" },
+    { "anchor": "https://mrmeatandco.com.au/wholesale/", "type": "text/html", "title": "Mr Meat & Co Wholesale Program" },
+    { "anchor": "https://mrmeatandco.com.au/api/products", "type": "application/json", "title": "Mr Meat & Co Products API" },
+    { "anchor": "https://mrmeatandco.com.au/api/categories", "type": "application/json", "title": "Mr Meat & Co Categories API" },
+    { "anchor": "https://mrmeatandco.com.au/api/search", "type": "application/json", "title": "Mr Meat & Co Search API" },
+    { "anchor": "https://mrmeatandco.com.au/api/mcp", "type": "application/json", "https://www.iana.org/assignments/link-relations/service-desc": [{ "href": "https://mrmeatandco.com.au/.well-known/mcp/server-card.json" }], "title": "Mr Meat & Co MCP Server" }
   ]
 }

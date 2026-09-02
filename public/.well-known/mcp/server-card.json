@@ -5,7 +5,7 @@
     "version": "1.0.0",
     "description": "Sydney's Premier Craft Butcher & Grass-Fed Beef Direct to Door",
     "homepage": "https://mrmeatandco.com.au",
-    "contact": { "email": "orders@mrmeatandco.com.au", "whatsapp": "+61400000000" }
+    "contact": { "email": "orders@mrmeatandco.com.au", "whatsapp": "+61420126562" }
   },
   "transport": {
     "type": "streamable-http",

@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import { POSTS, SITE } from '@/config/site';
 import { JsonLd } from '@/components/JsonLd';
 import { SmartImage } from '@/components/SmartImage';
+import { Article } from '@/components/Article';
 import { ArrowLeft, Calendar, Clock, Tag } from 'lucide-react';
 import Link from 'next/link';
 
@@ -54,7 +55,7 @@ export default async function BlogArticlePage({
     headline: post.title,
     image: [post.image],
     datePublished: post.date,
-    dateModified: post.date,
+    dateModified: post.updated || post.date,
     author: {
       '@type': 'Organization',
       name: SITE.name,
@@ -100,9 +101,23 @@ export default async function BlogArticlePage({
     ],
   };
 
+  const faqSchema = post.faqs && post.faqs.length
+    ? {
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        mainEntity: post.faqs.map((f) => ({
+          '@type': 'Question',
+          name: f.question,
+          acceptedAnswer: { '@type': 'Answer', text: f.answer },
+        })),
+      }
+    : null;
+
+  const schemas = [articleSchema, breadcrumbSchema, ...(faqSchema ? [faqSchema] : [])];
+
   return (
     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8">
-      <JsonLd data={[articleSchema, breadcrumbSchema]} />
+      <JsonLd data={schemas} />
 
       <Link href="/blog/" className="inline-flex items-center space-x-1.5 text-xs font-bold text-gray-400 hover:text-red-400 transition-colors">
         <ArrowLeft className="w-3.5 h-3.5" />
@@ -140,29 +155,35 @@ export default async function BlogArticlePage({
       </div>
 
       {/* Content body */}
-      <div className="bg-[#141414] p-8 sm:p-12 rounded-3xl border border-[#991B1B]/40 shadow-sm space-y-6 text-gray-200 leading-relaxed text-sm sm:text-base prose max-w-none">
-        {post.content ? (
-          <div className="whitespace-pre-line leading-loose space-y-4">
-            {post.content}
-          </div>
-        ) : (
-          <p>{post.excerpt}</p>
-        )}
+      <div className="bg-[#141414] p-6 sm:p-10 lg:p-12 rounded-3xl border border-[#991B1B]/40 shadow-sm max-w-none">
+        {post.content ? <Article content={post.content} /> : <p className="text-gray-200">{post.excerpt}</p>}
       </div>
+
+      {/* Article FAQ */}
+      {post.faqs && post.faqs.length > 0 && (
+        <div className="bg-[#141414] p-6 sm:p-10 rounded-3xl border border-[#991B1B]/40 space-y-4">
+          <h2 className="text-2xl font-black text-white font-serif">Frequently asked questions</h2>
+          <div className="divide-y divide-[#991B1B]/20">
+            {post.faqs.map((f, i) => (
+              <div key={i} className="py-4">
+                <h3 className="font-bold text-white text-sm sm:text-base mb-1.5">{f.question}</h3>
+                <p className="text-sm text-gray-300 leading-relaxed">{f.answer}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
 
       {/* Bottom CTA Box */}
       <div className="bg-[#141414] text-white p-8 rounded-3xl space-y-4 text-center border border-[#991B1B]/50 shadow-xl">
         <h3 className="text-xl font-bold font-serif">
-          Ready to Cook with 100% Australian Grass-Fed Beef Mince?
+          {post.cta?.note || '100% Australian meat, delivered cold-chain across Sydney.'}
         </h3>
-        <p className="text-xs text-gray-300 max-w-lg mx-auto">
-          Ground fresh daily by our Alexandria master butchers. Delivered cold-chain refrigerated across Sydney Metro.
-        </p>
         <Link
-          href="/shop/beef/grass-fed-premium-beef-mince/"
+          href={post.cta?.href || '/shop/'}
           className="inline-block bg-gradient-to-r from-[#DC2626] via-[#B91C1C] to-[#7F1D1D] hover:from-red-600 hover:to-red-900 text-white px-6 py-3 rounded-xl text-xs font-bold tracking-wide shadow-lg border border-red-500/30"
         >
-          Order Fresh Beef Mince Now →
+          {post.cta?.label || 'Shop the full range →'}
         </Link>
       </div>
     </div>

@@ -85,9 +85,17 @@ export interface Post {
   excerpt: string;
   category: string;
   date: string;
+  updated?: string;
   readTime: string;
   image: string;
   content?: string;
+  /** Primary keyword this post targets (for the strategy record). */
+  primaryKeyword?: string;
+  secondaryKeywords?: string[];
+  /** Article FAQ section — also emitted as FAQPage JSON-LD. */
+  faqs?: FAQItem[];
+  /** Bottom-of-post call to action. */
+  cta?: { label: string; href: string; note?: string };
 }
 
 export interface FAQItem {
@@ -7589,31 +7597,1325 @@ export const WHOLESALE_BULK_SUBCATEGORIES: WholesaleSubcategory[] = [
 
 export const POSTS: Post[] = [
   {
-    slug: "australian-meat-taxonomy-guide",
-    title: "Understanding Australian Meat Terminology: Cut Names, Cooking Methods & Taxonomy",
-    excerpt: "Learn how Australian butchers define Scotch Fillet, Porterhouse, Rump, and Schnitzels across our standardised categories.",
+    slug: "beef-mince-fat-ratio-guide",
+    title: "Beef Mince: Fat Ratios, Cuts & How to Buy It in Australia",
+    excerpt: "What the fat ratio on beef mince actually means, which grind suits bolognese vs burgers vs meatballs, and how to buy beef mince online without overpaying.",
     category: "Meat Education",
-    date: "2026-02-18",
-    readTime: "5 min read",
-    image: "https://picsum.photos/seed/blog-mince/800/600",
-    content: `Australian meat terminology has a rich history that blends British butchery traditions with modern Australian culinary habits.
+    date: "2026-03-04",
+    updated: "2026-09-02",
+    readTime: "6 min read",
+    image: "/images/premium-beef-mince.webp",
+    primaryKeyword: "beef mince",
+    secondaryKeywords: ["lean beef mince", "beef mince fat ratio", "beef mince price per kg", "extra lean beef mince", "buy beef mince online"],
+    content: `Beef mince is the most-cooked cut in the Australian kitchen, yet the label tells you almost nothing. "Regular", "premium", "lean", "extra lean" — none of it is regulated the way you'd expect. Here is what actually matters when you buy beef mince, and how to match the grind to the dish.
 
-### Key Australian Meat Cut Equivalents:
-- **Scotch Fillet:** Known internationally as Ribeye or Boneless Rib Steak. Celebrated for its rich marbling.
-- **Porterhouse:** Known in America as Sirloin or Striploin. Features fine grain and a delicious outer fat cap.
-- **Eye Fillet:** Known internationally as Tenderloin or Filet Mignon. The leanest, softest muscle cut.
-- **Rump Steak:** A versatile full-flavored steak cut from the hindquarter, ideal for barbecuing or slicing.`
+## What the fat ratio means
+
+Fat ratio is written as lean-to-fat: **80/20** means 80% lean meat, 20% fat. At Mr Meat & Co every batch of [beef mince](/beef/mince-diced/) is labelled with its real ratio because it changes how the dish behaves:
+
+- **90/10 – 95/5 (extra lean):** meatballs, koftas, meal-prep, anything simmered in sauce. Holds shape, low shrinkage, but can dry out if grilled.
+- **80/20 (premium):** the all-rounder. Bolognese, cottage pie, tacos, san choy bau. Enough fat for flavour and moisture without a greasy pan.
+- **75/25 – 70/30 (regular):** burgers and rissoles. That extra fat bastes the patty as it sears and keeps it juicy medium.
+
+## Which cut is your mince ground from?
+
+Cheap supermarket mince is trim — the offcuts left after primals are broken down, blended for a target fat percentage with added water and sometimes preservative. A butcher's mince is ground from named muscles:
+
+- **Chuck** — the classic mince cut. Well-marbled, beefy, roughly 80/20 on its own.
+- **Brisket / short rib blend** — the "smash burger" blend. Deep flavour, higher fat.
+- **Rump or topside** — where lean and extra-lean mince comes from.
+
+Ours is [ground fresh daily in Alexandria](/about/) with nothing added — no water, no fillers, no preservative.
+
+## How much should beef mince cost?
+
+As a rough guide for grass-fed butcher mince delivered in Sydney: premium 80/20 sits around \$16–20/kg, extra-lean around \$20–24/kg, and a Wagyu or dry-aged blend higher again. Buying a [5kg or 10kg bulk box](/wholesale/bulk-meat-orders/bulk-beef/) drops the per-kg price meaningfully if you have freezer space.
+
+## Storing and freezing
+
+Fresh mince keeps 2–3 days in the coldest part of the fridge. To freeze, portion into 500g flat packs (they thaw fast and stack well), press out the air, and use within 3 months. Thaw in the fridge overnight, never on the bench — mince has a huge surface area and warms dangerously quickly.
+
+## The quick reference
+
+| Dish | Ratio | Cut |
+|---|---|---|
+| Bolognese, chilli, tacos | 80/20 | Chuck |
+| Burgers, rissoles | 70/30 | Chuck + brisket |
+| Meatballs, kofta, meatloaf | 90/10 | Rump |
+| Meal prep, bariatric, low-fat | 95/5 | Topside |
+
+Ready to cook? Browse [fresh beef mince](/beef/mince-diced/) or build it into a [family meat box](/meat-boxes/family/).`,
+    faqs: [
+      { question: "What fat ratio is Mr Meat & Co beef mince?", answer: "Our premium beef mince is roughly 80/20 (80% lean), ground from chuck. Lean mince is about 90/10 and extra-lean around 95/5, ground from rump and topside. Every pack is labelled with its real ratio." },
+      { question: "Is your beef mince ground fresh?", answer: "Yes. It's ground daily by our Alexandria butchers from whole muscle cuts, with no added water, fillers or preservative. Order by mid-morning for same-window Sydney delivery." },
+      { question: "How much is beef mince per kg?", answer: "Grass-fed premium mince is around $16–20/kg delivered in Sydney; extra-lean sits higher. Bulk 5kg and 10kg boxes bring the per-kg price down — see our bulk beef page." },
+      { question: "Can I buy beef mince in bulk?", answer: "Yes — 5kg and 10kg bulk beef mince boxes are available on our wholesale page, snap-frozen in 1kg portions, delivered across Sydney and Australia-wide for wholesale orders." },
+    ],
+    cta: { label: "Shop fresh beef mince →", href: "/beef/mince-diced/", note: "Grass-fed beef mince, ground fresh daily in Alexandria." },
   },
   {
-    slug: "sydney-cold-chain-meat-delivery",
-    title: "Cold-Chain Freshness: How We Guarantee Meat Delivered Direct to Door",
-    excerpt: "How temperature-controlled eco-insulated packaging keeps your beef mince, steaks, and lamb cutlets perfectly chilled.",
+    slug: "pork-mince-recipes-ideas",
+    title: "10 Things to Make With Pork Mince (Beyond Bolognese)",
+    excerpt: "Pork mince is cheaper than beef, cooks faster, and carries flavour beautifully. Ten fast dinners plus how to buy pork mince online in Australia.",
+    category: "Recipes",
+    date: "2026-03-18",
+    updated: "2026-09-02",
+    readTime: "5 min read",
+    image: "/images/premium-pork-mince.webp",
+    primaryKeyword: "pork mince recipes",
+    secondaryKeywords: ["pork mince", "what to do with pork mince", "pork mince dinner", "lean pork mince", "buy pork mince online"],
+    content: `[Pork mince](/pork/mince/) is one of the best-value proteins on the butcher's counter and it takes on marinades and aromatics far better than beef. If you only ever make bolognese with it, here are ten reasons to keep a pack in the fridge.
+
+## Fast weeknight dinners
+
+1. **San choy bau** — pork mince, garlic, ginger, water chestnuts, oyster and soy, spooned into iceberg cups. 12 minutes.
+2. **Thai basil pork (pad krapow)** — high heat, fish sauce, chilli, a fried egg on top. The definitive 15-minute dinner.
+3. **Pork and fennel ragu** — brown the mince hard, add fennel seed, white wine, milk and tomato, simmer 40 minutes. Pappardelle.
+4. **Bao / steamed buns** — pork mince, hoisin, spring onion. Freeze the filling in portions.
+5. **Larb** — Lao/Thai salad: pork mince cooked dry, toasted rice powder, lime, mint, shallot.
+6. **Wontons and dumplings** — pork mince with cabbage and chives is the standard filling; make 100 and freeze on a tray.
+7. **Meatballs in tomato** — pork mince stays more tender than beef; add fennel and parmesan for a porchetta note.
+8. **Pork and prawn spring rolls** — a small amount of [prawn meat](/seafood/prawns/) folded through lifts the whole roll.
+9. **Sausage rolls from scratch** — pork mince, breadcrumb, sage, nutmeg, wrapped in puff. Our [sausage roll guide](/blog/sausage-rolls-from-scratch/) has the full method.
+10. **Pork burgers** — 80/20 pork mince, apple, sage; better than a beef burger on a lazy Sunday.
+
+## Buying pork mince
+
+Ask for **lean pork mince** (around 90/10) for stir-fries and dumplings where you don't want a greasy result, or standard mince for burgers and ragu. Ours is Australian, ground fresh, no fillers. You can [buy pork mince online](/pork/mince/) with the rest of your order, or grab a [bulk pack](/wholesale/bulk-meat-orders/bulk-pork/) if you batch-cook.
+
+## Handling
+
+Pork mince spoils a touch faster than beef — use within 2 days or freeze in flat 500g packs. Always cook pork mince through (no pink juices); it's quick, so it's rarely a problem.`,
+    faqs: [
+      { question: "What fat content is pork mince?", answer: "Standard Australian pork mince is around 80/20. Lean pork mince is closer to 90/10 and is the better choice for dumplings, san choy bau and stir-fries where you don't want fat pooling in the pan." },
+      { question: "Is pork mince cheaper than beef mince?", answer: "Usually yes — pork mince typically sits a few dollars per kg below beef mince, which makes it a strong value protein for family dinners and batch cooking." },
+      { question: "Can you freeze pork mince?", answer: "Yes. Portion it into flat 500g packs, press out the air and freeze for up to 3 months. Thaw in the fridge overnight and cook it through — never refreeze thawed raw mince." },
+      { question: "Does pork mince need to be fully cooked?", answer: "Yes, cook pork mince until no pink remains and juices run clear (72°C). Because it's finely ground it cooks in minutes, so this is easy to hit without drying it out." },
+    ],
+    cta: { label: "Shop pork mince →", href: "/pork/mince/", note: "Australian pork mince, ground fresh — lean or standard." },
+  },
+  {
+    slug: "chicken-schnitzel-method",
+    title: "The Only Chicken Schnitzel Method You Need (Oven, Air-Fryer or Pan)",
+    excerpt: "How to make a crunchy, even chicken schnitzel every time — the crumb, the pound, the fat, and the three cooking methods compared.",
+    category: "Recipes",
+    date: "2026-04-01",
+    updated: "2026-09-02",
+    readTime: "6 min read",
+    image: "/images/chicken-breast-schnitzel.webp",
+    primaryKeyword: "chicken schnitzel recipe",
+    secondaryKeywords: ["chicken schnitzel", "homemade chicken schnitzel", "how to cook chicken schnitzel", "crumbed chicken", "gluten free schnitzel"],
+    content: `A great [chicken schnitzel](/ready-to-cook/schnitzels/) is about three things: even thickness, a dry-then-wet-then-dry crumb, and enough hot fat. Get those right and the cooking method barely matters.
+
+## The prep
+
+1. **Butterfly and pound.** Slice a chicken breast in half horizontally, then pound each piece between baking paper to an even 1cm. Even thickness is the whole game — thin edges burn before a thick centre cooks.
+2. **Season the meat, not just the crumb.** Salt the chicken 15 minutes ahead.
+3. **Three-stage crumb.** Flour (shake off the excess) → beaten egg → breadcrumb. Panko gives the loudest crunch; a 50/50 panko and fine dry crumb gives a more traditional pub schnitzel. Press the crumb on firmly and rest the crumbed schnitzels on a rack for 10 minutes so the coating sets.
+
+**Gluten-free:** swap the flour for rice flour or cornflour and use a [gluten-free crumb](/ready-to-cook/schnitzels/) — the method is identical.
+
+## The three methods
+
+**Pan-fry (best crunch).** 4–5mm of neutral oil in a wide pan over medium-high. 2–3 minutes a side until deep gold. Drain on a rack, not paper (paper steams the base soft). Internal temp 74°C.
+
+**Oven (hands-off, for a crowd).** 220°C fan, schnitzels on a preheated oven tray with a light spray of oil both sides, 8 minutes, flip, 6–8 more. Not quite as crisp as the pan but you can do twelve at once.
+
+**Air-fryer (fastest, least oil).** 200°C, spray both sides, 6 minutes, flip, 4–5 more. Excellent result for one or two; the basket limits batch size.
+
+## Make it a parmigiana
+
+Top the cooked schnitzel with [beef or pork ragu](/pork/mince/) or a quick napolitana, mozzarella and shaved ham, then grill until bubbling. Cook the schnitzel fully first — the grill is only there to melt the cheese.
+
+## Buying vs crumbing your own
+
+Our butchers crumb [chicken schnitzel](/ready-to-cook/schnitzels/) fresh daily — same three-stage method, ready to cook. We also do [beef schnitzel](/ready-to-cook/schnitzels/), pork and veal. If you want to crumb your own, start with [chicken breast fillets](/chicken/breast/).`,
+    faqs: [
+      { question: "How do you make chicken schnitzel crispy?", answer: "Pound the chicken to an even 1cm, use a three-stage flour-egg-crumb coating pressed on firmly, rest the crumbed schnitzels 10 minutes, then cook in 4–5mm of hot oil and drain on a rack rather than paper towel." },
+      { question: "What's the best way to cook chicken schnitzel — oven, pan or air-fryer?", answer: "Pan-frying gives the best crunch. The air-fryer is fastest with the least oil and works well for one or two. The oven is best when you're cooking for a crowd — up to twelve at once at 220°C fan." },
+      { question: "What internal temperature should chicken schnitzel reach?", answer: "74°C in the thickest part. A pounded 1cm schnitzel gets there in about 5–6 minutes total, so overcooking is the bigger risk than undercooking." },
+      { question: "Can you make gluten-free chicken schnitzel?", answer: "Yes — replace the flour with rice flour or cornflour and use a gluten-free breadcrumb. The pound, coat, rest and cook steps are exactly the same. We also sell a ready-crumbed gluten-free chicken schnitzel." },
+    ],
+    cta: { label: "Shop crumbed schnitzels →", href: "/ready-to-cook/schnitzels/", note: "Chicken, beef, pork & veal schnitzel — crumbed fresh daily." },
+  },
+  {
+    slug: "chicken-mince-weeknight-dinners",
+    title: "Chicken Mince: 12 Fast Weeknight Dinners",
+    excerpt: "Chicken mince is lean, quick and cheap. Twelve dinners on the table in under 30 minutes, plus how to stop chicken mince going dry.",
+    category: "Recipes",
+    date: "2026-04-15",
+    updated: "2026-09-02",
+    readTime: "5 min read",
+    image: "/images/chicken-mince.webp",
+    primaryKeyword: "chicken mince recipes",
+    secondaryKeywords: ["chicken mince", "chicken mince dinner", "recipes using chicken mince", "lean chicken mince", "what to make with chicken mince"],
+    content: `[Chicken mince](/chicken/mince/) is the leanest common mince, which is its strength and its weakness — it cooks in minutes but turns to sawdust if you push it. The fix is fat and moisture: a splash of oil, an aromatic paste, and a sauce it can finish in.
+
+## 12 dinners under 30 minutes
+
+1. **Chicken larb** — dry-fried mince, toasted rice powder, lime, fish sauce, herbs, in lettuce cups.
+2. **Chicken and corn soup** — mince stirred into stock with creamed corn and egg ribbons.
+3. **Thai basil chicken** — chilli, garlic, oyster sauce, basil, fried egg.
+4. **Chicken bolognese** — lighter than beef; good with pappardelle and lots of parmesan.
+5. **Chicken meatballs** — bind with grated zucchini and ricotta so they stay moist; bake and drop into tomato or broth.
+6. **San choy bau** — the chicken version, with water chestnut and hoisin.
+7. **Chicken kofta** — mince with garlic, cumin, coriander, mint; grill on skewers ([kebab skewers here](/bbq-grill/skewers/)).
+8. **Chicken burgers** — add grated apple or onion for moisture; 74°C internal.
+9. **Chicken taco filling** — mince with chipotle, lime, a little stock to keep it saucy.
+10. **Chicken and vegetable dumplings** — freeze a batch on a tray.
+11. **Chicken ragu pasta bake** — mince, béchamel, penne, cheese, 20 minutes in the oven.
+12. **Chicken rissoles** — mince, breadcrumb, egg, herbs; pan-fry and serve with mash.
+
+## Stop it drying out
+
+- Don't buy the leanest grind for burgers and meatballs — ask for **chicken thigh mince** (around 85/15) instead of breast mince (95/5).
+- Add a wet binder: grated vegetable, ricotta, an egg, or a spoon of yoghurt.
+- Take it off the heat the moment it's cooked through. Carryover finishes it.
+
+## Buying chicken mince
+
+We grind [chicken mince](/chicken/mince/) fresh from Australian free-range birds — breast mince for the leanest option, thigh mince where you want more moisture and flavour. Lean chicken mince is also the base of our [raw pet mince range](/pet-food/raw-mince/) for dogs on a poultry diet.`,
+    faqs: [
+      { question: "Why does chicken mince go dry?", answer: "Breast mince is around 95% lean, so there's almost no fat to keep it moist, and it overcooks in seconds. Use thigh mince for burgers and meatballs, add a wet binder like grated zucchini or ricotta, and pull it off the heat as soon as it's cooked through." },
+      { question: "Is chicken mince healthy?", answer: "Chicken breast mince is one of the leanest minces available — high protein, low fat. Thigh mince has more fat and flavour but is still leaner than most beef or pork mince." },
+      { question: "What's the difference between chicken breast mince and thigh mince?", answer: "Breast mince (about 95/5) is very lean and pale — best for soups, larb and meal prep. Thigh mince (about 85/15) is darker, richer and more forgiving — better for burgers, koftas and meatballs." },
+      { question: "Can you freeze chicken mince?", answer: "Yes, in flat 500g portions for up to 3 months. Thaw in the fridge and always cook chicken mince through to 74°C." },
+    ],
+    cta: { label: "Shop chicken mince →", href: "/chicken/mince/", note: "Free-range chicken mince — breast or thigh, ground fresh." },
+  },
+  {
+    slug: "how-to-cook-lamb-chops",
+    title: "How to Cook Lamb Chops: Grill, Pan & Oven Times",
+    excerpt: "Loin, forequarter, chump and cutlet — which lamb chop suits which method, plus exact times and temperatures for pink, tender chops.",
+    category: "Recipes",
+    date: "2026-05-06",
+    updated: "2026-09-02",
+    readTime: "6 min read",
+    image: "/images/lamb-loin-chops.webp",
+    primaryKeyword: "how to cook lamb chops",
+    secondaryKeywords: ["lamb chops recipe", "lamb chops in oven", "best way to cook lamb chops", "lamb cutlets", "grilled lamb chops"],
+    content: `Not all [lamb chops](/lamb/chops-cutlets/) are the same cut, and that's why recipes disagree. Match the chop to the method and they're a 10-minute dinner.
+
+## Know your chop
+
+- **Cutlet** — from the rack. Small, lean, a long clean bone. Fast, high heat only. 90 seconds to 2 minutes a side.
+- **Loin chop (mini T-bone)** — tender eye plus a strip of belly. The all-rounder. Grill or pan, 2–3 minutes a side.
+- **Chump chop** — from the rump end. Bigger, meatier, a little more work. Grill hot then rest, or braise.
+- **Forequarter / BBQ chop** — from the shoulder. Fattier, more connective tissue, cheapest. Rewards a lower-and-slower approach or a marinade.
+
+## The method (loin chops and cutlets)
+
+1. **Temper.** Out of the fridge 20–30 minutes. Pat dry.
+2. **Season.** Salt generously, a little oil.
+3. **Sear.** Heavy pan or grill on high. Stand the chops on their fat edge first for a minute to render, then flat.
+4. **Times for a 2–2.5cm loin chop:**
+   - Rare 50°C — ~2 min/side
+   - Medium-rare 55–57°C — ~2.5 min/side
+   - Medium 60°C — ~3 min/side
+5. **Rest** 5 minutes, loosely covered. This is not optional — resting lamb is the difference between juicy and grey.
+
+## In the oven
+
+For forequarter chops or a big batch: brown in a pan, then 180°C for 8–12 minutes to a medium finish, or 160°C for 25–30 minutes if you want them falling-apart. A quick marinade — garlic, rosemary, lemon, olive oil, 2 hours — transforms the cheaper chops.
+
+## Buying
+
+For a fast weeknight grill, choose [loin chops or cutlets](/lamb/chops-cutlets/). For a slow-cooked, budget-friendly tray, choose [forequarter chops or lamb shoulder](/lamb/slow-cook/). All our lamb is Australian grass-fed. Feeding a crowd? A [lamb BBQ pack](/bbq-grill/) or a [whole lamb share](/wholesale/bulk-meat-orders/bulk-lamb/) works out cheaper per kilo.`,
+    faqs: [
+      { question: "What's the best way to cook lamb chops?", answer: "For loin chops and cutlets: high heat, render the fat edge first, then 2–3 minutes a side to medium-rare (55–57°C) and rest 5 minutes. For forequarter chops, marinate and either grill hot or braise low in the oven." },
+      { question: "How long do you cook lamb chops in the oven?", answer: "Brown them in a pan first, then 180°C for 8–12 minutes for a medium finish, or 160°C for 25–30 minutes for tender, well-done forequarter chops." },
+      { question: "What temperature should lamb chops be?", answer: "50°C for rare, 55–57°C for medium-rare (the sweet spot for loin chops and cutlets), 60°C for medium. Always rest 5 minutes — the temperature climbs another 2–3°C." },
+      { question: "What's the difference between a lamb chop and a cutlet?", answer: "A cutlet comes from the rack — small, lean, with a long frenched bone. A loin chop is a mini T-bone with a tender eye and a strip of belly fat. Chump chops come from the rump and are larger and meatier." },
+    ],
+    cta: { label: "Shop lamb chops & cutlets →", href: "/lamb/chops-cutlets/", note: "Australian grass-fed lamb — loin chops, cutlets, chump & forequarter." },
+  },
+  {
+    slug: "homemade-burger-patty",
+    title: "The Ultimate Homemade Burger Patty (Ratio, Bind, Sear)",
+    excerpt: "The fat ratio, why you shouldn't add egg or breadcrumb, the dimple trick, and how to buy burger patties or the right mince to make your own.",
+    category: "Recipes",
+    date: "2026-05-20",
+    updated: "2026-09-02",
+    readTime: "5 min read",
+    image: "/images/premium-beef-burger-patties.webp",
+    primaryKeyword: "burger patty recipe",
+    secondaryKeywords: ["homemade burger patties", "best burger patty recipe", "beef burger patties", "burger patty ratio", "how to make burger patties"],
+    content: `A pub burger patty and a rissole are not the same thing. A rissole has egg, breadcrumb and herbs and holds together softly. A burger patty is just seasoned beef and fat, seared hard. Here's the burger.
+
+## The ratio
+
+**70/30 or 75/25.** That much fat sounds like a lot until you realise most of it renders out in the pan and bastes the patty as it cooks. Leaner than 80/20 and you get a dry, tight burger. [Chuck mince](/beef/mince-diced/) is naturally close to the mark; a chuck-and-brisket blend is the steakhouse standard.
+
+## The build
+
+1. **Handle it as little as possible.** Overworked mince goes dense and springy. Divide, gently form, stop.
+2. **No egg, no breadcrumb, no onion in the mix.** Season the outside only, with salt, just before it hits the pan — salt in the mix dissolves the protein and makes it bouncy.
+3. **Size:** 150–180g per patty, pressed wider than your bun (it shrinks and puffs).
+4. **The dimple.** Press a thumb-deep well in the centre of each raw patty. It stops the patty doming into a meatball as it cooks.
+
+## The cook
+
+- **Smash burger:** thin ball of mince onto a screaming-hot flat pan, smash flat for 30 seconds, flip once, cheese, done in 2 minutes. Maximum crust.
+- **Pub patty:** 2–2.5cm patty, high heat, 3 minutes a side for medium (65°C), rest 3 minutes.
+
+Don't press the patty while it cooks — you're squeezing out the juice you paid for.
+
+## Buying
+
+We make [beef burger patties](/bbq-grill/burgers/) from the same chuck blend — plus [lamb, chicken and pork patties](/ready-to-cook/burger-patties/) and a Wagyu patty. If you'd rather form your own, buy [premium beef mince](/beef/mince-diced/) at 80/20 or ask the butcher for a burger blend. For a party, the [BBQ meat pack](/bbq-grill/) bundles patties, sausages and buns' worth of everything.`,
+    faqs: [
+      { question: "What is the best fat ratio for burger patties?", answer: "70/30 to 75/25. Most of that fat renders out during the sear and bastes the patty. Anything leaner than 80/20 gives a dry, tight burger. Chuck mince, or a chuck-and-brisket blend, hits it naturally." },
+      { question: "Should you put egg and breadcrumb in burger patties?", answer: "No — that makes a rissole, not a burger. A burger patty is just mince and fat, formed gently and seasoned on the outside only, right before it cooks. Salt in the mix makes the patty bouncy." },
+      { question: "Why put a dimple in a burger patty?", answer: "A thumb-deep well in the centre of the raw patty stops it doming into a ball as the proteins contract. The patty cooks flat and sits properly in the bun." },
+      { question: "How long do you cook a burger patty?", answer: "A 2–2.5cm pub patty: 3 minutes a side over high heat for medium (65°C), then rest 3 minutes. A smashed patty: 30 seconds under the press, flip once, done in about 2 minutes total." },
+    ],
+    cta: { label: "Shop burger patties →", href: "/bbq-grill/burgers/", note: "Beef, lamb, chicken, pork & Wagyu patties — no fillers." },
+  },
+  {
+    slug: "lamb-ribs-low-and-slow",
+    title: "Low-and-Slow Lamb Ribs (Australian Cut Guide + Recipe)",
+    excerpt: "Lamb ribs vs lamb breast, how to render the fat, and a foolproof oven or BBQ method for sticky, tender lamb ribs.",
+    category: "Recipes",
+    date: "2026-06-03",
+    updated: "2026-09-02",
+    readTime: "5 min read",
+    image: "/images/lamb-ribs.webp",
+    primaryKeyword: "lamb ribs recipe",
+    secondaryKeywords: ["lamb ribs", "lamb spare ribs", "lamb breast", "how to cook lamb ribs", "bbq lamb ribs"],
+    content: `[Lamb ribs](/lamb/slow-cook/) are one of the best-value cuts in the shop and one of the most underused. They are fatty, gelatinous and cheap — everything you want for low-and-slow.
+
+## Lamb ribs vs lamb breast
+
+They're the same part of the animal. **Lamb breast** is the whole flap; **lamb ribs** (or lamb spare ribs) are the breast cut into individual bones or a rack. If you buy a whole breast, score the fat cap in a diamond pattern before cooking.
+
+The catch: lamb ribs are **very fatty**. The technique is all about rendering that fat so what's left is meltingly tender meat and crisp edges, not a greasy tray.
+
+## The method
+
+**Oven (reliable):**
+1. Season the ribs — salt, pepper, a little cumin and garlic. Or a Chinese five-spice and soy marinade.
+2. 160°C, ribs on a rack over a tray so the fat drips away, 1.5–2 hours until the meat pulls back from the bone.
+3. Drain the tray. Brush with a glaze — honey and soy, or a quick BBQ sauce.
+4. 220°C for 10–15 minutes to lacquer and crisp. Watch it; the sugar burns fast.
+
+**BBQ (better):** indirect heat, 130–150°C, 2.5–3 hours, glaze in the last 20 minutes over direct heat.
+
+## Serve
+
+Sticky lamb ribs want something sharp alongside — a slaw with rice vinegar, pickled onion, or a herby yoghurt. Cut between the bones only after they've rested 10 minutes.
+
+## Buying
+
+Our [lamb ribs](/lamb/slow-cook/) are Australian grass-fed, sold as racks or portioned. If you're doing a big BBQ, the [BBQ ribs section](/bbq-grill/ribs/) also has beef ribs and pork ribs, and a [half or whole lamb share](/wholesale/bulk-meat-orders/bulk-lamb/) gives you the ribs plus every other cut at a bulk price.`,
+    faqs: [
+      { question: "Are lamb ribs and lamb breast the same?", answer: "They come from the same part of the animal. Lamb breast is the whole flap; lamb ribs (or lamb spare ribs) are that breast cut into individual bones or a rack. Lamb ribs are naturally very fatty, so the cooking is about rendering that fat slowly." },
+      { question: "How long do you cook lamb ribs?", answer: "In the oven: 160°C for 1.5–2 hours on a rack so the fat drips away, then a hot glaze for 10–15 minutes at 220°C. On the BBQ: indirect at 130–150°C for 2.5–3 hours." },
+      { question: "Why are my lamb ribs greasy?", answer: "The fat hasn't rendered enough, or it pooled in the tray. Cook the ribs on a rack over a drip tray, give them the full low-and-slow time, and drain the tray before you glaze and crisp them." },
+      { question: "Are lamb ribs a cheap cut?", answer: "Yes — lamb ribs are one of the best-value cuts in the shop. They're fatty and full of connective tissue, which is exactly what you want for a low-and-slow cook, and they cost a fraction of chops or a rack." },
+    ],
+    cta: { label: "Shop lamb for slow cooking →", href: "/lamb/slow-cook/", note: "Lamb ribs, shanks, neck & shoulder — grass-fed, built for the braise." },
+  },
+  {
+    slug: "kangaroo-meat-buyers-guide",
+    title: "Kangaroo Meat: The Complete Australian Buyer's Guide",
+    excerpt: "Is kangaroo meat healthy? How much does it cost? Is it sustainable? Everything Australians ask before buying kangaroo — and how to cook it without it going tough.",
+    category: "Meat Education",
+    date: "2026-06-17",
+    updated: "2026-09-02",
+    readTime: "9 min read",
+    image: "/images/categories/specialty-meat.webp",
+    primaryKeyword: "kangaroo meat",
+    secondaryKeywords: ["is kangaroo meat healthy", "kangaroo meat price", "is kangaroo cheaper than beef", "how to cook kangaroo", "kangaroo meat for dogs", "buy kangaroo meat"],
+    content: `Kangaroo is the only large animal Australians eat that is wild-harvested rather than farmed, and it's one of the leanest red meats on earth. Here are straight answers to the questions people actually search before they [buy kangaroo meat](/specialty-meat/kangaroo/).
+
+## Is kangaroo meat healthy?
+
+Yes, on most measures it's exceptional. Kangaroo is:
+
+- **Very lean** — typically under 2% fat, versus 10–20% for most beef cuts.
+- **High protein** — around 22g per 100g.
+- **High in iron and zinc** — more iron per serve than beef.
+- **A natural source of conjugated linoleic acid (CLA)** — because the animals graze on native pasture their whole lives.
+
+The trade-off is that "very lean" means "easy to overcook". More on that below.
+
+## How much does kangaroo meat cost?
+
+Kangaroo generally sits **below premium beef and roughly level with mid-range beef** per kilo. Kangaroo mince and diced are the best value; fillet (rump) is the premium cut and still usually cheaper than a beef eye fillet. See current pricing on our [kangaroo range](/specialty-meat/kangaroo/) or, for volume, the [bulk kangaroo page](/wholesale/bulk-meat-orders/bulk-kangaroo/).
+
+## Is kangaroo cheaper than beef?
+
+Cut for cut, usually yes — especially mince, sausages and diced. Whole-animal economics help: kangaroo isn't raised, fed, watered or housed, so the input cost is lower.
+
+## Is kangaroo meat sustainable and ethical?
+
+Kangaroo harvesting is a government-regulated wild harvest with annual quotas set below population growth. The animals live wild with no feedlot, no land clearing and no methane-intensive farming footprint. Many environmental scientists consider well-managed kangaroo harvest one of the lowest-impact red meats available. As with any meat, sourcing from a licensed processor matters — ours is.
+
+## How do you cook kangaroo so it isn't tough?
+
+The number one rule: **cook it rare to medium-rare, and rest it.** With almost no fat, kangaroo has nothing to protect it past medium — it goes from tender to liver-textured very quickly.
+
+- **Steaks and fillet:** screaming hot pan or grill, 2 minutes a side max for a 2cm steak, target 52–55°C, rest 5 minutes.
+- **Mince:** treat like very lean beef — plenty of oil, aromatics, and a sauce to finish in. Great for chilli, ragu and rissoles.
+- **Diced:** low-and-slow only — a 2-hour curry or stew, where the collagen has time to soften.
+- **Sausages:** medium heat, don't chase colour.
+
+A marinade with a little oil (olive, sesame) genuinely helps — it replaces the fat the meat doesn't have.
+
+## Does kangaroo taste gamey?
+
+Mildly. It's a clean, iron-rich, slightly sweet flavour — closer to a good grass-fed beef than to venison. A red-wine or juniper marinade leans into it; a soy-ginger or chimichurri approach softens it.
+
+## Can dogs eat kangaroo meat?
+
+Yes — kangaroo is a popular **novel protein for dogs with allergies** to chicken or beef, and it's very lean. We sell [kangaroo pet mince and bulk kangaroo for dogs](/pet-food/raw-mince/) separately from the human range. Feed it as part of a balanced raw diet, not as the whole meal.
+
+## Quick reference
+
+| Cut | Method | Target temp / time |
+|---|---|---|
+| Fillet / rump steak | Hot sear | 52–55°C, ~2 min/side, rest 5 min |
+| Mince | Pan-fry with oil + sauce | Cooked through, don't dry out |
+| Diced | Slow braise / curry | 2 hours+ |
+| Sausages | Medium heat | Cooked through |
+
+Browse the full [kangaroo range](/specialty-meat/kangaroo/) — steaks, mince, sausages and fillet, delivered across Sydney and Australia-wide.`,
+    faqs: [
+      { question: "Is kangaroo meat healthy?", answer: "Yes — it's one of the leanest red meats available, typically under 2% fat, around 22g protein per 100g, and higher in iron and zinc than beef. It's also a natural source of CLA because the animals graze native pasture. The catch is it overcooks easily." },
+      { question: "How much does kangaroo meat cost per kg?", answer: "Kangaroo generally sits below premium beef and roughly level with mid-range beef. Mince and diced are the best value; fillet is the premium cut but still usually cheaper than beef eye fillet." },
+      { question: "Is kangaroo cheaper than beef?", answer: "Cut for cut, usually yes — particularly mince, sausages and diced. Because kangaroo is wild-harvested rather than raised, fed and housed, the input cost is lower." },
+      { question: "Is kangaroo meat sustainable and ethical?", answer: "Kangaroo harvest is a government-regulated wild harvest with annual quotas set below population growth. There's no feedlot, land clearing or intensive farming footprint, which is why many scientists rate well-managed kangaroo among the lowest-impact red meats." },
+      { question: "How do you cook kangaroo so it doesn't go tough?", answer: "Cook steaks and fillet rare to medium-rare only — hot pan, about 2 minutes a side for a 2cm steak, target 52–55°C, then rest 5 minutes. Diced kangaroo needs a slow 2-hour braise. A little oil in a marinade replaces the fat the meat lacks." },
+      { question: "Can dogs eat kangaroo meat?", answer: "Yes — kangaroo is a popular novel protein for dogs with chicken or beef allergies, and it's very lean. We sell kangaroo pet mince and bulk kangaroo for dogs separately from the human range; feed it as part of a balanced raw diet." },
+      { question: "Does kangaroo meat taste gamey?", answer: "Only mildly. It's a clean, slightly sweet, iron-rich flavour closer to good grass-fed beef than to venison. A soy-ginger marinade or chimichurri softens it; red wine and juniper lean into it." },
+    ],
+    cta: { label: "Shop kangaroo meat →", href: "/specialty-meat/kangaroo/", note: "Lean Australian kangaroo — steaks, mince, sausages & fillet." },
+  },
+  {
+    slug: "what-is-veal-how-to-cook-it",
+    title: "Veal Explained: What It Is, How It's Raised, and How to Cook It",
+    excerpt: "What age is a veal calf? Is rose veal ethical? How is veal different from beef? A clear guide plus where to buy veal mince and schnitzel in Australia.",
+    category: "Meat Education",
+    date: "2026-07-01",
+    updated: "2026-09-02",
+    readTime: "7 min read",
+    image: "/images/veal-cutlets.webp",
+    primaryKeyword: "veal",
+    secondaryKeywords: ["what is veal", "veal vs beef", "is veal ethical", "rose veal", "veal schnitzel", "buy veal mince"],
+    content: `Veal carries more myths than almost any meat. Here's what it actually is, how the Australian product is raised, and how to cook it.
+
+## What is veal?
+
+Veal is meat from a young cattle beast, generally slaughtered between **8 weeks and 8 months** of age. Because the animal is young, the meat is pale pink, fine-grained, low in fat and mild in flavour — closer in texture to pork than to beef.
+
+## Isn't veal cruel?
+
+The reputation comes from an old European system — "white veal" — where calves were kept anaemic and immobilised in crates to keep the meat pale. **That system is banned or abandoned in Australia.**
+
+Australian veal is almost all **"rose veal" or bobby/pasture veal**: calves raised with their group, able to move, fed milk and often grass or grain, producing meat that is pink ("rose") rather than white. It's a by-product of the dairy industry — dairy cows must calve to produce milk, and male dairy calves have historically had little use. Rose veal turns that into a genuine, higher-welfare food product. Our veal is Australian rose veal.
+
+## Veal vs beef — the differences
+
+| | Veal | Beef |
+|---|---|---|
+| Colour | Pale pink | Deep red |
+| Fat | Very low, little marbling | Moderate to high |
+| Flavour | Mild, delicate, slightly sweet | Rich, savoury, "beefy" |
+| Texture | Fine, tender | Firmer, more chew |
+| Best for | Schnitzel, scaloppine, osso buco, mince | Steaks, roasts, slow cooks |
+
+Because veal is lean, it dries out faster than beef — cook it gently and don't chase a hard sear on thin cuts.
+
+## How to cook the main cuts
+
+- **[Veal schnitzel / scaloppine](/specialty-meat/veal/):** pounded thin, crumbed or floured, 60–90 seconds a side in butter and oil. The classic Wiener schnitzel and vitello.
+- **Veal cutlet:** a small chop off the rack — pan-sear medium, 3 minutes a side, baste with butter.
+- **Veal osso buco:** cross-cut shank. The braise: brown, then 2–2.5 hours at 160°C in wine, stock and gremolata. The marrow is the prize.
+- **Veal mince:** the base of a proper Bolognese (with pork and beef), or delicate meatballs. [Buy veal mince here](/specialty-meat/veal/).
+
+## Where to buy veal in Australia
+
+Veal has become hard to find at supermarkets. We carry Australian rose veal — schnitzel, cutlets, osso buco, diced and mince — on the [veal range](/specialty-meat/veal/), with [bulk veal](/wholesale/bulk-meat-orders/bulk-veal/) for restaurants and caterers.`,
+    faqs: [
+      { question: "What age is a veal calf?", answer: "Veal comes from young cattle generally between 8 weeks and 8 months old. The young age is why the meat is pale pink, fine-grained and mild." },
+      { question: "Is Australian veal ethical?", answer: "The old 'white veal' crate system is banned or abandoned in Australia. Australian veal is almost all rose veal — calves raised in groups, able to move, fed milk and often grass — and it's a genuine use for male dairy calves that would otherwise have little value." },
+      { question: "What's the difference between veal and beef?", answer: "Veal is pale pink, very low in fat, fine-textured and mild. Beef is deep red, more marbled, firmer and richer. Veal suits schnitzel, scaloppine, osso buco and delicate mince; beef suits steaks and roasts." },
+      { question: "Does veal taste like lamb?", answer: "No. Veal is milder and sweeter than both lamb and beef, with almost none of lamb's distinctive fat flavour. Its texture is closer to pork." },
+      { question: "Where can I buy veal mince and schnitzel in Australia?", answer: "Veal is increasingly hard to find in supermarkets. Mr Meat & Co carries Australian rose veal — schnitzel, cutlets, osso buco, diced and mince — with bulk veal available for restaurants and caterers." },
+      { question: "How do you cook veal so it stays tender?", answer: "Veal is lean, so cook it gently. Pound schnitzel thin and flash-fry 60–90 seconds a side; sear cutlets to medium only; braise osso buco low and slow for 2+ hours. Never cook thin veal cuts past medium." },
+    ],
+    cta: { label: "Shop Australian rose veal →", href: "/specialty-meat/veal/", note: "Rose veal — schnitzel, cutlets, osso buco, diced & mince." },
+  },
+  {
+    slug: "beef-cuts-for-slow-cooking",
+    title: "Beef Cuts for Slow Cooking: Brisket, Cheek, Chuck, Shin & Oxtail",
+    excerpt: "The best beef cuts for a slow cooker, braise or smoker — what each one does, how long it needs, and why the cheap cuts win.",
+    category: "Meat Education",
+    date: "2026-07-15",
+    updated: "2026-09-02",
+    readTime: "6 min read",
+    image: "/images/beef-brisket.webp",
+    primaryKeyword: "beef cuts for slow cooking",
+    secondaryKeywords: ["best beef cut for slow cooker", "beef brisket", "beef cheeks", "gravy beef", "beef for stew"],
+    content: `Slow cooking is where the cheap [beef cuts](/beef/slow-cook/) beat the expensive ones. The muscles that work hardest — shoulder, shin, tail, cheek — are packed with collagen, and collagen melts into gelatine given enough time and moisture. A rump steak in a slow cooker just goes dry and stringy; a chuck roast goes silky.
+
+## The cuts, ranked for the pot
+
+**Beef cheek.** The best-kept secret. Two solid muscles from the jaw, pure collagen, no waste. 3 hours at 160°C in red wine and stock and it's a knife-and-spoon dish. Richer than any other cut.
+
+**Chuck (blade / bolar).** The workhorse of the stew and the slow cooker. Well-marbled shoulder, holds together in chunks, forgiving of timing. This is your Sunday beef ragu.
+
+**Brisket.** The BBQ and corned-beef cut. Two muscles (point and flat) with a fat cap between. Low-and-slow only — 8–12 hours in a smoker, or 4 hours covered at 150°C in the oven, or overnight for corned beef. [See our brisket](/beef/slow-cook/).
+
+**Shin / gravy beef.** Cross-cut lower leg with a marrow bone. The gelatine machine — it thickens a stew or a pho broth all by itself. 2.5–3 hours.
+
+**Osso buco.** Beef shin cut into thick cross-sections with the bone. Same as shin but presented as portions — the marrow is the treat.
+
+**Oxtail.** The tail, cut into segments. Fatty, gelatinous, deeply beefy. 3–4 hours. Makes the best stew and the best stock you'll cook.
+
+**Short rib.** Rib bones with a thick meat cap. The steakhouse braise — 3 hours, then reduced sauce.
+
+## The universal method
+
+1. **Pat dry, brown hard** in batches (don't crowd — you want colour, not steam).
+2. **Soften aromatics** in the same pot — onion, carrot, celery, garlic.
+3. **Deglaze** with wine, stout or stock, scraping the fond.
+4. **Return the beef**, add liquid to come two-thirds up, plus tomato / bay / thyme.
+5. **Low and covered** — 150–160°C oven or "low" on the slow cooker — until a fork twists with no resistance. That's the only doneness test that matters.
+6. **Rest, skim the fat, reduce the sauce** if it needs body.
+
+## Buying
+
+For the freezer, a [half or quarter beef share](/wholesale/bulk-meat-orders/bulk-beef/) gives you the brisket, shin, cheek and chuck all at once at a bulk price. Otherwise pick from the [beef slow-cook range](/beef/slow-cook/).`,
+    faqs: [
+      { question: "What is the best beef cut for a slow cooker?", answer: "Chuck (blade or bolar) is the most forgiving all-rounder. Beef cheek gives the richest, silkiest result. Shin or gravy beef thickens the sauce by itself. Avoid lean cuts like rump or topside — they dry out." },
+      { question: "How long does beef brisket take?", answer: "8–12 hours in a smoker at 110–120°C, about 4 hours covered at 150°C in a domestic oven, or overnight simmered for corned beef. It's done when a probe slides in with no resistance, around 92–96°C internal." },
+      { question: "Why do cheap beef cuts work better for slow cooking?", answer: "The hardest-working muscles — shoulder, shin, tail, cheek — are full of collagen. Long, moist, low-temperature cooking melts collagen into gelatine, which makes the meat tender and the sauce rich. Lean, tender cuts have no collagen to convert, so they just dry out." },
+      { question: "How do you know when slow-cooked beef is done?", answer: "Not by temperature or the clock — by feel. A fork or skewer should twist in the meat with no resistance and the fibres should pull apart easily. If it's still tight, it needs more time." },
+    ],
+    cta: { label: "Shop beef for slow cooking →", href: "/beef/slow-cook/", note: "Brisket, cheek, shin, oxtail & chuck — grass-fed, built for the braise." },
+  },
+  {
+    slug: "king-vs-tiger-vs-banana-prawns",
+    title: "King vs Tiger vs Banana Prawns: Which to Buy",
+    excerpt: "The difference between Australia's common prawn types, whether frozen prawns beat fresh, and how much prawns cost per kg.",
+    category: "Meat Education",
+    date: "2026-07-29",
+    updated: "2026-09-02",
+    readTime: "5 min read",
+    image: "/images/categories/seafood.webp",
+    primaryKeyword: "king vs tiger prawns",
+    secondaryKeywords: ["types of prawns australia", "prawns price per kg", "are frozen prawns as good as fresh", "green king prawns", "buy prawns"],
+    content: `Standing at the [prawn cabinet](/seafood/prawns/) the names blur together. Here's what actually separates them.
+
+## The main players
+
+**Banana prawns.** Pale, almost translucent when raw, turning bright orange cooked. Sweet, tender, slightly softer flesh. Trawled in northern Australia. The value option and the classic "prawn cocktail" prawn.
+
+**Tiger prawns (black tiger).** Bold dark stripes when raw. Firm, meaty, holds its shape on a skewer or grill. The all-rounder — the prawn most people picture. Farmed and wild-caught.
+
+**King prawns.** A group of species (eastern king, western king) rather than one. The largest common prawn, firm and full-flavoured. Premium price. "Green king prawns" just means raw (uncooked) king prawns.
+
+**School prawns.** Small, eaten shell-on, often just salt-and-pepper fried whole. Cheap, brilliant with a beer.
+
+## King vs tiger — which is bigger?
+
+King prawns are generally the largest. A large tiger and a medium king can overlap, but if you want the biggest prawn on the plate, buy kings. If you want the best price-to-meat ratio and a prawn that won't fall apart on the BBQ, buy tigers.
+
+## Raw ("green") vs cooked
+
+Buy **raw** if you're cooking them — you control the doneness and they don't turn rubbery. Buy **cooked** only for cold dishes (cocktails, salads) or if you truly won't cook them. Raw prawns should smell of clean sea, not ammonia.
+
+## Are frozen prawns as good as fresh?
+
+Usually **better**, unless you're on the wharf. Almost all prawns are snap-frozen on the boat within hours of the catch. The "fresh" prawns in a cabinet have often been thawed from that same frozen stock and are ageing. Buy them frozen, thaw what you need in the fridge, and you're eating them closer to their peak.
+
+## How much do prawns cost?
+
+It moves with the season, but as a guide: banana prawns are the value buy, tigers mid-range, king prawns premium, and everything spikes in December. See current [prawn pricing](/seafood/prawns/).
+
+## Cooking
+
+- **BBQ / grill:** shell on, split down the back, 2 minutes a side until just opaque.
+- **Garlic prawns:** peeled, hot butter and garlic, 90 seconds — pull them the instant they curl into a C (an O means overcooked).
+- **Salt and pepper:** dusted in seasoned cornflour, flash-fried.
+
+Browse [prawns and the full seafood range](/seafood/).`,
+    faqs: [
+      { question: "What's the difference between king, tiger and banana prawns?", answer: "Banana prawns are pale, sweet and tender — the value option. Tiger prawns are striped, firm and meaty — the best all-rounder for grilling. King prawns are the largest and most premium, firm and full-flavoured." },
+      { question: "Are king or tiger prawns bigger?", answer: "King prawns are generally the largest common prawn. Large tigers and medium kings overlap, but for the biggest prawn on the plate, buy kings; for the best value and a prawn that holds up on the BBQ, buy tigers." },
+      { question: "Are frozen prawns as good as fresh?", answer: "Usually better. Most prawns are snap-frozen on the boat within hours of the catch. Cabinet 'fresh' prawns are often thawed from that same stock and ageing. Buy frozen, thaw what you need in the fridge." },
+      { question: "What does 'green prawns' mean?", answer: "Green prawns are simply raw (uncooked) prawns — nothing to do with colour. Buy raw/green prawns whenever you're cooking them yourself so you control the doneness." },
+      { question: "How much do prawns cost per kg?", answer: "It varies by species and season — banana prawns are the value buy, tigers mid-range, king prawns premium — and prices rise sharply in December. Check our prawns page for current pricing." },
+    ],
+    cta: { label: "Shop prawns & seafood →", href: "/seafood/prawns/", note: "Raw and cooked prawns — king, tiger & banana." },
+  },
+  {
+    slug: "how-much-meat-per-person",
+    title: "How Much Meat Per Person? (BBQ, Roast & Curry Charts)",
+    excerpt: "Exact per-person quantities for a BBQ, a Sunday roast, a curry and a grazing board — so you buy enough without a fortnight of leftovers.",
     category: "Buying Guide",
-    date: "2026-01-10",
+    date: "2026-08-05",
+    updated: "2026-09-02",
+    readTime: "5 min read",
+    image: "/images/categories/meat-boxes.webp",
+    primaryKeyword: "how much meat per person",
+    secondaryKeywords: ["meat per person bbq", "how much roast per person", "how much brisket per person", "meat quantities for a party"],
+    content: `The two questions every host asks: how much meat, and which cuts. Here are the numbers, then how to buy them.
+
+## The rules of thumb
+
+**Boneless, meat as the main:** 200–250g per adult raw. Big eaters or a crowd of blokes: 300g.
+**Bone-in (chops, ribs, wings, roast on the bone):** 350–450g per adult raw — you're paying for bone weight.
+**Meat as one of several dishes (curry night, tacos, a spread):** 125–175g per adult.
+**Kids under 12:** roughly half an adult portion.
+**Always add ~15%** if there's no other substantial food, or if it's a long grazing event.
+
+## BBQ (meat as the event)
+
+| Guests | Sausages | Steak / chops | Skewers | Total meat |
+|---|---|---|---|---|
+| 6 | 9–12 | 1kg | 12 | ~2.5kg |
+| 12 | 18–24 | 2kg | 24 | ~5kg |
+| 20 | 30–40 | 3.5kg | 40 | ~8.5kg |
+
+A [BBQ meat pack](/bbq-grill/) is built to these ratios; for 20+ a [half lamb](/wholesale/bulk-meat-orders/bulk-lamb/) or bulk boxes are cheaper per kilo.
+
+## Sunday roast
+
+| Diners | Boneless roast (beef/pork/lamb) | Bone-in (leg of lamb, rib roast) | Whole chicken |
+|---|---|---|---|
+| 4 | 800g–1kg | 1.4–1.8kg | 1 x 1.6kg |
+| 6 | 1.2–1.5kg | 2–2.7kg | 1 x 2.2kg or 2 birds |
+| 10 | 2–2.5kg | 3.5–4.5kg | 2 x 2kg |
+
+Buy a slightly bigger roast than you need — the leftovers are the point, and a bigger joint cooks more evenly.
+
+## Brisket / low-and-slow
+
+Brisket loses ~40% of its raw weight to rendering and trim. For **pulled brisket as the main**, buy **700–800g raw per person**. A 5kg packer brisket feeds 6–8 properly.
+
+## Curry / stew
+
+150–175g of diced or mince per person, since rice, dahl and vegetables carry the plate. A 1kg pack of [diced beef](/beef/slow-cook/) or [lamb](/lamb/slow-cook/) does 6.
+
+## Grazing / charcuterie board
+
+80–120g of sliced meats per person as a starter, 150g if it's the meal.
+
+## Buying to a number
+
+Work out your total kilos, then decide: a [meat box](/meat-boxes/) if you want it curated, a [BBQ pack](/bbq-grill/) for a cookout, or a [bulk / carcass share](/wholesale/bulk-meat-orders/) if you've got the freezer and want the best price.`,
+    faqs: [
+      { question: "How much meat per person for a BBQ?", answer: "If meat is the main event, plan 250–350g per adult raw across sausages, steak and skewers — roughly 2.5kg for 6 people, 5kg for 12, 8.5kg for 20. Halve it for kids and add 15% if there's no other substantial food." },
+      { question: "How much roast per person?", answer: "Boneless roast: 200–250g per person raw. Bone-in (leg of lamb, rib roast): 350–450g. A 1.2–1.5kg boneless joint feeds 6; buy slightly bigger for even cooking and leftovers." },
+      { question: "How much brisket per person?", answer: "Brisket loses about 40% of its raw weight to rendering and trim, so buy 700–800g raw per person for pulled brisket as the main. A 5kg brisket feeds 6–8." },
+      { question: "How much meat for a curry?", answer: "About 150–175g of diced meat or mince per person, because rice, dahl and vegetables carry most of the plate. A 1kg pack of diced beef or lamb serves 6." },
+    ],
+    cta: { label: "Shop meat boxes & BBQ packs →", href: "/meat-boxes/", note: "Curated boxes and BBQ packs built to feed the room." },
+  },
+  {
+    slug: "buying-a-quarter-half-whole-beef",
+    title: "Buying a Quarter, Half or Whole Beef: Weights, Cuts & Freezer Space",
+    excerpt: "What you actually get in a beef share, how much freezer space you need, the real per-kilo saving, and how the cut sheet works.",
+    category: "Buying Guide",
+    date: "2026-08-12",
+    updated: "2026-09-02",
+    readTime: "7 min read",
+    image: "/images/whole-beef-share.webp",
+    primaryKeyword: "quarter beef share",
+    secondaryKeywords: ["half a beef", "buying a whole cow", "beef share australia", "how much freezer space for half a cow", "wholesale beef"],
+    content: `Buying beef by the [quarter, half or whole animal](/wholesale/bulk-meat-orders/bulk-beef/) is how families used to stock the freezer, and it's back for good reason: the per-kilo price of premium grass-fed beef drops sharply when you buy the whole thing.
+
+## What you actually get
+
+A beef carcass isn't all steak. A typical breakdown of usable meat from a side:
+
+- **~25–30% premium** — scotch fillet, porterhouse, eye fillet, rump, sirloin
+- **~30–35% roasting and casserole** — topside, silverside, blade, chuck, brisket
+- **~25–30% mince and diced** — from the trim
+- **~10% bones, shin, offal** — stock gold
+
+**Quarter beef** (~40–55kg of packed meat) — a "mixed quarter" is half front, half hind, so you get a spread of steaks, roasts and mince.
+**Half beef** (~80–110kg) — the standard family buy.
+**Whole beef** (~160–220kg) — for two households to split, or a serious freezer.
+
+Exact weights vary with the animal — that's why it's sold as "approximately".
+
+## The cut sheet
+
+When you order a half or whole, you tell us how you want it broken down:
+
+- Steak thickness (2cm / 2.5cm / 3cm)
+- Roast sizes (small family / large)
+- How much mince vs diced from the trim
+- Whether you want the offal, bones, and cuts like oxtail and cheek
+- Sausages made from some of the trim (small fee)
+
+If you don't want to think about it, our standard cut sheet is a sensible all-rounder.
+
+## Freezer space
+
+Rough rule: **1kg of packed meat ≈ 1.5 litres of freezer space.**
+
+| Share | Packed weight | Freezer needed |
+|---|---|---|
+| Quarter | 40–55kg | ~85L — a large chest freezer drawer, or half a 200L chest |
+| Half | 80–110kg | ~170L — a dedicated 200–250L chest freezer |
+| Whole | 160–220kg | ~330L — a 400L+ chest freezer, or split with another household |
+
+## The saving
+
+It varies with the market, but buying premium grass-fed beef by the half typically lands **20–35% below** buying the same cuts individually — because you're taking the whole animal, trim and all, not just the glamour cuts. The mince and sausage alone often cover a chunk of the cost.
+
+## How it's delivered
+
+Vacuum-sealed, labelled by cut, snap-frozen, delivered cold across Sydney (and Australia-wide for larger orders). You'll want to be home and have the freezer cleared.
+
+Start on the [bulk beef page](/wholesale/bulk-meat-orders/bulk-beef/), or read [how much meat per person](/blog/how-much-meat-per-person/) to sanity-check the quantity.`,
+    faqs: [
+      { question: "How much meat is in a quarter, half or whole beef?", answer: "Roughly: a quarter gives 40–55kg of packed meat, a half 80–110kg, and a whole 160–220kg. Exact weights vary with the animal, which is why shares are sold as 'approximately'." },
+      { question: "How much freezer space do I need for half a cow?", answer: "About 170 litres — a dedicated 200–250L chest freezer. Use the rule of 1kg of packed meat per 1.5 litres of freezer space. A quarter needs about 85L; a whole beef needs 330L+ or a second household to split with." },
+      { question: "How much do you save buying beef in bulk?", answer: "Typically 20–35% below buying the same cuts individually, because you take the whole animal — trim, mince and bones included — not just the premium steaks. The mince and sausage yield alone often covers a large share of the cost." },
+      { question: "What is a cut sheet?", answer: "It's your instructions for how the carcass is broken down — steak thickness, roast sizes, how much mince versus diced, whether you want offal, bones, oxtail and cheek, and whether some trim becomes sausages. We have a sensible standard sheet if you'd rather not choose." },
+      { question: "How is a beef share delivered?", answer: "Vacuum-sealed and labelled by cut, snap-frozen, delivered cold-chain across Sydney and Australia-wide for larger orders. Be home for the delivery and clear the freezer first." },
+    ],
+    cta: { label: "Shop bulk & carcass shares →", href: "/wholesale/bulk-meat-orders/bulk-beef/", note: "Quarter, half & whole beef — custom cut, snap-frozen, delivered." },
+  },
+  {
+    slug: "raw-feeding-dogs-starter-guide",
+    title: "Raw Feeding for Dogs: A Beginner's Starter Guide (BARF Ratios)",
+    excerpt: "The 80/10/10 ratio explained, how much raw to feed by dog weight, which bones are safe, and how to transition without upsetting your dog's stomach.",
+    category: "Pet Feeding",
+    date: "2026-08-19",
+    updated: "2026-09-02",
+    readTime: "8 min read",
+    image: "/images/categories/pet-food.webp",
+    primaryKeyword: "raw dog food",
+    secondaryKeywords: ["barf diet", "raw feeding ratios", "how much raw to feed dog", "how to transition dog to raw", "raw meaty bones for dogs"],
+    content: `Raw feeding — often called **BARF** (Biologically Appropriate Raw Food) or **PMR** (Prey Model Raw) — means feeding a dog fresh raw meat, bone and organ instead of processed kibble. Done properly it's simple. Done carelessly it causes deficiencies. Here's the starting framework.
+
+> This is general information, not veterinary advice. Talk to your vet before switching, especially for puppies, seniors, or dogs with health conditions.
+
+## The 80/10/10 ratio
+
+A balanced raw diet, by weight, over a week (not every meal):
+
+- **80% muscle meat** — [raw mince](/pet-food/raw-mince/), chunks, mince with a little ground bone
+- **10% raw edible bone** — [raw meaty bones](/pet-food/bones/), chicken frames, necks
+- **5% liver** — the single most nutrient-dense organ; don't skip or overdo it
+- **5% other secreting organ** — kidney, spleen, pancreas, brain
+
+"Secreting organ" is the key phrase — heart, tripe and lung are muscle for these purposes, not organ. See our [pet offal range](/pet-food/offal/).
+
+## How much to feed
+
+**Adult dogs:** 2–3% of ideal body weight per day.
+
+| Dog weight | 2% (needs to lose) | 2.5% (maintain) | 3% (active / underweight) |
+|---|---|---|---|
+| 5kg | 100g | 125g | 150g |
+| 15kg | 300g | 375g | 450g |
+| 30kg | 600g | 750g | 900g |
+| 45kg | 900g | 1125g | 1350g |
+
+**Puppies:** 5–10% of *current* weight, dropping as they grow — or roughly 2–3% of their expected *adult* weight. Puppies need it split across 3–4 meals.
+
+Weigh your dog monthly and adjust. You're aiming for a visible waist and easily-felt (not visible) ribs.
+
+## Which bones are safe
+
+**Safe, raw only:** chicken necks and frames, turkey necks, lamb ribs and flaps, brisket bones, oxtail. Match the bone to the dog — a chicken neck for a chihuahua, a lamb rib rack or brisket bone for a labrador.
+
+**Never:** cooked bones of any kind (they splinter), weight-bearing leg bones of large animals (they crack teeth), or any bone small enough to swallow whole.
+
+Always supervise bone time. Bones are a few times a week, not daily.
+
+## Transitioning
+
+Two approaches:
+
+1. **Cold turkey** (most raw feeders): fast for 12–24 hours, then start raw. Works for most healthy adult dogs.
+2. **Gradual** (sensitive stomachs): replace 25% of the old food with raw, hold 3–4 days, increase. Over ~2 weeks.
+
+Start with **one protein** — chicken or beef — for the first 1–2 weeks. Once stools are firm, add a second protein, then bone, then organ. Loose stool early on usually means too much organ or bone, or too fast a change.
+
+## Novel proteins for allergies
+
+If your dog reacts to chicken and beef, [kangaroo](/pet-food/raw-mince/) is the go-to novel protein in Australia — very lean, single-source, rarely triggers a reaction.
+
+## Handling and safety
+
+Treat raw pet food like raw meat for people: keep it frozen, thaw in the fridge, feed within 2 days of thawing, wash bowls and surfaces, don't leave it down for hours. Our raw pet range is delivered frozen and clearly separated from the human range.
+
+Browse [raw pet mince](/pet-food/raw-mince/), [bones](/pet-food/bones/) and [offal](/pet-food/offal/).`,
+    faqs: [
+      { question: "What is the 80/10/10 raw feeding ratio?", answer: "Over a week, by weight: 80% muscle meat, 10% raw edible bone, 5% liver and 5% other secreting organ (kidney, spleen, pancreas). Heart and tripe count as muscle, not organ." },
+      { question: "How much raw food should I feed my dog?", answer: "Adult dogs: 2–3% of ideal body weight per day — about 375g for a 15kg dog to maintain weight, 750g for a 30kg dog. Puppies: 5–10% of current weight, split across 3–4 meals. Weigh monthly and adjust." },
+      { question: "Which bones are safe for dogs?", answer: "Raw only — chicken necks and frames, turkey necks, lamb ribs, brisket bones, oxtail — matched to the dog's size. Never feed cooked bones (they splinter), large weight-bearing leg bones, or any bone small enough to swallow whole. Always supervise." },
+      { question: "How do I transition my dog to raw food?", answer: "Either fast 12–24 hours then start raw (works for most healthy adults), or replace 25% of the old food at a time over about two weeks for sensitive stomachs. Start with one protein for 1–2 weeks, then add bone, then organ." },
+      { question: "What's the best raw protein for a dog with allergies?", answer: "Kangaroo is the leading novel protein in Australia for dogs that react to chicken or beef — it's very lean, single-source and rarely triggers a reaction. We sell kangaroo pet mince and bulk kangaroo for dogs." },
+      { question: "Is raw pet food safe to handle?", answer: "Treat it exactly like raw meat for people — keep it frozen, thaw in the fridge, feed within 2 days of thawing, wash bowls and surfaces, and don't leave it down for hours. Our raw pet range is delivered frozen and kept separate from the human range." },
+    ],
+    cta: { label: "Shop raw pet food →", href: "/pet-food/raw-mince/", note: "Raw mince, bones & offal for dogs — delivered frozen." },
+  },
+  {
+    slug: "venison-and-game-meat-guide",
+    title: "Venison & Game Meat: Cooking Lean Cuts Without Drying Them Out",
+    excerpt: "How to cook venison, wild boar and rabbit — the lean-meat rules, marinades that work, and where to buy game meat online in Australia.",
+    category: "Meat Education",
+    date: "2026-08-26",
+    updated: "2026-09-02",
+    readTime: "6 min read",
+    image: "/images/venison-backstrap.webp",
+    primaryKeyword: "how to cook venison",
+    secondaryKeywords: ["venison vs beef", "game meat", "wild boar meat", "rabbit meat", "buy game meat online", "cooking venison backstrap"],
+    content: `[Game meat](/specialty-meat/game/) — venison, wild boar, rabbit — is lean, dark and full-flavoured. The mistakes people make are all the same mistake: cooking it like beef.
+
+## The lean-meat rules
+
+Game animals run for a living, so they carry almost no intramuscular fat. That means:
+
+1. **Fast cuts, cook rare to medium-rare, and rest.** Backstrap, loin, rump — hot and quick, pull at 52–55°C, rest 5–10 minutes. Past medium it turns dry and livery.
+2. **Tough cuts, low and slow with added fat and moisture.** Shoulder, shank, neck — braise 2.5–3 hours with stock, wine and something fatty (bacon, olive oil, butter).
+3. **Add fat everywhere.** Bard a roast with bacon or caul fat, finish a steak with a knob of butter, blend a little pork fat into game mince and sausages.
+4. **Marinate the fast cuts.** Oil, acid (red wine, juniper, balsamic), aromatics — 4–24 hours. It seasons, tenderises slightly, and replaces the missing fat.
+
+## The animals
+
+**Venison (deer).** Australia's farmed venison is mild, clean and only faintly gamey — a good gateway. [Backstrap](/specialty-meat/game/) for quick cooking, [osso buco and shanks](/specialty-meat/game/) for braises, mince for game ragu and sausage rolls.
+
+**Wild boar.** Darker and stronger than pork, low in fat, needs slow cooking or grinding. Excellent in a ragu or a rillette.
+
+**Rabbit.** Delicate, lean, almost all white meat. Best jointed and braised (rabbit with mustard and cream is the classic) or the loins flash-fried. Easy to overcook.
+
+## Venison vs beef — nutrition
+
+Per 100g, venison has **roughly a third of the fat of a lean beef steak**, similar or higher protein, and more iron. The flavour is more mineral and slightly sweet. If you like a good grass-fed sirloin, you'll like venison backstrap.
+
+## Where to buy game meat in Australia
+
+Supermarkets don't carry it. We stock farmed venison, wild boar and rabbit on the [game range](/specialty-meat/game/), plus a mixed [game box](/specialty-meat/game/) if you want to try a few, and [bulk game](/wholesale/bulk-meat-orders/bulk-game/) for restaurants. Delivered across Sydney and Australia-wide.`,
+    faqs: [
+      { question: "How do you cook venison so it isn't dry?", answer: "For fast cuts like backstrap and loin: hot and quick, pull at 52–55°C for medium-rare, rest 5–10 minutes. For shoulder and shank: braise 2.5–3 hours with stock, wine and added fat. Never cook fast venison cuts past medium." },
+      { question: "What's the difference between venison and beef?", answer: "Venison has roughly a third of the fat of a lean beef steak, similar or higher protein, and more iron. The flavour is more mineral and slightly sweet, and only faintly gamey in Australian farmed venison." },
+      { question: "Does game meat taste gamey?", answer: "Australian farmed venison is mild and clean with only a faint gamey note. Wild boar is stronger and darker than pork. Rabbit is delicate and mild. Marinades with red wine or juniper lean into the flavour; soy or citrus soften it." },
+      { question: "Where can I buy game meat in Australia?", answer: "Game meat isn't sold in supermarkets. Mr Meat & Co stocks farmed venison, wild boar and rabbit, a mixed game box, and bulk game for restaurants — delivered across Sydney and Australia-wide." },
+      { question: "Why add fat to game meat?", answer: "Game animals carry almost no intramuscular fat, so dishes can taste dry and lean. Bard roasts with bacon, finish steaks with butter, and blend pork fat into game mince and sausages to restore richness and moisture." },
+    ],
+    cta: { label: "Shop game meat →", href: "/specialty-meat/game/", note: "Venison, wild boar & rabbit — Australian, delivered nationwide." },
+  },
+  {
+    slug: "sausage-rolls-from-scratch",
+    title: "Sausage Rolls From Scratch (With Real Butcher's Sausage Meat)",
+    excerpt: "The filling ratio, why sausage meat beats plain mince, the soggy-bottom fix, and how to freeze a big batch raw.",
+    category: "Recipes",
+    date: "2026-09-01",
+    updated: "2026-09-02",
+    readTime: "5 min read",
+    image: "/images/thick-beef-sausages.webp",
+    primaryKeyword: "sausage roll recipe",
+    secondaryKeywords: ["homemade sausage rolls", "sausage meat", "sausage roll filling", "how to freeze sausage rolls", "best sausage roll recipe"],
+    content: `A good sausage roll is 80% filling, and the filling should not be plain mince. It should be seasoned, slightly fatty, and bound just enough to slice cleanly. That's what [sausage meat](/sausages/) is.
+
+## Why sausage meat, not mince
+
+[Sausage meat](/sausages/) — sausage mixture without the casing — is already seasoned (sage, pepper, nutmeg, sometimes rusk) and ground to the right fat level (around 75/25) for a juicy roll. Plain lean mince makes a dense, dry sausage roll that needs a lot of help.
+
+If you can only get mince, use **pork mince at 80/20** and add: 1 slice of bread blitzed to crumb per 500g, 1 egg, 1 grated onion (squeezed dry), 1 tsp each salt, sage, pepper, ¼ tsp nutmeg.
+
+## The filling (makes ~24 party rolls)
+
+- 800g [sausage meat](/sausages/) (or the pork mince mix above)
+- 1 grated apple or 1 grated carrot, squeezed dry — moisture and a touch of sweet
+- 1 small onion, grated and squeezed
+- 30g fresh breadcrumb
+- 1 egg
+- Extra sage, thyme, a little Worcestershire
+
+Mix by hand until just combined. Fry a teaspoon to taste and adjust the salt.
+
+## The build
+
+1. Cut ready-rolled puff pastry sheets in half. Pipe or spoon a 3cm log of filling down the long edge.
+2. Egg-wash the far edge, roll, seal seam-side down.
+3. **The soggy-bottom fix:** chill the rolls 20 minutes, then cut, then bake on a **preheated tray** or a wire rack over a tray. Cold pastry + hot tray = a crisp base.
+4. Slash the tops, egg-wash, scatter sesame or fennel seed.
+5. **220°C for 15 minutes, then 190°C for 10–15** until deep gold and the filling reads 72°C.
+
+## Freezing
+
+Freeze them **raw**, cut and spaced on a tray, then bag once solid. Bake from frozen — same temps, add 8–10 minutes. Far better than freezing them cooked.
+
+## Buying
+
+We make [sausage meat and gourmet sausages](/sausages/) fresh, plus ready-to-bake [sausage rolls](/ready-to-cook/) if you want to skip the pastry work. For a party, order [sausages in bulk](/wholesale/bulk-meat-orders/bulk-sausages/).`,
+    faqs: [
+      { question: "What meat do you use for sausage rolls?", answer: "Sausage meat — sausage mixture without the casing. It's already seasoned and ground to about 75/25 fat, which gives a juicy roll. If you only have mince, use pork mince at 80/20 and add crumb, egg, grated onion and sage, pepper, nutmeg." },
+      { question: "How do you stop sausage rolls having a soggy bottom?", answer: "Chill the assembled rolls 20 minutes before cutting, then bake them on a preheated oven tray or a wire rack set over a tray. Cold pastry meeting a hot surface sets a crisp base immediately." },
+      { question: "Can you freeze sausage rolls?", answer: "Yes — and freeze them raw, not cooked. Cut and space them on a tray, freeze until solid, then bag. Bake straight from frozen at the same temperatures, adding 8–10 minutes." },
+      { question: "What temperature do you bake sausage rolls?", answer: "220°C for 15 minutes to puff and colour the pastry, then drop to 190°C for another 10–15 minutes until deep gold and the filling reaches 72°C." },
+    ],
+    cta: { label: "Shop sausages & sausage meat →", href: "/sausages/", note: "Gourmet sausages and sausage meat, made fresh — no fillers." },
+  },
+  {
+    slug: "australian-beef-cuts-explained",
+    title: "Australian Beef Cuts Explained: Names, Uses & Overseas Equivalents",
+    excerpt: "Scotch fillet, porterhouse, eye fillet, rump — what each Australian beef cut is, how to cook it, and what it's called in the US and UK.",
+    category: "Meat Education",
+    date: "2026-03-11",
+    updated: "2026-09-02",
+    readTime: "6 min read",
+    image: "/images/scotch-fillet-steak.webp",
+    primaryKeyword: "australian beef cuts",
+    secondaryKeywords: ["scotch fillet vs porterhouse", "eye fillet", "rump steak", "beef cut names australia", "what is scotch fillet"],
+    content: `Australian beef names blend British butchery with local habit, so a recipe from the US or UK can leave you guessing at the counter. Here's the map.
+
+## The premium grilling steaks
+
+**Scotch fillet** (US: ribeye / boneless rib; UK: rib-eye). From the fore-rib. Heavily marbled, rich, forgiving — the most flavourful steak and the hardest to overcook. Sear hot, medium-rare, 3 min/side for 2.5cm. [Shop scotch fillet](/beef/steaks/).
+
+**Porterhouse / sirloin** (US: New York strip / striploin; UK: sirloin). From the short loin. Firm, fine-grained, a fat cap on one edge — render that edge first. Slightly leaner and beefier than scotch.
+
+**Eye fillet** (US: tenderloin / filet mignon; UK: fillet). The tenderloin muscle, which does no work — the softest cut, mild flavour, lowest fat. Don't take it past medium.
+
+**Rump** (US: sirloin / rump; UK: rump). From the hindquarter. Several muscles, so texture varies across the steak — bold flavour, great value, best medium-rare and sliced against the grain.
+
+**T-bone / bone-in porterhouse** — porterhouse plus a strip of eye fillet, divided by the bone.
+
+## Roasting cuts
+
+- **Topside / round** — lean, tidy, budget roast. Cook to medium-rare and slice thin, or it's dry.
+- **Silverside** — the corned-beef cut; also a pot roast.
+- **Blade / bolar** — shoulder, some connective tissue — a slow roast or a pot roast.
+- **Standing rib roast / prime rib** — scotch fillet on the bone. The special-occasion roast.
+
+## Slow-cook and value cuts
+
+Brisket, chuck, shin/gravy beef, cheek, oxtail, short rib — covered in our [slow-cooking guide](/blog/beef-cuts-for-slow-cooking/).
+
+## Mince and diced
+
+Chuck for standard [mince](/beef/mince-diced/), rump for lean, brisket blend for burgers. Diced is usually chuck or round.
+
+## Buying tip
+
+If a US recipe says "chuck roast", buy blade or chuck. "Flank" or "skirt" — ask us, they're small cuts we cut to order. "London broil" isn't a cut, it's a method — use rump. Browse the [full beef range](/beef/).`,
+    faqs: [
+      { question: "What is scotch fillet called overseas?", answer: "Ribeye or boneless rib steak in the US, rib-eye in the UK. It comes from the fore-rib, is heavily marbled and rich, and is the most forgiving premium steak to cook." },
+      { question: "What's the difference between scotch fillet and porterhouse?", answer: "Scotch fillet (ribeye) is from the fore-rib — more marbled, richer, more forgiving. Porterhouse (sirloin/NY strip) is from the short loin — firmer, finer-grained, slightly leaner and beefier, with a fat cap on one edge." },
+      { question: "What is eye fillet?", answer: "The tenderloin — known as filet mignon in the US and fillet in the UK. It's the muscle that does no work, so it's the softest cut, with a mild flavour and the lowest fat. Cook it no further than medium." },
+      { question: "What US cut is Australian rump steak?", answer: "It overlaps with US 'sirloin' and 'rump'. It's from the hindquarter, made of several muscles so texture varies, with bold flavour and good value. Cook medium-rare and slice against the grain." },
+    ],
+    cta: { label: "Shop beef steaks →", href: "/beef/steaks/", note: "Grass-fed scotch fillet, porterhouse, eye fillet & rump." },
+  },
+  {
+    slug: "cold-chain-meat-delivery-explained",
+    title: "How Cold-Chain Meat Delivery Actually Works (And Why It Matters)",
+    excerpt: "What an unbroken cold chain means, how we pack meat for a Sydney summer, and what to do with your box the moment it arrives.",
+    category: "Buying Guide",
+    date: "2026-01-14",
+    updated: "2026-09-02",
     readTime: "4 min read",
-    image: "https://picsum.photos/seed/blog-delivery/800/600",
-    content: `Ordering fresh butcher meat online requires absolute trust in cold-chain logistics. At Mr Meat & Co, we engineered an eco-friendly insulated packaging solution designed for Australian weather.`
-  }
+    image: "/images/hero/hero-2.webp",
+    primaryKeyword: "meat delivery",
+    secondaryKeywords: ["cold chain delivery", "how is meat delivered", "meat delivery sydney", "is delivered meat safe", "refrigerated meat delivery"],
+    content: `"Cold chain" means the meat never leaves safe refrigeration temperature — from our [Alexandria butchery](/about/) to your fridge. Break it anywhere and you lose shelf life and, in a Sydney February, food safety. Here's how it holds together.
+
+## The danger zone
+
+Bacteria multiply fastest between **5°C and 60°C**. The goal for delivery is to keep meat **at or below 5°C** the entire time, or frozen product **below −12°C**.
+
+## How we pack
+
+- **Chilled to the core first.** Product goes out at 0–2°C, not fridge-temp — that buffer is what carries it through the trip.
+- **Insulated liners + food-safe gel packs / dry ice** sized to the order and the forecast. A 5kg order in January gets more coolant than the same order in July.
+- **Frozen and chilled separated** so the frozen items don't partially thaw the chilled ones and vice versa.
+- **Refrigerated vans** for the Sydney metro run — the box is cold when it's packed and cold when it's handed over.
+
+## What to do when it arrives
+
+1. **Unpack straight away.** Don't leave the box on the porch.
+2. **Check it's cold** — the meat should feel refrigerator-cold or frozen-solid. Gel packs may have softened; that's normal and fine as long as the meat is cold.
+3. **Fridge the chilled items** in the coldest part (usually the bottom shelf), frozen items straight to the freezer.
+4. **Re-portion and freeze** anything you won't use in 2–3 days. Flat 500g mince packs, single-meal steak packs.
+
+## Shelf life once delivered
+
+- Mince, sausages: 2–3 days chilled
+- Steaks, chops, diced: 3–5 days chilled
+- Roasts (whole muscle): 4–6 days chilled
+- Vacuum-sealed: add 2–4 days
+- Frozen: 3–6 months depending on cut
+
+## If something's not right
+
+If a delivery arrives above fridge temperature or you have any doubt, don't cook it — contact us with a photo and we'll replace it. That's the whole point of buying from a butcher rather than a marketplace.
+
+Ready to order? Start at the [shop](/shop/) or pick a [meat box](/meat-boxes/).`,
+    faqs: [
+      { question: "Is meat delivered to your door safe?", answer: "Yes, when it's cold-chain delivered. The meat should arrive at or below 5°C (or frozen solid). Unpack it immediately, check it's cold, and refrigerate or freeze it straight away. If it arrives warm, don't cook it — contact us for a replacement." },
+      { question: "How is meat kept cold during delivery?", answer: "It's chilled to 0–2°C before packing, wrapped in insulated liners with gel packs or dry ice sized to the order and the weather, with frozen and chilled items separated, and run on refrigerated vans across Sydney metro." },
+      { question: "How long does delivered meat last in the fridge?", answer: "Mince and sausages 2–3 days, steaks and chops 3–5 days, whole-muscle roasts 4–6 days, vacuum-sealed a few days longer. Freeze anything you won't use in that window." },
+      { question: "Do the gel packs need to still be frozen when it arrives?", answer: "Not necessarily. The gel packs can soften on a warm day and the meat is still fine — what matters is that the meat itself is refrigerator-cold or frozen-solid when you unpack it." },
+    ],
+    cta: { label: "Shop the full range →", href: "/shop/", note: "Cold-chain delivery across Sydney — packed for the forecast." },
+  },
+  {
+    slug: "perfect-pork-crackling",
+    title: "Perfect Pork Crackling Every Time (The Butcher's Method)",
+    excerpt: "Why crackling fails, the dry-skin trick, the salt question, and which pork roast cut gives the best crackle.",
+    category: "Recipes",
+    date: "2026-04-08",
+    updated: "2026-09-02",
+    readTime: "5 min read",
+    image: "/images/pork-belly.webp",
+    primaryKeyword: "pork crackling",
+    secondaryKeywords: ["how to get crispy crackling", "pork roast crackling", "pork belly crackling", "best pork roast for crackling", "why is my crackling not crispy"],
+    content: `Crackling fails for one of three reasons: the skin was wet, the scoring was wrong, or the heat was wrong. Fix all three and it works every time.
+
+## Choose the cut
+
+- **[Pork belly](/pork/belly-ribs/)** — the highest fat-to-skin ratio, the most reliable crackle, the richest result.
+- **Pork leg / loin roast** ([pork roasts](/pork/roasts/)) — leaner meat, still excellent crackling if you prep the skin. The Sunday-roast choice.
+- **Pork scotch (neck) roast** — great meat, but the skin is usually removed — not a crackling cut.
+
+Ask us to **score the rind** for you — deep, even lines about 5–7mm apart, through the skin and just into the fat but not the meat.
+
+## Dry the skin — this is the whole game
+
+Moisture in the skin steams instead of crackling. Options, best to quickest:
+
+1. **Fridge, uncovered, overnight** (or up to 2 days) on a rack. The single most effective step.
+2. **Boiling water pour** over the skin, then pat bone-dry, then fridge.
+3. **Paper towel + hairdryer** if you forgot — 5 minutes on cool.
+
+Just before cooking: rub the skin with a little oil and a generous, even layer of fine salt. Salt draws out the last moisture and seasons the crackle. Keep salt off the meat sides.
+
+## The heat
+
+**Blast, then roast.**
+1. Oven as hot as it goes — 240–250°C. Pork on a rack, skin up. 25–30 minutes until the skin has blistered and crackled across the whole surface.
+2. Drop to 170–180°C and roast to temperature: **belly** ~1.5–2 hrs total, **leg/loin** to 65°C internal then rest to 70°C.
+3. If patches haven't crackled, cut them off, lay them on a tray and give them 5–10 minutes back at 240°C or under the grill (watch closely).
+
+**Rest the meat** 15–20 minutes — but rest it uncovered so the crackling stays crisp.
+
+## Buying
+
+[Pork belly](/pork/belly-ribs/) and [pork roasts](/pork/roasts/) come rind-on and scored on request. All Australian.`,
+    faqs: [
+      { question: "Why is my pork crackling not crispy?", answer: "Almost always moisture in the skin — it steams instead of crackling. Dry the scored rind uncovered in the fridge overnight, pat it bone-dry, rub with oil and fine salt, then blast at 240–250°C for 25–30 minutes before dropping the heat to roast the meat." },
+      { question: "What's the best pork roast for crackling?", answer: "Pork belly is the most reliable — the highest fat-to-skin ratio. Leg and loin roasts also crackle well if you prep the skin properly. Pork scotch (neck) usually has the skin removed and isn't a crackling cut." },
+      { question: "Do you put salt on pork crackling?", answer: "Yes — a generous, even layer of fine salt rubbed into the oiled skin just before cooking. It draws out the last of the moisture and seasons the crackle. Keep the salt off the meat sides of the roast." },
+      { question: "How do you fix crackling that hasn't crisped?", answer: "Cut the soft skin off the rested roast, lay it flat on a tray, and give it 5–10 minutes back at 240°C or under the grill — watching it closely so it doesn't burn." },
+    ],
+    cta: { label: "Shop pork belly & roasts →", href: "/pork/belly-ribs/", note: "Rind-on pork, scored on request — Australian." },
+  },
+  {
+    slug: "how-to-roast-a-leg-of-lamb",
+    title: "How to Roast a Leg of Lamb (Bone-In or Boneless)",
+    excerpt: "Timing charts by weight and doneness, bone-in vs boneless, and how to get a rosy pink centre with a crust.",
+    category: "Recipes",
+    date: "2026-04-22",
+    updated: "2026-09-02",
+    readTime: "6 min read",
+    image: "/images/bone-in-leg-of-lamb.webp",
+    primaryKeyword: "how to roast a leg of lamb",
+    secondaryKeywords: ["roast lamb cooking time", "bone in vs boneless leg of lamb", "leg of lamb per person", "lamb roast temperature", "easter roast lamb"],
+    content: `A [leg of lamb](/lamb/roasts/) is the easiest impressive roast — one big muscle group, hard to ruin if you use a thermometer.
+
+## Bone-in or boneless?
+
+| | Bone-in | Boneless (butterflied or rolled) |
+|---|---|---|
+| Flavour | Slightly better (bone + marrow) | Very good |
+| Carving | Trickier around the bone | Easy, even slices |
+| Cooking | A little slower, more even | Faster; butterflied is fastest of all |
+| Stuffing | No | Yes — garlic, rosemary, anchovy, lemon |
+| Feeds | 350–450g per person raw | 250–300g per person raw |
+
+For a first roast, ask us to **bone and roll** the leg, or **butterfly** it for a 30-minute BBQ or oven cook.
+
+## The method (bone-in, ~2kg)
+
+1. **Temper** 1 hour out of the fridge.
+2. **Stud and rub.** Slit the surface, push in garlic slivers and rosemary. Rub with oil, salt, pepper.
+3. **Sear the oven.** 220°C for 20 minutes to build a crust.
+4. **Drop to 180°C** and roast to your target — pull it 3°C early and rest:
+   - Rare 52°C — ~15 min/500g at 180°C
+   - Medium-rare 56–58°C — ~18 min/500g
+   - Medium 62°C — ~22 min/500g
+   - Well done 70°C — ~28 min/500g
+   A 2kg leg to medium-rare: roughly 20 min sear + 70 min at 180°C. **Always confirm with a thermometer** in the thickest part, away from the bone.
+5. **Rest 20 minutes**, loosely tented. Make gravy from the tin while it rests.
+
+## Butterflied leg (fast)
+
+Flat on a tray or over BBQ coals, skin/fat side to the heat first. 220°C or medium-high coals, ~15 minutes a side, target 56°C, rest 10. A marinade — garlic, lemon, oregano, oil — for a few hours first.
+
+## Per person & buying
+
+Bone-in: 350–450g raw per person (a 2–2.5kg leg feeds 5–6). Boneless: 250–300g. See [how much meat per person](/blog/how-much-meat-per-person/). All our [lamb roasts](/lamb/roasts/) are Australian grass-fed; bone, roll or butterfly on request.`,
+    faqs: [
+      { question: "How long do you roast a leg of lamb?", answer: "After a 20-minute sear at 220°C, drop to 180°C: about 18 minutes per 500g for medium-rare (56–58°C), 22 min/500g for medium. A 2kg bone-in leg to medium-rare is roughly 90 minutes total. Always confirm with a thermometer and rest 20 minutes." },
+      { question: "Bone-in or boneless leg of lamb — which is better?", answer: "Bone-in has slightly better flavour and stays a touch more even; boneless carves into clean slices, cooks faster, and can be stuffed. For an easy first roast, have the leg boned and rolled, or butterflied for a quick cook." },
+      { question: "What temperature should roast lamb be?", answer: "52°C for rare, 56–58°C for medium-rare (the classic pink roast), 62°C for medium, 70°C for well done. Pull the roast 3°C below target — it climbs while resting." },
+      { question: "How much leg of lamb per person?", answer: "Bone-in: 350–450g raw per person, so a 2–2.5kg leg feeds 5–6. Boneless: 250–300g per person. Buy slightly bigger for leftovers and more even cooking." },
+    ],
+    cta: { label: "Shop lamb roasts →", href: "/lamb/roasts/", note: "Grass-fed leg of lamb — bone-in, rolled or butterflied." },
+  },
+  {
+    slug: "corned-beef-silverside-guide",
+    title: "Corned Beef & Silverside: How to Cook It So It's Not Dry",
+    excerpt: "Simmer vs slow cooker, the liquid, how long per kilo, and what to do with the leftovers.",
+    category: "Recipes",
+    date: "2026-05-13",
+    updated: "2026-09-02",
+    readTime: "4 min read",
+    image: "/images/corned-beef-silverside.webp",
+    primaryKeyword: "how to cook corned beef",
+    secondaryKeywords: ["corned silverside", "corned beef slow cooker", "how long to cook corned beef", "corned beef cooking liquid", "silverside recipe"],
+    content: `[Corned silverside](/beef/roasts/) is silverside (or brisket) cured in a salt-and-spice brine. It's cheap, forgiving and freezes well cooked. The one way to ruin it is to boil it hard or slice it hot.
+
+## The cooking liquid
+
+Cover the corned beef with cold water and add: 1 quartered onion, 2 bay leaves, 1 tbsp brown sugar, 1 tbsp malt or brown vinegar, 6 peppercorns, 4 cloves. The sugar and vinegar balance the salt and keep the meat tender; skip them and it can taste harsh.
+
+Some people add a splash of the brine from the pack — fine, but taste first, it can be very salty.
+
+## Stovetop
+
+Bring to a bare simmer (never a rolling boil — that toughens it), then **cook gently, covered, 45–50 minutes per 500g**. A 1.5kg piece is about 2.5 hours. It's done when a skewer slides in with light resistance.
+
+## Slow cooker
+
+Same liquid, **low for 8–9 hours or high for 4–5**. The most hands-off method and hard to overdo.
+
+## The rest — don't skip it
+
+Turn off the heat and let the meat sit **in its liquid for 20–30 minutes** before lifting it out. Slice against the grain. Slicing it straight from the pot loses all the juice.
+
+## White sauce & leftovers
+
+Classic accompaniment: a parsley white sauce or a mustard sauce made with some of the cooking liquid. Leftovers: corned beef hash, a Reuben, fritters, or sliced cold in sandwiches for a week. It freezes well sliced.
+
+## Buying
+
+Our [corned silverside](/beef/roasts/) is Australian grass-fed, brined in-house without added phosphates. Also great as a bulk buy in a [beef share](/wholesale/bulk-meat-orders/bulk-beef/).`,
+    faqs: [
+      { question: "How long do you cook corned beef?", answer: "On the stovetop at a bare simmer: 45–50 minutes per 500g, so about 2.5 hours for a 1.5kg piece. In a slow cooker: 8–9 hours on low or 4–5 on high. It's done when a skewer slides in with light resistance." },
+      { question: "Why is my corned beef tough or dry?", answer: "Usually a hard boil (keep it at a bare simmer), or slicing it straight out of the pot. Let the cooked meat rest in its liquid for 20–30 minutes, then slice against the grain." },
+      { question: "What do you put in the water for corned beef?", answer: "Cold water to cover, plus a quartered onion, 2 bay leaves, 1 tbsp brown sugar, 1 tbsp malt or brown vinegar, peppercorns and a few cloves. The sugar and vinegar balance the cure's saltiness and keep the meat tender." },
+      { question: "Can you freeze cooked corned beef?", answer: "Yes — it freezes well sliced, for up to 3 months. It's also excellent cold in sandwiches for about a week, or in hash and fritters." },
+    ],
+    cta: { label: "Shop corned silverside →", href: "/beef/roasts/", note: "Grass-fed silverside, brined in-house — no added phosphates." },
+  },
+  {
+    slug: "nitrate-free-bacon-explained",
+    title: "Nitrate-Free Bacon: What the Label Really Means",
+    excerpt: "Nitrates vs nitrites, why 'uncured' bacon still contains them, and what to look for if you want genuinely additive-free bacon and ham.",
+    category: "Meat Education",
+    date: "2026-06-10",
+    updated: "2026-09-02",
+    readTime: "5 min read",
+    image: "/images/streaky-bacon.webp",
+    primaryKeyword: "nitrate free bacon",
+    secondaryKeywords: ["preservative free bacon", "uncured bacon", "bacon without nitrates", "is nitrate free bacon better", "additive free bacon australia"],
+    content: `"Nitrate-free" and "uncured" bacon labels are among the most misunderstood in the shop. Here's the honest version.
+
+## Nitrates, nitrites and why bacon uses them
+
+Curing salts contain **sodium nitrite** (and sometimes nitrate, which converts to nitrite). They do three jobs: prevent *Clostridium botulinum* (botulism) in cured meat, fix the pink colour, and create the "bacon" flavour. The food-safety job is the important one.
+
+## "Uncured" / "no added nitrates" — the catch
+
+Most bacon labelled "uncured" or "no added nitrates or nitrites" is still cured — just with **celery juice or celery powder** instead of a measured curing salt. Celery is naturally very high in nitrate, which bacteria in the cure convert to nitrite. The end product can contain **similar or even higher** nitrite levels than conventionally cured bacon, with less precision about the dose.
+
+So "uncured bacon" is largely a labelling technicality, not a nitrate-free product.
+
+## What genuinely additive-free bacon looks like
+
+Truly nitrate/nitrite-free bacon exists but it's different:
+
+- It's **grey-brown when cooked**, not pink — there's no nitrite to fix the colour.
+- It has a **shorter shelf life** and must be kept properly cold.
+- It tastes more like **salted, smoked pork** than classic bacon.
+- The label will say something like "cured with salt only" or "salt and sugar cure, no nitrates or nitrites, no celery".
+
+## Our position
+
+Mr Meat & Co [bacon](/pork/bacon-ham/) is available in a **salt-and-sugar cure with no added nitrates, nitrites or celery powder** — genuinely additive-free, sold clearly as such, with the shorter shelf life that implies. We also carry a lightly-cured traditional bacon. Both are Australian pork, and neither is water-pumped.
+
+## Should you care?
+
+For most people, occasional conventionally-cured bacon is not a meaningful health concern — the WHO's processed-meat classification is about regular high intake. If you eat bacon most days, or you're avoiding nitrites specifically, the salt-only cure is worth seeking out. Just know what you're getting: it's a different product, not the same bacon with the "bad bit" removed.
+
+Browse [bacon and ham](/pork/bacon-ham/).`,
+    faqs: [
+      { question: "Is 'uncured' or 'nitrate-free' bacon actually free of nitrates?", answer: "Usually not. Most 'uncured' bacon is cured with celery juice or celery powder, which is naturally very high in nitrate that bacteria convert to nitrite — often to similar or higher levels than conventional curing salt, with less dose control." },
+      { question: "What does genuinely nitrate-free bacon look like?", answer: "It's grey-brown when cooked rather than pink, has a shorter shelf life, tastes more like salted smoked pork, and the label says it's cured with salt only — no nitrates, nitrites or celery powder." },
+      { question: "Is nitrate-free bacon healthier?", answer: "For occasional eaters the difference is small — the health concern with processed meat is about regular high intake. If you eat bacon most days or are specifically avoiding nitrites, a true salt-only cure is worth it, but it's a genuinely different product." },
+      { question: "Does Mr Meat & Co sell additive-free bacon?", answer: "Yes — a salt-and-sugar cure with no added nitrates, nitrites or celery powder, sold clearly as such with the shorter shelf life that implies. We also carry a lightly-cured traditional bacon. Both are Australian pork and neither is water-pumped." },
+    ],
+    cta: { label: "Shop bacon & ham →", href: "/pork/bacon-ham/", note: "Salt-cured and traditional bacon — Australian pork, no water added." },
+  },
+  {
+    slug: "grass-fed-vs-grain-fed-beef",
+    title: "Grass-Fed vs Grain-Fed Beef: Taste, Nutrition & What the Labels Mean",
+    excerpt: "The real differences between grass-fed and grain-fed beef, what 'grass-fed' legally means in Australia, and which to buy for which dish.",
+    category: "Meat Education",
+    date: "2026-07-08",
+    updated: "2026-09-02",
+    readTime: "6 min read",
+    image: "/images/categories/beef.webp",
+    primaryKeyword: "grass fed vs grain fed beef",
+    secondaryKeywords: ["is grass fed beef better", "grass fed beef australia", "grain fed beef", "what does grass fed mean", "pasture raised beef"],
+    content: `Every beef label in Australia says grass-fed, grain-fed, grain-finished or pasture-raised. Here's what actually separates them.
+
+## The systems
+
+**Grass-fed (pasture-raised):** the animal eats pasture and forage its whole life. In Australia this is the majority system — our climate suits it. Cattle grow more slowly, so they're typically older at slaughter.
+
+**Grain-fed:** cattle are raised on pasture, then moved to a feedlot for a "finishing" period (60–120+ days) on a grain ration. Faster weight gain, more consistent marbling, a milder flavour. Most premium restaurant Wagyu and Angus is grain-finished.
+
+**Grain-finished** means the same as grain-fed — a short grain period at the end.
+
+## What "grass-fed" legally means here
+
+Australia has a **voluntary certified standard** (the Pasture-fed Cattle Assurance System, PCAS) that requires a lifetime pasture diet, no feedlot, no added hormones (HGP-free) and no antibiotics for growth. Not all "grass-fed" beef is PCAS-certified, but the term generally means no feedlot finishing. Our beef is Australian grass-fed.
+
+## Taste
+
+- **Grass-fed:** more mineral, "beefier", a yellower fat (from beta-carotene in grass), firmer texture. Rewards a good sear and medium-rare.
+- **Grain-fed:** milder, sweeter, softer, whiter fat, more even marbling. More forgiving for people who cook steak to medium-well.
+
+Neither is "better" — it's a flavour preference. Many people who think they don't like grass-fed have just overcooked it.
+
+## Nutrition
+
+Grass-fed beef is modestly higher in **omega-3s, CLA and vitamin E**, and often slightly leaner. The differences are real but not dramatic — beef is not a major omega-3 source either way. The bigger nutritional story is the cut you choose and the portion size.
+
+## Which to buy
+
+- **Fast, high-heat cooking (steaks, stir-fry):** grass-fed if you'll cook it medium-rare; grain-fed if you like it more done.
+- **Low and slow (brisket, cheek, ragu):** grass-fed — the deeper flavour carries a long cook, and marbling matters less.
+- **Mince and burgers:** grass-fed chuck has plenty of flavour; the fat ratio matters more than the feed.
+
+Browse [grass-fed beef](/beef/) or read [Australian beef cuts explained](/blog/australian-beef-cuts-explained/).`,
+    faqs: [
+      { question: "Is grass-fed beef better than grain-fed?", answer: "Neither is objectively better — it's a flavour preference. Grass-fed is more mineral and 'beefy' with firmer texture and yellower fat; grain-fed is milder, sweeter and softer with more even marbling. Grass-fed is modestly higher in omega-3s and CLA." },
+      { question: "What does grass-fed mean in Australia?", answer: "It generally means the cattle ate pasture and forage their whole life with no feedlot finishing. The voluntary PCAS certification goes further, requiring a lifetime pasture diet, no added hormones and no antibiotics for growth." },
+      { question: "Why is grass-fed beef fat yellow?", answer: "Beta-carotene from fresh grass is stored in the fat, giving it a creamy-yellow colour. Grain-fed cattle eat little green forage in the finishing period, so their fat is whiter. Yellow fat is a sign of a grass diet, not a fault." },
+      { question: "Does grass-fed beef taste gamey?", answer: "It shouldn't. It has a stronger, more mineral beef flavour than grain-fed, but not a gamey one. If grass-fed beef tastes off to you, it's most often been overcooked — try it medium-rare with a proper rest." },
+    ],
+    cta: { label: "Shop grass-fed beef →", href: "/beef/", note: "100% Australian grass-fed beef — steaks, roasts, mince & more." },
+  },
+  {
+    slug: "bone-broth-from-beef-bones",
+    title: "Bone Broth From Beef Bones: A Simple, Gelatin-Rich Method",
+    excerpt: "Which bones to use, why you roast them first, the vinegar question, and how to get a broth that sets like jelly.",
+    category: "Recipes",
+    date: "2026-08-02",
+    updated: "2026-09-02",
+    readTime: "5 min read",
+    image: "/images/beef-marrow-bones.webp",
+    primaryKeyword: "bone broth from beef bones",
+    secondaryKeywords: ["beef bone broth recipe", "which bones for bone broth", "how to make bone broth", "beef stock bones", "gelatin bone broth"],
+    content: `A good beef broth should **set to a wobble in the fridge** — that's the collagen turning to gelatine. Getting there is about bone choice and time, not much else.
+
+## Which bones
+
+Use a mix:
+
+- **Knuckle and joint bones** — the collagen. These are what make it set.
+- **Marrow bones** — richness and fat. [Beef marrow bones here](/beef/offal/).
+- **Meaty bones** — shin, neck, oxtail, short rib — flavour and body. A little meat on the bones makes a huge difference.
+- **Optional:** a split trotter or two for extra gelatine.
+
+Aim for **roughly half collagen-rich bones, half meaty bones**. Ask us for a "bone broth mix".
+
+## The method
+
+1. **Roast the bones.** 220°C for 30–40 minutes until deep brown. This is the difference between a pale, flat broth and a deep, savoury one. Roast an onion (skin on), a carrot and a stick of celery alongside for the last 20 minutes.
+2. **Into the pot.** Bones and vegetables, cover with cold water by 5cm. Add 2 bay leaves, a few peppercorns, and **2 tbsp of vinegar** (apple cider or white) — the acid helps extract minerals and doesn't affect the taste at that dose.
+3. **Barely simmer, lid ajar.** Skim the grey foam in the first 30 minutes. Then leave it: **12–24 hours** on the stove's lowest setting, or a slow cooker on low, or a pressure cooker for 3 hours.
+4. **Top up** with hot water if the bones ever poke above the surface.
+5. **Strain**, cool, then lift the fat off the top once cold (keep it for cooking).
+
+## Will it set?
+
+If you used enough collagen-rich bones and simmered long enough, chilled broth will be jelly-firm. If it's liquid, it still tastes great — next time use more knuckle/joint bones and less water.
+
+## Storage
+
+Fridge 5 days. Freeze in jars (leave headspace) or ice-cube trays for 6 months. Reduce it hard first if freezer space is tight — add water back when you use it.
+
+## Buying
+
+We sell [beef marrow bones, knuckle and shin](/beef/offal/) and a ready "bone broth mix". These are human-grade — for the [dog version see pet bones](/pet-food/bones/).`,
+    faqs: [
+      { question: "Which bones make the best bone broth?", answer: "A mix of collagen-rich bones (knuckle, joint) for the gel and meaty bones (shin, neck, oxtail, short rib) for flavour — roughly half and half. A marrow bone or two adds richness. Ask your butcher for a 'bone broth mix'." },
+      { question: "Why roast bones before making broth?", answer: "Roasting the bones (and some vegetables) at 220°C for 30–40 minutes builds deep, savoury flavour and colour. Unroasted bones give a pale, flat-tasting broth." },
+      { question: "Do you need vinegar in bone broth?", answer: "Add about 2 tablespoons of apple cider or white vinegar per large pot. The acid helps draw minerals from the bones and doesn't affect the flavour at that amount. It's helpful but not essential." },
+      { question: "Why didn't my bone broth set?", answer: "Not enough collagen-rich bones, too much water, or not enough time. Chilled broth sets to a jelly when you've used plenty of knuckle and joint bones and simmered 12–24 hours. Liquid broth still tastes great — just adjust next batch." },
+    ],
+    cta: { label: "Shop broth bones & marrow →", href: "/beef/offal/", note: "Beef marrow, knuckle & shin — human-grade bone broth mix." },
+  },
+  {
+    slug: "christmas-ham-glaze-guide",
+    title: "Christmas Ham: How to Score, Glaze & Serve a Whole Leg",
+    excerpt: "Choosing the ham, removing the skin without wrecking the fat, three glazes, and the timing so it's warm for lunch.",
+    category: "Recipes",
+    date: "2026-08-16",
+    updated: "2026-09-02",
+    readTime: "6 min read",
+    image: "/images/leg-ham-off-the-bone.webp",
+    primaryKeyword: "christmas ham",
+    secondaryKeywords: ["how to glaze a ham", "ham glaze recipe", "how to score a ham", "whole leg ham", "buy christmas ham"],
+    content: `A [whole leg ham](/christmas-ham/) is already fully cooked — your job is just to skin it, score it, glaze it and warm it through. It's the least stressful part of Christmas lunch if you plan the timing.
+
+## Choosing the ham
+
+- **Bone-in leg** — the classic. Best flavour, best value per kg, the showpiece. 7–10kg feeds a big crowd with leftovers for a week.
+- **Half leg** — same thing, for a smaller table (4–6kg).
+- **Boneless leg** — easiest to carve, slightly less flavour, good if carving space is tight.
+
+Order early — [Christmas hams](/christmas-ham/) sell out, and you want it delivered a few days ahead, not on the 24th.
+
+## Skin and score
+
+1. Run a knife around the shank end, then slide your fingers under the skin and peel it back in one piece, leaving the fat layer intact. Keep the skin — lay it back over the leftover ham to stop it drying.
+2. **Score the fat** in a diamond pattern, ~2cm apart, about 5mm deep — into the fat, not the meat.
+3. Stud each diamond with a clove if you like (optional).
+
+## Three glazes (for a whole leg)
+
+- **Classic brown sugar:** 1.5 cups brown sugar, ½ cup honey, ⅓ cup Dijon, 2 tbsp orange juice. Whisk to a paste.
+- **Maple-mustard:** 1 cup maple syrup, ⅓ cup wholegrain mustard, 2 tbsp cider vinegar, pinch of clove.
+- **Marmalade-whisky:** 1 cup orange marmalade, ¼ cup whisky, 2 tbsp brown sugar, warmed to loosen.
+
+## Cook
+
+1. Ham on a rack in a deep tray, 1 cup water in the base. 160°C.
+2. Brush a first coat of glaze. Bake 20 minutes.
+3. Re-glaze every 15–20 minutes, **3–4 coats total**, until deep amber and lacquered — about **1.5–2 hours for a 7–9kg leg** (you're heating it through to ~55°C in the centre, and building the crust).
+4. If the top isn't dark enough, 5 minutes under the grill — watch it.
+5. **Rest 20 minutes** before carving.
+
+## Serve & store
+
+Serve warm or at room temperature. Store the leftover ham wrapped in a damp tea towel or a ham bag (not plastic) in the fridge, re-dampening the cloth every couple of days — it keeps 2 weeks. The bone makes the best [pea and ham soup](/pork/) or a stock.
+
+Order your [Christmas ham](/christmas-ham/) now for December delivery.`,
+    faqs: [
+      { question: "How do you glaze a Christmas ham?", answer: "Skin the ham, score the fat in a 2cm diamond pattern, then bake at 160°C brushing on glaze every 15–20 minutes for 3–4 coats until deep amber — about 1.5–2 hours for a 7–9kg leg. Finish under the grill for 5 minutes if needed, then rest 20 minutes." },
+      { question: "Do you need to cook a Christmas ham?", answer: "A whole leg ham is already fully cooked and cured. You're only skinning, scoring, glazing and warming it through to about 55°C in the centre while building the lacquered crust. It can also be served cold." },
+      { question: "How do you store leftover ham?", answer: "Wrap it in a damp tea towel or a cotton ham bag — not plastic — and keep it in the fridge, re-dampening the cloth every couple of days. It keeps about two weeks. Lay the reserved skin back over the cut face to stop it drying." },
+      { question: "What size Christmas ham do I need?", answer: "A 7–10kg bone-in leg feeds a large crowd with a week of leftovers. A half leg (4–6kg) suits a table of 4–6. Order early — hams sell out and you want it delivered a few days before, not on Christmas Eve." },
+    ],
+    cta: { label: "Order a Christmas ham →", href: "/christmas-ham/", note: "Whole and half leg hams — order now for December delivery." },
+  },
 ];
 
 export const PAGES = {

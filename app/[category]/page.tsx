@@ -1,8 +1,9 @@
 import React from 'react';
 import { notFound } from 'next/navigation';
-import { CATEGORIES, SITE, PAGE_SEO } from '@/config/site';
+import { CATEGORIES, PRODUCTS, SITE, PAGE_SEO } from '@/config/site';
 import { JsonLd } from '@/components/JsonLd';
 import { SeoFaqSection } from '@/components/SeoFaqSection';
+import { ProductCard } from '@/components/ProductCard';
 import { ShopFilterClient } from '@/components/ShopFilterClient';
 import { SeafoodCatalogueClient } from '@/components/SeafoodCatalogueClient';
 import { PetFoodCatalogueClient } from '@/components/PetFoodCatalogueClient';
@@ -63,7 +64,12 @@ export default async function TopLevelCategoryPage({
 
   const isSeafood = categorySlug === 'seafood';
   const isPetFood = categorySlug === 'pet-food';
+  const isLivePoultry = categorySlug === 'live-poultry';
   const seo = PAGE_SEO[`/${category.slug}/`];
+
+  const livePoultryProducts = isLivePoultry
+    ? PRODUCTS.filter((p) => (p.main_category || p.category) === 'live-poultry')
+    : [];
 
   const breadcrumbSchema = {
     '@context': 'https://schema.org',
@@ -176,6 +182,24 @@ export default async function TopLevelCategoryPage({
         <SeafoodCatalogueClient initialSubcategory="all" />
       ) : isPetFood ? (
         <PetFoodCatalogueClient initialSubcategory="all" />
+      ) : isLivePoultry ? (
+        <div className="space-y-6">
+          <div className="bg-[#1C1414] border border-amber-500/40 rounded-2xl p-5 text-sm text-amber-200/90 leading-relaxed">
+            <strong className="text-amber-300">Live birds — pickup or local delivery only.</strong> Live poultry is
+            collected from our farm partner by appointment, or delivered within a limited Sydney radius. Birds are
+            sold vaccinated and sexed where stated. Minimum numbers may apply for welfare reasons. This range is not
+            part of the $300 cold-chain meat delivery.
+          </div>
+          {livePoultryProducts.length > 0 ? (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {livePoultryProducts.map((p) => (
+                <ProductCard key={p.slug} product={p} />
+              ))}
+            </div>
+          ) : (
+            <p className="text-sm text-gray-400">Live poultry stock is listed seasonally. Contact us for current availability.</p>
+          )}
+        </div>
       ) : (
         <ShopFilterClient initialCategory={category.slug} />
       )}

@@ -84,7 +84,14 @@ export function Nav() {
                       </Link>
                     ))}
                   </div>
-                  <div className="pt-2 border-t border-red-900/30 flex items-center justify-end text-xs">
+                  <div className="pt-2 border-t border-red-900/30 flex items-center justify-between text-xs">
+                    <Link
+                      href="/christmas-ham/"
+                      onClick={() => setShopDropdownOpen(false)}
+                      className="font-bold text-amber-300 hover:underline"
+                    >
+                      🎄 Christmas Ham
+                    </Link>
                     <Link
                       href="/shop/"
                       onClick={() => setShopDropdownOpen(false)}

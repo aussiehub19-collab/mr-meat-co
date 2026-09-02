@@ -1,7 +1,7 @@
 import React from 'react';
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { PRODUCTS, SITE, PAGE_SEO, metaDesc } from '@/config/site';
+import { PRODUCTS, SITE, PAGE_SEO, metaDesc, abs } from '@/config/site';
 import { JsonLd } from '@/components/JsonLd';
 import { SeoFaqSection } from '@/components/SeoFaqSection';
 import { ProductCard } from '@/components/ProductCard';
@@ -13,7 +13,11 @@ export const metadata: Metadata = seo
       title: { absolute: seo.title },
       description: metaDesc(seo.description),
       alternates: { canonical: `https://${SITE.domain}/christmas-ham/` },
-      openGraph: { title: seo.title, description: metaDesc(seo.description) },
+      openGraph: {
+        title: seo.title,
+        description: metaDesc(seo.description),
+        images: [{ url: abs(SITE.ogImage), width: 1200, height: 630 }],
+      },
       other: { 'og:updated_time': new Date().toISOString() },
     }
   : {};

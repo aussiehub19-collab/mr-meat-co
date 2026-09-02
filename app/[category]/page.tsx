@@ -1,7 +1,8 @@
 import React from 'react';
 import { notFound } from 'next/navigation';
-import { CATEGORIES, SITE } from '@/config/site';
+import { CATEGORIES, SITE, PAGE_SEO } from '@/config/site';
 import { JsonLd } from '@/components/JsonLd';
+import { SeoFaqSection } from '@/components/SeoFaqSection';
 import { ShopFilterClient } from '@/components/ShopFilterClient';
 import { SeafoodCatalogueClient } from '@/components/SeafoodCatalogueClient';
 import { PetFoodCatalogueClient } from '@/components/PetFoodCatalogueClient';
@@ -22,14 +23,19 @@ export async function generateMetadata({
 
   const isSeafood = categorySlug === 'seafood';
   const isPetFood = categorySlug === 'pet-food';
+  const seo = PAGE_SEO[`/${category.slug}/`];
 
   return {
-    title: isSeafood
+    title: seo?.title
+      ? { absolute: seo.title }
+      : isSeafood
       ? `Seafood Catalogue | Fish, Prawns & Salmon`
       : isPetFood
       ? `Pet Food Catalogue | Raw Pet Mince, Bones & Offal`
       : `${category.name} Cuts & Products | Mr Meat & Co Australia`,
-    description: isSeafood
+    description: seo?.description
+      ? seo.description
+      : isSeafood
       ? `Browse our seafood catalogue including Barramundi, Snapper, Flathead, King Prawns, and Tasmanian Salmon portions. Fresh chilled and frozen storage.`
       : isPetFood
       ? `Explore our raw pet food catalogue featuring Raw Mince, Bones, and Offal. Pet food only — not for human consumption.`
@@ -57,6 +63,7 @@ export default async function TopLevelCategoryPage({
 
   const isSeafood = categorySlug === 'seafood';
   const isPetFood = categorySlug === 'pet-food';
+  const seo = PAGE_SEO[`/${category.slug}/`];
 
   const breadcrumbSchema = {
     '@context': 'https://schema.org',
@@ -128,14 +135,18 @@ export default async function TopLevelCategoryPage({
         </div>
 
         <h1 className="text-3xl sm:text-4xl font-black text-white font-serif">
-          {isSeafood
+          {seo?.h1
+            ? seo.h1
+            : isSeafood
             ? 'Seafood Product Catalogue'
             : isPetFood
             ? 'Pet Food Product Catalogue'
             : `${category.name} Cuts & Fresh Meat`}
         </h1>
         <p className="text-gray-300 text-sm max-w-3xl leading-relaxed">
-          {isSeafood
+          {seo?.intro
+            ? seo.intro
+            : isSeafood
             ? 'Explore our complete seafood catalogue featuring fresh chilled and frozen fish fillets, raw and cooked prawns, and salmon portions. All prices are in AUD with clear storage and allergen information.'
             : isPetFood
             ? 'Raw pet meat, bones, and offal prepared strictly for animal diets. Pet food only — not for human consumption. Keep frozen until use.'
@@ -168,6 +179,8 @@ export default async function TopLevelCategoryPage({
       ) : (
         <ShopFilterClient initialCategory={category.slug} />
       )}
+
+      {seo?.faqs && <SeoFaqSection faqs={seo.faqs} />}
     </div>
   );
 }

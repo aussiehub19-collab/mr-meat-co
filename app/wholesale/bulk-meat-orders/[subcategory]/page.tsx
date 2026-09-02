@@ -1,11 +1,12 @@
 import React from 'react';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
-import { PRODUCTS, WHOLESALE_BULK_SUBCATEGORIES, SITE } from '@/config/site';
+import { PRODUCTS, WHOLESALE_BULK_SUBCATEGORIES, SITE, PAGE_SEO } from '@/config/site';
 import { ProductCard } from '@/components/ProductCard';
 import { WholesaleNav } from '@/components/WholesaleNav';
 import { BulkOrderContactSection } from '@/components/BulkOrderContactSection';
 import { JsonLd } from '@/components/JsonLd';
+import { SeoFaqSection } from '@/components/SeoFaqSection';
 import { ChevronRight, Layers, ArrowLeft } from 'lucide-react';
 
 export async function generateStaticParams() {
@@ -24,9 +25,15 @@ export async function generateMetadata({
 
   if (!subcategory) return {};
 
+  const seo = PAGE_SEO[`/wholesale/bulk-meat-orders/${subcategory.slug}/`];
+
   return {
-    title: `${subcategory.name} - Bulk Meat Orders & Animal Shares | ${SITE.name}`,
-    description: `Shop large-quantity ${subcategory.name.toLowerCase()} orders, freezer cartons, and animal shares. Add directly to cart or request custom bulk pricing.`,
+    title: seo?.title
+      ? { absolute: seo.title }
+      : `${subcategory.name} - Bulk Meat Orders & Animal Shares | ${SITE.name}`,
+    description:
+      seo?.description ??
+      `Shop large-quantity ${subcategory.name.toLowerCase()} orders, freezer cartons, and animal shares. Add directly to cart or request custom bulk pricing.`,
     alternates: {
       canonical: `https://${SITE.domain}/wholesale/bulk-meat-orders/${subcategory.slug}/`,
     },
@@ -44,6 +51,8 @@ export default async function BulkSubcategoryPage({
   if (!subcategory) {
     notFound();
   }
+
+  const seo = PAGE_SEO[`/wholesale/bulk-meat-orders/${subSlug}/`];
 
   const products = PRODUCTS.filter((p) => {
     const isWholesale = (p.main_category || p.category || '').toLowerCase() === 'wholesale' || p.is_wholesale;
@@ -119,11 +128,12 @@ export default async function BulkSubcategoryPage({
           </div>
 
           <h1 className="text-3xl sm:text-5xl font-black text-white font-serif">
-            {subcategory.name} Bulk Orders & Shares
+            {seo?.h1 ?? `${subcategory.name} Bulk Orders & Shares`}
           </h1>
 
           <p className="text-sm sm:text-base text-gray-300 leading-relaxed">
-            Shop wholesale carton quantities, animal shares, and freezer packs of {subcategory.name.toLowerCase()}. Listed items can be added directly to cart with fixed pricing. For higher volumes, contact our butcher team for a custom quote.
+            {seo?.intro ??
+              `Shop wholesale carton quantities, animal shares, and freezer packs of ${subcategory.name.toLowerCase()}. Listed items can be added directly to cart with fixed pricing. For higher volumes, contact our butcher team for a custom quote.`}
           </p>
         </div>
       </div>
@@ -154,6 +164,8 @@ export default async function BulkSubcategoryPage({
 
       {/* Contact Section */}
       <BulkOrderContactSection defaultCategory={subcategory.name} />
+
+      {seo?.faqs && <SeoFaqSection faqs={seo.faqs} />}
     </div>
   );
 }

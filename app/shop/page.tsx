@@ -1,13 +1,20 @@
 import React from 'react';
 import Link from 'next/link';
 import { Beef, ArrowRight } from 'lucide-react';
-import { SITE } from '@/config/site';
+import { SITE, PAGE_SEO } from '@/config/site';
 import { JsonLd } from '@/components/JsonLd';
+import { SeoFaqSection } from '@/components/SeoFaqSection';
 import { ShopFilterClient } from '@/components/ShopFilterClient';
 
+const shopSeo = PAGE_SEO['/shop/'];
+
 export const metadata = {
-  title: 'Shop All Fresh Beef, Lamb, Poultry & Butcher Boxes',
-  description: 'Browse 100% Australian grass-fed beef mince, Wagyu steaks, pasture-raised lamb cutlets, and bulk butcher boxes. Temperature-controlled delivery across Greater Sydney.',
+  title: shopSeo?.title
+    ? { absolute: shopSeo.title }
+    : 'Shop All Fresh Beef, Lamb, Poultry & Butcher Boxes',
+  description:
+    shopSeo?.description ??
+    'Browse 100% Australian grass-fed beef mince, Wagyu steaks, pasture-raised lamb cutlets, and bulk butcher boxes. Temperature-controlled delivery across Greater Sydney.',
   alternates: {
     canonical: `https://${SITE.domain}/shop/`,
   },
@@ -46,10 +53,11 @@ export default function ShopIndexPage() {
           100% Australian Grass-Fed Butcher & Master Market
         </div>
         <h1 className="text-3xl sm:text-4xl font-black text-white font-serif">
-          Craft Butcher Meat Market
+          {shopSeo?.h1 ?? 'Craft Butcher Meat Market'}
         </h1>
         <p className="text-gray-300 text-sm max-w-3xl leading-relaxed">
-          Filter through all 11 artisanal butcher categories, subcategories, and specialty meat cuts. Ground fresh daily in Alexandria with zero preservatives or fillers. Cold-chain refrigerated express delivery across Greater Sydney.
+          {shopSeo?.intro ??
+            'Filter through all 11 artisanal butcher categories, subcategories, and specialty meat cuts. Ground fresh daily in Alexandria with zero preservatives or fillers. Cold-chain refrigerated express delivery across Greater Sydney.'}
         </p>
       </div>
 
@@ -77,6 +85,8 @@ export default function ShopIndexPage() {
 
       {/* Interactive Shop Filter System */}
       <ShopFilterClient initialCategory="all" />
+
+      {shopSeo?.faqs && <SeoFaqSection faqs={shopSeo.faqs} />}
     </div>
   );
 }

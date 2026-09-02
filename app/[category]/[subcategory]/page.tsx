@@ -1,7 +1,8 @@
 import React from 'react';
 import { notFound } from 'next/navigation';
-import { CATEGORIES, PRODUCTS, SITE } from '@/config/site';
+import { CATEGORIES, PRODUCTS, SITE, PAGE_SEO } from '@/config/site';
 import { JsonLd } from '@/components/JsonLd';
+import { SeoFaqSection } from '@/components/SeoFaqSection';
 import { ProductCard } from '@/components/ProductCard';
 import { SeafoodCatalogueClient } from '@/components/SeafoodCatalogueClient';
 import { PetFoodCatalogueClient } from '@/components/PetFoodCatalogueClient';
@@ -35,14 +36,19 @@ export async function generateMetadata({
 
   const isSeafood = categorySlug === 'seafood';
   const isPetFood = categorySlug === 'pet-food';
+  const seo = PAGE_SEO[`/${category.slug}/${subSlug}/`];
 
   return {
-    title: isSeafood
+    title: seo?.title
+      ? { absolute: seo.title }
+      : isSeafood
       ? `${subcategory} | Seafood Catalogue`
       : isPetFood
       ? `${subcategory} | Pet Food Catalogue`
       : `${subcategory} — ${category.name} | Mr Meat & Co Australia`,
-    description: isSeafood
+    description: seo?.description
+      ? seo.description
+      : isSeafood
       ? `Browse our ${subcategory.toLowerCase()} seafood catalogue. Fresh chilled and frozen storage with market-reference starting prices in AUD.`
       : isPetFood
       ? `Explore our ${subcategory.toLowerCase()} pet food catalogue. Pet food only — not for human consumption.`
@@ -78,6 +84,7 @@ export default async function TopLevelSubcategoryPage({
 
   const isSeafood = categorySlug === 'seafood';
   const isPetFood = categorySlug === 'pet-food';
+  const seo = PAGE_SEO[`/${category.slug}/${subSlug}/`];
 
   const subProducts = PRODUCTS.filter((p) => {
     const categoryMatches =
@@ -191,14 +198,18 @@ export default async function TopLevelSubcategoryPage({
         </div>
 
         <h1 className="text-3xl sm:text-4xl font-black text-white font-serif">
-          {isSeafood
+          {seo?.h1
+            ? seo.h1
+            : isSeafood
             ? `${subcategory} Products`
             : isPetFood
             ? `Pet Food — ${subcategory}`
             : `Australian ${subcategory} Cuts (${category.name})`}
         </h1>
         <p className="text-gray-300 text-sm max-w-3xl leading-relaxed">
-          {isSeafood
+          {seo?.intro
+            ? seo.intro
+            : isSeafood
             ? `Browse our selection of ${subcategory.toLowerCase()} products with transparent pack sizes, starting prices in AUD, and clear storage requirements.`
             : isPetFood
             ? `Raw pet meat, bones, or offal for ${subcategory.toLowerCase()}. Prepared strictly for animal dietary consumption only. Not for human consumption.`
@@ -229,6 +240,8 @@ export default async function TopLevelSubcategoryPage({
           ))}
         </div>
       )}
+
+      {seo?.faqs && <SeoFaqSection faqs={seo.faqs} />}
     </div>
   );
 }

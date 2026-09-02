@@ -2,10 +2,11 @@
 
 import React, { useState, useMemo } from 'react';
 import Link from 'next/link';
-import { PRODUCTS, WHOLESALE_BULK_SUBCATEGORIES, Product } from '@/config/site';
+import { PRODUCTS, WHOLESALE_BULK_SUBCATEGORIES, PAGE_SEO, Product } from '@/config/site';
 import { ProductCard } from '@/components/ProductCard';
 import { WholesaleNav } from '@/components/WholesaleNav';
 import { BulkOrderContactSection } from '@/components/BulkOrderContactSection';
+import { SeoFaqSection } from '@/components/SeoFaqSection';
 import { Search, Filter, Layers, CheckCircle, ChevronRight, Sparkles, AlertCircle } from 'lucide-react';
 
 export default function BulkMeatOrdersPage() {
@@ -261,6 +262,10 @@ export default function BulkMeatOrdersPage() {
 
       {/* Need More Than This? Contact Section */}
       <BulkOrderContactSection />
+
+      {PAGE_SEO['/wholesale/bulk-meat-orders/']?.faqs && (
+        <SeoFaqSection faqs={PAGE_SEO['/wholesale/bulk-meat-orders/']!.faqs} />
+      )}
     </div>
   );
 }

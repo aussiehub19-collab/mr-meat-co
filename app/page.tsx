@@ -1,12 +1,24 @@
 import React from 'react';
 import Link from 'next/link';
-import { SITE, CATEGORIES, PRODUCTS, POSTS, FAQ, BRAND, CONTACT, SHOP } from '@/config/site';
+import type { Metadata } from 'next';
+import { SITE, CATEGORIES, PRODUCTS, POSTS, FAQ, BRAND, CONTACT, SHOP, PAGE_SEO } from '@/config/site';
 import { ProductCard } from '@/components/ProductCard';
 import { JsonLd } from '@/components/JsonLd';
 import { SmartImage } from '@/components/SmartImage';
 import { HeroSlider } from '@/components/HeroSlider';
 import { CategoryGridClient } from '@/components/CategoryGridClient';
 import { Truck, ShieldCheck, Percent, Utensils, MessageSquare, ArrowRight, Award, Flame, CheckCircle2 } from 'lucide-react';
+
+export function generateMetadata(): Metadata {
+  const seo = PAGE_SEO['/'];
+  if (!seo) return {};
+  return {
+    title: { absolute: seo.title },
+    description: seo.description,
+    alternates: { canonical: `https://${SITE.domain}/` },
+    openGraph: { title: seo.title, description: seo.description },
+  };
+}
 
 export default function HomePage() {
   const featuredProducts = PRODUCTS.filter((p) => p.featured).slice(0, 8);

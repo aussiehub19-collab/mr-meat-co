@@ -2,10 +2,10 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { Product } from '@/config/site';
+import { Product, SHOP } from '@/config/site';
 import { useCart } from '@/lib/cart';
 import { SmartImage } from '@/components/SmartImage';
-import { Plus, Check, Snowflake, ShieldAlert } from 'lucide-react';
+import { Plus, Check, Snowflake, ShieldAlert, Bitcoin } from 'lucide-react';
 import { useCustomStoreImages } from '@/lib/useCustomImages';
 
 function getProductHref(product: Product): string {
@@ -70,6 +70,11 @@ export function ProductCard({ product }: { product: Product }) {
   const displayPrice = product.price !== null && product.price !== undefined
     ? `$${product.price.toFixed(2)}`
     : 'Inquire';
+
+  const cryptoPrice =
+    product.price !== null && product.price !== undefined
+      ? product.price * (1 - SHOP.cryptoDiscount / 100)
+      : null;
 
   const isSeafood = (product.main_category || product.category) === 'seafood';
   const isPetFood = (product.main_category || product.category) === 'pet-food' || product.pet_food_only;
@@ -170,6 +175,15 @@ export function ProductCard({ product }: { product: Product }) {
             <span className="text-lg font-black text-white">
               {displayPrice} <span className="text-xs text-gray-400 font-normal">AUD</span>
             </span>
+            {cryptoPrice !== null && (
+              <span className="mt-0.5 flex items-center gap-1 text-[11px] font-bold text-emerald-400 leading-tight">
+                <Bitcoin className="w-3 h-3 shrink-0" />
+                <span>
+                  ${cryptoPrice.toFixed(2)} with PayID / Crypto
+                  <span className="text-emerald-500/80 font-semibold"> (−{SHOP.cryptoDiscount}%)</span>
+                </span>
+              </span>
+            )}
           </div>
 
           <button

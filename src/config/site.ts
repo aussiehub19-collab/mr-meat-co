@@ -5187,7 +5187,7 @@ export const PRODUCTS: Product[] = [
     ["Frozen"],
     null,
     ["Specialty Meat > Rabbit", "Frozen Meat", "Game Meat", "Gourmet Cooking"],
-    "https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=1200&auto=format&fit=crop",
+    "/images/whole-rabbit.webp",
     {
       storageType: "Frozen",
       primary_product_category: "Specialty Meat",
@@ -5218,7 +5218,7 @@ export const PRODUCTS: Product[] = [
     ["Frozen"],
     null,
     ["Specialty Meat > Rabbit", "Frozen Meat", "Slow Cooking", "Game Meat"],
-    "https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=1200&auto=format&fit=crop",
+    "/images/rabbit-portions-jointed.webp",
     {
       storageType: "Frozen",
       primary_product_category: "Specialty Meat",
@@ -5247,7 +5247,7 @@ export const PRODUCTS: Product[] = [
     ["Frozen"],
     null,
     ["Specialty Meat > Rabbit", "Frozen Meat", "Game Meat", "Gourmet Cooking"],
-    "https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=1200&auto=format&fit=crop",
+    "/images/rabbit-loin-fillets.webp",
     {
       storageType: "Frozen",
       primary_product_category: "Specialty Meat",
@@ -5278,7 +5278,7 @@ export const PRODUCTS: Product[] = [
     ["Frozen"],
     null,
     ["Specialty Meat > Game", "Frozen Meat", "Game Meat", "Gourmet Cooking"],
-    "https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=1200&auto=format&fit=crop",
+    "/images/crocodile-tail-fillet.webp",
     {
       storageType: "Frozen",
       primary_product_category: "Specialty Meat",
@@ -5309,7 +5309,7 @@ export const PRODUCTS: Product[] = [
     ["Frozen"],
     null,
     ["Specialty Meat > Game", "Frozen Meat", "Game Meat"],
-    "https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=1200&auto=format&fit=crop",
+    "/images/crocodile-boneless-portions.webp",
     {
       storageType: "Frozen",
       primary_product_category: "Specialty Meat",
@@ -5338,7 +5338,7 @@ export const PRODUCTS: Product[] = [
     ["Frozen"],
     null,
     ["Specialty Meat > Game", "Frozen Meat", "Game Meat", "Gourmet Cooking"],
-    "https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=1200&auto=format&fit=crop",
+    "/images/emu-fillet.webp",
     {
       storageType: "Frozen",
       primary_product_category: "Specialty Meat",
@@ -5369,7 +5369,7 @@ export const PRODUCTS: Product[] = [
     ["Frozen"],
     null,
     ["Specialty Meat > Game", "Frozen Meat", "Game Meat"],
-    "https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=1200&auto=format&fit=crop",
+    "/images/emu-mince.webp",
     {
       storageType: "Frozen",
       primary_product_category: "Specialty Meat",
@@ -5400,7 +5400,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled", "Vacuum Sealed"],
     null,
     ["Beef > Bones & Broth", "Slow Cooking", "Fresh Chilled", "Budget Friendly"],
-    "https://images.unsplash.com/photo-1558030006-450675393462?q=80&w=1200&auto=format&fit=crop",
+    "/images/beef-soup-bones.webp",
     {
       seo_title: "Beef Bones for Bone Broth | Knuckle & Joint — Mr Meat & Co",
       seo_meta_description: "Buy beef bones for broth online — collagen-rich knuckle and joint bones for a gelatinous stock. Grass-fed, human-grade, delivered cold across Sydney."
@@ -5423,7 +5423,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled", "Vacuum Sealed"],
     null,
     ["Beef > Bones & Broth", "Slow Cooking", "Fresh Chilled"],
-    "https://images.unsplash.com/photo-1558030006-450675393462?q=80&w=1200&auto=format&fit=crop",
+    "/images/meaty-beef-shin-bones.webp",
     {
       seo_title: "Meaty Beef Shin Bones | For Broth & Pho — Mr Meat & Co",
       seo_meta_description: "Buy meaty beef shin bones online — cross-cut, marrow-centred, ideal for a savoury broth or pho. Grass-fed, delivered cold across Sydney."
@@ -5448,7 +5448,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled"],
     null,
     ["Pork > Bacon & Ham", "Christmas", "Premium", "Fresh Chilled"],
-    "https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?q=80&w=1200&auto=format&fit=crop",
+    "/images/whole-bone-in-christmas-ham.webp",
     {
       stockStatus: "Pre-Order",
       badge: "Christmas — Pre-Order",
@@ -5477,7 +5477,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled"],
     null,
     ["Pork > Bacon & Ham", "Christmas", "Fresh Chilled"],
-    "https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?q=80&w=1200&auto=format&fit=crop",
+    "/images/half-leg-christmas-ham.webp",
     {
       stockStatus: "Pre-Order",
       badge: "Christmas — Pre-Order",
@@ -5505,7 +5505,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled"],
     null,
     ["Pork > Bacon & Ham", "Christmas", "Fresh Chilled"],
-    "https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?q=80&w=1200&auto=format&fit=crop",
+    "/images/boneless-christmas-ham.webp",
     {
       stockStatus: "Pre-Order",
       badge: "Christmas — Pre-Order",
@@ -5583,7 +5583,7 @@ export const PRODUCTS: Product[] = [
     ["Live Bird"],
     null,
     ["Live Poultry > Laying Hens"],
-    "https://images.unsplash.com/photo-1604503468506-a8da13d82791?q=80&w=1200&auto=format&fit=crop",
+    "/images/point-of-lay-hens-brown-egg.webp",
     {
       stockStatus: "Seasonal",
       badge: "Pickup / Local Only",
@@ -5614,7 +5614,7 @@ export const PRODUCTS: Product[] = [
     ["Live Bird"],
     null,
     ["Live Poultry > Laying Hens"],
-    "https://images.unsplash.com/photo-1604503468506-a8da13d82791?q=80&w=1200&auto=format&fit=crop",
+    "/images/australorp-point-of-lay-hens.webp",
     {
       stockStatus: "Seasonal",
       badge: "Pickup / Local Only",
@@ -5643,7 +5643,7 @@ export const PRODUCTS: Product[] = [
     ["Live Bird"],
     null,
     ["Live Poultry > Pullets"],
-    "https://images.unsplash.com/photo-1604503468506-a8da13d82791?q=80&w=1200&auto=format&fit=crop",
+    "/images/young-pullets-grower.webp",
     {
       stockStatus: "Seasonal",
       badge: "Pickup / Local Only",
@@ -5672,7 +5672,7 @@ export const PRODUCTS: Product[] = [
     ["Live Bird"],
     null,
     ["Live Poultry > Meat Birds"],
-    "https://images.unsplash.com/photo-1604503468506-a8da13d82791?q=80&w=1200&auto=format&fit=crop",
+    "/images/table-meat-birds-straight-run.webp",
     {
       stockStatus: "Seasonal",
       badge: "Pickup / Local Only",
@@ -5701,7 +5701,7 @@ export const PRODUCTS: Product[] = [
     ["Live Bird"],
     null,
     ["Live Poultry > Bantams"],
-    "https://images.unsplash.com/photo-1604503468506-a8da13d82791?q=80&w=1200&auto=format&fit=crop",
+    "/images/bantams-silkie-pekin.webp",
     {
       stockStatus: "Seasonal",
       badge: "Pickup / Local Only",

@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { SITE, CONTACT, FORMS } from '@/config/site';
+import { SITE, CONTACT } from '@/config/site';
 import { Mail, Phone, MapPin, MessageSquare, Clock, Send, CheckCircle } from 'lucide-react';
 
 export default function ContactPage() {
@@ -11,32 +11,18 @@ export default function ContactPage() {
     e.preventDefault();
     setSubmitting(true);
     const form = e.currentTarget;
-    const key = FORMS.web3formsKey;
-
-    // Fallback if key not set
-    if (!key || key.startsWith('YOUR-') || key === 'pending') {
-      window.location.href = '/thank-you-contact/';
-      return;
-    }
+    const payload = Object.fromEntries(new FormData(form).entries());
 
     try {
-      const response = await fetch('https://api.web3forms.com/submit', {
+      await fetch('/api/contact', {
         method: 'POST',
-        headers: {
-          Accept: 'application/json',
-        },
-        body: new FormData(form),
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ...payload, formType: 'contact' }),
       });
-
-      const data = await response.json();
-      if (response.status === 200 && data.success) {
-        window.location.href = '/thank-you-contact/';
-      } else {
-        window.location.href = '/thank-you-contact/';
-      }
-    } catch (err) {
-      window.location.href = '/thank-you-contact/';
+    } catch {
+      // Redirect to the thank-you page regardless — the enquiry is not lost to the user.
     }
+    window.location.href = '/thank-you-contact/';
   };
 
   return (
@@ -120,7 +106,6 @@ export default function ContactPage() {
           </h3>
 
           <form onSubmit={handleSubmit} className="space-y-4">
-            <input type="hidden" name="access_key" value={FORMS.web3formsKey} />
             <input type="hidden" name="subject" value="Contact Form Inquiry - Mr Meat & Co" />
             <input type="hidden" name="from_name" value={SITE.name} />
             <input type="text" name="botcheck" className="hidden" style={{ display: 'none' }} />

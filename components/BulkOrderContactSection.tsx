@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { SITE, CONTACT, FORMS } from '@/config/site';
+import { SITE, CONTACT } from '@/config/site';
 import { PhoneCall, Send, Mail, MapPin, Truck, CheckCircle2 } from 'lucide-react';
 
 interface BulkOrderContactProps {
@@ -17,31 +17,18 @@ export function BulkOrderContactSection({ productContext, defaultCategory }: Bul
     e.preventDefault();
     setSubmitting(true);
     const form = e.currentTarget;
-    const key = FORMS.web3formsKey;
-
-    if (!key || key.startsWith('YOUR-') || key === 'pending') {
-      window.location.href = '/thank-you-wholesale/';
-      return;
-    }
+    const payload = Object.fromEntries(new FormData(form).entries());
 
     try {
-      const response = await fetch('https://api.web3forms.com/submit', {
+      await fetch('/api/contact', {
         method: 'POST',
-        headers: {
-          Accept: 'application/json',
-        },
-        body: new FormData(form),
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ...payload, formType: 'bulk' }),
       });
-
-      const data = await response.json();
-      if (response.status === 200 && data.success) {
-        window.location.href = '/thank-you-wholesale/';
-      } else {
-        window.location.href = '/thank-you-wholesale/';
-      }
-    } catch (err) {
-      window.location.href = '/thank-you-wholesale/';
+    } catch {
+      // Redirect to the thank-you page regardless.
     }
+    window.location.href = '/thank-you-wholesale/';
   };
 
   return (
@@ -126,7 +113,6 @@ export function BulkOrderContactSection({ productContext, defaultCategory }: Bul
           </p>
 
           <form onSubmit={handleSubmit} className="space-y-4">
-            <input type="hidden" name="access_key" value={FORMS.web3formsKey} />
             <input
               type="hidden"
               name="subject"

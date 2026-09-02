@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useCart } from '@/lib/cart';
-import { SITE, SHOP, CONTACT, FORMS } from '@/config/site';
+import { SITE, SHOP, CONTACT } from '@/config/site';
 import {
   ShoppingBag,
   ShieldCheck,
@@ -85,14 +85,13 @@ export default function CheckoutPage() {
     if (!isMinOrderMet) return;
 
     setIsSubmitting(true);
-    const key = FORMS.web3formsKey;
 
     const itemsList = cart
       .map((i) => `${i.name} (${i.quantity}x) - $${(i.price * i.quantity).toFixed(2)} AUD`)
       .join('\n');
 
     const orderData = {
-      access_key: key,
+      formType: 'order',
       subject: `New Meat Order - ${fullName || 'Customer'} - $${finalTotal.toFixed(2)} AUD`,
       from_name: `${SITE.name} Checkout`,
       name: fullName,
@@ -106,34 +105,17 @@ export default function CheckoutPage() {
       notes: deliveryNotes,
     };
 
-    // If key not set, fallback gracefully
-    if (!key || key.startsWith('YOUR-') || key === 'pending') {
-      setIsSubmitting(false);
-      window.location.href = '/thank-you-order/';
-      return;
-    }
-
     try {
-      const response = await fetch('https://api.web3forms.com/submit', {
+      await fetch('/api/contact', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Accept: 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(orderData),
       });
-
-      const data = await response.json();
-      if (response.status === 200 && data.success) {
-        window.location.href = '/thank-you-order/';
-      } else {
-        window.location.href = '/thank-you-order/';
-      }
-    } catch (err) {
-      window.location.href = '/thank-you-order/';
-    } finally {
-      setIsSubmitting(false);
+    } catch {
+      // Redirect to the thank-you page regardless — order details also go via WhatsApp.
     }
+    setIsSubmitting(false);
+    window.location.href = '/thank-you-order/';
   };
 
   if (cart.length === 0) {

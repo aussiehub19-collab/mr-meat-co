@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { SITE, CONTACT, FORMS } from '@/config/site';
+import { SITE, CONTACT } from '@/config/site';
 import { WholesaleNav } from '@/components/WholesaleNav';
 import { PhoneCall, Mail, MapPin, Truck, Send, CheckCircle2, ChevronRight, Layers } from 'lucide-react';
 
@@ -13,31 +13,18 @@ export default function WholesaleContactPage() {
     e.preventDefault();
     setSubmitting(true);
     const form = e.currentTarget;
-    const key = FORMS.web3formsKey;
-
-    if (!key || key.startsWith('YOUR-') || key === 'pending') {
-      window.location.href = '/thank-you-wholesale/';
-      return;
-    }
+    const payload = Object.fromEntries(new FormData(form).entries());
 
     try {
-      const response = await fetch('https://api.web3forms.com/submit', {
+      await fetch('/api/contact', {
         method: 'POST',
-        headers: {
-          Accept: 'application/json',
-        },
-        body: new FormData(form),
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ...payload, formType: 'bulk' }),
       });
-
-      const data = await response.json();
-      if (response.status === 200 && data.success) {
-        window.location.href = '/thank-you-wholesale/';
-      } else {
-        window.location.href = '/thank-you-wholesale/';
-      }
-    } catch (err) {
-      window.location.href = '/thank-you-wholesale/';
+    } catch {
+      // Redirect to the thank-you page regardless.
     }
+    window.location.href = '/thank-you-wholesale/';
   };
 
   return (
@@ -123,7 +110,6 @@ export default function WholesaleContactPage() {
           </h2>
 
           <form onSubmit={handleSubmit} className="space-y-4">
-            <input type="hidden" name="access_key" value={FORMS.web3formsKey} />
             <input type="hidden" name="subject" value="Large Bulk Order Inquiry - Mr Meat & Co" />
             <input type="hidden" name="from_name" value={SITE.name} />
             <input type="text" name="botcheck" className="hidden" style={{ display: 'none' }} />

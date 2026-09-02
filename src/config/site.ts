@@ -135,11 +135,13 @@ export const SHOP = {
 };
 
 export const FORMS = {
-  provider: "web3forms",
-  // Set NEXT_PUBLIC_WEB3FORMS_KEY in Vercel env vars (Production + Preview).
-  // Web3Forms access keys are public by design, so NEXT_PUBLIC_ is correct.
-  // Falls back to "pending" (forms redirect straight to thank-you, no email) until set.
-  web3formsKey: process.env.NEXT_PUBLIC_WEB3FORMS_KEY || "pending",
+  provider: "smtp",
+  // SMTP credentials live ONLY in Vercel env vars, never in the repo:
+  //   EMAIL_SERVER_HOST / EMAIL_SERVER_PORT / EMAIL_SERVER_SECURE
+  //   EMAIL_SERVER_USER / EMAIL_SERVER_PASSWORD / EMAIL_FROM
+  // All forms POST JSON to /api/contact, which sends via nodemailer (Zoho SMTP).
+  // If the env vars are absent the route simulates success and the form still
+  // redirects to its thank-you page (no email sent) — safe for local/preview.
   contactEmail: "orders@mrmeatandco.com.au",
   orderEmail: "orders@mrmeatandco.com.au",
   wholesaleEmail: "orders@mrmeatandco.com.au",

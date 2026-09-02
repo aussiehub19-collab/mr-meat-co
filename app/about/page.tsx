@@ -7,7 +7,7 @@ import Link from 'next/link';
 
 export const metadata = {
   title: 'About Our Sydney Craft Butcher Workshop',
-  description: 'Mr Meat & Co — an Alexandria, Sydney craft butcher since 2018. 100% Australian grass-fed beef, whole-carcass butchery, cold-chain delivery across NSW and nationwide.',
+  description: 'Mr Meat & Co — an Alexandria, Sydney craft butcher since 2018. 100% Australian grass-fed beef, whole-carcass butchery, cold-chain across NSW and nationwide.',
   alternates: {
     canonical: `https://${SITE.domain}/about/`,
   },

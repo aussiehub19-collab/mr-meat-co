@@ -5,9 +5,9 @@ import { HelpCircle } from 'lucide-react';
 import Link from 'next/link';
 
 export const metadata = {
-  title: 'FAQ | Delivery, Payment, Cuts & Bulk Meat Orders',
+  title: 'FAQ | Delivery, Payment, Cuts & Bulk Orders',
   description:
-    'Answers on cold-chain meat delivery across NSW and nationwide, the $300 minimum order, the crypto-only 10% discount, grass-fed provenance, cuts and wholesale shares.',
+    'Answers on cold-chain meat delivery across NSW and nationwide, the $300 minimum, the crypto-only 10% discount, grass-fed provenance, cuts and bulk shares.',
   alternates: {
     canonical: `https://${SITE.domain}/faq/`,
   },

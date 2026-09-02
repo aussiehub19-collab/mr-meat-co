@@ -1,12 +1,13 @@
 import type { Metadata } from 'next';
-import { SITE, abs } from '@/config/site';
+import { SITE, abs, metaDesc } from '@/config/site';
 import { JsonLd } from '@/components/JsonLd';
 import { WholesaleClient } from './WholesaleClient';
 
 export const metadata: Metadata = {
-  title: 'Wholesale & Bulk Meat Supply | Restaurant & Trade',
-  description:
-    'Wholesale and bulk meat from an Australian craft butcher — bulk cartons, quarter/half/whole animal shares, custom cut sheets and standing restaurant supply. NSW cold-chain, national frozen freight.',
+  title: 'Wholesale & Bulk Meat | Restaurant & Trade Supply',
+  description: metaDesc(
+    'Wholesale and bulk meat from an Australian craft butcher — bulk cartons, quarter/half/whole animal shares, custom cut sheets and standing restaurant supply. NSW cold-chain, national frozen freight.'
+  ),
   alternates: { canonical: `https://${SITE.domain}/wholesale/` },
   openGraph: {
     title: 'Wholesale & Bulk Meat Supply — Mr Meat & Co',

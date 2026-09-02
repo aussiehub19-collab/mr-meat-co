@@ -1,9 +1,9 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Product } from '@/config/site';
+import { Product, SHOP } from '@/config/site';
 import { useCart } from '@/lib/cart';
-import { Plus, Minus, ShoppingBag, Check } from 'lucide-react';
+import { Plus, Minus, ShoppingBag, Check, Bitcoin } from 'lucide-react';
 
 export function ProductAddToCartForm({ product }: { product: Product }) {
   const [quantity, setQuantity] = useState(1);
@@ -25,9 +25,13 @@ export function ProductAddToCartForm({ product }: { product: Product }) {
     setTimeout(() => setAdded(false), 2000);
   };
 
-  const totalPrice = product.price !== null && product.price !== undefined
-    ? `$${(product.price * quantity).toFixed(2)} AUD`
+  const hasPrice = product.price !== null && product.price !== undefined;
+  const totalPrice = hasPrice
+    ? `$${(product.price! * quantity).toFixed(2)} AUD`
     : 'Inquire for Market Price';
+  const cryptoTotal = hasPrice
+    ? product.price! * quantity * (1 - SHOP.cryptoDiscount / 100)
+    : null;
 
   return (
     <div className="space-y-4 pt-4 border-t border-[#991B1B]/40">
@@ -75,6 +79,16 @@ export function ProductAddToCartForm({ product }: { product: Product }) {
           </>
         )}
       </button>
+
+      {cryptoTotal !== null && (
+        <div className="flex items-center gap-2 rounded-xl border border-emerald-500/40 bg-emerald-950/30 px-3 py-2 text-xs font-bold text-emerald-300">
+          <Bitcoin className="w-4 h-4 shrink-0 text-emerald-400" />
+          <span>
+            Pay with PayID or Crypto (BTC / USDT) and pay{' '}
+            <span className="text-white">${cryptoTotal.toFixed(2)} AUD</span> — save {SHOP.cryptoDiscount}%
+          </span>
+        </div>
+      )}
     </div>
   );
 }

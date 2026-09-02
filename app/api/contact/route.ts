@@ -148,12 +148,17 @@ export async function POST(req: NextRequest) {
 export async function GET(req: NextRequest) {
   const base = {
     smtpConfigured,
-    host: EMAIL_SERVER_HOST ? "set" : "missing",
-    port: EMAIL_SERVER_PORT ? "set" : "missing",
+    // Hostnames/ports aren't secret — show them so a wrong Zoho data-centre
+    // host (smtp.zoho.com vs .com.au vs .eu vs .in) is obvious.
+    host: EMAIL_SERVER_HOST ?? "(missing)",
+    port: EMAIL_SERVER_PORT ?? "(missing)",
     secure: EMAIL_SERVER_SECURE ?? "(unset)",
     user: EMAIL_SERVER_USER ? "set" : "missing",
-    password: EMAIL_SERVER_PASSWORD ? "set" : "missing",
-    from: EMAIL_FROM ? "set" : "missing",
+    passwordLength: EMAIL_SERVER_PASSWORD ? EMAIL_SERVER_PASSWORD.length : 0,
+    passwordHasWhitespace: EMAIL_SERVER_PASSWORD
+      ? /\s/.test(EMAIL_SERVER_PASSWORD)
+      : false,
+    from: EMAIL_FROM ?? "(missing)",
   };
 
   if (new URL(req.url).searchParams.get("verify") !== "1" || !smtpConfigured) {

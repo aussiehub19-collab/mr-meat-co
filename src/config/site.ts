@@ -214,11 +214,9 @@ export const BRAND = {
     { year: "2020", event: "Launched cold-chain online ordering for Australian home cooks." },
     { year: "2024", event: "Standardised a clean Australian meat catalogue taxonomy across 11 core categories." },
   ],
-  sameAs: [
-    "https://facebook.com/mrmeatandco.sydney",
-    "https://instagram.com/mrmeatandco_sydney",
-    "https://linkedin.com/company/mrmeatandco"
-  ],
+  // Add real, live profile URLs only. Fake sameAs entries weaken the entity
+  // signal (Google follows them). Empty until the accounts actually exist.
+  sameAs: [] as string[],
   awards: ["Sydney Fine Food Produce Gold Award 2024", "NSW Australian Meat Industry Council Retailer 2025"],
 };
 

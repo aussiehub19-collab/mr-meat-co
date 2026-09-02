@@ -60,7 +60,7 @@ export default function HomePage() {
       areaServed: 'AU',
       availableLanguage: 'en',
     },
-    sameAs: BRAND.sameAs,
+    ...(BRAND.sameAs.length ? { sameAs: BRAND.sameAs } : {}),
     areaServed: ['New South Wales', 'Sydney Metro', 'Central Coast NSW', 'Wollongong', 'Australia'],
     numberOfItems: PRODUCTS.length,
     knowsAbout: ['Grass-Fed Beef', 'Premium Beef Mince', 'Dry-Aged Wagyu', 'Australian Lamb', 'Artisanal Sausages'],

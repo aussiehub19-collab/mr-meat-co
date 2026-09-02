@@ -52,6 +52,8 @@ export default function HomePage() {
       addressCountry: CONTACT.country,
     },
     url: `https://${SITE.domain}/`,
+    logo: `https://${SITE.domain}/images/logo.png`,
+    image: `https://${SITE.domain}/og-card.png`,
     telephone: CONTACT.phone,
     contactPoint: {
       '@type': 'ContactPoint',

@@ -4,10 +4,10 @@ import React, { useState, useEffect } from 'react';
 import { Truck, ShieldCheck, Percent, PhoneCall } from 'lucide-react';
 
 const announcements = [
-  { icon: Truck, text: 'FREE Cold-Chain Refrigerated Delivery on All Sydney Orders ($300 Minimum Order)' },
+  { icon: Truck, text: 'FREE Cold-Chain Refrigerated Delivery Across NSW on Orders $300+ · Frozen Express Courier Australia-Wide' },
   { icon: Percent, text: 'Instant 10% Discount when you pay with Crypto (BTC / USDT)' },
   { icon: ShieldCheck, text: '100% Australian Pasture-Raised & Hormone-Free Beef Guaranteed' },
-  { icon: PhoneCall, text: 'Same-Day Butcher Dispatch Available Across Greater Sydney' },
+  { icon: PhoneCall, text: 'Ground Fresh Daily & Dispatched from Our Alexandria, Sydney Butchery' },
 ];
 
 export function AnnouncementBar() {

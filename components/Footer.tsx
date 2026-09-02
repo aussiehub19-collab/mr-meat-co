@@ -123,7 +123,7 @@ export function Footer() {
             <div className="pt-2 text-xs text-gray-300 space-y-1">
               <div className="flex items-center space-x-1 text-red-400 font-semibold">
                 <Truck className="w-3.5 h-3.5" />
-                <span>Free Express Cold-Chain Delivery (All Orders, $300 Min)</span>
+                <span>Free Cold-Chain Delivery Across NSW ($300 Min) · Frozen Courier Australia-Wide</span>
               </div>
               <div className="flex items-center space-x-1 text-gray-300">
                 <ShieldCheck className="w-3.5 h-3.5 text-red-400" />

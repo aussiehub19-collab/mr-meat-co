@@ -230,7 +230,7 @@ export default async function BulkProductDetailPage({
           <div className="p-4 bg-[#1A1A1A] rounded-2xl border border-[#991B1B]/40 space-y-2.5 text-xs text-gray-300">
             <div className="flex items-center space-x-2 font-bold text-red-400">
               <Truck className="w-4 h-4 text-red-400 shrink-0" />
-              <span>Cold-Chain Refrigerated Delivery across Greater Sydney Metro</span>
+              <span>Cold-Chain Refrigerated Delivery across NSW · Frozen Courier Australia-Wide</span>
             </div>
             <div className="flex items-center space-x-2 font-bold text-amber-300">
               <CalendarClock className="w-4 h-4 text-amber-400 shrink-0" />

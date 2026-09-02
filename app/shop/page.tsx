@@ -14,7 +14,7 @@ export const metadata = {
     : 'Shop All Fresh Beef, Lamb, Poultry & Butcher Boxes',
   description:
     shopSeo?.description ??
-    'Browse 100% Australian grass-fed beef mince, Wagyu steaks, pasture-raised lamb cutlets, and bulk butcher boxes. Temperature-controlled delivery across Greater Sydney.',
+    'Browse 100% Australian grass-fed beef mince, Wagyu steaks, pasture-raised lamb cutlets, and bulk butcher boxes. Cold-chain delivery across NSW; frozen courier Australia-wide.',
   alternates: {
     canonical: `https://${SITE.domain}/shop/`,
   },
@@ -57,7 +57,7 @@ export default function ShopIndexPage() {
         </h1>
         <p className="text-gray-300 text-sm max-w-3xl leading-relaxed">
           {shopSeo?.intro ??
-            'Filter through all 11 artisanal butcher categories, subcategories, and specialty meat cuts. Ground fresh daily in Alexandria with zero preservatives or fillers. Cold-chain refrigerated express delivery across Greater Sydney.'}
+            'Filter through all 11 artisanal butcher categories, subcategories, and specialty meat cuts. Ground fresh daily in Alexandria with zero preservatives or fillers. Cold-chain refrigerated delivery across NSW, frozen express courier Australia-wide.'}
         </p>
       </div>
 

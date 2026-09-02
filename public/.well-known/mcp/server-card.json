@@ -66,7 +66,8 @@
       "payment": ["PayID", "Direct Bank Transfer", "crypto-BTC", "crypto-USDT"],
       "currency": "AUD",
       "minimumOrder": "300 AUD",
-      "freeShipping": "300 AUD"
+      "freeShipping": "Free on NSW orders 300 AUD+; interstate orders pay a quoted frozen-courier freight fee",
+      "ships": "All of NSW by refrigerated cold-chain van; rest of Australia by frozen express courier. Dispatched from Alexandria, Sydney."
     }
   },
   "legal": {

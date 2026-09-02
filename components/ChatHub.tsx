@@ -109,7 +109,7 @@ export function ChatHub() {
 
           <div className="pt-2 border-t border-[#991B1B]/30 text-[11px] text-gray-400 flex items-center space-x-1.5">
             <ShieldCheck className="w-4 h-4 text-red-400 shrink-0" />
-            <span>Sydney Cold-Chain Express Delivery guaranteed.</span>
+            <span>Cold-chain delivery across NSW · frozen courier Australia-wide.</span>
           </div>
         </div>
       )}

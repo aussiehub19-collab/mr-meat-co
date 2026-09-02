@@ -29,14 +29,14 @@ URL: https://mrmeatandco.com.au${url.pathname}
 ## Overview
 100% Australian grass-fed beef mince, Wagyu steaks, pasture-raised lamb cutlets, and fresh poultry.
 Ground fresh daily in Sydney with zero preservatives or fillers.
-Refrigerated cold-chain express delivery across Sydney Metro, Wollongong, and Central Coast.
+Refrigerated cold-chain van delivery across all of NSW (Sydney Metro + regional incl. Wollongong and Central Coast); rest of Australia shipped snap-frozen by express courier.
 
 ## Business
 - Mr Meat & Co — ABN 71 635 847 908
 
 ## Key Services & Features
 - Minimum Order: $300 AUD
-- Free Cold-Chain Delivery on orders over $300 AUD
+- Free cold-chain delivery on NSW orders over $300 AUD; interstate orders over $300 pay a quoted frozen-courier freight fee
 - 10% instant discount when paying with crypto (BTC, USDT); PayID and bank transfer also accepted
 - Human-in-the-loop WhatsApp order preparation: +61420126562
 - Public Agent MCP Server Endpoint: https://mrmeatandco.com.au/api/mcp

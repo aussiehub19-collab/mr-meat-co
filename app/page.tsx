@@ -49,7 +49,7 @@ export default function HomePage() {
     },
     url: `https://${SITE.domain}/`,
     sameAs: BRAND.sameAs,
-    areaServed: ['Sydney Metro', 'Greater Sydney', 'Central Coast NSW', 'Wollongong'],
+    areaServed: ['New South Wales', 'Sydney Metro', 'Central Coast NSW', 'Wollongong', 'Australia'],
     numberOfItems: PRODUCTS.length,
     knowsAbout: ['Grass-Fed Beef', 'Premium Beef Mince', 'Dry-Aged Wagyu', 'Australian Lamb', 'Artisanal Sausages'],
     priceRange: '$',
@@ -105,8 +105,8 @@ export default function HomePage() {
               <Truck className="w-6 h-6" />
             </div>
             <div>
-              <h4 className="font-bold text-white text-sm">Free Express Cold-Chain</h4>
-              <p className="text-xs text-gray-400 mt-1">Free refrigerated truck delivery across Sydney on all orders (${SHOP.freeShippingThreshold} minimum order).</p>
+              <h4 className="font-bold text-white text-sm">Free Cold-Chain Across NSW</h4>
+              <p className="text-xs text-gray-400 mt-1">Free refrigerated van delivery across NSW on orders ${SHOP.freeShippingThreshold}+. Shipped frozen by express courier elsewhere in Australia.</p>
             </div>
           </div>
 
@@ -183,7 +183,7 @@ export default function HomePage() {
               About Mr Meat & Co Workshop in Alexandria, Sydney
             </h2>
             <p className="text-gray-300 text-sm leading-relaxed">
-              Founded in {BRAND.foundingYear} at {BRAND.foundingLocation}, Mr Meat & Co was built on an uncompromising principle: delivering 100% Australian pasture-raised and grass-fed meats directly from local farms to Sydney households with zero middlemen or artificial additives.
+              Founded in {BRAND.foundingYear} at {BRAND.foundingLocation}, Mr Meat & Co was built on an uncompromising principle: delivering 100% Australian pasture-raised and grass-fed meats directly from local farms to households across NSW and — shipped frozen by express courier — nationwide, with zero middlemen or artificial additives.
             </p>
 
             <div className="space-y-3 pt-2">
@@ -236,7 +236,7 @@ export default function HomePage() {
               Supplying Sydney&apos;s Top Restaurants & Cafes
             </h3>
             <p className="text-xs sm:text-sm text-gray-300 leading-relaxed">
-              Custom portion cuts, vacuum sealing, volume tier discounts, and scheduled morning delivery across Greater Sydney for chefs, restaurants, and caterers.
+              Custom portion cuts, vacuum sealing, volume tier discounts, and scheduled morning delivery across Sydney and NSW for chefs, restaurants, and caterers.
             </p>
           </div>
           <Link

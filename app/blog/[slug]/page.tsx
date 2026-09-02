@@ -177,7 +177,7 @@ export default async function BlogArticlePage({
       {/* Bottom CTA Box */}
       <div className="bg-[#141414] text-white p-8 rounded-3xl space-y-4 text-center border border-[#991B1B]/50 shadow-xl">
         <h3 className="text-xl font-bold font-serif">
-          {post.cta?.note || '100% Australian meat, delivered cold-chain across Sydney.'}
+          {post.cta?.note || '100% Australian meat — cold-chain across NSW, frozen courier Australia-wide.'}
         </h3>
         <Link
           href={post.cta?.href || '/shop/'}

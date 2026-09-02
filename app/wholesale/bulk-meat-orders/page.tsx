@@ -119,7 +119,7 @@ export default function BulkMeatOrdersPage() {
             </div>
             <div className="flex items-center gap-1.5 bg-[#1C1414] px-3 py-1.5 rounded-lg border border-red-900/30">
               <CheckCircle className="w-4 h-4 text-emerald-400 shrink-0" />
-              <span>Sydney Metro Service</span>
+              <span>NSW Van Delivery + National Frozen Courier</span>
             </div>
           </div>
         </div>

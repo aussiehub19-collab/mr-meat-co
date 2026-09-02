@@ -9509,8 +9509,8 @@ export const PAGE_SEO: Record<string, PageSeo> = {
     primaryKeyword: "meat box delivery",
     supportingKeywords: ["meat delivery sydney", "meat subscription", "online butcher australia", "grass fed meat delivery", "butcher delivered sydney"],
     faqs: [
-      { question: "Do you deliver meat across Sydney?", answer: "Yes — we deliver refrigerated cold-chain across Greater Sydney Metro, plus Wollongong and the Central Coast. Orders are packed cold and run on refrigerated vans so the box is still cold at your door." },
-      { question: "What's the minimum order for delivery?", answer: "$300 AUD. Every order over $300 gets free temperature-controlled delivery — there's no separate delivery fee to work around." },
+      { question: "Where do you deliver?", answer: "Refrigerated cold-chain vans cover the whole of NSW — Sydney Metro plus regional runs including Wollongong and the Central Coast. Everywhere else in Australia is served by frozen express courier. Orders are packed cold so the box is still cold at your door." },
+      { question: "What's the minimum order for delivery?", answer: "$300 AUD. Orders over $300 get free temperature-controlled delivery anywhere in NSW; interstate orders over $300 pay only a quoted frozen-courier freight fee." },
       { question: "Is all your meat Australian and grass-fed?", answer: "Our beef and lamb are 100% Australian grass-fed and pasture-raised. Chicken is free-range, pork is Australian, and everything is cut or ground fresh in our Alexandria butchery with no added water, fillers or preservative." },
       { question: "How does the 10% discount work?", answer: "Pay with cryptocurrency (Bitcoin or Tether/USDT) and 10% comes off your order total automatically. PayID and bank transfer are also accepted with no card surcharge, but no discount." },
       { question: "Can I order a meat box or a subscription?", answer: "Yes — choose from family, value, premium-steak, lean meal-prep and BBQ boxes, or build your own. Boxes can be ordered one-off or on a repeat schedule." },
@@ -9525,7 +9525,7 @@ export const PAGE_SEO: Record<string, PageSeo> = {
     supportingKeywords: ["meat online", "online butcher", "order meat online australia", "fresh meat delivery", "butcher box online"],
     faqs: [
       { question: "How fresh is the meat when it arrives?", answer: "Cut or ground the day it's dispatched and chilled to 0–2°C before packing. Mince and sausages keep 2–3 days in the fridge, steaks and chops 3–5, whole-muscle roasts 4–6 — freeze anything beyond that." },
-      { question: "What areas do you deliver to?", answer: "Greater Sydney Metro, Wollongong and the Central Coast for retail orders. Wholesale and bulk orders can be delivered Australia-wide." },
+      { question: "What areas do you deliver to?", answer: "All of NSW by refrigerated cold-chain van — Sydney Metro plus regional runs including Wollongong and the Central Coast. Everywhere else in Australia is served by frozen express courier, with freight quoted at checkout." },
       { question: "Can I filter by cut, cooking style or price?", answer: "Yes — the shop filters by category and subcategory, by cut and cooking style (steaks, mince, slow-cook, BBQ, ready-to-cook), by attributes like grass-fed and high-protein, and by price band." },
     ],
   },
@@ -9653,7 +9653,7 @@ export const PAGE_SEO: Record<string, PageSeo> = {
       { question: "What specialty and game meats do you stock?", answer: "Kangaroo, venison, wild boar, rabbit, goat, rose veal, plus crocodile and emu. Cuts range from steaks and fillets to mince, sausages, osso buco and curry pieces." },
       { question: "Is the game meat farmed or wild?", answer: "Kangaroo is wild-harvested under government quota. Venison and rabbit are farmed. Wild boar is wild-harvested. All from licensed processors." },
       { question: "How do I cook lean game meat without drying it out?", answer: "Fast cuts (backstrap, fillet, kangaroo steak) — hot and quick, rare to medium-rare, then rest. Tough cuts (shoulder, shank, diced) — a slow 2–3 hour braise with added fat. Never cook lean game past medium." },
-      { question: "Do you deliver specialty meat Australia-wide?", answer: "Retail delivery is Sydney Metro, Wollongong and the Central Coast. Larger specialty and bulk orders can be shipped frozen Australia-wide." },
+      { question: "Do you deliver specialty meat Australia-wide?", answer: "Yes. Cold-chain van delivery covers all of NSW; specialty and game orders to the rest of Australia are shipped snap-frozen by express courier." },
     ],
   },
   "/seafood/": {
@@ -9918,7 +9918,7 @@ export const PAGE_SEO: Record<string, PageSeo> = {
       { question: "Is it farmed or wild-harvested?", answer: "Venison and rabbit are farmed; wild boar is wild-harvested; crocodile and emu are farmed. All from licensed processors." },
       { question: "How do I cook lean venison so it's not dry?", answer: "Fast cuts like backstrap: hot and quick, pull at 52–55°C, rest. Shoulder and shank: braise 2.5–3 hours with stock, wine and added fat. Never cook fast venison cuts past medium." },
       { question: "Venison vs beef — nutrition?", answer: "Venison has roughly a third of the fat of a lean beef steak, similar or higher protein, and more iron, with a slightly sweet, more mineral flavour." },
-      { question: "Do you ship game meat Australia-wide?", answer: "Yes — game and specialty meat can be shipped frozen Australia-wide; retail cold-chain delivery covers Sydney, Wollongong and the Central Coast." },
+      { question: "Do you ship game meat Australia-wide?", answer: "Yes — game and specialty meat ship snap-frozen by express courier anywhere in Australia; refrigerated cold-chain van delivery covers all of NSW." },
     ],
   },
   "/specialty-meat/rabbit/": {
@@ -10058,7 +10058,7 @@ export const PAGE_SEO: Record<string, PageSeo> = {
       { question: "What's your minimum wholesale order?", answer: "Bulk cartons start at 5kg per line. Carcass shares start at a quarter beast. Restaurant supply is arranged per account — contact us with your volumes." },
       { question: "Do you supply restaurants and cafés?", answer: "Yes — standing weekly orders, custom cuts and cut sheets, and delivery scheduled around your service." },
       { question: "How does carcass / bulk pricing work?", answer: "Carcass shares are priced per kg of hanging weight, cut to your sheet — typically 20–35% below buying the same cuts individually. Cartons are priced per kg at a bulk rate." },
-      { question: "Delivery for wholesale orders?", answer: "Cold-chain across Sydney Metro, and frozen Australia-wide for larger orders. Be home with freezer space cleared for a carcass share." },
+      { question: "Delivery for wholesale orders?", answer: "Cold-chain van across all of NSW, and snap-frozen by courier Australia-wide for larger orders. Be home with freezer space cleared for a carcass share." },
       { question: "Can I get a custom cut sheet?", answer: "Yes — you specify steak thickness, roast sizes, mince vs diced ratio, and whether you want offal, bones and sausages made from the trim. We have a sensible standard sheet too." },
     ],
   },
@@ -10191,12 +10191,12 @@ export const PAGE_SEO: Record<string, PageSeo> = {
 
 export const FAQ: FAQItem[] = [
   {
-    question: "Do you deliver meat across Sydney?",
-    answer: "Yes — we deliver refrigerated cold-chain across Greater Sydney Metro, plus Wollongong and the Central Coast. Every order is packed cold with gel ice and run on temperature-controlled vans, so the box is still cold when it reaches your door. Choose your delivery day at checkout.",
+    question: "Where do you deliver?",
+    answer: "We run refrigerated cold-chain vans across the whole of NSW — Sydney Metro plus regional runs including Wollongong and the Central Coast. Everywhere else in Australia, your order is snap-frozen, packed in insulated boxes and sent by express courier. Every order is packed cold with gel ice so it's still cold when it reaches your door. Choose your delivery day at checkout.",
   },
   {
     question: "What's the minimum order, and is delivery free?",
-    answer: "The minimum order is $300 AUD. Every order over $300 gets free temperature-controlled delivery across Sydney Metro and surrounding NSW — there's no separate delivery fee to work around.",
+    answer: "The minimum order is $300 AUD. Orders over $300 get free temperature-controlled delivery anywhere in NSW — no separate delivery fee. Interstate orders over $300 pay a frozen-courier freight fee, quoted at checkout or on request.",
   },
   {
     question: "Is all your meat 100% Australian and grass-fed?",
@@ -10232,19 +10232,19 @@ export const FAQ_GROUPS: FaqGroup[] = [
   {
     heading: "Delivery, freshness & storage",
     items: [
-      { question: "What days do you deliver and how far do you ship?", answer: "We run refrigerated vans across Greater Sydney Metro most weekdays, with set weekly runs to Wollongong and the Central Coast. You pick an available delivery day at checkout. Larger and bulk orders can be sent snap-frozen by courier further afield in NSW — ask us first." },
+      { question: "What days do you deliver and how far do you ship?", answer: "We run refrigerated vans across Greater Sydney Metro most weekdays, with set weekly runs to Wollongong, the Central Coast and regional NSW. You pick an available delivery day at checkout. Anywhere else in Australia, orders are snap-frozen and sent by express courier — freight is quoted at checkout." },
       { question: "Is the meat fresh or frozen when it arrives?", answer: "Most retail cuts arrive fresh chilled and vacuum-sealed. Some items — game, specialty meat, bulk cartons and anything travelling a long distance — arrive snap-frozen. Each product page states its storage type, and frozen items are labelled clearly." },
       { question: "How is the cold chain maintained — will it still be cold at my door?", answer: "Orders are packed into insulated liners with frozen gel packs and carried on temperature-controlled vans. A typical Sydney Metro delivery keeps meat below 4°C the whole way. If your order ever arrives above temperature, photograph it and contact us the same day for a replacement or refund." },
       { question: "How long does the meat last once delivered?", answer: "Fresh chilled cuts keep 3–4 days in the coldest part of your fridge in their unopened vacuum pack; mince and sausages, 2–3 days. Freeze anything you won't use in that window — vacuum-sealed cuts hold quality 6–12 months at -18°C." },
       { question: "Can I freeze the meat when it arrives?", answer: "Yes. Freeze it on the day of delivery while it's at peak freshness, ideally in its original vacuum pack. Portion mince and sausages into meal-size amounts first. Thaw in the fridge overnight, never on the bench, and don't refreeze raw meat once thawed." },
       { question: "What happens if I'm not home for delivery?", answer: "Leave delivery notes at checkout — most customers have the box left in a shaded spot or with a neighbour. The insulated packaging holds temperature for a few hours. If you know you'll be out all day, choose a different delivery date; we can't guarantee safety for a box left in the sun." },
-      { question: "Do you deliver to Wollongong, the Central Coast or Newcastle?", answer: "Wollongong and the Central Coast are on scheduled weekly runs — the checkout will show the next available date. Newcastle and the wider Hunter aren't on a standing route yet, but larger orders can be sent frozen by courier. Contact us with your postcode before ordering." },
+      { question: "Do you deliver to Wollongong, the Central Coast, Newcastle or interstate?", answer: "Wollongong, the Central Coast and much of regional NSW are on scheduled cold-chain van runs — the checkout shows the next available date. Newcastle and the Hunter, and everywhere outside NSW, are served by frozen express courier; the checkout quotes the freight. Contact us with your postcode if you're not sure." },
     ],
   },
   {
     heading: "Ordering, pricing & payment",
     items: [
-      { question: "What's the minimum order value?", answer: "$300 AUD. Orders at or above $300 get free temperature-controlled delivery across Sydney Metro and the scheduled NSW runs, so there's no delivery fee on top." },
+      { question: "What's the minimum order value?", answer: "$300 AUD. Orders at or above $300 get free temperature-controlled delivery anywhere in NSW, so there's no delivery fee on top. Interstate orders over $300 pay only a frozen-courier freight fee, quoted at checkout." },
       { question: "How do I get the 10% discount?", answer: "Pay in cryptocurrency — Bitcoin (BTC) or Tether (USDT). The 10% comes off automatically when you choose crypto at checkout. It's crypto only: PayID and bank transfer are fee-free but don't earn the discount." },
       { question: "Do you charge a card or payment surcharge?", answer: "No. PayID and direct bank transfer are completely fee-free. We don't accept credit cards at all, so there's no card surcharge to worry about. Crypto payments additionally get the 10% discount." },
       { question: "Can I change or cancel an order?", answer: "Yes, up until your order is packed — usually the afternoon before your delivery date. Contact us as early as you can. Once an order is cut, packed and loaded we can't recall it, but we'll always sort out genuine mistakes." },
@@ -10286,7 +10286,7 @@ export const FAQ_GROUPS: FaqGroup[] = [
       { question: "How do you cook kangaroo so it stays tender?", answer: "Steaks and fillet: sear hard and fast, about 2 minutes a side for a 2cm steak, pull at 52–55°C internal, then rest 5 minutes. Diced kangaroo needs the opposite — a slow 2-hour braise. A little oil in a marinade replaces the fat the meat lacks." },
       { question: "Does kangaroo taste gamey?", answer: "Only mildly — a clean, slightly sweet, iron-rich flavour that's closer to good grass-fed beef than to venison. Cooking it past medium is what makes it taste strong and livery." },
       { question: "What is veal and is yours ethically raised?", answer: "Veal is meat from young cattle. Ours is Australian rose veal — calves raised in groups with room to move, producing pale pink meat, not the immobilised-crate 'white veal' system that's been abandoned here. It's mild, lean and fine-grained. See the veal page and the veal explainer on the blog." },
-      { question: "Where can I buy goat, rabbit or game meat in Australia?", answer: "All of them are on our specialty meat pages — goat (curry pieces, shoulder, ribs), farmed rabbit (whole, jointed, loin), and game including venison, wild boar, crocodile and emu. Retail delivery is Sydney and nearby NSW; larger orders ship frozen Australia-wide." },
+      { question: "Where can I buy goat, rabbit or game meat in Australia?", answer: "All of them are on our specialty meat pages — goat (curry pieces, shoulder, ribs), farmed rabbit (whole, jointed, loin), and game including venison, wild boar, crocodile and emu. Cold-chain van delivery covers all of NSW; orders elsewhere in Australia ship snap-frozen by express courier." },
     ],
   },
   {
@@ -10306,7 +10306,7 @@ export const FAQ_GROUPS: FaqGroup[] = [
       { question: "What's in a quarter, half or whole beef share, and how much freezer space do I need?", answer: "A share is a spread of premium steaks, roasting and casserole cuts, and mince and diced from the trim — roughly 25–30% premium, 30–35% roasts, 25–30% mince. A quarter is about 40–55kg of packed meat (needs ~85L of freezer), a half 80–110kg (a dedicated 200–250L chest freezer), a whole 160–220kg." },
       { question: "How does carcass or bulk pricing work?", answer: "Carcass shares are priced per kg of hanging weight and cut to your sheet — typically 20–35% below buying the same cuts individually. Bulk cartons are priced per kg at a flat bulk rate. You pay for the actual finished weight." },
       { question: "Can I choose my own cuts with a cut sheet?", answer: "Yes. For an animal share you specify steak thickness, roast sizes, the mince-to-diced ratio, and whether you want the bones, offal and sausages made from the trim. We have a sensible standard sheet if you'd rather not decide every line." },
-      { question: "Do you deliver bulk orders Australia-wide?", answer: "Cold-chain delivery covers Sydney Metro and the scheduled NSW runs. For a full carcass share, be home with freezer space cleared. Larger frozen cartons can be sent interstate by courier — ask for a freight quote." },
+      { question: "Do you deliver bulk orders Australia-wide?", answer: "Refrigerated cold-chain van delivery covers all of NSW. For a full carcass share, be home with freezer space cleared. Frozen cartons are sent interstate by express courier — the checkout quotes the freight, or ask us." },
     ],
   },
   {
@@ -10345,5 +10345,5 @@ export const COMPLIANCE = {
   ageGate: false,
   ageMinimum: null,
   gdpr: true,
-  disclaimer: "All prices in AUD and include GST where applicable. Free delivery on all orders ($300 minimum order) across Sydney Metro.",
+  disclaimer: "All prices in AUD and include GST where applicable. Free cold-chain delivery across NSW on orders $300+; interstate orders ship frozen by courier with freight quoted at checkout.",
 };

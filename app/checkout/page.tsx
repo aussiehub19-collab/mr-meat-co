@@ -63,13 +63,13 @@ export default function CheckoutPage() {
       `*CUSTOMER DETAILS*\n` +
       `• Name: ${fullName || 'Not specified'}\n` +
       `• Phone/WhatsApp: ${phone || 'Not specified'}\n` +
-      `• Delivery Address: ${address ? `${address}, ${suburb} NSW ${postcode}` : 'Greater Sydney Delivery'}\n` +
+      `• Delivery Address: ${address ? `${address}, ${suburb} ${postcode}` : 'To be confirmed'}\n` +
       `${deliveryNotes ? `• Cutting Notes: ${deliveryNotes}\n` : ''}` +
       `━━━━━━━━━━━━━━━━━━━━━━━━━━\n` +
       `*ORDER ITEMS*\n${itemsList}\n` +
       `━━━━━━━━━━━━━━━━━━━━━━━━━━\n` +
       `• Subtotal: $${subtotal.toFixed(2)} AUD\n` +
-      `• Sydney Express Cold-Chain Delivery: FREE\n` +
+      `• Delivery: Free cold-chain within NSW · interstate freight quoted separately\n` +
       `${paymentOption === 'crypto' ? `• Crypto 10% Discount: -$${cryptoDiscountAmount.toFixed(2)} AUD\n` : ''}` +
       `• *TOTAL PAYABLE: $${finalTotal.toFixed(2)} AUD*\n` +
       `• *Payment Method:* ${paymentOption.toUpperCase()}\n\n` +
@@ -97,7 +97,7 @@ export default function CheckoutPage() {
       name: fullName,
       phone,
       email,
-      address: `${address}, ${suburb} NSW ${postcode}`,
+      address: `${address}, ${suburb} ${postcode}`,
       payment_method: paymentOption.toUpperCase(),
       subtotal: `$${subtotal.toFixed(2)} AUD`,
       total: `$${finalTotal.toFixed(2)} AUD`,
@@ -245,13 +245,13 @@ export default function CheckoutPage() {
               </div>
 
               <div className="space-y-1.5">
-                <label className="block font-bold text-gray-200">Suburb (Greater Sydney) *</label>
+                <label className="block font-bold text-gray-200">Suburb &amp; State *</label>
                 <input
                   type="text"
                   required
                   value={suburb}
                   onChange={(e) => setSuburb(e.target.value)}
-                  placeholder="e.g. Alexandria / Surry Hills"
+                  placeholder="e.g. Alexandria NSW / Fitzroy VIC"
                   className="w-full px-4 py-3 bg-[#1C1212] border border-[#991B1B]/40 rounded-xl text-white placeholder-gray-500 text-sm focus:outline-none focus:border-red-500"
                 />
               </div>

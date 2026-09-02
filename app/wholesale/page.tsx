@@ -302,7 +302,7 @@ export default function WholesalePage() {
             <Truck className="w-8 h-8 text-red-500" />
             <h3 className="font-bold text-white font-serif text-lg">Dedicated Cold-Chain Logistics</h3>
             <p className="text-xs text-gray-300 leading-relaxed">
-              Temperature-monitored refrigerated van delivery scheduled 6 days a week across Sydney Metro and Greater Western Sydney.
+              Temperature-monitored refrigerated van delivery 6 days a week across Sydney and NSW, with frozen express-courier dispatch to the rest of Australia.
             </p>
           </div>
 

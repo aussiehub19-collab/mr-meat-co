@@ -98,7 +98,7 @@ export function BulkOrderContactSection({ productContext, defaultCategory }: Bul
               <span>Cold-Chain Delivery & Lead Times</span>
             </div>
             <p className="text-[11px] text-gray-400 leading-relaxed">
-              Animal shares and bulk multi-box orders are cut fresh to order. Typical lead time is 3 to 7 business days from order confirmation to refrigerated delivery across Sydney.
+              Animal shares and bulk multi-box orders are cut fresh to order. Typical lead time is 3 to 7 business days from order confirmation to refrigerated delivery across NSW, or frozen courier dispatch Australia-wide.
             </p>
           </div>
         </div>

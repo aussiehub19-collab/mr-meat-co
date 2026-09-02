@@ -21,15 +21,16 @@ Never hand-edit generated files (`llms.txt`, `.well-known/*`, `vercel.json`) —
 - Framework Preset on Vercel must be "Next.js".
 
 ## Live Placeholders
-- Domain: `mrmeatandco.com.au` (PLACEHOLDER — not a registered domain yet; site runs on its Vercel URL. Swap `SITE.domain` in `src/config/site.ts` when the real domain is ready, then rebuild.)
-- Web3Forms Key: `pending` (falls back gracefully to thank-you pages)
+- Domain: `mrmeatandco.com.au` — registered, DNS on Vercel, live and serving. `SITE.domain` + all agent files use the apex.
+- Forms: Zoho SMTP via `/api/contact` (nodemailer). Credentials are Vercel env vars only: `EMAIL_SERVER_HOST/PORT/SECURE/USER/PASSWORD`, `EMAIL_FROM`. If unset, the route simulates success and forms still redirect to their thank-you page (no email).
 - GSC Verification Code: `pending`
 
 ## Brand Facts
 - Legal entity: Mr Meat & Co — ABN 71 635 847 908 (shown in the header strip, footer, and Organization schema)
 - Founded: 2018 in Alexandria, Sydney NSW, Australia
-- Ships: Greater Sydney Metro, Wollongong, Central Coast (Refrigerated Cold-Chain Van)
-- Minimum Order: $300 AUD (Free Refrigerated Delivery on orders $300+)
+- Dispatch: ground fresh daily and dispatched from the Alexandria, Sydney butchery
+- Ships: refrigerated cold-chain van across NSW (Sydney Metro + regional incl. Wollongong & Central Coast); rest of Australia shipped frozen in insulated packaging by express courier (freight quoted)
+- Minimum Order: $300 AUD. Free refrigerated delivery on orders $300+ within NSW; interstate orders pay a quoted freight fee.
 - Payment: Crypto BTC/USDT (10% instant discount), PayID, Bank Transfer, WhatsApp Order Draft. The 10% is CRYPTO ONLY.
 - Awards retained from prior brand per owner instruction: "Sydney Fine Food Produce Gold Award 2024", "NSW AMIC Retailer 2025".
 No further invented statistics, awards, press, or named clients. Ever.

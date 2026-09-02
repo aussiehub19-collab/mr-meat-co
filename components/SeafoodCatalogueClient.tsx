@@ -268,7 +268,7 @@ export function SeafoodCatalogueClient({ initialSubcategory = 'all' }: SeafoodCa
         </div>
         <div className="flex items-center gap-2 shrink-0 text-xs text-gray-400 bg-[#1C1414] px-3 py-1.5 rounded-lg border border-[#991B1B]/30">
           <Snowflake className="w-4 h-4 text-sky-400" />
-          <span>Cold-Chain Express Sydney</span>
+          <span>Cold-Chain NSW &middot; Frozen Courier Australia-Wide</span>
         </div>
       </div>
 

@@ -7,7 +7,7 @@ import Link from 'next/link';
 
 export const metadata = {
   title: 'About Our Sydney Craft Butcher Workshop',
-  description: 'Learn about Mr Meat & Co Alexandria workshop, our 100% Australian grass-fed beef commitment, whole-carcass butchery ethics, and refrigerated Sydney delivery.',
+  description: 'Learn about Mr Meat & Co Alexandria workshop, our 100% Australian grass-fed beef commitment, whole-carcass butchery ethics, and refrigerated cold-chain delivery across NSW and Australia-wide.',
   alternates: {
     canonical: `https://${SITE.domain}/about/`,
   },
@@ -78,7 +78,7 @@ export default function AboutPage() {
           About Mr Meat & Co Workshop
         </h1>
         <p className="text-gray-300 text-sm leading-relaxed">
-          Craft butchery rooted in Australian pasture tradition, absolute transparency, and direct refrigerated cold-chain delivery across Greater Sydney.
+          Craft butchery rooted in Australian pasture tradition, absolute transparency, and direct refrigerated cold-chain delivery across NSW — with frozen express-courier dispatch Australia-wide.
         </p>
       </div>
 
@@ -135,7 +135,7 @@ export default function AboutPage() {
             Craft butchery is only half of the equation; maintaining an unbroken cold chain until the parcel arrives at your kitchen counter is equally crucial. To achieve this, Mr Meat & Co engineered a specialized refrigerated packaging and logistics framework.
           </p>
           <p>
-            Every order is carefully packed inside 100% recyclable thermal insulated box liners alongside heavy-duty non-toxic gel ice packs capable of sustaining sub-4°C internal temperatures for up to 36 hours. Our fleet of specialized refrigerated delivery vehicles services Greater Sydney Metro, Wollongong, and the Central Coast. Whether you are home or at work, your meat order stays safely chilled until you are ready to transfer it to your refrigerator or freezer.
+            Every order is carefully packed inside 100% recyclable thermal insulated box liners alongside heavy-duty non-toxic gel ice packs capable of sustaining sub-4°C internal temperatures for up to 36 hours. Our fleet of specialized refrigerated delivery vehicles services Sydney Metro and regional NSW, including Wollongong and the Central Coast. For the rest of Australia, orders are snap-frozen and sent in insulated packaging by express courier. Whether you are home or at work, your meat order stays safely chilled until you are ready to transfer it to your refrigerator or freezer.
           </p>
         </section>
 
@@ -147,7 +147,7 @@ export default function AboutPage() {
             We believe in passing operational savings directly back to our customers. By streamlining our ordering process through direct web-assisted order drafts, WhatsApp messaging, PayID, and direct Cryptocurrency payments (Bitcoin BTC and Tether USDT), we bypass expensive credit card processing fees.
           </p>
           <p>
-            We pass those savings directly to you: every customer who pays with cryptocurrency (Bitcoin BTC or Tether USDT) automatically receives an instant 10% discount off their total order. PayID and bank transfer are also accepted with no card surcharge. Combined with our free refrigerated express delivery on all orders ($300 AUD min order), Sydney households enjoy premium restaurant-grade butcher meats at fair, transparent pricing.
+            We pass those savings directly to you: every customer who pays with cryptocurrency (Bitcoin BTC or Tether USDT) automatically receives an instant 10% discount off their total order. PayID and bank transfer are also accepted with no card surcharge. Combined with free refrigerated delivery across NSW on orders over $300 AUD, households across New South Wales — and, by frozen express courier, the rest of Australia — enjoy premium restaurant-grade butcher meats at fair, transparent pricing.
           </p>
         </section>
 
@@ -170,7 +170,7 @@ export default function AboutPage() {
       <div className="text-center bg-[#141414] text-white p-10 rounded-3xl space-y-4 border border-[#991B1B]/50 shadow-2xl">
         <h3 className="text-2xl font-bold font-serif">Taste the Difference of Real Craft Butchery</h3>
         <p className="text-xs text-gray-300 max-w-lg mx-auto">
-          Minimum order $300 AUD. Free cold-chain delivery across Greater Sydney.
+          Minimum order $300 AUD. Free cold-chain delivery across NSW; frozen express courier Australia-wide.
         </p>
         <Link
           href="/shop/"

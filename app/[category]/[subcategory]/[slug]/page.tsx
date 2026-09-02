@@ -290,7 +290,7 @@ export default async function TopLevelProductDetailPage({
           <div className="p-4 bg-[#1A1A1A] rounded-2xl border border-zinc-800 space-y-2 text-xs">
             <div className="flex items-center space-x-2 font-bold text-white">
               <Truck className="w-4 h-4 text-red-500 shrink-0" />
-              <span>Cold-Chain Express Delivery across Sydney on orders ${SHOP.freeShippingThreshold}+</span>
+              <span>Free Cold-Chain Delivery across NSW on orders ${SHOP.freeShippingThreshold}+ · Frozen Courier Australia-Wide</span>
             </div>
             <div className="flex items-center space-x-2 font-bold text-gray-200">
               <ShieldCheck className="w-4 h-4 text-red-500 shrink-0" />

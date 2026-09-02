@@ -222,7 +222,7 @@ export async function POST(req: NextRequest) {
                     {
                       minimumOrder: `${SHOP.minOrder} AUD`,
                       freeShippingThreshold: `${SHOP.freeShippingThreshold} AUD`,
-                      shippingFee: "Free Temperature-Controlled Cold-Chain Express Delivery Across Greater Sydney",
+                      shippingFee: "Free refrigerated cold-chain van delivery across all of NSW on orders $300+. Rest of Australia shipped snap-frozen by express courier, freight quoted at checkout. Dispatched from Alexandria, Sydney.",
                       cryptoDiscount: `${SHOP.cryptoDiscount}% discount when paying with crypto (BTC/USDT)`,
                       paymentMethods: SHOP.paymentMethods,
                       guarantee: "100% Australian Grass-Fed & Hormone-Free Beef",

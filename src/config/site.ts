@@ -136,6 +136,14 @@ export function abs(path: string | undefined | null): string {
 export const BRAND_STATEMENT =
   "Mr Meat & Co is an Australian online meat shop and craft butcher, grinding and cutting fresh daily in Alexandria, Sydney and delivering cold-chain across NSW and — snap-frozen by express courier — nationwide.";
 
+/** FAQ section heading that carries the page's focus keyword into an H2
+ *  (RankMath "keyword in subheading"). Falls back to a generic heading. */
+export function faqHeading(kw?: string | null): string {
+  if (!kw) return "Frequently asked questions";
+  const titled = kw.replace(/\b\w/g, (c) => c.toUpperCase());
+  return `${titled} — Frequently Asked Questions`;
+}
+
 /** Turn a subcategory display name into its URL slug — must match the logic
  *  in app/[category]/[subcategory]/page.tsx exactly. */
 export function subcategorySlug(name: string): string {
@@ -8203,7 +8211,9 @@ export const POSTS: Post[] = [
     updated: "2026-09-02",
     readTime: "6 min read",
     image: "/images/premium-beef-mince.webp",
-    primaryKeyword: "beef mince",
+    primaryKeyword: "beef mince fat ratio",
+    seoTitle: "Beef Mince Fat Ratio: 80/20, Lean & How to Buy It",
+    metaDescription: "Beef mince fat ratio explained — what 80/20, lean and extra-lean actually mean, which grind suits bolognese vs burgers vs meatballs, and how to buy beef mince online.",
     secondaryKeywords: ["lean beef mince", "beef mince fat ratio", "beef mince price per kg", "extra lean beef mince", "buy beef mince online"],
     content: `Beef mince is the most-cooked cut in the Australian kitchen, yet the label tells you almost nothing. "Regular", "premium", "lean", "extra lean" — none of it is regulated the way you'd expect. Here is what actually matters when you buy beef mince, and how to match the grind to the dish.
 
@@ -8261,6 +8271,8 @@ Ready to cook? Browse [fresh beef mince](/beef/mince-diced/) or build it into a 
     readTime: "5 min read",
     image: "/images/premium-pork-mince.webp",
     primaryKeyword: "pork mince recipes",
+    seoTitle: "Pork Mince Recipes: 10 Fast Dinners Beyond Bolognese",
+    metaDescription: "Pork mince recipes for fast weeknight dinners — ten ideas beyond bolognese, why pork mince beats beef for speed and flavour, and how to buy it online in Australia.",
     secondaryKeywords: ["pork mince", "what to do with pork mince", "pork mince dinner", "lean pork mince", "buy pork mince online"],
     content: `[Pork mince](/pork/mince/) is one of the best-value proteins on the butcher's counter and it takes on marinades and aromatics far better than beef. If you only ever make bolognese with it, here are ten reasons to keep a pack in the fridge.
 
@@ -8302,6 +8314,8 @@ Pork mince spoils a touch faster than beef — use within 2 days or freeze in fl
     readTime: "6 min read",
     image: "/images/chicken-breast-schnitzel.webp",
     primaryKeyword: "chicken schnitzel recipe",
+    seoTitle: "Chicken Schnitzel Recipe & Method (Oven, Air-Fryer, Pan)",
+    metaDescription: "A chicken schnitzel recipe and method for a crunchy, even crust every time — the crumb, the pound, the fat, and the three cooking methods compared.",
     secondaryKeywords: ["chicken schnitzel", "homemade chicken schnitzel", "how to cook chicken schnitzel", "crumbed chicken", "gluten free schnitzel"],
     content: `A great [chicken schnitzel](/ready-to-cook/schnitzels/) is about three things: even thickness, a dry-then-wet-then-dry crumb, and enough hot fat. Get those right and the cooking method barely matters.
 
@@ -8346,6 +8360,8 @@ Our butchers crumb [chicken schnitzel](/ready-to-cook/schnitzels/) fresh daily �
     readTime: "5 min read",
     image: "/images/chicken-mince.webp",
     primaryKeyword: "chicken mince recipes",
+    seoTitle: "Chicken Mince Recipes: 12 Fast Weeknight Dinners",
+    metaDescription: "Chicken mince recipes for fast weeknight dinners — twelve on the table in under 30 minutes, plus how to stop chicken mince going dry.",
     secondaryKeywords: ["chicken mince", "chicken mince dinner", "recipes using chicken mince", "lean chicken mince", "what to make with chicken mince"],
     content: `[Chicken mince](/chicken/mince/) is the leanest common mince, which is its strength and its weakness — it cooks in minutes but turns to sawdust if you push it. The fix is fat and moisture: a splash of oil, an aromatic paste, and a sauce it can finish in.
 
@@ -8391,6 +8407,7 @@ We grind [chicken mince](/chicken/mince/) fresh from Australian free-range birds
     readTime: "6 min read",
     image: "/images/lamb-loin-chops.webp",
     primaryKeyword: "how to cook lamb chops",
+    metaDescription: "How to cook lamb chops — loin, forequarter, chump and cutlet, which cut suits which method, plus exact times and temperatures for pink, tender chops.",
     secondaryKeywords: ["lamb chops recipe", "lamb chops in oven", "best way to cook lamb chops", "lamb cutlets", "grilled lamb chops"],
     content: `Not all [lamb chops](/lamb/chops-cutlets/) are the same cut, and that's why recipes disagree. Match the chop to the method and they're a 10-minute dinner.
 
@@ -8437,6 +8454,8 @@ For a fast weeknight grill, choose [loin chops or cutlets](/lamb/chops-cutlets/)
     readTime: "5 min read",
     image: "/images/premium-beef-burger-patties.webp",
     primaryKeyword: "burger patty recipe",
+    seoTitle: "Homemade Burger Patty Recipe (Ratio, Bind, Sear)",
+    metaDescription: "A homemade burger patty recipe that holds together — the fat ratio, why to skip egg and breadcrumb, the dimple trick, and the mince to ask your butcher for.",
     secondaryKeywords: ["homemade burger patties", "best burger patty recipe", "beef burger patties", "burger patty ratio", "how to make burger patties"],
     content: `A pub burger patty and a rissole are not the same thing. A rissole has egg, breadcrumb and herbs and holds together softly. A burger patty is just seasoned beef and fat, seared hard. Here's the burger.
 
@@ -8479,6 +8498,8 @@ We make [beef burger patties](/bbq-grill/burgers/) from the same chuck blend —
     readTime: "5 min read",
     image: "/images/lamb-ribs.webp",
     primaryKeyword: "lamb ribs recipe",
+    seoTitle: "Lamb Ribs Recipe: Low-and-Slow (Oven or BBQ)",
+    metaDescription: "A lamb ribs recipe for sticky, tender results — lamb ribs vs breast, how to render the fat, and a foolproof low-and-slow oven or BBQ method.",
     secondaryKeywords: ["lamb ribs", "lamb spare ribs", "lamb breast", "how to cook lamb ribs", "bbq lamb ribs"],
     content: `[Lamb ribs](/lamb/slow-cook/) are one of the best-value cuts in the shop and one of the most underused. They are fatty, gelatinous and cheap — everything you want for low-and-slow.
 
@@ -8598,7 +8619,9 @@ Browse the full [kangaroo range](/specialty-meat/kangaroo/) — steaks, mince, s
     updated: "2026-09-02",
     readTime: "7 min read",
     image: "/images/veal-cutlets.webp",
-    primaryKeyword: "veal",
+    primaryKeyword: "what is veal",
+    seoTitle: "What Is Veal? How It's Raised and How to Cook It",
+    metaDescription: "What is veal — the age, how rose veal is raised versus the crate system, how it differs from beef, and how to cook schnitzel, osso buco and scaloppine.",
     secondaryKeywords: ["what is veal", "veal vs beef", "is veal ethical", "rose veal", "veal schnitzel", "buy veal mince"],
     content: `Veal carries more myths than almost any meat. Here's what it actually is, how the Australian product is raised, and how to cook it.
 
@@ -8653,7 +8676,9 @@ Veal has become hard to find at supermarkets. We carry Australian rose veal — 
     updated: "2026-09-02",
     readTime: "6 min read",
     image: "/images/beef-brisket.webp",
-    primaryKeyword: "beef cuts for slow cooking",
+    primaryKeyword: "slow cooker beef cuts",
+    seoTitle: "Slow Cooker Beef Cuts: Brisket, Cheek, Chuck, Shin",
+    metaDescription: "The best slow cooker beef cuts — brisket, cheek, chuck, shin and oxtail: what each one does, how long it needs, and why the cheap cuts win a long braise.",
     secondaryKeywords: ["best beef cut for slow cooker", "beef brisket", "beef cheeks", "gravy beef", "beef for stew"],
     content: `Slow cooking is where the cheap [beef cuts](/beef/slow-cook/) beat the expensive ones. The muscles that work hardest — shoulder, shin, tail, cheek — are packed with collagen, and collagen melts into gelatine given enough time and moisture. A rump steak in a slow cooker just goes dry and stringy; a chuck roast goes silky.
 
@@ -8703,6 +8728,8 @@ For the freezer, a [half or quarter beef share](/wholesale/bulk-meat-orders/bulk
     readTime: "5 min read",
     image: "/images/categories/seafood.webp",
     primaryKeyword: "king vs tiger prawns",
+    seoTitle: "King vs Tiger Prawns (and Banana): Which to Buy",
+    metaDescription: "King vs tiger prawns (and banana prawns) — the difference between Australia's common types, whether frozen beats fresh, and how much prawns cost per kg.",
     secondaryKeywords: ["types of prawns australia", "prawns price per kg", "are frozen prawns as good as fresh", "green king prawns", "buy prawns"],
     content: `Standing at the [prawn cabinet](/seafood/prawns/) the names blur together. Here's what actually separates them.
 
@@ -8758,6 +8785,7 @@ Browse [prawns and the full seafood range](/seafood/).`,
     readTime: "5 min read",
     image: "/images/categories/meat-boxes.webp",
     primaryKeyword: "how much meat per person",
+    metaDescription: "How much meat per person — exact quantities for a BBQ, a Sunday roast, a curry and a grazing board, so you buy enough without a fortnight of leftovers.",
     secondaryKeywords: ["meat per person bbq", "how much roast per person", "how much brisket per person", "meat quantities for a party"],
     content: `The two questions every host asks: how much meat, and which cuts. Here are the numbers, then how to buy them.
 
@@ -8822,6 +8850,8 @@ Work out your total kilos, then decide: a [meat box](/meat-boxes/) if you want i
     readTime: "7 min read",
     image: "/images/whole-beef-share.webp",
     primaryKeyword: "quarter beef share",
+    seoTitle: "Quarter Beef Share: Weights, Cuts & Freezer Space",
+    metaDescription: "A quarter beef share explained — what you actually get, how much freezer space you need, the real per-kilo saving, and how the cut sheet works.",
     secondaryKeywords: ["half a beef", "buying a whole cow", "beef share australia", "how much freezer space for half a cow", "wholesale beef"],
     content: `Buying beef by the [quarter, half or whole animal](/wholesale/bulk-meat-orders/bulk-beef/) is how families used to stock the freezer, and it's back for good reason: the per-kilo price of premium grass-fed beef drops sharply when you buy the whole thing.
 
@@ -8889,7 +8919,9 @@ Start on the [bulk beef page](/wholesale/bulk-meat-orders/bulk-beef/), or read [
     updated: "2026-09-02",
     readTime: "8 min read",
     image: "/images/categories/pet-food.webp",
-    primaryKeyword: "raw dog food",
+    primaryKeyword: "raw feeding for dogs",
+    seoTitle: "Raw Feeding for Dogs: A Beginner's Starter Guide",
+    metaDescription: "Raw feeding for dogs, explained — the 80/10/10 BARF ratio, how much to feed by weight, which bones are safe, and how to transition without an upset stomach.",
     secondaryKeywords: ["barf diet", "raw feeding ratios", "how much raw to feed dog", "how to transition dog to raw", "raw meaty bones for dogs"],
     content: `Raw feeding — often called **BARF** (Biologically Appropriate Raw Food) or **PMR** (Prey Model Raw) — means feeding a dog fresh raw meat, bone and organ instead of processed kibble. Done properly it's simple. Done carelessly it causes deficiencies. Here's the starting framework.
 
@@ -8967,6 +8999,8 @@ Browse [raw pet mince](/pet-food/raw-mince/), [bones](/pet-food/bones/) and [off
     readTime: "6 min read",
     image: "/images/venison-backstrap.webp",
     primaryKeyword: "how to cook venison",
+    seoTitle: "How to Cook Venison & Game Meat Without Drying It Out",
+    metaDescription: "How to cook venison and other game — the lean-meat rules for venison, wild boar and rabbit, marinades that work, and where to buy game meat online in Australia.",
     secondaryKeywords: ["venison vs beef", "game meat", "wild boar meat", "rabbit meat", "buy game meat online", "cooking venison backstrap"],
     content: `[Game meat](/specialty-meat/game/) — venison, wild boar, rabbit — is lean, dark and full-flavoured. The mistakes people make are all the same mistake: cooking it like beef.
 
@@ -9013,6 +9047,8 @@ Supermarkets don't carry it. We stock farmed venison, wild boar and rabbit on th
     readTime: "5 min read",
     image: "/images/thick-beef-sausages.webp",
     primaryKeyword: "sausage roll recipe",
+    seoTitle: "Sausage Roll Recipe With Real Butcher's Sausage Meat",
+    metaDescription: "A sausage roll recipe using real butcher's sausage meat — the filling ratio, why it beats plain mince, the soggy-bottom fix, and how to freeze a batch raw.",
     secondaryKeywords: ["homemade sausage rolls", "sausage meat", "sausage roll filling", "how to freeze sausage rolls", "best sausage roll recipe"],
     content: `A good sausage roll is 80% filling, and the filling should not be plain mince. It should be seasoned, slightly fatty, and bound just enough to slice cleanly. That's what [sausage meat](/sausages/) is.
 
@@ -9066,6 +9102,7 @@ We make [sausage meat and gourmet sausages](/sausages/) fresh, plus ready-to-bak
     readTime: "6 min read",
     image: "/images/scotch-fillet-steak.webp",
     primaryKeyword: "australian beef cuts",
+    metaDescription: "Australian beef cuts explained — scotch fillet, porterhouse, eye fillet, rump and more: what each cut is, how to cook it, and its US and UK names.",
     secondaryKeywords: ["scotch fillet vs porterhouse", "eye fillet", "rump steak", "beef cut names australia", "what is scotch fillet"],
     content: `Australian beef names blend British butchery with local habit, so a recipe from the US or UK can leave you guessing at the counter. Here's the map.
 
@@ -9117,6 +9154,7 @@ If a US recipe says "chuck roast", buy blade or chuck. "Flank" or "skirt" — as
     readTime: "4 min read",
     image: "/images/hero/hero-2.webp",
     primaryKeyword: "meat delivery",
+    metaDescription: "How meat delivery cold chain works — what an unbroken cold chain means, how meat is packed for an Australian summer, and what to do with your box on arrival.",
     secondaryKeywords: ["cold chain delivery", "how is meat delivered", "meat delivery sydney", "is delivered meat safe", "refrigerated meat delivery"],
     content: `"Cold chain" means the meat never leaves safe refrigeration temperature — from our [Alexandria butchery](/about/) to your fridge. Break it anywhere and you lose shelf life and, in a Sydney February, food safety. Here's how it holds together.
 
@@ -9169,6 +9207,7 @@ Ready to order? Start at the [shop](/shop/) or pick a [meat box](/meat-boxes/).`
     readTime: "5 min read",
     image: "/images/pork-belly.webp",
     primaryKeyword: "pork crackling",
+    metaDescription: "Perfect pork crackling every time — why crackling fails, the dry-skin trick, the salt question, and which pork roast cut gives the best crackle.",
     secondaryKeywords: ["how to get crispy crackling", "pork roast crackling", "pork belly crackling", "best pork roast for crackling", "why is my crackling not crispy"],
     content: `Crackling fails for one of three reasons: the skin was wet, the scoring was wrong, or the heat was wrong. Fix all three and it works every time.
 
@@ -9220,6 +9259,7 @@ Just before cooking: rub the skin with a little oil and a generous, even layer o
     readTime: "6 min read",
     image: "/images/bone-in-leg-of-lamb.webp",
     primaryKeyword: "how to roast a leg of lamb",
+    metaDescription: "How to roast a leg of lamb — timing charts by weight and doneness, bone-in vs boneless, and how to get a rosy pink centre with a proper crust.",
     secondaryKeywords: ["roast lamb cooking time", "bone in vs boneless leg of lamb", "leg of lamb per person", "lamb roast temperature", "easter roast lamb"],
     content: `A [leg of lamb](/lamb/roasts/) is the easiest impressive roast — one big muscle group, hard to ruin if you use a thermometer.
 
@@ -9273,6 +9313,8 @@ Bone-in: 350–450g raw per person (a 2–2.5kg leg feeds 5–6). Boneless: 250�
     readTime: "4 min read",
     image: "/images/corned-beef-silverside.webp",
     primaryKeyword: "how to cook corned beef",
+    seoTitle: "How to Cook Corned Beef & Silverside So It's Not Dry",
+    metaDescription: "How to cook corned beef silverside so it stays tender — simmer vs slow cooker, the liquid, how long per kilo, and what to do with the leftovers.",
     secondaryKeywords: ["corned silverside", "corned beef slow cooker", "how long to cook corned beef", "corned beef cooking liquid", "silverside recipe"],
     content: `[Corned silverside](/beef/roasts/) is silverside (or brisket) cured in a salt-and-spice brine. It's cheap, forgiving and freezes well cooked. The one way to ruin it is to boil it hard or slice it hot.
 
@@ -9319,6 +9361,7 @@ Our [corned silverside](/beef/roasts/) is Australian grass-fed, brined in-house 
     readTime: "5 min read",
     image: "/images/streaky-bacon.webp",
     primaryKeyword: "nitrate free bacon",
+    metaDescription: "Nitrate free bacon, explained — nitrates vs nitrites, why 'uncured' bacon still contains them, and what to look for if you want genuinely additive-free bacon.",
     secondaryKeywords: ["preservative free bacon", "uncured bacon", "bacon without nitrates", "is nitrate free bacon better", "additive free bacon australia"],
     content: `"Nitrate-free" and "uncured" bacon labels are among the most misunderstood in the shop. Here's the honest version.
 
@@ -9368,6 +9411,8 @@ Browse [bacon and ham](/pork/bacon-ham/).`,
     readTime: "6 min read",
     image: "/images/categories/beef.webp",
     primaryKeyword: "grass fed vs grain fed beef",
+    seoTitle: "Grass-Fed vs Grain-Fed Beef: Taste, Nutrition, Labels",
+    metaDescription: "Grass-fed vs grain-fed beef — the real differences in taste and nutrition, what 'grass-fed' legally means in Australia, and which to buy for which dish.",
     secondaryKeywords: ["is grass fed beef better", "grass fed beef australia", "grain fed beef", "what does grass fed mean", "pasture raised beef"],
     content: `Every beef label in Australia says grass-fed, grain-fed, grain-finished or pasture-raised. Here's what actually separates them.
 
@@ -9419,6 +9464,7 @@ Browse [grass-fed beef](/beef/) or read [Australian beef cuts explained](/blog/a
     readTime: "5 min read",
     image: "/images/beef-marrow-bones.webp",
     primaryKeyword: "bone broth from beef bones",
+    metaDescription: "Bone broth from beef bones — which bones to use, why you roast them first, the vinegar question, and how to get a broth that sets like jelly.",
     secondaryKeywords: ["beef bone broth recipe", "which bones for bone broth", "how to make bone broth", "beef stock bones", "gelatin bone broth"],
     content: `A good beef broth should **set to a wobble in the fridge** — that's the collagen turning to gelatine. Getting there is about bone choice and time, not much else.
 
@@ -9469,7 +9515,9 @@ We sell [beef marrow bones, knuckle and shin](/beef/offal/) and a ready "bone br
     updated: "2026-09-02",
     readTime: "6 min read",
     image: "/images/leg-ham-off-the-bone.webp",
-    primaryKeyword: "christmas ham",
+    primaryKeyword: "christmas ham glaze",
+    seoTitle: "Christmas Ham Glaze: How to Score, Glaze & Serve",
+    metaDescription: "Three Christmas ham glaze recipes plus method — choosing the ham, removing the skin without wrecking the fat, and the timing so it's warm for lunch.",
     secondaryKeywords: ["how to glaze a ham", "ham glaze recipe", "how to score a ham", "whole leg ham", "buy christmas ham"],
     content: `A [whole leg ham](/christmas-ham/) is already fully cooked — your job is just to skin it, score it, glaze it and warm it through. It's the least stressful part of Christmas lunch if you plan the timing.
 
@@ -9544,11 +9592,11 @@ export interface PageSeo {
 
 export const PAGE_SEO: Record<string, PageSeo> = {
   "/": {
-    title: "Meat Boxes & Craft Butcher Cuts, Delivered | Mr Meat & Co",
-    description: "Australian meat boxes and craft-butcher cuts — grass-fed beef, free-range chicken, lamb and pork, cut fresh in Sydney and delivered cold-chain across NSW and nationwide.",
+    title: "Meat Box Delivery & Craft Butcher — Mr Meat & Co",
+    description: "Meat box delivery from an Australian craft butcher — grass-fed beef, free-range chicken, lamb and pork, cut fresh in Sydney, cold-chain across NSW and nationwide.",
     h1: "Grass-Fed Meat Boxes & Craft Butcher Cuts, Delivered",
     primaryKeyword: "meat box",
-    supportingKeywords: ["meat box delivery", "butcher box", "meat subscription", "meat delivery sydney", "online butcher australia", "grass fed meat delivery"],
+    supportingKeywords: ["meat box delivery", "butcher box", "meat subscription", "grass fed meat delivery", "online butcher australia"],
     faqs: [
       { question: "Where do you deliver?", answer: "Refrigerated cold-chain vans cover the whole of NSW — Sydney Metro plus regional runs including Wollongong and the Central Coast. Everywhere else in Australia is served by frozen express courier. Orders are packed cold so the box is still cold at your door." },
       { question: "What's the minimum order for delivery?", answer: "$300 AUD. Orders over $300 get free temperature-controlled delivery anywhere in NSW; interstate orders over $300 pay only a quoted frozen-courier freight fee." },
@@ -9559,8 +9607,8 @@ export const PAGE_SEO: Record<string, PageSeo> = {
     ],
   },
   "/shop/": {
-    title: "Buy Meat Online Australia | Shop All Cuts — Mr Meat & Co",
-    description: "Shop the full Mr Meat & Co range — grass-fed beef, free-range chicken, lamb, pork, sausages, BBQ packs, meat boxes, seafood, specialty and raw pet food. Cut fresh, delivered cold across Sydney.",
+    title: "Buy Meat Online Australia — Shop All Cuts | Mr Meat & Co",
+    description: "Buy meat online in Australia — grass-fed beef, free-range chicken, lamb, pork, sausages, BBQ packs, seafood, specialty and raw pet food. Cut fresh, delivered cold.",
     h1: "Shop All Fresh Meat — Beef, Lamb, Chicken, Pork & More",
     primaryKeyword: "buy meat online",
     supportingKeywords: ["meat online", "online butcher", "order meat online australia", "fresh meat delivery", "butcher box online"],
@@ -9571,12 +9619,12 @@ export const PAGE_SEO: Record<string, PageSeo> = {
     ],
   },
   "/beef/": {
-    title: "Buy Beef Online | Grass-Fed Australian Beef Delivered — Mr Meat & Co",
-    description: "Buy grass-fed Australian beef online — steaks, roasts, fresh beef mince, slow-cook cuts, BBQ and offal. Cut fresh in Alexandria, delivered cold across Sydney. Bulk and wholesale beef available.",
+    title: "Buy Beef Online — Grass-Fed Australian Beef | Mr Meat & Co",
+    description: "Buy beef online — grass-fed Australian steaks, roasts, fresh mince, slow-cook cuts, BBQ and offal, cut fresh in Alexandria. Cold-chain NSW-wide, bulk beef too.",
     h1: "Grass-Fed Australian Beef, Cut Fresh & Delivered",
     primaryKeyword: "buy beef online",
     supportingKeywords: ["grass fed beef online", "beef delivery sydney", "wholesale beef", "organic beef online", "australian beef delivered"],
-    intro: "Every cut of our beef is 100% Australian grass-fed and pasture-raised — from marbled scotch fillet and porterhouse to fresh beef mince ground daily, slow-cook brisket and cheek, and BBQ favourites. No added hormones, no feedlot finishing.",
+    intro: "Buy beef online from a craft butcher — every cut 100% Australian grass-fed and pasture-raised, from marbled scotch fillet and porterhouse to fresh mince ground daily, slow-cook brisket and cheek, and BBQ favourites. No added hormones, no feedlot finishing.",
     faqs: [
       { question: "Is your beef grass-fed and Australian?", answer: "Yes — 100% Australian grass-fed and pasture-raised for the life of the animal, HGP-free (no added hormones), with no feedlot grain finishing." },
       { question: "How is beef packed for delivery?", answer: "Vacuum-sealed or butcher-wrapped, labelled by cut, chilled to 0–2°C and packed with coolant sized to your order and the forecast, then delivered on refrigerated vans across Sydney." },
@@ -9585,12 +9633,12 @@ export const PAGE_SEO: Record<string, PageSeo> = {
     ],
   },
   "/chicken/": {
-    title: "Free-Range Chicken Delivery | Buy Chicken Breast, Thigh & Mince — Mr Meat & Co",
-    description: "Free-range Australian chicken delivered across Sydney — breast and thigh fillets, drumsticks, wings, whole birds, chicken mince and crumbed schnitzel. Bulk chicken breast cartons available.",
+    title: "Free-Range Chicken — Breast, Thigh & Mince | Mr Meat & Co",
+    description: "Free range chicken delivered across Australia — breast and thigh fillets, drumsticks, wings, whole birds, chicken mince and crumbed schnitzel. Bulk cartons too.",
     h1: "Free-Range Australian Chicken, Delivered Fresh",
-    primaryKeyword: "free range chicken delivery",
+    primaryKeyword: "free range chicken",
     supportingKeywords: ["buy chicken online", "buy chicken breast australia", "chicken thigh fillets", "chicken mince", "whole chicken delivery", "bulk chicken breast"],
-    intro: "Free-range Australian chicken — breast and thigh fillets, drumsticks and wings, whole roasting birds, freshly ground chicken mince, and crumbed schnitzel. Buy by the pack or in bulk breast and schnitzel cartons for meal prep and events.",
+    intro: "Free range chicken from Australian farms — breast and thigh fillets, drumsticks and wings, whole roasting birds, freshly ground chicken mince, and crumbed schnitzel. Buy by the pack or in bulk breast and schnitzel cartons for meal prep and events.",
     faqs: [
       { question: "Is your chicken free-range?", answer: "Yes — our chicken is Australian free-range, raised with outdoor access, delivered fresh chilled across Sydney." },
       { question: "Do you sell chicken in bulk or by the carton?", answer: "Yes — bulk chicken breast fillets, thigh fillets, drumsticks, wings and 5kg crumbed schnitzel boxes are on our bulk chicken page, at a lower per-kg price." },
@@ -9599,12 +9647,12 @@ export const PAGE_SEO: Record<string, PageSeo> = {
     ],
   },
   "/lamb/": {
-    title: "Buy Lamb Online | Australian Grass-Fed Lamb Delivered — Mr Meat & Co",
-    description: "Buy Australian grass-fed lamb online — loin chops and cutlets, leg and shoulder roasts, shanks and neck for slow cooking, lamb mince and BBQ cuts. Delivered cold across Sydney. Wholesale lamb available.",
+    title: "Buy Lamb Online — Australian Grass-Fed Lamb | Mr Meat & Co",
+    description: "Buy lamb online — Australian grass-fed loin chops and cutlets, leg and shoulder roasts, shanks and neck, lamb mince and BBQ cuts. Cold-chain delivery, wholesale too.",
     h1: "Australian Grass-Fed Lamb, Cut Fresh & Delivered",
-    primaryKeyword: "lamb meat near me",
+    primaryKeyword: "buy lamb online",
     supportingKeywords: ["buy lamb online", "australian lamb delivered", "wholesale lamb", "grass fed lamb", "lamb delivered sydney"],
-    intro: "Sweet, tender Australian grass-fed lamb — loin chops, cutlets and chump chops, bone-in and boneless leg roasts, shoulder, shanks and neck for the slow cooker, plus lamb mince and marinated BBQ cuts.",
+    intro: "Buy lamb online — sweet, tender Australian grass-fed lamb: loin chops, cutlets and chump chops, bone-in and boneless leg roasts, shoulder, shanks and neck for the slow cooker, plus lamb mince and marinated BBQ cuts.",
     faqs: [
       { question: "Where does your lamb come from?", answer: "Australian farms, grass-fed and pasture-raised. Lamb is typically hogget-young for tenderness and a clean, sweet flavour." },
       { question: "How much is lamb per kg?", answer: "It varies by cut — mince and forequarter chops are the value end, cutlets and racks the premium end. A half or whole lamb share brings the average per-kg price down significantly." },
@@ -9613,12 +9661,12 @@ export const PAGE_SEO: Record<string, PageSeo> = {
     ],
   },
   "/pork/": {
-    title: "Buy Pork Online | Australian Pork Delivered — Mr Meat & Co",
-    description: "Buy Australian pork online — belly and ribs, leg and shoulder roasts for crackling, chops and steaks, fresh pork mince, plus bacon and ham. Delivered cold across Sydney. Wholesale pork available.",
+    title: "Buy Pork Online — Australian Pork Delivered | Mr Meat & Co",
+    description: "Buy pork online — Australian belly and ribs, leg and shoulder roasts for crackling, chops and steaks, fresh pork mince, plus bacon and ham. Cold-chain delivery.",
     h1: "Australian Pork, Cut Fresh & Delivered",
-    primaryKeyword: "pork meat near me",
+    primaryKeyword: "buy pork online",
     supportingKeywords: ["buy pork online australia", "pork wholesale", "pork delivered sydney", "australian pork", "buy pork mince online"],
-    intro: "Australian pork — rind-on belly and American-style ribs, leg and shoulder roasts scored for crackling, loin and scotch steaks, fresh pork mince, and our own bacon and ham. Ask us to score any roast for the perfect crackle.",
+    intro: "Buy pork online — Australian rind-on belly and American-style ribs, leg and shoulder roasts scored for crackling, loin and scotch steaks, fresh pork mince, and our own bacon and ham. Ask us to score any roast for the perfect crackle.",
     faqs: [
       { question: "Is your pork Australian?", answer: "Yes — 100% Australian pork. Look for the country-of-origin label; a lot of supermarket ham and bacon is imported, ours is not." },
       { question: "How much is pork shoulder?", answer: "Pork shoulder (scotch/neck) is one of the best-value cuts in the shop — see the current price on the roasts and chops pages. It's the go-to for pulled pork and slow roasts." },
@@ -9627,12 +9675,12 @@ export const PAGE_SEO: Record<string, PageSeo> = {
     ],
   },
   "/sausages/": {
-    title: "Butcher Sausages | Beef, Pork, Chicken & Lamb Snags — Mr Meat & Co",
-    description: "Handmade butcher sausages — thick and thin beef, pork and fennel, chicken and herb, lamb and rosemary, and gourmet flavours. No fillers, gluten-free options. Buy sausages in bulk for a BBQ or event.",
+    title: "Butcher Sausages — Beef, Pork, Chicken & Lamb | Mr Meat & Co",
+    description: "Butcher sausages made in-house — thick and thin beef, pork and fennel, chicken and herb, lamb and rosemary, gourmet flavours. No fillers, gluten-free options, bulk too.",
     h1: "Handmade Butcher Sausages, No Fillers",
-    primaryKeyword: "sausages",
+    primaryKeyword: "butcher sausages",
     supportingKeywords: ["sausage meat", "butcher sausages near me", "gourmet sausages", "sausages in bulk", "gluten free sausages"],
-    intro: "Sausages made in-house from named cuts and real seasoning — thick and thin beef snags, Italian pork and fennel, chicken and herb, lamb and rosemary, merguez and more. Sausage meat (no casing) also available for sausage rolls and stuffing.",
+    intro: "Butcher sausages made in-house from named cuts and real seasoning — thick and thin beef snags, Italian pork and fennel, chicken and herb, lamb and rosemary, merguez and more. Sausage meat (no casing) also available for sausage rolls and stuffing.",
     faqs: [
       { question: "What's in your sausages — any fillers or preservatives?", answer: "Meat, fat, seasoning and a natural casing. No cereal bulking beyond a little rusk in the traditional recipes, nothing pumped in to add weight, and no artificial preservative numbers. Ask for the specific recipe of any sausage." },
       { question: "Are your sausages gluten-free?", answer: "Several are — the gluten-free range uses no rusk or wheat filler. They're labelled clearly; check the product page or ask us." },
@@ -9641,12 +9689,12 @@ export const PAGE_SEO: Record<string, PageSeo> = {
     ],
   },
   "/bbq-grill/": {
-    title: "BBQ Meat Packs & Grill Cuts | Delivered Sydney — Mr Meat & Co",
-    description: "BBQ meat packs, steak packs, sausage packs, ribs, skewers and burger patties — built to feed the room and delivered cold across Sydney. Custom BBQ packs for parties.",
+    title: "BBQ Meat Packs & Grill Cuts, Delivered | Mr Meat & Co",
+    description: "BBQ meat packs — steak packs, sausage packs, ribs, skewers and burger patties, portioned to feed the room and delivered cold. Custom BBQ packs for parties.",
     h1: "BBQ Meat Packs & Grill Cuts",
-    primaryKeyword: "bbq meat box",
+    primaryKeyword: "bbq meat pack",
     supportingKeywords: ["bbq meat pack", "bbq meat packs delivered", "buy meat for bbq", "family bbq pack", "bbq meat delivery"],
-    intro: "Everything for the grill in one order — mixed steak packs, sausage packs, pork and beef ribs, marinated skewers and kebabs, and house burger patties. Packs are portioned to feed a set number of people; we'll build a custom BBQ pack for a party.",
+    intro: "BBQ meat packs with everything for the grill in one order — mixed steak packs, sausage packs, pork and beef ribs, marinated skewers and kebabs, and house burger patties. Packs are portioned to feed a set number of people; we'll build a custom pack for a party.",
     faqs: [
       { question: "What's in a BBQ meat pack?", answer: "A typical family BBQ pack has a mix of sausages, marinated skewers, burger patties and a steak or two — roughly 250–350g of meat per adult. The contents are listed on each pack's page." },
       { question: "How many people does a BBQ pack feed?", answer: "Each pack states how many it serves. As a guide, plan 250–350g of meat per adult when meat is the main event, half that for kids, plus 15% if there's little other food." },
@@ -9655,12 +9703,12 @@ export const PAGE_SEO: Record<string, PageSeo> = {
     ],
   },
   "/meat-boxes/": {
-    title: "Meat Box Delivery Sydney | Family, Value & Premium Boxes — Mr Meat & Co",
-    description: "Meat box delivery across Sydney — family boxes, value freezer packs, premium steak boxes, lean meal-prep boxes and BBQ boxes, or build your own. Curated grass-fed cuts, one-off or on subscription.",
+    title: "Butcher Boxes — Family, Value & Premium | Mr Meat & Co",
+    description: "Butcher boxes of grass-fed beef, lamb, free-range chicken and pork — family boxes, value freezer packs, premium steak boxes, meal-prep and BBQ boxes, or build your own.",
     h1: "Meat Boxes, Delivered Across Sydney",
-    primaryKeyword: "meat box",
-    supportingKeywords: ["meat box delivery", "meat box subscription", "family meat box", "bulk meat pack", "build your own meat box"],
-    intro: "Curated boxes of grass-fed beef, lamb, free-range chicken and pork — family boxes for the week's dinners, value freezer packs, premium steak boxes, high-protein meal-prep boxes, and BBQ boxes. Order once or set a repeat schedule.",
+    primaryKeyword: "butcher box",
+    supportingKeywords: ["meat box delivery", "family meat box", "meat subscription", "value meat pack", "premium steak box", "build your own meat box"],
+    intro: "Butcher boxes curated from grass-fed beef, lamb, free-range chicken and pork — family boxes for the week's dinners, value freezer packs, premium steak boxes, high-protein meal-prep boxes, and BBQ boxes. Order once or set a repeat schedule.",
     faqs: [
       { question: "What's in each meat box?", answer: "Every box lists its exact contents and approximate total weight on its page. Family boxes lean to mince, sausages, chicken and a roast; premium boxes are steak-heavy; meal-prep boxes are lean cuts and mince." },
       { question: "How much meat is in a family box?", answer: "Family boxes range from about 5kg to 10kg of packed meat depending on the size you choose — roughly a week to a fortnight of dinners for a family of four." },
@@ -9670,12 +9718,12 @@ export const PAGE_SEO: Record<string, PageSeo> = {
     ],
   },
   "/ready-to-cook/": {
-    title: "Chicken Schnitzel & Ready-to-Cook Meat | Delivered Sydney — Mr Meat & Co",
-    description: "Crumbed fresh chicken, beef, pork and veal schnitzel, marinated cuts, kebabs and burger patties — ready to cook, delivered cold across Sydney. Gluten-free crumb available.",
+    title: "Ready-to-Cook Meat — Schnitzel, Kebabs | Mr Meat & Co",
+    description: "Ready-to-cook meat — chicken, beef, pork and veal schnitzel crumbed fresh, marinated cuts, kebabs and burger patties. Delivered cold, gluten-free crumb available.",
     h1: "Ready-to-Cook — Schnitzels, Marinated Cuts & Kebabs",
     primaryKeyword: "ready to cook meat",
     supportingKeywords: ["ready made meals delivered", "marinated meat delivery", "oven ready meals", "crumbed chicken", "heat and eat meals"],
-    intro: "Chef-prepped and ready for the pan or oven — chicken, beef, pork and veal schnitzel crumbed fresh each day, marinated lamb and chicken cuts, kebabs and skewers, and house burger patties. A gluten-free crumb is available across the schnitzel range.",
+    intro: "Ready-to-cook meat, chef-prepped for the pan or oven — chicken, beef, pork and veal schnitzel crumbed fresh each day, marinated lamb and chicken cuts, kebabs and skewers, and house burger patties. A gluten-free crumb is available across the schnitzel range.",
     faqs: [
       { question: "Are your schnitzels crumbed fresh?", answer: "Yes — pounded, coated in a three-stage flour-egg-crumb and rested each day in our Alexandria kitchen. Not frozen-and-thawed." },
       { question: "Do you have gluten-free crumbed options?", answer: "Yes — a gluten-free crumb across the chicken, beef and veal schnitzel range, using no wheat flour or breadcrumb." },
@@ -9684,12 +9732,12 @@ export const PAGE_SEO: Record<string, PageSeo> = {
     ],
   },
   "/specialty-meat/": {
-    title: "Specialty & Game Meat | Kangaroo, Venison, Goat, Rabbit — Mr Meat & Co",
-    description: "Buy specialty and game meat online in Australia — kangaroo, venison, wild boar, rabbit, goat, veal and crocodile. Delivered cold across Sydney and Australia-wide for larger orders.",
+    title: "Buy Specialty Meat Online — Kangaroo, Venison | Mr Meat & Co",
+    description: "Buy specialty meat online in Australia — kangaroo, venison, wild boar, rabbit, goat, rose veal and crocodile. Delivered cold NSW-wide and frozen nationwide.",
     h1: "Specialty & Game Meat",
     primaryKeyword: "buy specialty meat online",
     supportingKeywords: ["exotic meat australia", "kangaroo meat", "venison", "rabbit meat", "goat meat", "wild meat delivery"],
-    intro: "The cuts you won't find at the supermarket — lean Australian kangaroo, farmed venison and wild boar, rabbit, goat, rose veal, and crocodile and emu. Wild-harvested and farmed, delivered across Sydney and nationwide for larger orders.",
+    intro: "Buy specialty meat online — the cuts you won't find at the supermarket: lean Australian kangaroo, farmed venison and wild boar, rabbit, goat, rose veal, and crocodile and emu. Wild-harvested and farmed, delivered NSW-wide and frozen nationwide.",
     faqs: [
       { question: "What specialty and game meats do you stock?", answer: "Kangaroo, venison, wild boar, rabbit, goat, rose veal, plus crocodile and emu. Cuts range from steaks and fillets to mince, sausages, osso buco and curry pieces." },
       { question: "Is the game meat farmed or wild?", answer: "Kangaroo is wild-harvested under government quota. Venison and rabbit are farmed. Wild boar is wild-harvested. All from licensed processors." },
@@ -9698,12 +9746,12 @@ export const PAGE_SEO: Record<string, PageSeo> = {
     ],
   },
   "/seafood/": {
-    title: "Seafood Delivery Sydney | Prawns, Salmon & Barramundi — Mr Meat & Co",
-    description: "Buy seafood online in Sydney — raw and cooked prawns, Tasmanian salmon portions, Australian barramundi and white fish. Fresh and snap-frozen, delivered cold with your meat order.",
+    title: "Buy Seafood Online — Prawns, Salmon, Fish | Mr Meat & Co",
+    description: "Buy seafood online — raw and cooked prawns, Tasmanian salmon portions, Australian barramundi and white fish. Snap-frozen at source, delivered with your meat order.",
     h1: "Fresh & Frozen Seafood, Delivered",
-    primaryKeyword: "prawns for sale",
+    primaryKeyword: "buy seafood online",
     supportingKeywords: ["buy prawns", "buy salmon", "barramundi for sale", "seafood delivery sydney", "fresh prawns"],
-    intro: "Australian seafood alongside your meat order — green (raw) and cooked king, tiger and banana prawns, skin-on and skinless Tasmanian salmon portions, barramundi fillets and portions, and white fish. Snap-frozen at the source for peak freshness.",
+    intro: "Buy seafood online alongside your meat order — green (raw) and cooked king, tiger and banana prawns, skin-on and skinless Tasmanian salmon portions, barramundi fillets and portions, and white fish. Snap-frozen at the source for peak freshness.",
     faqs: [
       { question: "Is your seafood fresh or frozen?", answer: "Both. Most prawns and fish are snap-frozen within hours of the catch — often fresher than 'fresh' cabinet stock that has been thawed. We also carry genuinely fresh lines in season." },
       { question: "Where is your barramundi and salmon from?", answer: "Barramundi is Australian (farmed and wild lines). Salmon is Tasmanian. Country and method are on each product page." },
@@ -9712,12 +9760,12 @@ export const PAGE_SEO: Record<string, PageSeo> = {
     ],
   },
   "/pet-food/": {
-    title: "Raw Dog Food & BARF Delivery Sydney | Pet Mince & Bones — Mr Meat & Co",
-    description: "Raw dog food delivered frozen across Sydney — pet mince (beef, chicken, kangaroo), raw meaty bones, and offal for BARF and prey-model diets. Human-grade meat, prepared separately from the retail range.",
+    title: "Raw Dog Food & BARF Delivery — Pet Mince | Mr Meat & Co",
+    description: "Raw dog food delivered frozen — pet mince in beef, chicken and kangaroo, raw meaty bones, and offal for BARF and prey-model diets. Human-grade, prepared separately.",
     h1: "Raw Pet Food — Mince, Bones & Offal",
     primaryKeyword: "raw dog food",
     supportingKeywords: ["raw dog food sydney", "pet mince", "raw meat dog food delivery", "barf diet", "kangaroo mince for dogs"],
-    intro: "Raw feeding, made simple — pet mince in beef, chicken and kangaroo (some with ground bone), raw meaty bones matched to your dog's size, and secreting offal for the 80/10/10 ratio. Delivered frozen, kept completely separate from the human range.",
+    intro: "Raw dog food that makes raw feeding simple — pet mince in beef, chicken and kangaroo (some with ground bone), raw meaty bones matched to your dog's size, and secreting offal for the 80/10/10 ratio. Delivered frozen, kept completely separate from the human range.",
     faqs: [
       { question: "Is this raw pet food or for human consumption?", answer: "It's prepared as pet food and labelled as such, though it's made from the same quality Australian meat. It's produced and packed separately from our retail range." },
       { question: "What proteins do you offer for raw feeding?", answer: "Beef, chicken and kangaroo pet mince (plain or with ground bone), plus offal and raw meaty bones. Kangaroo is the go-to novel protein for dogs with chicken or beef allergies." },
@@ -9729,12 +9777,12 @@ export const PAGE_SEO: Record<string, PageSeo> = {
 
   /* ---- subcategories ---- */
   "/beef/mince-diced/": {
-    title: "Beef Mince Delivered | Fresh, Lean & Extra-Lean — Mr Meat & Co",
-    description: "Fresh beef mince ground daily in Alexandria — premium 80/20, lean and extra-lean, plus diced beef. No added water or fillers. Buy beef mince online in Sydney or in 5kg and 10kg bulk boxes.",
+    title: "Beef Mince Delivered — Lean & Extra-Lean | Mr Meat & Co",
+    description: "Beef mince ground daily in Alexandria — premium 80/20, lean and extra-lean, plus diced beef. No added water or fillers. Buy beef mince online or in 5kg / 10kg bulk.",
     h1: "Fresh Beef Mince — Ground Daily",
     primaryKeyword: "beef mince",
     supportingKeywords: ["lean beef mince", "extra lean beef mince", "beef mince price per kg", "buy beef mince online", "diced beef", "1kg beef mince"],
-    intro: "Grass-fed beef mince ground fresh every day from whole-muscle chuck and rump — premium 80/20 for everyday cooking, lean 90/10 and extra-lean 95/5 for meal prep and meatballs, and diced beef for slow cooks. Nothing added.",
+    intro: "Beef mince ground fresh every day from whole-muscle chuck and rump — premium 80/20 for everyday cooking, lean 90/10 and extra-lean 95/5 for meal prep and meatballs, and diced beef for slow cooks. Nothing added.",
     faqs: [
       { question: "What fat ratio is your beef mince?", answer: "Premium is about 80/20 (ground from chuck), lean around 90/10, extra-lean around 95/5 (rump and topside). Every pack is labelled with its real ratio." },
       { question: "Is your beef mince ground fresh?", answer: "Yes — daily, from whole muscle cuts, with no added water, cereal filler or preservative." },
@@ -9743,12 +9791,12 @@ export const PAGE_SEO: Record<string, PageSeo> = {
     ],
   },
   "/beef/steaks/": {
-    title: "Buy Steak Online | Scotch Fillet, Porterhouse & Eye Fillet — Mr Meat & Co",
-    description: "Buy grass-fed beef steaks online in Sydney — scotch fillet, porterhouse, eye fillet, rump and T-bone, cut to your thickness. Whole eye fillet and striploin available. Delivered cold.",
+    title: "Buy Steak Online — Scotch, Porterhouse, Fillet | Mr Meat & Co",
+    description: "Buy steak online — grass-fed scotch fillet, porterhouse, eye fillet, rump and T-bone, cut to your thickness. Whole eye fillet and striploin too. Delivered cold.",
     h1: "Grass-Fed Beef Steaks, Cut to Order",
     primaryKeyword: "buy steak online",
     supportingKeywords: ["scotch fillet steak", "porterhouse steak", "eye fillet steak", "buy whole eye fillet", "rump steak", "t-bone steak"],
-    intro: "Grass-fed steaks cut to your thickness — richly marbled scotch fillet, fine-grained porterhouse, tender eye fillet, full-flavoured rump and the bone-in T-bone. Whole eye fillet and striploin available for home carving.",
+    intro: "Buy steak online, cut to your thickness — richly marbled scotch fillet, fine-grained porterhouse, tender eye fillet, full-flavoured rump and the bone-in T-bone. Whole eye fillet and striploin available for home carving.",
     faqs: [
       { question: "Are your steaks aged?", answer: "Our beef is wet-aged in the bag for tenderness; selected cuts are available dry-aged on request. Ask us for current dry-aged availability." },
       { question: "What's the difference between scotch fillet and porterhouse?", answer: "Scotch fillet (ribeye) is from the fore-rib — more marbled and forgiving. Porterhouse (sirloin) is from the loin — firmer, leaner and beefier, with a fat cap on one edge." },
@@ -9757,12 +9805,12 @@ export const PAGE_SEO: Record<string, PageSeo> = {
     ],
   },
   "/beef/slow-cook/": {
-    title: "Beef for Slow Cooking | Brisket, Cheek, Shin & Oxtail — Mr Meat & Co",
-    description: "Grass-fed beef cuts built for the braise, smoker and slow cooker — brisket, beef cheek, gravy beef/shin, oxtail, short rib and chuck. Delivered cold across Sydney.",
+    title: "Slow Cook Beef — Brisket, Cheek & Shin | Mr Meat & Co",
+    description: "Slow cook beef cuts built for the braise, smoker and slow cooker — brisket, beef cheek, gravy beef / shin, oxtail, short rib and chuck. Grass-fed, delivered cold.",
     h1: "Beef for Slow Cooking & Braising",
-    primaryKeyword: "beef cuts for slow cooking",
+    primaryKeyword: "slow cook beef",
     supportingKeywords: ["beef brisket", "beef cheeks", "gravy beef", "beef osso buco", "beef short ribs", "chuck steak slow cook"],
-    intro: "The collagen-rich cuts that turn silky over a long, low cook — whole and portioned brisket for the smoker, beef cheek for the richest braise, gravy beef and shin to thicken a stew, oxtail, short rib and chuck.",
+    intro: "Slow cook beef — the collagen-rich cuts that turn silky over a long, low cook: whole and portioned brisket for the smoker, beef cheek for the richest braise, gravy beef and shin to thicken a stew, oxtail, short rib and chuck.",
     faqs: [
       { question: "What's the best beef cut for a slow cooker?", answer: "Chuck is the most forgiving all-rounder; beef cheek gives the silkiest result; shin or gravy beef thickens the sauce by itself. Avoid lean cuts like rump — they dry out." },
       { question: "How big is your brisket — whole or portioned?", answer: "Both — whole packer briskets (point and flat, ~4–6kg) for the smoker, and portioned pieces for the oven or slow cooker." },
@@ -9770,12 +9818,12 @@ export const PAGE_SEO: Record<string, PageSeo> = {
     ],
   },
   "/lamb/chops-cutlets/": {
-    title: "Lamb Chops & Cutlets Delivered | Loin, Forequarter & Chump — Mr Meat & Co",
-    description: "Australian grass-fed lamb chops and cutlets delivered in Sydney — loin chops, frenched cutlets, chump chops, forequarter and BBQ chops, plus lamb rack. Cut fresh.",
+    title: "Lamb Chops & Cutlets Delivered — Grass-Fed | Mr Meat & Co",
+    description: "Lamb chops and cutlets delivered — Australian grass-fed loin chops, frenched cutlets, chump chops, forequarter and BBQ chops, plus lamb rack. Cut fresh.",
     h1: "Lamb Chops & Cutlets — Grass-Fed",
     primaryKeyword: "lamb chops",
     supportingKeywords: ["lamb cutlets", "lamb loin chops", "lamb forequarter chops", "lamb chump chops", "lamb chops price per kg", "lamb rack"],
-    intro: "Grass-fed lamb chops for every method — tender loin chops and frenched cutlets for a fast, hot grill, meatier chump chops, and value forequarter and BBQ chops that reward a marinade and a lower heat.",
+    intro: "Lamb chops for every method — grass-fed tender loin chops and frenched cutlets for a fast, hot grill, meatier chump chops, and value forequarter and BBQ chops that reward a marinade and a lower heat.",
     faqs: [
       { question: "What's the difference between a lamb chop and a cutlet?", answer: "A cutlet is from the rack — small, lean, with a long frenched bone. A loin chop is a mini T-bone with a tender eye and a strip of belly. Chump chops come from the rump and are larger and meatier." },
       { question: "How much are lamb chops per kg?", answer: "Cutlets and rack are the premium end; loin chops mid-range; forequarter and BBQ chops the value buy. A whole lamb share averages the per-kg price down." },
@@ -9784,12 +9832,12 @@ export const PAGE_SEO: Record<string, PageSeo> = {
     ],
   },
   "/lamb/mince-diced/": {
-    title: "Lamb Mince Delivered | Fresh & Lean — Mr Meat & Co",
-    description: "Fresh Australian grass-fed lamb mince and diced lamb, ground and cut daily in Alexandria. Ideal for koftas, meatballs, ragu and curry. Buy lamb mince online in Sydney.",
+    title: "Lamb Mince Delivered — Fresh & Lean | Mr Meat & Co",
+    description: "Lamb mince and diced lamb, ground and cut daily in Alexandria — Australian grass-fed, standard and lean. Ideal for koftas, meatballs, ragu and curry. Buy online.",
     h1: "Fresh Lamb Mince & Diced Lamb",
     primaryKeyword: "lamb mince",
     supportingKeywords: ["lean lamb mince", "buy minced lamb online", "diced lamb", "lamb mince price", "lamb stir-fry strips"],
-    intro: "Grass-fed lamb mince ground fresh daily — standard and lean — plus diced lamb and stir-fry strips. The base of a proper kofta, a Greek-style pastitsio, or a rich lamb ragu.",
+    intro: "Lamb mince ground fresh daily — grass-fed, standard and lean — plus diced lamb and stir-fry strips. The base of a proper kofta, a Greek-style pastitsio, or a rich lamb ragu.",
     faqs: [
       { question: "What's the fat content of your lamb mince?", answer: "Standard lamb mince is around 80/20; lean lamb mince is closer to 90/10. Both are ground fresh from Australian grass-fed lamb." },
       { question: "Is lamb mince good for koftas and meatballs?", answer: "Yes — lamb mince binds and holds shape well with a little grated onion and spice, and stays moist thanks to its fat. It's the traditional choice for kofta, keftedes and lamb meatballs." },
@@ -9797,12 +9845,12 @@ export const PAGE_SEO: Record<string, PageSeo> = {
     ],
   },
   "/lamb/roasts/": {
-    title: "Lamb Roasts | Leg, Shoulder & Rack — Grass-Fed — Mr Meat & Co",
-    description: "Australian grass-fed lamb roasts — bone-in and boneless leg, rolled and boneless shoulder, and frenched rack. Boned, rolled or butterflied on request. Delivered cold in Sydney.",
+    title: "Leg of Lamb & Lamb Roasts — Grass-Fed | Mr Meat & Co",
+    description: "Leg of lamb and lamb roasts — bone-in and boneless leg, rolled shoulder, and frenched rack. Boned, rolled or butterflied on request. Grass-fed, delivered cold.",
     h1: "Lamb Roasts — Leg, Shoulder & Rack",
     primaryKeyword: "leg of lamb",
     supportingKeywords: ["bone in leg of lamb", "boneless leg of lamb", "rolled lamb shoulder", "lamb rack", "lamb roast price"],
-    intro: "The centrepiece cuts — bone-in and boneless leg of lamb, rolled shoulder for slow roasting, and frenched rack. We'll bone and roll, or butterfly the leg for a fast oven or BBQ cook, at no extra charge.",
+    intro: "Leg of lamb and the other centrepiece roasts — bone-in and boneless leg, rolled shoulder for slow roasting, and frenched rack. We'll bone and roll, or butterfly the leg for a fast oven or BBQ cook, at no extra charge.",
     faqs: [
       { question: "Bone-in or boneless leg — which roasts better?", answer: "Bone-in has slightly better flavour and cooks a touch more evenly; boneless carves into clean slices, cooks faster and can be stuffed. Butterflied is fastest of all." },
       { question: "What size leg of lamb for 6 or 8 people?", answer: "Bone-in: about 350–450g raw per person, so a 2–2.5kg leg feeds 5–6 and a 3kg leg feeds 7–8. Boneless: 250–300g per person." },
@@ -9811,12 +9859,12 @@ export const PAGE_SEO: Record<string, PageSeo> = {
     ],
   },
   "/lamb/slow-cook/": {
-    title: "Lamb for Slow Cooking | Shanks, Neck, Ribs & Shoulder — Mr Meat & Co",
-    description: "Grass-fed lamb cuts for the braise and slow cooker — lamb shanks, neck chops, lamb ribs and breast, diced lamb and shoulder. Great value, full of flavour. Delivered in Sydney.",
+    title: "Lamb Shanks & Slow-Cook Lamb — Grass-Fed | Mr Meat & Co",
+    description: "Lamb shanks, neck chops, lamb ribs and shoulder for the braise and slow cooker — Australian grass-fed, great value, full of flavour. Delivered cold.",
     h1: "Lamb for Slow Cooking & Braising",
     primaryKeyword: "lamb shanks",
     supportingKeywords: ["lamb ribs", "lamb neck chops", "lamb breast", "diced lamb", "lamb shoulder slow cook"],
-    intro: "The cuts that reward time — meaty lamb shanks, neck chops for a curry or tagine, fatty lamb ribs for low-and-slow, and diced shoulder. All Australian grass-fed, all a fraction of the price of chops.",
+    intro: "Lamb shanks and the other cuts that reward time — meaty shanks, neck chops for a curry or tagine, fatty lamb ribs for low-and-slow, and diced shoulder. All Australian grass-fed, all a fraction of the price of chops.",
     faqs: [
       { question: "What's the best lamb cut for a slow-cooked curry or tagine?", answer: "Diced shoulder or neck chops — both full of connective tissue that softens over a 2-hour braise and holds together in the sauce. Shanks for a one-per-person presentation." },
       { question: "How many lamb shanks per person?", answer: "One large shank per person as a main, or two small. They shrink as they braise, so err large." },
@@ -9824,12 +9872,12 @@ export const PAGE_SEO: Record<string, PageSeo> = {
     ],
   },
   "/pork/mince/": {
-    title: "Pork Mince Delivered | Fresh & Lean — Mr Meat & Co",
-    description: "Fresh Australian pork mince, ground daily in Alexandria — standard and lean. Ideal for dumplings, san choy bau, ragu, meatballs and sausage rolls. Buy pork mince online in Sydney.",
+    title: "Pork Mince Delivered — Fresh & Lean | Mr Meat & Co",
+    description: "Pork mince ground daily in Alexandria — Australian, standard and lean. Ideal for dumplings, san choy bau, ragu, meatballs and sausage rolls. Buy pork mince online.",
     h1: "Fresh Pork Mince — Ground Daily",
     primaryKeyword: "pork mince",
     supportingKeywords: ["lean pork mince", "buy pork mince online", "pork mince price", "diced pork", "premium pork mince"],
-    intro: "Australian pork mince ground fresh daily — standard 80/20 for burgers, meatballs and ragu, and lean 90/10 for dumplings, san choy bau and stir-fries where you don't want fat in the pan.",
+    intro: "Pork mince ground fresh daily — Australian, standard 80/20 for burgers, meatballs and ragu, and lean 90/10 for dumplings, san choy bau and stir-fries where you don't want fat in the pan.",
     faqs: [
       { question: "What's your pork mince fat ratio?", answer: "Standard pork mince is around 80/20; lean pork mince is closer to 90/10. Both are ground fresh from Australian pork." },
       { question: "Is pork mince good for dumplings and san choy bau?", answer: "Yes — lean pork mince is the traditional filling for both. It carries ginger, garlic and soy beautifully and stays juicy without being greasy." },
@@ -9837,12 +9885,12 @@ export const PAGE_SEO: Record<string, PageSeo> = {
     ],
   },
   "/pork/bacon-ham/": {
-    title: "Bacon & Ham Delivered | Nitrate-Free Options, Australian Pork — Mr Meat & Co",
-    description: "Australian bacon and leg ham delivered in Sydney — streaky and middle bacon, leg ham off the bone, and a salt-cured bacon with no added nitrates. Whole Christmas hams in season.",
+    title: "Buy Ham Online + Bacon — Australian Pork | Mr Meat & Co",
+    description: "Buy ham online — Australian leg ham off the bone, plus streaky and middle bacon and a salt-cured bacon with no added nitrates. Whole Christmas hams in season.",
     h1: "Bacon & Ham — Australian Pork",
     primaryKeyword: "buy ham online",
     supportingKeywords: ["buy sliced ham online", "buy smoked leg ham online", "nitrate free bacon", "streaky bacon", "christmas ham"],
-    intro: "Australian pork bacon and ham — streaky and middle-cut bacon (traditional cure, or a salt-and-sugar cure with no added nitrates), leg ham off the bone, and whole and half Christmas hams in season. Not water-pumped to inflate weight.",
+    intro: "Buy ham online — Australian pork leg ham off the bone, plus streaky and middle-cut bacon (traditional cure, or a salt-and-sugar cure with no added nitrates), and whole and half Christmas hams in season. Not water-pumped to inflate weight.",
     faqs: [
       { question: "Is your bacon nitrate-free or preservative-free?", answer: "We offer a salt-and-sugar cure with no added nitrates, nitrites or celery powder — genuinely additive-free, with a shorter shelf life — alongside a lightly-cured traditional bacon. Both are Australian pork, neither is water-pumped." },
       { question: "Do you sell whole Christmas hams?", answer: "Yes — whole and half bone-in leg hams in the lead-up to Christmas. Order early on the Christmas ham page for December delivery." },
@@ -9851,12 +9899,12 @@ export const PAGE_SEO: Record<string, PageSeo> = {
     ],
   },
   "/ready-to-cook/schnitzels/": {
-    title: "Chicken Schnitzel Delivered | Beef, Pork & Veal Schnitzel Too — Mr Meat & Co",
-    description: "Crumbed-fresh chicken schnitzel, plus beef, pork and veal schnitzel, delivered cold across Sydney. Gluten-free crumb, parmesan-herb and homestyle options. Ready for the pan, oven or air-fryer.",
+    title: "Chicken Schnitzel Delivered — Beef & Pork Too | Mr Meat & Co",
+    description: "Chicken schnitzel crumbed fresh daily, plus beef, pork and veal schnitzel. Delivered cold, gluten-free crumb, parmesan-herb and homestyle. For pan, oven or air-fryer.",
     h1: "Schnitzels — Crumbed Fresh Daily",
     primaryKeyword: "chicken schnitzel",
     supportingKeywords: ["beef schnitzel", "homemade chicken schnitzel", "gluten free chicken schnitzel", "pork schnitzel", "veal schnitzel"],
-    intro: "Pounded, three-stage-crumbed and rested each day — chicken schnitzel, plus beef, pork and rose-veal schnitzel, in homestyle, parmesan-herb and gluten-free crumbs. Cook from chilled: pan, oven or air-fryer.",
+    intro: "Chicken schnitzel pounded, three-stage-crumbed and rested each day — plus beef, pork and rose-veal schnitzel, in homestyle, parmesan-herb and gluten-free crumbs. Cook from chilled: pan, oven or air-fryer.",
     faqs: [
       { question: "Are schnitzels crumbed fresh in-store?", answer: "Yes — pounded to an even thickness, coated in a three-stage flour-egg-crumb, and rested each day. Not frozen and thawed." },
       { question: "Do you have a gluten-free crumb?", answer: "Yes — a gluten-free crumb across the chicken, beef and veal schnitzel range, with no wheat flour or breadcrumb." },
@@ -9865,8 +9913,8 @@ export const PAGE_SEO: Record<string, PageSeo> = {
     ],
   },
   "/bbq-grill/burgers/": {
-    title: "Burger Patties Delivered | Beef, Wagyu, Lamb & Chicken — Mr Meat & Co",
-    description: "House-made burger patties delivered in Sydney — beef, Wagyu, lamb, chicken and pork. No fillers, real fat ratio, formed fresh. Buy burger patties for the BBQ or a quick dinner.",
+    title: "Burger Patties — Beef, Wagyu, Lamb & Chicken | Mr Meat & Co",
+    description: "Burger patties formed fresh — beef, Wagyu, lamb, chicken and pork, real fat ratio, no fillers. Buy burger patties for the BBQ or a quick dinner.",
     h1: "Burger Patties — No Fillers",
     primaryKeyword: "burger patties",
     supportingKeywords: ["beef patties", "beef burger patties", "wagyu beef patties", "homemade burger patties", "wholesale beef patties"],
@@ -9878,12 +9926,12 @@ export const PAGE_SEO: Record<string, PageSeo> = {
     ],
   },
   "/bbq-grill/skewers/": {
-    title: "BBQ Skewers & Kebabs Delivered | Marinated, Ready to Grill — Mr Meat & Co",
-    description: "Ready-to-grill BBQ skewers and kebabs delivered in Sydney — marinated chicken, beef, lamb kofta and mixed skewer packs. Fresh, on wooden or metal skewers.",
+    title: "BBQ Skewers & Kebabs — Ready to Grill | Mr Meat & Co",
+    description: "BBQ skewers and kebabs delivered — marinated chicken, beef, lamb kofta and mixed skewer packs, threaded fresh on wooden or metal skewers. Ready to grill.",
     h1: "BBQ Skewers & Kebabs",
     primaryKeyword: "bbq skewers",
     supportingKeywords: ["kebab skewers", "marinated chicken skewers", "beef kebabs", "lamb kofta skewers", "mixed bbq skewer pack"],
-    intro: "Skewers threaded and marinated fresh — honey-soy and peri-peri chicken, beef and vegetable kebabs, lamb kofta and souvlaki, and a mixed BBQ skewer pack. Ready to hit the grill.",
+    intro: "BBQ skewers threaded and marinated fresh — honey-soy and peri-peri chicken, beef and vegetable kebabs, lamb kofta and souvlaki, and a mixed BBQ skewer pack. Ready to hit the grill.",
     faqs: [
       { question: "Are the skewers pre-made and marinated?", answer: "Yes — threaded and marinated in-house, ready to grill straight from the pack. Marinades rotate through the seasons." },
       { question: "Wooden or metal skewers?", answer: "Ours come on wooden skewers (soak them 20 minutes if you're worried about scorching). Metal skewers are reusable and don't burn — we sell those separately." },
@@ -9891,12 +9939,12 @@ export const PAGE_SEO: Record<string, PageSeo> = {
     ],
   },
   "/bbq-grill/ribs/": {
-    title: "Pork & Beef Ribs for BBQ | American-Style, Delivered — Mr Meat & Co",
-    description: "Pork and beef ribs for low-and-slow — American-style pork spare ribs, beef short ribs and beef ribs, plus lamb ribs. Membrane removed, delivered cold across Sydney.",
+    title: "Pork Ribs & Beef Ribs for BBQ | Mr Meat & Co",
+    description: "Pork ribs and beef ribs for low-and-slow — American-style pork spare ribs, beef short ribs, beef back ribs and lamb ribs. Membrane removed, delivered cold.",
     h1: "Ribs for the BBQ & Smoker",
     primaryKeyword: "pork ribs",
     supportingKeywords: ["american style pork ribs", "beef short ribs", "beef ribs for bbq", "lamb ribs for bbq", "bbq pork ribs"],
-    intro: "Ribs cut for the smoker and the low oven — American-style pork spare ribs, meaty beef short ribs, beef back ribs and lamb ribs. Membrane removed so the rub gets in and the meat pulls clean.",
+    intro: "Pork ribs and beef ribs cut for the smoker and the low oven — American-style pork spare ribs, meaty beef short ribs, beef back ribs and lamb ribs. Membrane removed so the rub gets in and the meat pulls clean.",
     faqs: [
       { question: "Are the ribs cut American-style / St Louis?", answer: "Pork spare ribs are trimmed St Louis-style (squared off, tips removed). We also do full spare racks — ask." },
       { question: "Pork or beef ribs for low-and-slow?", answer: "Pork spare ribs cook faster (about 4–5 hours) and are the classic. Beef short ribs take longer (5–6 hours) but give a richer, brisket-like result." },
@@ -9904,12 +9952,12 @@ export const PAGE_SEO: Record<string, PageSeo> = {
     ],
   },
   "/specialty-meat/kangaroo/": {
-    title: "Buy Kangaroo Meat | Steaks, Mince, Sausages & Fillet — Mr Meat & Co",
-    description: "Buy lean Australian kangaroo meat online — fillet, steaks, mince, diced and sausages. High protein, low fat, wild-harvested under quota. Delivered across Sydney and Australia-wide.",
+    title: "Buy Kangaroo Meat — Steaks, Mince, Fillet | Mr Meat & Co",
+    description: "Buy kangaroo meat online — lean Australian fillet, steaks, mince, diced and sausages. High protein, low fat, wild-harvested under quota. Delivered NSW-wide and nationwide.",
     h1: "Kangaroo Meat — Lean & Australian",
-    primaryKeyword: "kangaroo meat near me",
+    primaryKeyword: "buy kangaroo meat",
     supportingKeywords: ["buy kangaroo meat", "kangaroo steak", "kangaroo mince", "kangaroo fillet", "kangaroo sausages", "kangaroo meat price per kg"],
-    intro: "Wild-harvested Australian kangaroo — one of the leanest red meats there is, high in protein, iron and zinc. Fillet (rump) and steaks for a fast hot sear, mince for chilli and ragu, diced for a slow curry, and lean sausages.",
+    intro: "Buy kangaroo meat — wild-harvested Australian roo, one of the leanest red meats there is, high in protein, iron and zinc. Fillet (rump) and steaks for a fast hot sear, mince for chilli and ragu, diced for a slow curry, and lean sausages.",
     faqs: [
       { question: "Is kangaroo meat healthy?", answer: "It's one of the leanest red meats available — typically under 2% fat, about 22g protein per 100g, higher in iron and zinc than beef, and a natural source of CLA. The catch is it overcooks easily." },
       { question: "How much does kangaroo meat cost per kg?", answer: "Kangaroo generally sits below premium beef and around mid-range beef. Mince and diced are the best value; fillet is the premium cut but still usually cheaper than beef eye fillet." },
@@ -9920,12 +9968,12 @@ export const PAGE_SEO: Record<string, PageSeo> = {
     ],
   },
   "/specialty-meat/veal/": {
-    title: "Buy Veal | Australian Rose Veal Schnitzel, Mince & Osso Buco — Mr Meat & Co",
-    description: "Buy Australian rose veal online — schnitzel, cutlets, osso buco, diced and mince. Higher-welfare pink veal, not crate-raised. Delivered across Sydney and Australia-wide.",
+    title: "Buy Veal Online — Australian Rose Veal | Mr Meat & Co",
+    description: "Buy veal online — Australian rose veal schnitzel, cutlets, osso buco, diced and mince. Higher-welfare pink veal, not crate-raised. Delivered NSW-wide and nationwide.",
     h1: "Australian Rose Veal",
-    primaryKeyword: "veal",
+    primaryKeyword: "buy veal online",
     supportingKeywords: ["veal schnitzel", "veal mince", "veal osso buco", "veal cutlets", "buy veal mince", "rose veal australia"],
-    intro: "Australian rose veal — pale pink, fine-grained and mild, from calves raised in groups with room to move, not the banned white-veal crate system. Schnitzel and scaloppine, cutlets, osso buco, diced and delicate mince.",
+    intro: "Buy veal online — Australian rose veal: pale pink, fine-grained and mild, from calves raised in groups with room to move, not the banned white-veal crate system. Schnitzel and scaloppine, cutlets, osso buco, diced and delicate mince.",
     faqs: [
       { question: "What is veal and what age is the animal?", answer: "Veal is meat from young cattle, generally 8 weeks to 8 months old. The young age is why it's pale pink, low in fat and mild in flavour." },
       { question: "Is your veal ethically raised?", answer: "Yes — it's Australian rose veal: calves raised in groups, able to move, producing pink rather than white meat. The old immobilised-crate 'white veal' system is banned or abandoned in Australia." },
@@ -9934,12 +9982,12 @@ export const PAGE_SEO: Record<string, PageSeo> = {
     ],
   },
   "/specialty-meat/goat/": {
-    title: "Buy Goat Meat | Curry Pieces, Shoulder, Leg & Ribs — Mr Meat & Co",
-    description: "Buy goat meat online in Australia — bone-in curry pieces, shoulder, leg, ribs and diced goat. Lean, full-flavoured, delivered across Sydney and Australia-wide.",
+    title: "Buy Goat Meat — Curry Pieces, Shoulder, Leg | Mr Meat & Co",
+    description: "Buy goat meat online in Australia — bone-in curry pieces, shoulder, leg, ribs and diced goat. Lean, full-flavoured, delivered NSW-wide and frozen nationwide.",
     h1: "Goat Meat — Lean & Full-Flavoured",
-    primaryKeyword: "where to buy goat meat",
+    primaryKeyword: "buy goat meat",
     supportingKeywords: ["goat meat near me", "buy goat meat online", "goat curry pieces", "diced goat", "goat shoulder", "goat ribs"],
-    intro: "Australian goat (chevon) — leaner than lamb and beef, with a mild, slightly sweet flavour. Bone-in curry pieces, shoulder and leg for slow roasting, diced goat, and ribs for the grill.",
+    intro: "Buy goat meat — Australian goat (chevon), leaner than lamb and beef, with a mild, slightly sweet flavour. Bone-in curry pieces, shoulder and leg for slow roasting, diced goat, and ribs for the grill.",
     faqs: [
       { question: "Where can I buy goat meat in Australia?", answer: "Goat is rarely stocked in supermarkets. Mr Meat & Co carries Australian goat — curry pieces, shoulder, leg, diced and ribs — delivered across Sydney and Australia-wide for larger orders." },
       { question: "Is goat meat healthy?", answer: "Goat is one of the leanest red meats — lower in fat and calories than lamb or beef, and a good source of iron and B12." },
@@ -9948,12 +9996,12 @@ export const PAGE_SEO: Record<string, PageSeo> = {
     ],
   },
   "/specialty-meat/game/": {
-    title: "Buy Game Meat Online | Venison, Wild Boar & Rabbit — Mr Meat & Co",
-    description: "Buy game meat online in Australia — farmed venison, wild boar, rabbit, crocodile and emu. Backstrap, osso buco, mince, sausages and mixed game boxes. Delivered Australia-wide.",
+    title: "Buy Game Meat Online — Venison, Boar, Rabbit | Mr Meat & Co",
+    description: "Buy game meat online in Australia — farmed venison, wild boar, rabbit, crocodile and emu. Backstrap, osso buco, mince, sausages and mixed game boxes. Nationwide.",
     h1: "Game Meat — Venison, Boar, Rabbit & More",
     primaryKeyword: "buy game meat online",
     supportingKeywords: ["venison near me", "wild boar meat", "buy rabbit meat", "rabbit meat for sale", "crocodile meat", "game meat box"],
-    intro: "Lean, dark, full-flavoured game — farmed venison (backstrap, osso buco, mince), wild boar, whole and jointed rabbit, plus crocodile and emu. A mixed game box lets you try a few, and bulk game is available for restaurants.",
+    intro: "Buy game meat online — lean, dark, full-flavoured: farmed venison (backstrap, osso buco, mince), wild boar, whole and jointed rabbit, plus crocodile and emu. A mixed game box lets you try a few, and bulk game is available for restaurants.",
     faqs: [
       { question: "What game meats do you stock?", answer: "Farmed venison, wild boar, rabbit, crocodile and emu. Cuts from backstrap and fillet to mince, sausages, osso buco and a mixed game box." },
       { question: "Is it farmed or wild-harvested?", answer: "Venison and rabbit are farmed; wild boar is wild-harvested; crocodile and emu are farmed. All from licensed processors." },
@@ -9963,12 +10011,12 @@ export const PAGE_SEO: Record<string, PageSeo> = {
     ],
   },
   "/specialty-meat/rabbit/": {
-    title: "Buy Rabbit Meat | Whole & Jointed Farmed Rabbit — Mr Meat & Co",
-    description: "Buy rabbit meat online in Australia — whole farmed rabbit, jointed rabbit and rabbit loins. Lean, delicate white meat, delivered across Sydney and Australia-wide.",
+    title: "Buy Rabbit Meat — Whole & Jointed | Mr Meat & Co",
+    description: "Buy rabbit meat online in Australia — whole farmed rabbit, jointed rabbit and rabbit loins. Lean, delicate white meat, delivered NSW-wide and frozen nationwide.",
     h1: "Rabbit Meat — Farmed & Delivered",
     primaryKeyword: "buy rabbit meat",
     supportingKeywords: ["rabbit meat for sale", "rabbit meat near me", "where to buy rabbit meat", "whole rabbit", "jointed rabbit"],
-    intro: "Australian farmed rabbit — lean, delicate, almost all white meat. Buy it whole for a pot roast, jointed for a braise (rabbit with mustard and cream is the classic), or as loins for a fast pan-fry.",
+    intro: "Buy rabbit meat — Australian farmed rabbit, lean, delicate, almost all white meat. Whole for a pot roast, jointed for a braise (rabbit with mustard and cream is the classic), or as loins for a fast pan-fry.",
     faqs: [
       { question: "Where can I buy rabbit meat in Australia?", answer: "Rabbit isn't sold in supermarkets. Mr Meat & Co carries Australian farmed rabbit — whole, jointed and loins — delivered across Sydney and Australia-wide for larger orders." },
       { question: "What does rabbit taste like?", answer: "Mild, delicate and lean — often compared to chicken but finer-textured, with a faint gamey sweetness. It takes strong flavours (mustard, bacon, white wine, prunes) well." },
@@ -9977,12 +10025,12 @@ export const PAGE_SEO: Record<string, PageSeo> = {
   },
 
   "/beef/bones-broth/": {
-    title: "Beef Bones for Broth & Stock | Marrow & Knuckle — Mr Meat & Co",
-    description: "Human-grade Australian beef bones for bone broth and stock — marrow bones, knuckle, and meaty soup bones, cut to size. Grass-fed, delivered cold across Sydney.",
+    title: "Beef Bones for Broth — Marrow & Knuckle | Mr Meat & Co",
+    description: "Beef bones for broth and stock — human-grade grass-fed marrow bones, knuckle, and meaty soup bones, cut to size. Delivered cold across NSW.",
     h1: "Beef Bones for Broth & Stock",
     primaryKeyword: "beef bones for broth",
     supportingKeywords: ["beef marrow bones", "buy beef bones", "bones for bone broth", "soup bones", "beef knuckle bones", "where to buy beef bones"],
-    intro: "Human-grade grass-fed beef bones for a proper broth — marrow bones cut into 5–7cm canoe and round pieces, knuckle and joint bones packed with collagen, and meaty soup bones. Roast then simmer 12–24 hours for a gelatinous stock.",
+    intro: "Beef bones for broth — human-grade grass-fed marrow bones cut into 5–7cm canoe and round pieces, knuckle and joint bones packed with collagen, and meaty soup bones. Roast then simmer 12–24 hours for a gelatinous stock.",
     faqs: [
       { question: "Which beef bones make the best broth?", answer: "A mix: knuckle and joint bones for collagen and body, marrow bones for richness and flavour, and a meaty soup bone or two for depth. All-marrow broth is greasy; all-knuckle is thin. Roast them first for colour and flavour." },
       { question: "Are these bones human-grade?", answer: "Yes — these are cut from the same grass-fed carcasses as our retail beef, handled through the human cold chain. Our pet-food bones are a separate range." },
@@ -9991,12 +10039,12 @@ export const PAGE_SEO: Record<string, PageSeo> = {
     ],
   },
   "/pork/bones-broth/": {
-    title: "Pork Bones for Broth & Stock | Neck & Trotters — Mr Meat & Co",
-    description: "Australian pork bones for broth, tonkotsu and stock — neck bones, trotters and hock bones. Human-grade, delivered cold across Sydney. Buy pork bones online.",
+    title: "Buy Pork Bones Online — Neck, Trotters, Hock | Mr Meat & Co",
+    description: "Buy pork bones online for broth, tonkotsu and stock — neck bones, split trotters and hock bones. Human-grade Australian pork, delivered cold across NSW.",
     h1: "Pork Bones for Broth & Stock",
     primaryKeyword: "buy pork bones online",
     supportingKeywords: ["pork bones for broth", "pork neck bones", "pork trotters", "where can i buy pork bones", "pork hock bones", "tonkotsu bones"],
-    intro: "Australian pork bones for a milky tonkotsu, a Filipino nilaga or a Caribbean souse — neck bones with plenty of meat, split trotters for body and gelatine, and hock bones. Human-grade, from the same pigs as our retail pork.",
+    intro: "Buy pork bones online for a milky tonkotsu, a Filipino nilaga or a Caribbean souse — neck bones with plenty of meat, split trotters for body and gelatine, and hock bones. Human-grade, from the same pigs as our retail pork.",
     faqs: [
       { question: "What pork bones do I need for tonkotsu ramen broth?", answer: "Trotters and neck bones are the classic combination — trotters for the collagen that gives the milky emulsion, neck bones for meat and marrow. Blanch, then boil hard for 8–12 hours." },
       { question: "Are your pork bones human-grade?", answer: "Yes — cut from the same Australian pigs as our retail pork and kept in the human cold chain. Pet bones are listed separately under pet food." },
@@ -10006,12 +10054,12 @@ export const PAGE_SEO: Record<string, PageSeo> = {
 
   /* ---- new category: live poultry ---- */
   "/live-poultry/": {
-    title: "Live Poultry for Sale | Point-of-Lay Hens & Pullets — Mr Meat & Co",
-    description: "Live poultry for backyard flocks near Sydney — point-of-lay ISA Brown and Australorp hens, young pullets, dual-purpose and meat birds, and bantams. Farm pickup or local delivery.",
+    title: "Live Poultry for Sale — Hens, Pullets, Chicks | Mr Meat & Co",
+    description: "Live poultry for sale near Sydney — point-of-lay ISA Brown and Australorp hens, young pullets, dual-purpose and meat birds, and bantams. Farm pickup or local delivery.",
     h1: "Live Poultry for Backyard Flocks",
     primaryKeyword: "live poultry for sale",
     supportingKeywords: ["point of lay hens for sale", "laying hens for sale sydney", "pullets for sale", "backyard chickens for sale", "isa brown hens", "live chickens near me"],
-    intro: "Live birds for the backyard coop — point-of-lay hens (16–20 weeks, laying or about to), younger pullets to grow on, dual-purpose and fast-growing meat birds, and a rotating selection of bantams. Collected from our farm partner by appointment or delivered within a limited Sydney radius.",
+    intro: "Live poultry for sale for the backyard coop — point-of-lay hens (16–20 weeks, laying or about to), younger pullets to grow on, dual-purpose and fast-growing meat birds, and a rotating selection of bantams. Farm pickup by appointment or local Sydney delivery.",
     faqs: [
       { question: "What does 'point of lay' mean?", answer: "Point-of-lay (POL) pullets are 16–20 weeks old — either just started laying or within a few weeks of it. They're past the fragile brooder stage and are the easiest way to start a laying flock." },
       { question: "How do I collect live birds — do you deliver?", answer: "Live poultry is collected from our farm partner by appointment, or delivered within a limited radius of Sydney for a fee — arranged separately from the cold-chain meat run. The $300 site minimum order still applies. We'll confirm options when you order." },
@@ -10021,12 +10069,12 @@ export const PAGE_SEO: Record<string, PageSeo> = {
     ],
   },
   "/live-poultry/laying-hens/": {
-    title: "Point-of-Lay Hens for Sale | ISA Brown & Australorp — Mr Meat & Co",
-    description: "Point-of-lay laying hens for sale near Sydney — ISA Brown, Hyline and Australorp pullets at 16–20 weeks, vaccinated and sexed. Farm pickup or local delivery.",
+    title: "Point of Lay Hens for Sale — ISA Brown | Mr Meat & Co",
+    description: "Point of lay hens for sale near Sydney — ISA Brown, Hyline and Australorp pullets at 16–20 weeks, vaccinated and sexed. Farm pickup or local delivery.",
     h1: "Point-of-Lay Laying Hens",
     primaryKeyword: "point of lay hens for sale",
     supportingKeywords: ["laying hens for sale", "laying hens for sale sydney", "isa brown hens for sale", "australorp hens", "pol hens", "backyard laying hens"],
-    intro: "Point-of-lay hens at 16–20 weeks — vaccinated, sexed females ready to start laying within a few weeks. ISA Brown and Hyline for reliable brown eggs, Australorp and Plymouth Rock if you want a dual-purpose bird with more personality.",
+    intro: "Point of lay hens for sale at 16–20 weeks — vaccinated, sexed females ready to start laying within a few weeks. ISA Brown and Hyline for reliable brown eggs, Australorp and Plymouth Rock for a dual-purpose bird with more personality.",
     faqs: [
       { question: "How soon will point-of-lay hens start laying?", answer: "Usually within 2–6 weeks of settling into their new coop, once they reach about 20–22 weeks and daylight allows. Stress from the move can delay the first egg by a week or two." },
       { question: "How many eggs will they lay?", answer: "A healthy ISA Brown or Hyline lays 280–320 eggs in her first year. Australorps lay slightly fewer but for more years and go broody more readily." },
@@ -10034,12 +10082,12 @@ export const PAGE_SEO: Record<string, PageSeo> = {
     ],
   },
   "/live-poultry/pullets/": {
-    title: "Pullets for Sale | Young Hens to Grow On — Mr Meat & Co",
-    description: "Young pullets for sale near Sydney — 8–15 week brown-egg layers and dual-purpose breeds to grow on to point of lay. Vaccinated, sexed. Farm pickup or local delivery.",
+    title: "Pullets for Sale — Young Hens to Grow On | Mr Meat & Co",
+    description: "Pullets for sale near Sydney — 8–15 week brown-egg layers and dual-purpose breeds to grow on to point of lay. Vaccinated, sexed. Farm pickup or local delivery.",
     h1: "Pullets — Young Hens to Grow On",
     primaryKeyword: "pullets for sale",
     supportingKeywords: ["young pullets for sale", "started pullets", "grower pullets", "8 week old pullets", "brown egg layer pullets"],
-    intro: "Younger birds — 8 to 15 weeks — for people who want to raise their flock on themselves and pay less per bird than point of lay. Past the heat-lamp brooder stage, feathered up and hardy, on grower feed.",
+    intro: "Pullets for sale — younger birds, 8 to 15 weeks, for people who want to raise their flock on themselves and pay less per bird than point of lay. Past the heat-lamp brooder stage, feathered up and hardy, on grower feed.",
     faqs: [
       { question: "Pullet or point-of-lay hen — which should I buy?", answer: "Point-of-lay if you want eggs within weeks and less work. Pullets if you want to raise them yourself, tame them young, and spend less up front — you'll wait 2–4 months for eggs." },
       { question: "What do I feed pullets?", answer: "A grower or pullet-developer feed (around 16% protein) until roughly 18 weeks or the first egg, then switch to a layer feed with added calcium." },
@@ -10047,12 +10095,12 @@ export const PAGE_SEO: Record<string, PageSeo> = {
     ],
   },
   "/live-poultry/meat-birds/": {
-    title: "Meat Birds for Sale | Fast-Growing Table Chickens — Mr Meat & Co",
-    description: "Meat birds for sale near Sydney — fast-growing table chickens and dual-purpose breeds for home meat production. Straight-run, day-old to grower. Farm pickup or local delivery.",
+    title: "Meat Birds for Sale — Table Chickens | Mr Meat & Co",
+    description: "Meat birds for sale near Sydney — fast-growing table chickens and dual-purpose breeds for home meat production. Straight-run, day-old to grower. Farm pickup or delivery.",
     h1: "Meat Birds & Table Chickens",
     primaryKeyword: "meat birds for sale",
     supportingKeywords: ["meat chickens for sale", "table birds", "cornish cross chickens", "dual purpose chickens", "broiler chickens for sale"],
-    intro: "Birds raised for the table — fast-growing meat strains that reach processing weight in 7–9 weeks, and slower dual-purpose breeds if you'd rather trade speed for foraging and flavour. Sold straight-run (unsexed).",
+    intro: "Meat birds for sale, raised for the table — fast-growing meat strains that reach processing weight in 7–9 weeks, and slower dual-purpose breeds if you'd rather trade speed for foraging and flavour. Sold straight-run (unsexed).",
     faqs: [
       { question: "How long until meat birds are ready to process?", answer: "Fast-growing meat strains reach 2–3kg live weight in 7–9 weeks. Dual-purpose breeds take 14–20 weeks and finish leaner and firmer." },
       { question: "Are meat birds sexed?", answer: "No — meat birds are sold straight-run (as hatched, roughly half male half female). For table birds this doesn't matter." },
@@ -10060,12 +10108,12 @@ export const PAGE_SEO: Record<string, PageSeo> = {
     ],
   },
   "/live-poultry/bantams/": {
-    title: "Bantams for Sale | Silkies, Pekins & Fancy Breeds — Mr Meat & Co",
-    description: "Bantam chickens for sale near Sydney — Silkie, Pekin and other fancy bantam breeds. Great pets and broodies, small-space friendly. Farm pickup or local delivery.",
+    title: "Bantams for Sale — Silkies & Pekins | Mr Meat & Co",
+    description: "Bantams for sale near Sydney — Silkie, Pekin and other fancy bantam breeds. Great pets and broodies, small-space friendly. Farm pickup or local delivery.",
     h1: "Bantams & Fancy Breeds",
     primaryKeyword: "bantams for sale",
     supportingKeywords: ["silkie chickens for sale", "pekin bantams for sale", "bantam chickens near me", "fancy chickens for sale", "pet chickens"],
-    intro: "Small breeds for small yards and for people who keep chickens as much for company as for eggs — Silkies (famously friendly and broody), Pekins, and a rotating selection of other fancy bantams. Availability is limited and seasonal.",
+    intro: "Bantams for sale — small breeds for small yards and for people who keep chickens as much for company as for eggs: Silkies (famously friendly and broody), Pekins, and a rotating selection of other fancy bantams. Availability is limited and seasonal.",
     faqs: [
       { question: "Do bantams lay eggs?", answer: "Yes, but small ones — about half the size of a standard egg, and fewer per year. Silkies in particular are more often kept as pets and broody hens than for eggs." },
       { question: "Are bantams good with children?", answer: "Silkies and Pekins are among the calmest, most handleable chicken breeds, which is why they're popular family birds. They can't fly well, so fencing is easier." },
@@ -10075,12 +10123,12 @@ export const PAGE_SEO: Record<string, PageSeo> = {
 
   /* ---- landing & wholesale ---- */
   "/christmas-ham/": {
-    title: "Christmas Ham Delivery | Whole & Half Leg Ham — Mr Meat & Co",
-    description: "Order your Christmas ham for December delivery in Sydney — whole and half bone-in leg ham, plus boneless. Australian pork, glaze on request. Order early, hams sell out.",
+    title: "Christmas Ham Delivery — Whole & Half Leg Ham | Mr Meat & Co",
+    description: "Christmas ham for December delivery — whole and half bone-in leg ham, plus boneless. Australian pork, glaze on request. Order early, hams sell out.",
     h1: "Christmas Ham — Whole & Half Leg",
     primaryKeyword: "christmas ham",
     supportingKeywords: ["buy christmas ham", "whole leg ham", "half leg ham", "christmas ham delivery sydney", "boneless christmas ham"],
-    intro: "Australian bone-in leg ham for the Christmas table — whole (7–10kg) for a crowd with a week of leftovers, half leg (4–6kg) for a smaller table, and boneless if carving space is tight. Order early for a December delivery window; hams sell out.",
+    intro: "Christmas ham — Australian bone-in leg ham for the table: whole (7–10kg) for a crowd with a week of leftovers, half leg (4–6kg) for a smaller table, and boneless if carving space is tight. Order early for a December delivery window; hams sell out.",
     faqs: [
       { question: "When should I order my Christmas ham?", answer: "As early as you can — Christmas hams sell out, and you want it delivered a few days before, not on the 24th. Choose your December delivery window at checkout." },
       { question: "What size Christmas ham do I need?", answer: "A 7–10kg bone-in leg feeds a large crowd with a week of leftovers; a half leg (4–6kg) suits a table of 4–6. Boneless is easiest to carve." },
@@ -10089,12 +10137,12 @@ export const PAGE_SEO: Record<string, PageSeo> = {
     ],
   },
   "/wholesale/bulk-meat-orders/": {
-    title: "Wholesale & Bulk Meat | Carcass Shares & Restaurant Supply — Mr Meat & Co",
-    description: "Wholesale and bulk meat — quarter, half and whole beef, lamb, pork and goat shares, 5–10kg cartons, and restaurant supply. Custom cut sheets, snap-frozen, delivered across Sydney and Australia-wide.",
+    title: "Wholesale Meat & Bulk Carcass Shares | Mr Meat & Co",
+    description: "Wholesale meat — quarter, half and whole beef, lamb, pork and goat shares, 5–10kg cartons, and restaurant supply. Custom cut sheets, snap-frozen, NSW-wide and nationwide.",
     h1: "Bulk Meat & Animal Shares",
-    primaryKeyword: "wholesale meat near me",
+    primaryKeyword: "wholesale meat",
     supportingKeywords: ["bulk meat near me", "order meat in bulk", "bulk meat packs near me", "restaurant meat supplier", "wholesale butcher sydney"],
-    intro: "Buy meat by the carcass or the carton — quarter, half and whole beef, lamb, pork and goat shares broken down to your cut sheet, 5kg and 10kg cartons of mince, breast, sausages and more, and standing supply for restaurants, cafés and caterers.",
+    intro: "Wholesale meat by the carcass or the carton — quarter, half and whole beef, lamb, pork and goat shares broken down to your cut sheet, 5kg and 10kg cartons of mince, breast, sausages and more, and standing supply for restaurants, cafés and caterers.",
     faqs: [
       { question: "What's your minimum wholesale order?", answer: "Bulk cartons start at 5kg per line. Carcass shares start at a quarter beast. Restaurant supply is arranged per account — contact us with your volumes." },
       { question: "Do you supply restaurants and cafés?", answer: "Yes — standing weekly orders, custom cuts and cut sheets, and delivery scheduled around your service." },
@@ -10104,12 +10152,12 @@ export const PAGE_SEO: Record<string, PageSeo> = {
     ],
   },
   "/wholesale/bulk-meat-orders/bulk-beef/": {
-    title: "Wholesale Beef | Quarter, Half & Whole Beef Shares — Mr Meat & Co",
-    description: "Wholesale and bulk beef — quarter, half and whole grass-fed beef shares custom cut to your sheet, plus 5kg and 10kg mince boxes and whole primals. Snap-frozen, delivered across Sydney.",
+    title: "Wholesale Beef — Quarter, Half & Whole | Mr Meat & Co",
+    description: "Wholesale beef — quarter, half and whole grass-fed shares custom cut to your sheet, plus 5kg and 10kg mince boxes and whole primals. Snap-frozen, delivered.",
     h1: "Wholesale & Bulk Beef",
     primaryKeyword: "wholesale beef",
     supportingKeywords: ["bulk beef", "wholesale beef mince", "bulk beef mince", "quarter beef share", "half beef box", "buy whole eye fillet"],
-    intro: "Grass-fed beef by the quarter (40–55kg), half (80–110kg) or whole animal, broken down to your cut sheet and snap-frozen — plus 5kg and 10kg bulk mince boxes and whole primals (eye fillet, striploin, rump). Typically 20–35% below individual-cut pricing.",
+    intro: "Wholesale beef by the quarter (40–55kg), half (80–110kg) or whole animal, broken down to your cut sheet and snap-frozen — plus 5kg and 10kg bulk mince boxes and whole primals (eye fillet, striploin, rump). Typically 20–35% below individual-cut pricing.",
     faqs: [
       { question: "What's in a quarter, half or whole beef share?", answer: "A spread of premium steaks, roasting and casserole cuts, and mince and diced from the trim — plus bones, shin and offal if you want them. Roughly 25–30% premium, 30–35% roasts, 25–30% mince." },
       { question: "How much does a beef share weigh?", answer: "A quarter is about 40–55kg of packed meat, a half 80–110kg, a whole 160–220kg. Weight varies with the animal, so it's sold as 'approximately'." },
@@ -10118,12 +10166,12 @@ export const PAGE_SEO: Record<string, PageSeo> = {
     ],
   },
   "/wholesale/bulk-meat-orders/bulk-chicken/": {
-    title: "Wholesale Chicken | Bulk Breast, Thigh & Schnitzel Cartons — Mr Meat & Co",
-    description: "Wholesale and bulk chicken — bulk breast and thigh fillets, drumsticks, wings and 5kg crumbed schnitzel boxes. Free-range Australian chicken at a bulk per-kg price, delivered in Sydney.",
+    title: "Wholesale Chicken — Bulk Breast & Thigh | Mr Meat & Co",
+    description: "Wholesale chicken — bulk breast and thigh fillets, drumsticks, wings and 5kg crumbed schnitzel boxes. Free-range Australian chicken at a bulk per-kg price.",
     h1: "Wholesale & Bulk Chicken",
-    primaryKeyword: "bulk chicken breast",
+    primaryKeyword: "wholesale chicken",
     supportingKeywords: ["chicken breast bulk", "bulk chicken", "wholesale chicken", "bulk chicken thigh fillets", "5kg chicken carton"],
-    intro: "Free-range Australian chicken in bulk — breast and thigh fillet cartons, drumsticks, wings, and 5kg crumbed schnitzel boxes, at a lower per-kg price for meal prep, gyms, cafés and events.",
+    intro: "Wholesale chicken — free-range Australian breast and thigh fillet cartons, drumsticks, wings, and 5kg crumbed schnitzel boxes, at a lower per-kg price for meal prep, gyms, cafés and events.",
     faqs: [
       { question: "What carton sizes are available?", answer: "Breast and thigh fillets in 2kg and 5kg, drumsticks and wings in 2kg and 5kg, crumbed schnitzel in 5kg. Larger volumes on account." },
       { question: "Fresh or frozen?", answer: "Fresh chilled by default; snap-frozen on request or for Australia-wide shipping." },
@@ -10131,12 +10179,12 @@ export const PAGE_SEO: Record<string, PageSeo> = {
     ],
   },
   "/wholesale/bulk-meat-orders/bulk-lamb/": {
-    title: "Wholesale Lamb | Half & Whole Lamb Shares, Bulk Packs — Mr Meat & Co",
-    description: "Wholesale and bulk lamb — half and whole Australian grass-fed lamb carcass shares cut to your sheet, plus 6kg lamb variety packs and bulk lamb mince. Snap-frozen, delivered across Sydney.",
+    title: "Wholesale Lamb — Half & Whole Shares | Mr Meat & Co",
+    description: "Wholesale lamb — half and whole Australian grass-fed carcass shares cut to your sheet, plus 6kg variety packs and bulk lamb mince. Snap-frozen, delivered.",
     h1: "Wholesale & Bulk Lamb",
     primaryKeyword: "wholesale lamb",
     supportingKeywords: ["bulk lamb", "half lamb box", "whole lamb share", "buy half a lamb", "bulk lamb mince", "lamb carcass price"],
-    intro: "Australian grass-fed lamb by the half (9–13kg packed) or whole animal (18–26kg), broken down to your cut sheet — chops, cutlets, leg and shoulder roasts, shanks, neck and mince — plus 6kg mixed lamb variety packs. Typically 20–30% below individual-cut pricing.",
+    intro: "Wholesale lamb — Australian grass-fed by the half (9–13kg packed) or whole animal (18–26kg), broken down to your cut sheet: chops, cutlets, leg and shoulder roasts, shanks, neck and mince — plus 6kg mixed variety packs. Typically 20–30% below individual-cut pricing.",
     faqs: [
       { question: "What's in a half or whole lamb share?", answer: "A spread across the whole animal: loin chops and cutlets, chump chops, a leg and a shoulder (bone-in or boned and rolled), shanks, neck chops or diced, and mince and BBQ chops from the trim. You choose the split on a cut sheet." },
       { question: "How much does a lamb share weigh, and feed?", answer: "A half lamb is about 9–13kg of packed meat, a whole 18–26kg. A whole lamb feeds a family of four for roughly 2–3 months of lamb meals. Weight varies with the animal, so it's sold as 'approximately'." },
@@ -10145,12 +10193,12 @@ export const PAGE_SEO: Record<string, PageSeo> = {
     ],
   },
   "/wholesale/bulk-meat-orders/bulk-pork/": {
-    title: "Wholesale Pork | Half & Whole Pork Shares, Bulk Packs — Mr Meat & Co",
-    description: "Wholesale and bulk pork — half and whole Australian pork carcass shares cut to your sheet, 11kg pork variety packs, bulk belly, shoulder and whole fillets. Snap-frozen, delivered across Sydney.",
+    title: "Wholesale Pork — Half & Whole Shares | Mr Meat & Co",
+    description: "Wholesale pork — half and whole Australian carcass shares cut to your sheet, 11kg variety packs, bulk belly, shoulder and whole fillets. Snap-frozen, delivered.",
     h1: "Wholesale & Bulk Pork",
     primaryKeyword: "wholesale pork",
     supportingKeywords: ["bulk pork", "half pig share", "whole pork carcass", "buy half a pig", "bulk pork belly", "bulk pork mince"],
-    intro: "Australian pork by the half (25–35kg packed) or whole pig (55–75kg), cut to your sheet — leg and shoulder roasts, belly, loin and cutlets, ribs, hocks, mince and sausages made from the trim — plus 11kg mixed pork variety packs and bulk belly and shoulder for smokers and caterers.",
+    intro: "Wholesale pork — Australian by the half (25–35kg packed) or whole pig (55–75kg), cut to your sheet: leg and shoulder roasts, belly, loin and cutlets, ribs, hocks, mince and sausages from the trim — plus 11kg mixed variety packs and bulk belly and shoulder for smokers and caterers.",
     faqs: [
       { question: "What's in a half or whole pig share?", answer: "Leg (roasts or ham), shoulder (roasts or diced), whole or portioned belly, loin and cutlets, spare ribs, hocks, and mince and sausages made from the trim. Ask us to cure some of the leg and belly into bacon and ham, or leave it fresh." },
       { question: "Can I have some of it cured into bacon and ham?", answer: "Yes — that's one of the best reasons to buy a pig share. Nominate on the cut sheet how much leg you want as ham and how much belly as bacon, and we cure it for you." },
@@ -10159,12 +10207,12 @@ export const PAGE_SEO: Record<string, PageSeo> = {
     ],
   },
   "/wholesale/bulk-meat-orders/bulk-goat/": {
-    title: "Wholesale Goat | Half & Whole Goat Shares, Curry Cartons — Mr Meat & Co",
-    description: "Wholesale and bulk goat — half and whole Australian goat carcass shares, 2.5kg and 5kg diced goat curry cartons, and bulk bone-in goat ribs. Lean, full-flavoured, delivered across Sydney.",
+    title: "Wholesale Goat Meat — Shares & Curry Cartons | Mr Meat & Co",
+    description: "Wholesale goat meat — half and whole Australian carcass shares, 2.5kg and 5kg diced curry cartons, and bulk bone-in goat ribs. Lean, full-flavoured, delivered.",
     h1: "Wholesale & Bulk Goat",
     primaryKeyword: "wholesale goat meat",
     supportingKeywords: ["bulk goat meat", "half goat share", "whole goat carcass", "buy goat meat in bulk", "goat curry cartons", "goat meat wholesale australia"],
-    intro: "Australian goat by the half or whole carcass, cut for curry, roasting and the grill, plus 2.5kg and 5kg cartons of bone-in curry pieces and bulk goat ribs — for restaurants, caterers and large households cooking goat regularly.",
+    intro: "Wholesale goat meat — Australian goat by the half or whole carcass, cut for curry, roasting and the grill, plus 2.5kg and 5kg cartons of bone-in curry pieces and bulk ribs — for restaurants, caterers and large households cooking goat regularly.",
     faqs: [
       { question: "How is a goat share cut?", answer: "Usually mostly bone-in curry pieces (chopped shoulder, leg and neck), with the loin left as chops or a rack and the ribs kept whole. Tell us if you want more roasting cuts and fewer curry pieces." },
       { question: "What does a half or whole goat weigh?", answer: "A whole goat carcass yields roughly 10–16kg of packed meat depending on the animal; a half, 5–8kg. It's sold by finished weight." },
@@ -10173,12 +10221,12 @@ export const PAGE_SEO: Record<string, PageSeo> = {
     ],
   },
   "/wholesale/bulk-meat-orders/bulk-sausages/": {
-    title: "Wholesale Sausages | 5kg & 10kg Bulk Sausage Cartons — Mr Meat & Co",
-    description: "Wholesale and bulk sausages — 5kg and 10kg cartons of butcher beef sausages, thick and thin, plus 5kg gourmet sausage links. Made fresh, snap-frozen, delivered across Sydney for events and venues.",
+    title: "Bulk Sausages — 5kg & 10kg Wholesale Cartons | Mr Meat & Co",
+    description: "Bulk sausages — 5kg and 10kg cartons of butcher beef sausages, thick and thin, plus 5kg gourmet links. Made fresh, snap-frozen, delivered for events and venues.",
     h1: "Wholesale & Bulk Sausages",
     primaryKeyword: "bulk sausages",
     supportingKeywords: ["wholesale sausages", "bulk sausages for bbq", "5kg sausages", "10kg sausage carton", "sausages in bulk", "catering sausages"],
-    intro: "Butcher sausages by the 5kg and 10kg carton — traditional thick and thin beef snags, plus gourmet flavour links — made fresh with meat, fat, seasoning and natural casings. For sausage sizzles, clubs, caterers and fundraisers.",
+    intro: "Bulk sausages by the 5kg and 10kg carton — traditional thick and thin beef snags, plus gourmet flavour links — made fresh with meat, fat, seasoning and natural casings. For sausage sizzles, clubs, caterers and fundraisers.",
     faqs: [
       { question: "How many sausages in a 5kg or 10kg carton?", answer: "Roughly 60–70 thick sausages or 110–130 thin ones per 5kg, double that for 10kg. Exact count depends on the link size — it's on the product page." },
       { question: "Are they fresh or frozen?", answer: "Made fresh, then snap-frozen for bulk cartons so you can portion what you need. Ask for fresh chilled if you're using the lot within a couple of days." },
@@ -10187,12 +10235,12 @@ export const PAGE_SEO: Record<string, PageSeo> = {
     ],
   },
   "/wholesale/bulk-meat-orders/bulk-veal/": {
-    title: "Wholesale Veal | Rose Veal Shares & 5kg Cartons — Mr Meat & Co",
-    description: "Wholesale and bulk Australian rose veal — half and whole carcass shares, and 5kg cartons of veal schnitzel, mince, diced veal and osso buco. For restaurants and caterers. Delivered across Sydney.",
+    title: "Wholesale Veal — Rose Veal Shares & Cartons | Mr Meat & Co",
+    description: "Wholesale veal — half and whole Australian rose veal carcass shares, and 5kg cartons of schnitzel, mince, diced veal and osso buco. For restaurants and caterers.",
     h1: "Wholesale & Bulk Veal",
     primaryKeyword: "wholesale veal",
     supportingKeywords: ["bulk veal", "veal schnitzel bulk", "bulk veal mince", "veal osso buco carton", "rose veal wholesale", "restaurant veal supplier"],
-    intro: "Australian rose veal in volume — half and whole carcass shares cut to a restaurant sheet, and 5kg cartons of pre-cut schnitzel, scaloppine, diced veal, mince and osso buco. Rose veal from group-raised calves, not the crate system.",
+    intro: "Wholesale veal — Australian rose veal in volume: half and whole carcass shares cut to a restaurant sheet, and 5kg cartons of pre-cut schnitzel, scaloppine, diced veal, mince and osso buco. Rose veal from group-raised calves, not the crate system.",
     faqs: [
       { question: "Is this rose veal or white veal?", answer: "Rose veal — pale pink, from calves raised in groups with room to move. The immobilised-crate 'white veal' system is not used in Australia." },
       { question: "What carton options are there?", answer: "5kg cartons of crumbed schnitzel, plain scaloppine, diced veal, veal mince, and cross-cut osso buco. Half and whole carcass shares are cut to your specification." },
@@ -10201,12 +10249,12 @@ export const PAGE_SEO: Record<string, PageSeo> = {
     ],
   },
   "/wholesale/bulk-meat-orders/bulk-kangaroo/": {
-    title: "Wholesale Kangaroo | Bulk Shares & 5kg Frozen Cartons — Mr Meat & Co",
-    description: "Wholesale and bulk Australian kangaroo — boned-out half and whole shares, and 5kg frozen cartons of kangaroo mince, fillets, diced and sausages. Lean, high-protein, delivered across Sydney.",
+    title: "Wholesale Kangaroo Meat — Shares & Cartons | Mr Meat & Co",
+    description: "Wholesale kangaroo meat — boned-out half and whole shares, and 5kg frozen cartons of mince, fillets, diced and sausages. Lean, high-protein, delivered.",
     h1: "Wholesale & Bulk Kangaroo",
     primaryKeyword: "wholesale kangaroo meat",
     supportingKeywords: ["bulk kangaroo meat", "kangaroo mince bulk", "5kg kangaroo carton", "kangaroo fillet wholesale", "bulk kangaroo for dogs", "kangaroo meat supplier"],
-    intro: "Wild-harvested Australian kangaroo in volume — boned-out half and whole shares, and 5kg frozen cartons of mince, fillets, diced and sausages. For restaurants, meal-prep businesses, gyms, and raw-feeding dog owners buying by the carton.",
+    intro: "Wholesale kangaroo meat — wild-harvested Australian roo in volume: boned-out half and whole shares, and 5kg frozen cartons of mince, fillets, diced and sausages. For restaurants, meal-prep businesses, gyms, and raw-feeding dog owners buying by the carton.",
     faqs: [
       { question: "What bulk kangaroo formats are available?", answer: "5kg frozen cartons of kangaroo mince, loin fillets, diced kangaroo and kangaroo sausages, plus boned-out half and whole shares that mix all of the above." },
       { question: "Is bulk kangaroo cheaper than retail?", answer: "Yes — carton pricing is well below the per-pack retail price, which is why meal-prep businesses and raw feeders buy it this way." },
@@ -10215,12 +10263,12 @@ export const PAGE_SEO: Record<string, PageSeo> = {
     ],
   },
   "/wholesale/bulk-meat-orders/bulk-game/": {
-    title: "Wholesale Game Meat | Venison Shares, Mixed Game Boxes — Mr Meat & Co",
-    description: "Wholesale and bulk game meat — half and whole farmed venison carcass shares, frozen venison mince and osso buco cartons, and mixed game boxes with wild boar and more. Delivered across Sydney.",
+    title: "Wholesale Game Meat — Venison Shares | Mr Meat & Co",
+    description: "Wholesale game meat — half and whole farmed venison carcass shares, frozen venison mince and osso buco cartons, and mixed game boxes with wild boar and more.",
     h1: "Wholesale & Bulk Game Meat",
     primaryKeyword: "wholesale game meat",
     supportingKeywords: ["bulk venison", "venison carcass share", "wholesale venison", "bulk game meat box", "wild boar wholesale", "game meat supplier australia"],
-    intro: "Game meat in volume — half and whole farmed venison carcass shares cut to your sheet, 5kg frozen cartons of venison mince, backstrap and osso buco, and large mixed game boxes bringing in wild boar, rabbit and more. For restaurants and serious home cooks.",
+    intro: "Wholesale game meat in volume — half and whole farmed venison carcass shares cut to your sheet, 5kg frozen cartons of venison mince, backstrap and osso buco, and large mixed game boxes bringing in wild boar, rabbit and more. For restaurants and serious home cooks.",
     faqs: [
       { question: "What's in a venison carcass share?", answer: "Backstrap and fillet as premium cuts, leg as roasts or diced, shoulder and shank for braising, osso buco from the shanks, and mince and sausages from the trim. Cut to your sheet." },
       { question: "Is the venison farmed or wild?", answer: "Farmed — Australian farmed venison from licensed producers, consistent in size and supply, unlike wild-shot deer. Wild boar in the mixed boxes is wild-harvested." },

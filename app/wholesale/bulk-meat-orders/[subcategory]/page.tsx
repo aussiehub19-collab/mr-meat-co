@@ -1,7 +1,7 @@
 import React from 'react';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
-import { PRODUCTS, WHOLESALE_BULK_SUBCATEGORIES, SITE, PAGE_SEO, metaDesc } from '@/config/site';
+import { PRODUCTS, WHOLESALE_BULK_SUBCATEGORIES, SITE, PAGE_SEO, metaDesc, faqHeading } from '@/config/site';
 import { ProductCard } from '@/components/ProductCard';
 import { WholesaleNav } from '@/components/WholesaleNav';
 import { BulkOrderContactSection } from '@/components/BulkOrderContactSection';
@@ -166,7 +166,7 @@ export default async function BulkSubcategoryPage({
       {/* Contact Section */}
       <BulkOrderContactSection defaultCategory={subcategory.name} />
 
-      {seo?.faqs && <SeoFaqSection faqs={seo.faqs} />}
+      {seo?.faqs && <SeoFaqSection faqs={seo.faqs} heading={faqHeading(seo?.primaryKeyword)} />}
     </div>
   );
 }

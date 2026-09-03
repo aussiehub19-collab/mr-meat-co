@@ -1,7 +1,7 @@
 import React from 'react';
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { PRODUCTS, SITE, PAGE_SEO, metaDesc, abs } from '@/config/site';
+import { PRODUCTS, SITE, PAGE_SEO, metaDesc, abs, faqHeading } from '@/config/site';
 import { JsonLd } from '@/components/JsonLd';
 import { SeoFaqSection } from '@/components/SeoFaqSection';
 import { ProductCard } from '@/components/ProductCard';
@@ -90,7 +90,7 @@ export default function ChristmasHamPage() {
         </div>
       </section>
 
-      {seo?.faqs && <SeoFaqSection faqs={seo.faqs} />}
+      {seo?.faqs && <SeoFaqSection faqs={seo.faqs} heading={faqHeading(seo?.primaryKeyword)} />}
     </div>
   );
 }

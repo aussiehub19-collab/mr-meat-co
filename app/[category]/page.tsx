@@ -1,6 +1,6 @@
 import React from 'react';
 import { notFound } from 'next/navigation';
-import { CATEGORIES, PRODUCTS, SITE, PAGE_SEO, metaDesc } from '@/config/site';
+import { CATEGORIES, PRODUCTS, SITE, PAGE_SEO, metaDesc, faqHeading } from '@/config/site';
 import { JsonLd } from '@/components/JsonLd';
 import { SeoFaqSection } from '@/components/SeoFaqSection';
 import { ProductCard } from '@/components/ProductCard';
@@ -205,7 +205,7 @@ export default async function TopLevelCategoryPage({
         <ShopFilterClient initialCategory={category.slug} />
       )}
 
-      {seo?.faqs && <SeoFaqSection faqs={seo.faqs} />}
+      {seo?.faqs && <SeoFaqSection faqs={seo.faqs} heading={faqHeading(seo?.primaryKeyword)} />}
     </div>
   );
 }

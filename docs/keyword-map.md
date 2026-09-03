@@ -11,85 +11,104 @@ is the human-readable index of that allocation.
 
 ---
 
-## 0. Site-level targets & top-30 opportunity list (Semrush AU, 2026-09-03)
+## 0. Site keyword targets — AS ASSIGNED (from `PAGE_SEO` in `src/config/site.ts`)
 
-Ranked by **opportunity** (real volume × low difficulty). Intent: **T** = transactional,
-**C** = commercial. Data: the 76 Semrush AU exports (2026-09-01/02), de-duped to ~115k
-unique keywords, filtered to T/C intent + volume ≥ 20 + relevance ≥ 40, near-duplicates
-collapsed.
+This is what the site is built to target right now. Volume / KD / intent are from the
+Semrush AU exports (2026-09-01/02) where the exact term appears; `—` means the term was a
+head term or Google "related search" pick with no standalone export row.
 
 ### Main keyword
-**`meat box`** — vol **2,400** · KD **24** · Commercial.
-Describes the actual model (curated butcher boxes + build-a-box), commercial intent,
-winnable in 6–12 months. Homepage currently targets the narrower `meat box delivery` (480) —
-broaden to `meat box`, keep `meat box delivery` as the paired secondary.
+**`meat box delivery`** — `PAGE_SEO["/"].primaryKeyword` — vol **480** · KD **25** · Commercial.
 
-_Aspirational primary (target at 12–18 months, do not build the homepage on these now):_
-`meat delivery` (1,300 / KD 63), `online butcher` (1,000 / KD 59), `buy meat online`
-(480 / KD 59) — all dominated by funded incumbents (Our Cow, ButcherCrowd, The Aussie Butcher).
-
-### Secondary keywords (site level)
+### Supporting keywords (homepage — `PAGE_SEO["/"].supportingKeywords`)
 
 | keyword | vol | KD | intent |
 |---|---|---|---|
-| meat box delivery | 480 | 25 | C |
+| meat delivery sydney | 390 | 57 | C |
 | meat subscription | 1,000 | 31 | C |
-| extra lean beef mince | 2,400 | 11 | C |
-| grass fed beef mince | 260 | 6 | C |
-| bbq meat | 1,300 | 9 | C |
-| chickens for sale | 2,900 | 12 | T |
-| goat meat | 1,900 | 14 | C |
-| raw dog food | 2,900 | 28 | C |
-| venison near me | 390 | 12 | T |
-| wholesale meat near me | 590 | 39 | T |
-| buy beef online | 390 | 39 | T |
-| buy game meat online | 110 | 3 | T |
+| online butcher australia | — | (≈ "online butcher" 1,000 / KD 59) | I/T |
+| grass fed meat delivery | — | (≈ "grass fed meat subscription" 140 / KD 41) | C |
+| butcher delivered sydney | — | (≈ "sydney butcher delivery" 140 / KD 61) | I |
 
-### Top 30 opportunity keywords
+### Top 30 — the assigned page primary keywords (priority order)
 
-| # | keyword | vol | KD | intent | target page |
+| # | page | primary keyword | vol | KD | intent |
 |---|---|---|---|---|---|
-| 1 | chickens for sale | 2,900 | 12 | T | /live-poultry/ |
-| 2 | extra lean beef mince | 2,400 | 11 | C | /beef/mince-diced/ |
-| 3 | goat meat | 1,900 | 14 | C | /specialty-meat/goat/ |
-| 4 | bbq meat | 1,300 | 9 | C | /bbq-grill/ |
-| 5 | pet mince | 1,000 | 6 | C | /pet-food/raw-mince/ |
-| 6 | dog bones | 1,000 | 11 | C | /pet-food/bones/ |
-| 7 | bbq skewers | 1,000 | 17 | C | /bbq-grill/skewers/ |
-| 8 | hens for sale | 880 | 12 | T | /live-poultry/laying-hens/ |
-| 9 | beef bones | 880 | 6 | C | /beef/bones-broth/ |
-| 10 | fresh prawns | 720 | 17 | C | /seafood/prawns/ |
-| 11 | chicken breast mince | 720 | 20 | C | /chicken/mince/ |
-| 12 | pork sausage meat | 590 | 9 | C | /sausages/pork/ |
-| 13 | bulk chicken breast | 390 | 14 | C | /wholesale/bulk-meat-orders/bulk-chicken/ |
-| 14 | venison near me | 390 | 12 | T | /specialty-meat/game/ |
-| 15 | kangaroo fillet | 320 | 10 | C | /specialty-meat/kangaroo/ |
-| 16 | kangaroo meat near me | 320 | 11 | T | /specialty-meat/kangaroo/ |
-| 17 | poultry for sale near me | 320 | 9 | T | /live-poultry/ |
-| 18 | chicken wholesale | 320 | 16 | C | /wholesale/bulk-meat-orders/bulk-chicken/ |
-| 19 | grass fed beef mince | 260 | 6 | C | /beef/mince-diced/ |
-| 20 | wagyu eye fillet | 260 | 6 | C | /beef/steaks/ |
-| 21 | bbq pack | 260 | 5 | C | /bbq-grill/ |
-| 22 | prawns for sale | 210 | 9 | T | /seafood/prawns/ |
-| 23 | lamb meat near me | 210 | 9 | T | /lamb/ |
-| 24 | wholesale lamb | 170 | 6 | C | /wholesale/bulk-meat-orders/bulk-lamb/ |
-| 25 | wholesale beef | 170 | 15 | C | /wholesale/bulk-meat-orders/bulk-beef/ |
-| 26 | buy whole eye fillet | 140 | 9 | T | /beef/steaks/ |
-| 27 | buy beef mince online | 140 | 6 | T | /beef/mince-diced/ |
-| 28 | pork wholesale | 110 | 7 | C | /wholesale/bulk-meat-orders/bulk-pork/ |
-| 29 | buy game meat online | 110 | 3 | T | /specialty-meat/game/ |
-| 30 | barramundi for sale | 110 | 6 | T | /seafood/fish/ |
+| 1 | `/` | meat box delivery | 480 | 25 | C |
+| 2 | `/shop/` | buy meat online | 480 | 59 | T |
+| 3 | `/beef/` | buy beef online | 390 | 39 | T |
+| 4 | `/chicken/` | free range chicken delivery | — | — | T |
+| 5 | `/lamb/` | lamb meat near me | 210 | 9 | T |
+| 6 | `/pork/` | pork meat near me | 110 | 20 | T |
+| 7 | `/sausages/` | sausages | 5,400 | 17 | I |
+| 8 | `/bbq-grill/` | bbq meat box | 40 | 2 | C |
+| 9 | `/meat-boxes/` | meat box | 2,400 | 24 | C |
+| 10 | `/ready-to-cook/` | ready to cook meat | 20 | — | T |
+| 11 | `/specialty-meat/` | buy specialty meat online | — | — | T |
+| 12 | `/seafood/` | prawns for sale | 210 | 9 | T |
+| 13 | `/pet-food/` | raw dog food | 2,900 | 28 | C |
+| 14 | `/live-poultry/` | live poultry for sale | — | — | T |
+| 15 | `/christmas-ham/` | christmas ham | — | — | C |
+| 16 | `/wholesale/bulk-meat-orders/` | wholesale meat near me | 590 | 39 | T |
+| 17 | `.../bulk-beef/` | wholesale beef | 170 | 15 | C |
+| 18 | `.../bulk-chicken/` | bulk chicken breast | 390 | 14 | C |
+| 19 | `.../bulk-lamb/` | wholesale lamb | 170 | 6 | C |
+| 20 | `.../bulk-pork/` | wholesale pork | 50 | 7 | C |
+| 21 | `.../bulk-goat/` | wholesale goat meat | 20 | — | C |
+| 22 | `.../bulk-sausages/` | bulk sausages | 20 | 10 | T |
+| 23 | `.../bulk-veal/` | wholesale veal | — | — | C |
+| 24 | `.../bulk-kangaroo/` | wholesale kangaroo meat | — | — | C |
+| 25 | `.../bulk-game/` | wholesale game meat | — | — | C |
+| 26 | `/beef/mince-diced/` | beef mince | 4,400 | 25 | I |
+| 27 | `/beef/steaks/` | buy steak online | — | (≈ "buy steak" 70 / KD 16) | T |
+| 28 | `/ready-to-cook/schnitzels/` | chicken schnitzel | 18,100 | 39 | I |
+| 29 | `/lamb/chops-cutlets/` | lamb chops | 9,900 | 38 | I |
+| 30 | `/pork/mince/` | pork mince | 2,400 | 26 | I |
 
-**High value, medium difficulty (target after the top 30 lands):**
-`raw dog food` (2,900 / KD 28), `meat box` (2,400 / KD 24), `chicken sausage` (1,600 / KD 26),
-`pork sausage` (1,000 / KD 21), `wholesale meat near me` (590 / KD 39), `buy beef online`
-(390 / KD 39), `bulk meat packs near me` (320 / KD 27), `meat subscription` (1,000 / KD 31).
+Full per-page allocation (49 pages + 25 blog posts) is in sections 1–5 below.
 
-**Read of the data:** the winnable money volume clusters in **live poultry, beef mince
-variants, pet food, BBQ, wholesale/bulk, and game/specialty** — every one of those already
-has a page. Retail lamb, pork and chicken have thinner low-KD demand; they lean on
-subcategory + long-tail. The "meat delivery / online butcher" positioning terms are all
-KD 55+ and are a 12-month play, not a launch target.
+---
+
+## 0b. Opportunity re-rank (Semrush AU, 2026-09-03) — reference only
+
+The assigned list above is what's live. This is a data re-check: T/C-intent terms, volume ≥ 20,
+KD low, near-dups collapsed — i.e. where a new site can realistically win first.
+
+**Best single strategic pick:** `meat box` (2,400 / KD 24, C) — broader than the assigned
+`meat box delivery` (480) at the same difficulty. Consider swapping the homepage primary.
+
+| # | keyword | vol | KD | intent |
+|---|---|---|---|---|
+| 1 | chickens for sale | 2,900 | 12 | T |
+| 2 | extra lean beef mince | 2,400 | 11 | C |
+| 3 | goat meat | 1,900 | 14 | C |
+| 4 | bbq meat | 1,300 | 9 | C |
+| 5 | pet mince | 1,000 | 6 | C |
+| 6 | dog bones | 1,000 | 11 | C |
+| 7 | bbq skewers | 1,000 | 17 | C |
+| 8 | hens for sale | 880 | 12 | T |
+| 9 | beef bones | 880 | 6 | C |
+| 10 | fresh prawns | 720 | 17 | C |
+| 11 | chicken breast mince | 720 | 20 | C |
+| 12 | pork sausage meat | 590 | 9 | C |
+| 13 | bulk chicken breast | 390 | 14 | C |
+| 14 | venison near me | 390 | 12 | T |
+| 15 | kangaroo fillet | 320 | 10 | C |
+| 16 | kangaroo meat near me | 320 | 11 | T |
+| 17 | poultry for sale near me | 320 | 9 | T |
+| 18 | chicken wholesale | 320 | 16 | C |
+| 19 | grass fed beef mince | 260 | 6 | C |
+| 20 | wagyu eye fillet | 260 | 6 | C |
+| 21 | bbq pack | 260 | 5 | C |
+| 22 | prawns for sale | 210 | 9 | T |
+| 23 | lamb meat near me | 210 | 9 | T |
+| 24 | wholesale lamb | 170 | 6 | C |
+| 25 | wholesale beef | 170 | 15 | C |
+| 26 | buy whole eye fillet | 140 | 9 | T |
+| 27 | buy beef mince online | 140 | 6 | T |
+| 28 | pork wholesale | 110 | 7 | C |
+| 29 | buy game meat online | 110 | 3 | T |
+| 30 | barramundi for sale | 110 | 6 | T |
 
 ---
 

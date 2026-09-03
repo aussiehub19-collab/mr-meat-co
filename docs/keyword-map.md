@@ -38,6 +38,7 @@ de-cannibalised from the money pages.
 |---|---|---|---|---|---|
 | 1 | `/` | meat box | 2,400 | 24 | C |
 | 2 | `/shop/` | buy meat online | 480 | 59 | T |
+| — | `/wholesale/` | wholesale meat supplier | 90 | ~20 | C |
 | 3 | `/beef/` | buy beef online | 390 | 39 | T |
 | 4 | `/chicken/` | free range chicken | 390 | ~30 | C |
 | 5 | `/lamb/` | buy lamb online | 90 | ~25 | T |
@@ -121,6 +122,7 @@ KD low, near-dups collapsed — i.e. where a new site can realistically win firs
 |---|---|---|
 | `/` | meat box | meat box delivery · butcher box · meat subscription · grass fed meat delivery · online butcher australia |
 | `/shop/` | buy meat online | meat online · online butcher · order meat online australia · fresh meat delivery · butcher box online |
+| `/wholesale/` | wholesale meat supplier | restaurant meat supplier sydney · bulk meat supplier · trade meat supply · butcher wholesale · commercial meat supplier |
 | `/wholesale/bulk-meat-orders/` | wholesale meat | bulk meat near me · order meat in bulk · bulk meat packs near me · restaurant meat supplier · wholesale butcher sydney |
 
 ## 2. Category pages

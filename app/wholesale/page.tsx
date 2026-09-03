@@ -1,18 +1,23 @@
 import type { Metadata } from 'next';
-import { SITE, abs, metaDesc } from '@/config/site';
+import { SITE, PAGE_SEO, abs, metaDesc } from '@/config/site';
 import { JsonLd } from '@/components/JsonLd';
 import { WholesaleClient } from './WholesaleClient';
 
+const seo = PAGE_SEO['/wholesale/'];
+
 export const metadata: Metadata = {
-  title: 'Wholesale & Bulk Meat | Restaurant & Trade Supply',
+  title: seo ? { absolute: seo.title } : 'Wholesale & Bulk Meat | Restaurant & Trade Supply',
   description: metaDesc(
-    'Wholesale and bulk meat from an Australian craft butcher — bulk cartons, quarter/half/whole animal shares, custom cut sheets and standing restaurant supply. NSW cold-chain, national frozen freight.'
+    seo?.description ??
+      'Wholesale and bulk meat from an Australian craft butcher — bulk cartons, quarter/half/whole animal shares, custom cut sheets and standing restaurant supply. NSW cold-chain, national frozen freight.'
   ),
   alternates: { canonical: `https://${SITE.domain}/wholesale/` },
   openGraph: {
-    title: 'Wholesale & Bulk Meat Supply — Mr Meat & Co',
-    description:
-      'Bulk cartons, carcass shares, custom cut sheets and standing restaurant supply. NSW cold-chain, national frozen freight.',
+    title: seo?.title ?? 'Wholesale & Bulk Meat Supply — Mr Meat & Co',
+    description: metaDesc(
+      seo?.description ??
+        'Bulk cartons, carcass shares, custom cut sheets and standing restaurant supply. NSW cold-chain, national frozen freight.'
+    ),
     url: `https://${SITE.domain}/wholesale/`,
     images: [{ url: abs(SITE.ogImage) }],
   },

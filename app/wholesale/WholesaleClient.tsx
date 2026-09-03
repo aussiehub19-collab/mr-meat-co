@@ -2,11 +2,15 @@
 
 import React, { useState, useMemo } from 'react';
 import Link from 'next/link';
-import { SITE, PRODUCTS, WHOLESALE_BULK_SUBCATEGORIES } from '@/config/site';
+import { SITE, PRODUCTS, WHOLESALE_BULK_SUBCATEGORIES, PAGE_SEO, faqHeading } from '@/config/site';
 import { WholesaleNav } from '@/components/WholesaleNav';
 import { ProductCard } from '@/components/ProductCard';
 import { BulkOrderContactSection } from '@/components/BulkOrderContactSection';
 import { SourcingNote } from '@/components/SourcingNote';
+import { GuideSection } from '@/components/GuideSection';
+import { SeoFaqSection } from '@/components/SeoFaqSection';
+
+const seo = PAGE_SEO['/wholesale/'];
 import {
   Building2,
   Package,
@@ -113,10 +117,11 @@ export function WholesaleClient() {
           <span>Wholesale & Bulk Meat Supply</span>
         </div>
         <h1 className="text-3xl sm:text-5xl font-black text-white font-serif tracking-tight">
-          Wholesale & Bulk Meat Orders
+          {seo?.h1 ?? 'Wholesale Meat Supplier — Bulk Cartons & Trade Supply'}
         </h1>
         <p className="text-gray-300 text-sm sm:text-base leading-relaxed max-w-3xl mx-auto">
-          Shop wholesale bulk cartons, freezer packs, and whole/half animal shares online with fixed AUD pricing — cold-chain van delivery across NSW and frozen express courier nationwide. Commercial restaurants, clubs, and food-service partners can also submit custom trade inquiries below.
+          {seo?.intro ??
+            'Mr Meat & Co is a wholesale meat supplier for Sydney restaurants, clubs, pubs and caterers — shop bulk cartons, freezer packs and whole or half animal shares online at fixed AUD pricing, or submit a trade application for a custom cut sheet and standing weekly supply. Cut and ground fresh in Alexandria, delivered by refrigerated cold-chain van across NSW and by frozen express courier nationwide.'}
         </p>
         <div className="max-w-3xl mx-auto"><SourcingNote variant="meat" /></div>
       </div>
@@ -412,6 +417,10 @@ export function WholesaleClient() {
           </form>
         </div>
       </div>
+
+      <GuideSection guide={seo?.guide} keyword={seo?.primaryKeyword} />
+
+      {seo?.faqs && <SeoFaqSection faqs={seo.faqs} heading={faqHeading(seo?.primaryKeyword)} />}
     </div>
   );
 }

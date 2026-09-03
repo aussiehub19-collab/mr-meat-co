@@ -9621,6 +9621,22 @@ export const PAGE_SEO: Record<string, PageSeo> = {
       { question: "Can I filter by cut, cooking style or price?", answer: "Yes — the shop filters by category and subcategory, by cut and cooking style (steaks, mince, slow-cook, BBQ, ready-to-cook), by attributes like grass-fed and high-protein, and by price band." },
     ],
   },
+  "/wholesale/": {
+    title: "Wholesale Meat Supplier Sydney | Mr Meat & Co",
+    description: "Wholesale meat supplier in Sydney — bulk cartons, carcass shares, custom cut sheets and standing weekly supply for restaurants, clubs and caterers.",
+    h1: "Wholesale Meat Supplier — Bulk Cartons & Trade Supply",
+    primaryKeyword: "wholesale meat supplier",
+    supportingKeywords: ["restaurant meat supplier sydney", "bulk meat supplier", "trade meat supply", "butcher wholesale", "commercial meat supplier"],
+    intro: "Mr Meat & Co is a wholesale meat supplier for Sydney restaurants, clubs, pubs and caterers — shop bulk cartons, freezer packs and whole or half animal shares online at fixed AUD pricing, or submit a trade application for a custom cut sheet and standing weekly supply. Everything is cut and ground fresh in our Alexandria butchery, delivered by refrigerated cold-chain van across NSW and by frozen express courier nationwide.",
+    faqs: [
+      { question: "Is there a minimum order for wholesale?", answer: "Listed bulk cartons and animal shares can be added to cart at the standard $300 site minimum. Standing trade accounts are set up from around 50kg per week — submit the trade application and our butchery team will send a rate sheet." },
+      { question: "Do you deliver wholesale orders outside Sydney?", answer: "Yes. Refrigerated cold-chain vans run six days a week across NSW — Sydney Metro plus regional runs including Wollongong and the Central Coast. Interstate trade orders are dispatched snap-frozen by express courier with freight quoted per order." },
+      { question: "Can you cut to our specification?", answer: "Yes — custom fat ratios on mince (80/20, 85/15, 75/25), portion weights on steaks, and full cut sheets on carcass shares. Tell us your prep and service needs in the trade application." },
+      { question: "What payment terms do you offer trade accounts?", answer: "New accounts order prepaid by PayID or bank transfer. Crypto settlement (BTC or USDT) earns the 10% instant discount. Standing accounts with a delivery history can request 7-day terms." },
+      { question: "Do you supply restaurants and food service directly?", answer: "Yes — restaurants, clubs, pubs, caterers and meal-prep businesses. You get a named contact in the butchery, a fixed weekly price sheet, and consistent cut specs run to run." },
+    ],
+    guide: "## Choosing a wholesale meat supplier\n\nA wholesale meat supplier is judged on three things: consistency of the cut, reliability of the cold chain, and how easy it is to get a real person on the phone when an order changes. Mr Meat & Co runs all three out of one butchery in Alexandria, so the person cutting your order is the person you brief.\n\n### Bulk cartons vs standing supply\n\nFor a cafe, a small venue or a meal-prep run, the listed bulk cartons and freezer packs are the simplest path — fixed price, add to cart, delivered cold. For a venue putting through 50kg or more a week, a standing trade account is better value: you get a weekly price sheet, locked cut specs, and priority on the delivery run.\n\n### Carcass shares for value\n\nQuarter, half and whole beef, lamb, pork and goat shares give the lowest per-kilo price of anything we sell. They suit gastropubs and caterers who can use the whole animal across a menu, and households with freezer space. Every share is broken down to your cut sheet, vacuum-sealed and snap-frozen.\n\n### Cold chain and compliance\n\nEvery wholesale order is temperature-logged from the butchery to your door. Beef and lamb are graded for eating quality under Meat Standards Australia and cut to AUS-MEAT language, and the whole operation is run to Food Standards Australia & New Zealand requirements. Ask for the current specification sheet with your first quote.",
+  },
   "/beef/": {
     title: "Buy Beef Online — Grass-Fed Australian Beef | Mr Meat & Co",
     description: "Buy beef online — grass-fed Australian steaks, roasts, fresh mince, slow-cook cuts, BBQ and offal, cut fresh in Alexandria. Cold-chain NSW-wide, bulk beef too.",

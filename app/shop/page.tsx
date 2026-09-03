@@ -2,6 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import { Beef, ArrowRight } from 'lucide-react';
 import { SITE, PAGE_SEO, metaDesc, faqHeading } from '@/config/site';
+import { SourcingNote } from '@/components/SourcingNote';
 import { JsonLd } from '@/components/JsonLd';
 import { SeoFaqSection } from '@/components/SeoFaqSection';
 import { ShopFilterClient } from '@/components/ShopFilterClient';
@@ -60,6 +61,7 @@ export default function ShopIndexPage() {
           {shopSeo?.intro ??
             'Filter through all 11 artisanal butcher categories, subcategories, and specialty meat cuts. Ground fresh daily in Alexandria with zero preservatives or fillers. Cold-chain refrigerated delivery across NSW, frozen express courier Australia-wide.'}
         </p>
+        <SourcingNote variant="meat" />
       </div>
 
       {/* Carcass / bulk pointer */}

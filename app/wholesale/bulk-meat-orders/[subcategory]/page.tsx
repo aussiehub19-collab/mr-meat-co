@@ -8,6 +8,7 @@ import { BulkOrderContactSection } from '@/components/BulkOrderContactSection';
 import { JsonLd } from '@/components/JsonLd';
 import { SeoFaqSection } from '@/components/SeoFaqSection';
 import { GuideSection } from '@/components/GuideSection';
+import { SourcingNote } from '@/components/SourcingNote';
 import { SmartImage } from '@/components/SmartImage';
 import { ChevronRight, Layers, ArrowLeft } from 'lucide-react';
 
@@ -138,6 +139,7 @@ export default async function BulkSubcategoryPage({
             {seo?.intro ??
               `Shop wholesale carton quantities, animal shares, and freezer packs of ${subcategory.name.toLowerCase()}. Listed items can be added directly to cart with fixed pricing. For higher volumes, contact our butcher team for a custom quote.`}
           </p>
+          <SourcingNote variant="meat" />
         </div>
       </div>
 

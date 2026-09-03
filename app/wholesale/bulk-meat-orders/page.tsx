@@ -7,6 +7,7 @@ import { ProductCard } from '@/components/ProductCard';
 import { WholesaleNav } from '@/components/WholesaleNav';
 import { BulkOrderContactSection } from '@/components/BulkOrderContactSection';
 import { SeoFaqSection } from '@/components/SeoFaqSection';
+import { SourcingNote } from '@/components/SourcingNote';
 import { Search, Filter, Layers, CheckCircle, ChevronRight, Sparkles, AlertCircle } from 'lucide-react';
 
 export default function BulkMeatOrdersPage() {
@@ -107,6 +108,7 @@ export default function BulkMeatOrdersPage() {
           <p className="text-sm sm:text-base text-gray-300 leading-relaxed">
             Shop large-quantity meat orders, freezer packs and animal shares. Add listed bulk products directly to cart. For quantities larger than the listed options, customers must contact us for a custom bulk-order price.
           </p>
+          <SourcingNote variant="meat" />
 
           <div className="flex flex-wrap gap-4 pt-2 text-xs text-gray-300">
             <div className="flex items-center gap-1.5 bg-[#1C1414] px-3 py-1.5 rounded-lg border border-red-900/30">

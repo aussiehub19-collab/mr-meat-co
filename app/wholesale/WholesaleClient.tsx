@@ -6,6 +6,7 @@ import { SITE, PRODUCTS, WHOLESALE_BULK_SUBCATEGORIES } from '@/config/site';
 import { WholesaleNav } from '@/components/WholesaleNav';
 import { ProductCard } from '@/components/ProductCard';
 import { BulkOrderContactSection } from '@/components/BulkOrderContactSection';
+import { SourcingNote } from '@/components/SourcingNote';
 import {
   Building2,
   Package,
@@ -115,8 +116,9 @@ export function WholesaleClient() {
           Wholesale & Bulk Meat Orders
         </h1>
         <p className="text-gray-300 text-sm sm:text-base leading-relaxed max-w-3xl mx-auto">
-          Shop wholesale bulk cartons, freezer packs, and whole/half animal shares online with fixed AUD pricing and direct delivery across Sydney. Commercial restaurants, clubs, and food service partners can also submit custom trade inquiries below.
+          Shop wholesale bulk cartons, freezer packs, and whole/half animal shares online with fixed AUD pricing — cold-chain van delivery across NSW and frozen express courier nationwide. Commercial restaurants, clubs, and food-service partners can also submit custom trade inquiries below.
         </p>
+        <div className="max-w-3xl mx-auto"><SourcingNote variant="meat" /></div>
       </div>
 
       {/* ========================================== */}

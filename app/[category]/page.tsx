@@ -2,6 +2,7 @@ import React from 'react';
 import { notFound } from 'next/navigation';
 import { CATEGORIES, PRODUCTS, SITE, PAGE_SEO, metaDesc, faqHeading } from '@/config/site';
 import { GuideSection } from '@/components/GuideSection';
+import { SourcingNote } from '@/components/SourcingNote';
 import { SmartImage } from '@/components/SmartImage';
 import { JsonLd } from '@/components/JsonLd';
 import { SeoFaqSection } from '@/components/SeoFaqSection';
@@ -161,6 +162,10 @@ export default async function TopLevelCategoryPage({
             ? 'Raw pet meat, bones, and offal prepared strictly for animal diets. Pet food only — not for human consumption. Keep frozen until use.'
             : category.description}
         </p>
+
+        <SourcingNote
+          variant={isLivePoultry ? 'poultry' : isPetFood ? 'petfood' : isSeafood ? 'seafood' : 'meat'}
+        />
 
         {/* Subcategories Pills Bar */}
         <div className="flex flex-wrap items-center gap-2 pt-2">

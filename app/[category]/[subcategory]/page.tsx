@@ -4,6 +4,7 @@ import { CATEGORIES, PRODUCTS, SITE, PAGE_SEO, metaDesc, faqHeading } from '@/co
 import { JsonLd } from '@/components/JsonLd';
 import { SeoFaqSection } from '@/components/SeoFaqSection';
 import { GuideSection } from '@/components/GuideSection';
+import { SourcingNote } from '@/components/SourcingNote';
 import { SmartImage } from '@/components/SmartImage';
 import { ProductCard } from '@/components/ProductCard';
 import { SeafoodCatalogueClient } from '@/components/SeafoodCatalogueClient';
@@ -218,6 +219,7 @@ export default async function TopLevelSubcategoryPage({
             ? `Raw pet meat, bones, or offal for ${subcategory.toLowerCase()}. Prepared strictly for animal dietary consumption only. Not for human consumption.`
             : `Premium fresh ${subcategory.toLowerCase()} hand-selected and trimmed by our craft butchers. High-protein, pasture-raised, delivered cold-chain across Australia.`}
         </p>
+        <SourcingNote variant={isSeafood ? 'seafood' : isPetFood ? 'petfood' : categorySlug === 'live-poultry' ? 'poultry' : 'meat'} />
       </div>
 
       {category.image && (

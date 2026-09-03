@@ -5,6 +5,7 @@ import { PRODUCTS, SITE, PAGE_SEO, metaDesc, abs, faqHeading } from '@/config/si
 import { JsonLd } from '@/components/JsonLd';
 import { SeoFaqSection } from '@/components/SeoFaqSection';
 import { GuideSection } from '@/components/GuideSection';
+import { SourcingNote } from '@/components/SourcingNote';
 import { SmartImage } from '@/components/SmartImage';
 import { ProductCard } from '@/components/ProductCard';
 
@@ -57,6 +58,7 @@ export default function ChristmasHamPage() {
           {seo?.intro ??
             'Australian bone-in leg ham for the Christmas table — whole, half and boneless. Pre-order for a December delivery window.'}
         </p>
+        <SourcingNote variant="meat" />
       </div>
 
       {hams[0]?.main_image && (

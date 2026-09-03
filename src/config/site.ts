@@ -9544,11 +9544,11 @@ export interface PageSeo {
 
 export const PAGE_SEO: Record<string, PageSeo> = {
   "/": {
-    title: "Meat Box Delivery Sydney | Grass-Fed Butcher — Mr Meat & Co",
-    description: "Meat box delivery and craft butcher cuts across Sydney. 100% Australian grass-fed beef, free-range chicken, lamb, pork and more — ground and cut fresh in Alexandria, delivered cold-chain.",
-    h1: "Meat Box Delivery & Craft Butcher, Direct to Your Sydney Door",
-    primaryKeyword: "meat box delivery",
-    supportingKeywords: ["meat delivery sydney", "meat subscription", "online butcher australia", "grass fed meat delivery", "butcher delivered sydney"],
+    title: "Meat Boxes & Craft Butcher Cuts, Delivered | Mr Meat & Co",
+    description: "Australian meat boxes and craft-butcher cuts — grass-fed beef, free-range chicken, lamb and pork, cut fresh in Sydney and delivered cold-chain across NSW and nationwide.",
+    h1: "Grass-Fed Meat Boxes & Craft Butcher Cuts, Delivered",
+    primaryKeyword: "meat box",
+    supportingKeywords: ["meat box delivery", "butcher box", "meat subscription", "meat delivery sydney", "online butcher australia", "grass fed meat delivery"],
     faqs: [
       { question: "Where do you deliver?", answer: "Refrigerated cold-chain vans cover the whole of NSW — Sydney Metro plus regional runs including Wollongong and the Central Coast. Everywhere else in Australia is served by frozen express courier. Orders are packed cold so the box is still cold at your door." },
       { question: "What's the minimum order for delivery?", answer: "$300 AUD. Orders over $300 get free temperature-controlled delivery anywhere in NSW; interstate orders over $300 pay only a quoted frozen-courier freight fee." },

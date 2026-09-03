@@ -11,7 +11,7 @@ const HERO_SLIDES = [
   {
     id: 1,
     tag: "Australian Craft Butcher · Alexandria, Sydney",
-    title: "Grass-Fed Beef Mince & Craft Butcher Delivery Sydney",
+    title: "Grass-Fed Meat Boxes & Craft Butcher Cuts, Delivered",
     description: "100% Australian pasture-raised beef, fresh gourmet beef mince, dry-aged Wagyu steaks, and custom freezer boxes delivered to your door — refrigerated cold-chain vans across NSW, frozen express courier Australia-wide.",
     image: "/images/hero/hero-1.webp",
     ctaText: "Shop Fresh Beef & Meats",

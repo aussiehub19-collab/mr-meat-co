@@ -18,23 +18,27 @@ Semrush AU exports (2026-09-01/02) where the exact term appears; `—` means the
 head term or Google "related search" pick with no standalone export row.
 
 ### Main keyword
-**`meat box delivery`** — `PAGE_SEO["/"].primaryKeyword` — vol **480** · KD **25** · Commercial.
+**`meat box`** — `PAGE_SEO["/"].primaryKeyword` — vol **2,400** · KD **24** · Commercial.
+_(Swapped from `meat box delivery` (480) on 2026-09-03 — same difficulty, 5× the volume, and
+ranking for "meat box" captures "meat box delivery" traffic as a subset. Homepage title +
+`<h1>` (HeroSlider slide 1) updated to lead with "Meat Boxes".)_
 
 ### Supporting keywords (homepage — `PAGE_SEO["/"].supportingKeywords`)
 
 | keyword | vol | KD | intent |
 |---|---|---|---|
-| meat delivery sydney | 390 | 57 | C |
+| meat box delivery | 480 | 25 | C |
+| butcher box | — | (≈ "meat box" cluster) | C |
 | meat subscription | 1,000 | 31 | C |
+| meat delivery sydney | 390 | 57 | C |
 | online butcher australia | — | (≈ "online butcher" 1,000 / KD 59) | I/T |
 | grass fed meat delivery | — | (≈ "grass fed meat subscription" 140 / KD 41) | C |
-| butcher delivered sydney | — | (≈ "sydney butcher delivery" 140 / KD 61) | I |
 
 ### Top 30 — the assigned page primary keywords (priority order)
 
 | # | page | primary keyword | vol | KD | intent |
 |---|---|---|---|---|---|
-| 1 | `/` | meat box delivery | 480 | 25 | C |
+| 1 | `/` | meat box | 2,400 | 24 | C |
 | 2 | `/shop/` | buy meat online | 480 | 59 | T |
 | 3 | `/beef/` | buy beef online | 390 | 39 | T |
 | 4 | `/chicken/` | free range chicken delivery | — | — | T |
@@ -74,8 +78,7 @@ Full per-page allocation (49 pages + 25 blog posts) is in sections 1–5 below.
 The assigned list above is what's live. This is a data re-check: T/C-intent terms, volume ≥ 20,
 KD low, near-dups collapsed — i.e. where a new site can realistically win first.
 
-**Best single strategic pick:** `meat box` (2,400 / KD 24, C) — broader than the assigned
-`meat box delivery` (480) at the same difficulty. Consider swapping the homepage primary.
+**Done 2026-09-03:** homepage primary swapped to `meat box` (2,400 / KD 24, C) — see §0.
 
 | # | keyword | vol | KD | intent |
 |---|---|---|---|---|
@@ -116,7 +119,7 @@ KD low, near-dups collapsed — i.e. where a new site can realistically win firs
 
 | URL | Primary | Supporting (≥5) |
 |---|---|---|
-| `/` | meat box delivery | meat delivery sydney · meat subscription · online butcher australia · grass fed meat delivery · butcher delivered sydney |
+| `/` | meat box | meat box delivery · butcher box · meat subscription · meat delivery sydney · online butcher australia · grass fed meat delivery |
 | `/shop/` | online butcher | buy meat online · meat delivery · butcher shop online · order meat online australia · online meat market |
 | `/wholesale/bulk-meat-orders/` | wholesale meat near me | bulk meat near me · order meat in bulk · bulk meat packs near me · restaurant meat supplier · wholesale butcher sydney |
 

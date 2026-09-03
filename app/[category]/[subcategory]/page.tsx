@@ -45,10 +45,10 @@ export async function generateMetadata({
     title: seo?.title
       ? { absolute: seo.title }
       : isSeafood
-      ? `${subcategory} | Seafood Catalogue`
+      ? `${subcategory} — Seafood`
       : isPetFood
-      ? `${subcategory} | Pet Food Catalogue`
-      : `${subcategory} — ${category.name} | Mr Meat & Co Australia`,
+      ? `${subcategory} — Pet Food`
+      : `${subcategory} — ${category.name}`,
     description: metaDesc(
       seo?.description ??
         (isSeafood

@@ -1,6 +1,6 @@
 import React from 'react';
 import { notFound } from 'next/navigation';
-import { PRODUCTS, CATEGORIES, SITE, SHOP, CONTACT, abs } from '@/config/site';
+import { PRODUCTS, CATEGORIES, SITE, SHOP, CONTACT, abs, productTitle, metaDesc } from '@/config/site';
 import { JsonLd } from '@/components/JsonLd';
 import { SmartImage } from '@/components/SmartImage';
 import { ProductAddToCartForm } from '@/app/shop/[category]/[slug]/ProductAddToCartForm';
@@ -32,17 +32,21 @@ export async function generateMetadata({
   const product = PRODUCTS.find((p) => p.slug === slug);
   if (!product) return {};
 
-  const isSeafood = (product.main_category || product.category) === 'seafood';
-  const isPetFood = (product.main_category || product.category) === 'pet-food' || product.pet_food_only;
+  const mc = (product.main_category || product.category || '') as string;
+  const isSeafood = mc === 'seafood';
+  const isPetFood = mc === 'pet-food' || product.pet_food_only;
+  const isWholesale = mc.toLowerCase() === 'wholesale' || product.is_wholesale;
   const canonicalUrl = isSeafood
     ? `https://${SITE.domain}/seafood/${subSlug}/${product.slug}/`
     : isPetFood
     ? `https://${SITE.domain}/pet-food/${subSlug}/${product.slug}/`
+    : isWholesale
+    ? `https://${SITE.domain}/wholesale/bulk-meat-orders/${subSlug}/${product.slug}/`
     : `https://${SITE.domain}/shop/${product.category}/${product.slug}/`;
 
   return {
-    title: product.SEO_title || product.seo_title || `${product.product_name || product.name} | Mr Meat & Co Australia`,
-    description: (product.SEO_meta_description || product.seo_meta_description || product.full_description || product.description).slice(0, 155),
+    title: { absolute: productTitle(product.SEO_title || product.seo_title, product.product_name || product.name) },
+    description: metaDesc(product.SEO_meta_description || product.seo_meta_description || product.full_description || product.description),
     alternates: {
       canonical: canonicalUrl,
     },

@@ -165,6 +165,22 @@ export function metaDesc(s?: string | null, fallback?: string): string {
   return (at > 110 ? cut.slice(0, at) : cut).replace(/[\s,;:.–—-]+$/, "");
 }
 
+/**
+ * Normalise a product/page title so the brand appears exactly once at the end.
+ * Strips a trailing "— Mr Meat & Co" that some source seo_title values already
+ * carry, plus generic boilerplate segments, then appends " | Mr Meat & Co".
+ * Use with `title: { absolute: productTitle(...) }` to bypass the layout template.
+ */
+export function productTitle(raw?: string | null, name?: string | null): string {
+  let base = (raw || name || "").replace(/\s+/g, " ").trim();
+  base = base.replace(/\s*[|–—-]\s*Mr Meat\s*&\s*Co\b.*$/i, "");
+  base = base.replace(/\s*\|\s*Australian Online Meat Shop\b/i, "");
+  base = base.replace(/\s*\|\s*(Sydney Craft Butcher|Pet Food Catalogue|Seafood Catalogue)\b/i, "");
+  base = base.replace(/[\s|–—-]+$/, "").trim();
+  if (!base) base = (name || SITE.name).trim();
+  return `${base} | ${SITE.name}`;
+}
+
 export const CONTACT = {
   email: "orders@mrmeatandco.com.au",
   /** Entity-encoded form for rendering the address as visible text
@@ -9095,6 +9111,7 @@ We make [sausage meat and gourmet sausages](/sausages/) fresh, plus ready-to-bak
   {
     slug: "australian-beef-cuts-explained",
     title: "Australian Beef Cuts Explained: Names, Uses & Overseas Equivalents",
+    seoTitle: "Australian Beef Cuts Explained: Cuts, Uses & US/UK Names",
     excerpt: "Scotch fillet, porterhouse, eye fillet, rump — what each Australian beef cut is, how to cook it, and what it's called in the US and UK.",
     category: "Meat Education",
     date: "2026-03-11",
@@ -9147,6 +9164,7 @@ If a US recipe says "chuck roast", buy blade or chuck. "Flank" or "skirt" — as
   {
     slug: "cold-chain-meat-delivery-explained",
     title: "How Cold-Chain Meat Delivery Actually Works (And Why It Matters)",
+    seoTitle: "How Cold-Chain Meat Delivery Works",
     excerpt: "What an unbroken cold chain means, how we pack meat for a Sydney summer, and what to do with your box the moment it arrives.",
     category: "Buying Guide",
     date: "2026-01-14",

@@ -1,6 +1,6 @@
 import React from 'react';
 import { notFound } from 'next/navigation';
-import { PRODUCTS, CATEGORIES, SITE, SHOP, CONTACT, abs } from '@/config/site';
+import { PRODUCTS, CATEGORIES, SITE, SHOP, CONTACT, abs, productTitle, metaDesc } from '@/config/site';
 import { JsonLd } from '@/components/JsonLd';
 import { SmartImage } from '@/components/SmartImage';
 import { ProductAddToCartForm } from './ProductAddToCartForm';
@@ -24,16 +24,38 @@ export async function generateMetadata({
   const product = PRODUCTS.find((p) => p.slug === slug);
   if (!product) return {};
 
+  const mc = (product.main_category || product.category) as string;
+  const isSeafood = mc === 'seafood';
+  const isPetFood = mc === 'pet-food' || (product as { pet_food_only?: boolean }).pet_food_only;
+  const isWholesale = mc.toLowerCase() === 'wholesale' || (product as { is_wholesale?: boolean }).is_wholesale;
+  const sub = (product.subcategory || '').toLowerCase().replace(/ & /g, '-').replace(/ \/ /g, '-').replace(/ /g, '-');
+  // pet-food / seafood products are canonical at their category path; wholesale at the bulk route — never /shop/
+  const canonical =
+    isSeafood ? `https://${SITE.domain}/seafood/${sub}/${product.slug}/`
+    : isPetFood ? `https://${SITE.domain}/pet-food/${sub}/${product.slug}/`
+    : isWholesale ? `https://${SITE.domain}/wholesale/bulk-meat-orders/${sub}/${product.slug}/`
+    : `https://${SITE.domain}/shop/${product.category}/${product.slug}/`;
+
+  const p = product as {
+    SEO_title?: string; seo_title?: string;
+    SEO_meta_description?: string; seo_meta_description?: string;
+    full_description?: string; short_description?: string;
+    product_name?: string; name: string; description: string; shortDescription?: string;
+    main_image?: string; image?: string;
+  };
+
   return {
-    title: `${product.name} | Sydney Craft Butcher`,
-    description: product.description.slice(0, 155),
+    title: { absolute: productTitle(p.SEO_title || p.seo_title, p.product_name || p.name) },
+    description: metaDesc(
+      p.SEO_meta_description || p.seo_meta_description || p.full_description || p.description
+    ),
     alternates: {
-      canonical: `https://${SITE.domain}/shop/${product.category}/${product.slug}/`,
+      canonical,
     },
     openGraph: {
-      title: `${product.name} | ${SITE.name}`,
-      description: product.shortDescription,
-      images: [{ url: product.image }],
+      title: `${p.product_name || p.name} | ${SITE.name}`,
+      description: p.short_description || p.shortDescription || p.description.slice(0, 155),
+      images: [{ url: p.main_image || p.image || abs(SITE.ogImage) }],
     },
     other: {
       'og:updated_time': new Date().toISOString(),

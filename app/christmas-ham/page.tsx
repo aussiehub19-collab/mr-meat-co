@@ -4,6 +4,8 @@ import Link from 'next/link';
 import { PRODUCTS, SITE, PAGE_SEO, metaDesc, abs, faqHeading } from '@/config/site';
 import { JsonLd } from '@/components/JsonLd';
 import { SeoFaqSection } from '@/components/SeoFaqSection';
+import { GuideSection } from '@/components/GuideSection';
+import { SmartImage } from '@/components/SmartImage';
 import { ProductCard } from '@/components/ProductCard';
 
 const seo = PAGE_SEO['/christmas-ham/'];
@@ -57,6 +59,18 @@ export default function ChristmasHamPage() {
         </p>
       </div>
 
+      {hams[0]?.main_image && (
+        <div className="relative aspect-[21/9] sm:aspect-[3/1] w-full overflow-hidden rounded-2xl border border-[#991B1B]/40">
+          <SmartImage
+            src={hams[0].main_image}
+            alt={`${seo?.primaryKeyword ?? 'Christmas ham'} — whole bone-in leg ham from Mr Meat & Co`}
+            fill
+            sizes="(max-width: 1024px) 100vw, 1152px"
+            className="object-cover"
+          />
+        </div>
+      )}
+
       <div className="bg-[#1C1414] border border-amber-500/40 rounded-2xl p-5 text-sm text-amber-200/90 leading-relaxed">
         <strong className="text-amber-300">Pre-order now for December.</strong> Christmas hams are cured and cooked to
         order and sell out every year. Choose your delivery window at checkout — aim for a few days before Christmas,
@@ -89,6 +103,8 @@ export default function ChristmasHamPage() {
           </p>
         </div>
       </section>
+
+      <GuideSection guide={seo?.guide} keyword={seo?.primaryKeyword} />
 
       {seo?.faqs && <SeoFaqSection faqs={seo.faqs} heading={faqHeading(seo?.primaryKeyword)} />}
     </div>

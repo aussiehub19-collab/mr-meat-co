@@ -1,6 +1,8 @@
 import React from 'react';
 import { notFound } from 'next/navigation';
 import { CATEGORIES, PRODUCTS, SITE, PAGE_SEO, metaDesc, faqHeading } from '@/config/site';
+import { GuideSection } from '@/components/GuideSection';
+import { SmartImage } from '@/components/SmartImage';
 import { JsonLd } from '@/components/JsonLd';
 import { SeoFaqSection } from '@/components/SeoFaqSection';
 import { ProductCard } from '@/components/ProductCard';
@@ -178,6 +180,18 @@ export default async function TopLevelCategoryPage({
         </div>
       </div>
 
+      {category.image && (
+        <div className="relative aspect-[21/9] sm:aspect-[3/1] w-full overflow-hidden rounded-2xl border border-[#991B1B]/40">
+          <SmartImage
+            src={category.image}
+            alt={`${seo?.primaryKeyword ?? category.name} — ${category.name} at Mr Meat & Co, an Australian craft butcher`}
+            fill
+            sizes="(max-width: 1024px) 100vw, 1152px"
+            className="object-cover"
+          />
+        </div>
+      )}
+
       {/* Interactive Filter System */}
       {isSeafood ? (
         <SeafoodCatalogueClient initialSubcategory="all" />
@@ -204,6 +218,8 @@ export default async function TopLevelCategoryPage({
       ) : (
         <ShopFilterClient initialCategory={category.slug} />
       )}
+
+      <GuideSection guide={seo?.guide} keyword={seo?.primaryKeyword} />
 
       {seo?.faqs && <SeoFaqSection faqs={seo.faqs} heading={faqHeading(seo?.primaryKeyword)} />}
     </div>

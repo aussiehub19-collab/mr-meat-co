@@ -7,6 +7,8 @@ import { WholesaleNav } from '@/components/WholesaleNav';
 import { BulkOrderContactSection } from '@/components/BulkOrderContactSection';
 import { JsonLd } from '@/components/JsonLd';
 import { SeoFaqSection } from '@/components/SeoFaqSection';
+import { GuideSection } from '@/components/GuideSection';
+import { SmartImage } from '@/components/SmartImage';
 import { ChevronRight, Layers, ArrowLeft } from 'lucide-react';
 
 export async function generateStaticParams() {
@@ -139,6 +141,18 @@ export default async function BulkSubcategoryPage({
         </div>
       </div>
 
+      {subcategory.image && (
+        <div className="relative aspect-[21/9] sm:aspect-[3/1] w-full overflow-hidden rounded-2xl border border-[#991B1B]/40">
+          <SmartImage
+            src={subcategory.image}
+            alt={`${seo?.primaryKeyword ?? subcategory.name} — bulk and carcass shares at Mr Meat & Co`}
+            fill
+            sizes="(max-width: 1024px) 100vw, 1152px"
+            className="object-cover"
+          />
+        </div>
+      )}
+
       {/* Product Grid */}
       <div>
         <div className="flex items-center justify-between mb-6">
@@ -165,6 +179,8 @@ export default async function BulkSubcategoryPage({
 
       {/* Contact Section */}
       <BulkOrderContactSection defaultCategory={subcategory.name} />
+
+      <GuideSection guide={seo?.guide} keyword={seo?.primaryKeyword} />
 
       {seo?.faqs && <SeoFaqSection faqs={seo.faqs} heading={faqHeading(seo?.primaryKeyword)} />}
     </div>

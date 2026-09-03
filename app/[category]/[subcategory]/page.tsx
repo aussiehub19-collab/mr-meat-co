@@ -3,6 +3,8 @@ import { notFound } from 'next/navigation';
 import { CATEGORIES, PRODUCTS, SITE, PAGE_SEO, metaDesc, faqHeading } from '@/config/site';
 import { JsonLd } from '@/components/JsonLd';
 import { SeoFaqSection } from '@/components/SeoFaqSection';
+import { GuideSection } from '@/components/GuideSection';
+import { SmartImage } from '@/components/SmartImage';
 import { ProductCard } from '@/components/ProductCard';
 import { SeafoodCatalogueClient } from '@/components/SeafoodCatalogueClient';
 import { PetFoodCatalogueClient } from '@/components/PetFoodCatalogueClient';
@@ -218,6 +220,18 @@ export default async function TopLevelSubcategoryPage({
         </p>
       </div>
 
+      {category.image && (
+        <div className="relative aspect-[21/9] sm:aspect-[3/1] w-full overflow-hidden rounded-2xl border border-[#991B1B]/40">
+          <SmartImage
+            src={category.image}
+            alt={`${seo?.primaryKeyword ?? subcategory} — ${category.name} at Mr Meat & Co`}
+            fill
+            sizes="(max-width: 1024px) 100vw, 1152px"
+            className="object-cover"
+          />
+        </div>
+      )}
+
       {/* Product List or Interactive Filter */}
       {isSeafood ? (
         <SeafoodCatalogueClient initialSubcategory={subSlug} />
@@ -241,6 +255,8 @@ export default async function TopLevelSubcategoryPage({
           ))}
         </div>
       )}
+
+      <GuideSection guide={seo?.guide} keyword={seo?.primaryKeyword} />
 
       {seo?.faqs && <SeoFaqSection faqs={seo.faqs} heading={faqHeading(seo?.primaryKeyword)} />}
     </div>

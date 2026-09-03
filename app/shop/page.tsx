@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { Beef, ArrowRight } from 'lucide-react';
-import { SITE, PAGE_SEO, metaDesc } from '@/config/site';
+import { SITE, PAGE_SEO, metaDesc, faqHeading } from '@/config/site';
 import { JsonLd } from '@/components/JsonLd';
 import { SeoFaqSection } from '@/components/SeoFaqSection';
 import { ShopFilterClient } from '@/components/ShopFilterClient';
@@ -87,7 +87,7 @@ export default function ShopIndexPage() {
       {/* Interactive Shop Filter System */}
       <ShopFilterClient initialCategory="all" />
 
-      {shopSeo?.faqs && <SeoFaqSection faqs={shopSeo.faqs} />}
+      {shopSeo?.faqs && <SeoFaqSection faqs={shopSeo.faqs} heading={faqHeading(shopSeo.primaryKeyword)} />}
     </div>
   );
 }

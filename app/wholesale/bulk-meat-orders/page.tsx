@@ -2,7 +2,7 @@
 
 import React, { useState, useMemo } from 'react';
 import Link from 'next/link';
-import { PRODUCTS, WHOLESALE_BULK_SUBCATEGORIES, PAGE_SEO, Product } from '@/config/site';
+import { PRODUCTS, WHOLESALE_BULK_SUBCATEGORIES, PAGE_SEO, Product, faqHeading } from '@/config/site';
 import { ProductCard } from '@/components/ProductCard';
 import { WholesaleNav } from '@/components/WholesaleNav';
 import { BulkOrderContactSection } from '@/components/BulkOrderContactSection';
@@ -264,7 +264,10 @@ export default function BulkMeatOrdersPage() {
       <BulkOrderContactSection />
 
       {PAGE_SEO['/wholesale/bulk-meat-orders/']?.faqs && (
-        <SeoFaqSection faqs={PAGE_SEO['/wholesale/bulk-meat-orders/']!.faqs} />
+        <SeoFaqSection
+          faqs={PAGE_SEO['/wholesale/bulk-meat-orders/']!.faqs}
+          heading={faqHeading(PAGE_SEO['/wholesale/bulk-meat-orders/']!.primaryKeyword)}
+        />
       )}
     </div>
   );

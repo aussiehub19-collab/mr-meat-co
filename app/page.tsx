@@ -314,7 +314,7 @@ export default function HomePage() {
             Got Questions?
           </span>
           <h2 className="text-2xl sm:text-3xl font-black text-white font-serif">
-            Frequently Asked Questions
+            Meat Box Delivery — Frequently Asked Questions
           </h2>
         </div>
 

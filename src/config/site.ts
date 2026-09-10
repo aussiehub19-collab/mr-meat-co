@@ -186,8 +186,8 @@ export const CONTACT = {
   /** Entity-encoded form for rendering the address as visible text
    *  (use with dangerouslySetInnerHTML). The plain `email` stays for mailto: links. */
   emailHtml: "orders&#64;mrmeatandco.com.au",
-  phone: "+61 420 126 562",
-  whatsapp: "+61 420 126 562",
+  phone: "+61 480 811 308",
+  whatsapp: "+61 480 811 308",
   address: "Unit 4, 120 Sydney Butcher Way, Alexandria NSW 2015",
   hq: "Sydney, NSW, Australia",
   country: "Australia",
@@ -217,9 +217,9 @@ export const FORMS = {
 
 export const CHAT = {
   channels: [
-    { type: "whatsapp", label: "WhatsApp Direct", value: "+61 420 126 562", url: "https://wa.me/61420126562" },
+    { type: "whatsapp", label: "WhatsApp Direct", value: "+61 480 811 308", url: "https://wa.me/61480811308" },
     { type: "email", label: "Order Email", value: "orders@mrmeatandco.com.au", url: "mailto:orders@mrmeatandco.com.au" },
-    { type: "phone", label: "Call or Text", value: "+61 420 126 562", url: "tel:+61420126562" },
+    { type: "phone", label: "Call or Text", value: "+61 480 811 308", url: "tel:+61480811308" },
   ]
 };
 

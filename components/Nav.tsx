@@ -68,6 +68,19 @@ export function Nav() {
                     Butcher Categories ({CATEGORIES.length})
                   </div>
                   <div className="max-h-72 overflow-y-auto space-y-1 scrollbar-thin scrollbar-thumb-red-900">
+                    <Link
+                      href="/wholesale/bulk-meat-orders/"
+                      onClick={() => setShopDropdownOpen(false)}
+                      className="block p-2 rounded-xl bg-red-950/40 hover:bg-red-950/80 border border-red-500/30 transition-colors group"
+                    >
+                      <div className="font-bold text-xs text-red-300 group-hover:text-red-200 flex items-center justify-between">
+                        <span>Animal Shares &amp; Bulk Meat</span>
+                        <span className="text-[9px] bg-red-800 text-white px-1.5 py-0.5 rounded font-black">Buy Online</span>
+                      </div>
+                      <div className="text-[10px] text-gray-300 line-clamp-1">
+                        Quarter, half &amp; whole beef, lamb, pork, goat, chicken shares + bulk cartons
+                      </div>
+                    </Link>
                     {CATEGORIES.map((cat) => (
                       <Link
                         key={cat.slug}
@@ -227,6 +240,14 @@ export function Nav() {
             <div className="py-2 font-black text-xs uppercase text-red-400 tracking-wider">
               Categories
             </div>
+            <Link
+              href="/wholesale/bulk-meat-orders/"
+              onClick={() => setMobileMenuOpen(false)}
+              className="pl-3 py-2 border-l-2 border-red-500 bg-red-950/40 text-red-200 hover:bg-red-950/70 rounded-r-lg flex items-center justify-between"
+            >
+              <span>Animal Shares &amp; Bulk Meat</span>
+              <span className="text-[9px] bg-red-800 text-white px-1.5 py-0.5 rounded font-black">Buy Online</span>
+            </Link>
             {CATEGORIES.map((cat) => (
               <Link
                 key={cat.slug}

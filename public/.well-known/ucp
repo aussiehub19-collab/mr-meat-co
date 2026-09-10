@@ -9,7 +9,7 @@
   "services": [
     { "id": "product-catalog", "type": "catalog", "url": "https://mrmeatandco.com.au/shop/", "description": "Full fresh meat product catalog" },
     { "id": "mcp-server", "type": "mcp", "url": "https://mrmeatandco.com.au/api/mcp", "description": "Streamable HTTP MCP Server" },
-    { "id": "order", "type": "commerce", "url": "https://wa.me/61420126562", "description": "Place orders via WhatsApp or online draft" },
+    { "id": "order", "type": "commerce", "url": "https://wa.me/61480811308", "description": "Place orders via WhatsApp or online draft" },
     { "id": "wholesale", "type": "b2b", "url": "https://mrmeatandco.com.au/wholesale/", "description": "Wholesale restaurant & bulk ordering" }
   ],
   "capabilities": ["browse", "search", "inquiry", "wholesale", "content", "mcp"],

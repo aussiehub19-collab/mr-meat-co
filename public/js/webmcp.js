@@ -30,7 +30,7 @@
         description: "Initiate a Sydney WhatsApp butcher order. Minimum order $300 AUD. Human completes.",
         inputSchema: { type: "object", properties: { message: { type: "string" } } },
         execute: async ({ message }) => {
-          const url = message ? `https://wa.me/61420126562?text=${encodeURIComponent(message)}` : `https://wa.me/61420126562`;
+          const url = message ? `https://wa.me/61480811308?text=${encodeURIComponent(message)}` : `https://wa.me/61480811308`;
           window.open(url, '_blank');
           return { url };
         }

@@ -38,7 +38,7 @@ Refrigerated cold-chain van delivery across all of NSW (Sydney Metro + regional 
 - Minimum Order: $300 AUD
 - Free cold-chain delivery on NSW orders over $300 AUD; interstate orders over $300 pay a quoted frozen-courier freight fee
 - 10% instant discount when paying with crypto (BTC, USDT); PayID and bank transfer also accepted
-- Human-in-the-loop WhatsApp order preparation: +61420126562
+- Human-in-the-loop WhatsApp order preparation: +61480811308
 - Public Agent MCP Server Endpoint: https://mrmeatandco.com.au/api/mcp
 - API Catalog: https://mrmeatandco.com.au/.well-known/api-catalog
 - LLMs Info: https://mrmeatandco.com.au/llms.txt

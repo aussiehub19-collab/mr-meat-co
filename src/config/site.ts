@@ -249,8 +249,8 @@ export const CATEGORIES: Category[] = [
   {
     slug: "beef",
     name: "Beef",
-    description: "Australian beef cuts, dry-aged steaks, fresh beef mince, slow-cook roasts, offal, and stock bones for broth.",
-    subcategories: ["Steaks", "Roasts", "Mince & Diced", "Slow Cook", "BBQ", "Offal", "Bones & Broth"],
+    description: "Australian beef cuts, dry-aged steaks, F1 Wagyu, fresh beef mince, slow-cook roasts, offal, and stock bones for broth.",
+    subcategories: ["Steaks", "Wagyu", "Roasts", "Mince & Diced", "Slow Cook", "BBQ", "Offal", "Bones & Broth"],
     image: "/images/categories/beef.webp",
   },
   {
@@ -1119,6 +1119,88 @@ export const PRODUCTS: Product[] = [
     null,
     ["Offal"],
     "/images/beef-tongue.webp"
+  ),
+
+  // 1b. BEEF — WAGYU (F1 cross)
+  createProduct(
+    "PRD-BEEF-038",
+    "Wagyu Scotch Fillet Steak",
+    "beef",
+    "Wagyu",
+    "wagyu-scotch-fillet-steak",
+    79.99,
+    "1kg",
+    "1kg",
+    "per_kg",
+    "F1 Wagyu scotch fillet — richly marbled, from Wagyu-cross Australian cattle.",
+    "Australian F1 Wagyu scotch fillet steak. F1 means first-cross Wagyu genetics over our grass-fed Angus base, giving noticeably heavier marbling than our standard scotch fillet while staying an approachable, everyday-splurge price. Sear hot and pull it at medium-rare — the extra fat renders and self-bastes the steak as it cooks.",
+    "Steak",
+    ["BBQ", "Grill", "Pan-Fry"],
+    ["Fresh Chilled", "Vacuum Sealed"],
+    null,
+    ["Wagyu", "Steaks", "Fresh Chilled"],
+    "/images/scotch-fillet-steak.webp",
+    { featured: true, badge: "F1 Wagyu", quality_claims: "F1 Wagyu-Cross, Fresh Chilled & Vacuum Sealed" }
+  ),
+  createProduct(
+    "PRD-BEEF-039",
+    "Wagyu Porterhouse Steak",
+    "beef",
+    "Wagyu",
+    "wagyu-porterhouse-steak",
+    69.99,
+    "1kg",
+    "1kg",
+    "per_kg",
+    "F1 Wagyu porterhouse — firm-grained with the extra marbling of Wagyu genetics.",
+    "Australian F1 Wagyu porterhouse (sirloin). Wagyu-cross genetics over our grass-fed Angus base add fine marbling through a firmer, leaner-grained cut than scotch fillet — beefy flavour with a buttery finish. Render the fat cap first, then sear hard both sides.",
+    "Steak",
+    ["BBQ", "Grill", "Pan-Fry"],
+    ["Fresh Chilled", "Vacuum Sealed"],
+    null,
+    ["Wagyu", "Steaks", "Fresh Chilled"],
+    "/images/porterhouse-steak.webp",
+    { badge: "F1 Wagyu", quality_claims: "F1 Wagyu-Cross, Fresh Chilled & Vacuum Sealed" }
+  ),
+  createProduct(
+    "PRD-BEEF-040",
+    "Wagyu Rump Steak",
+    "beef",
+    "Wagyu",
+    "wagyu-rump-steak",
+    49.99,
+    "1kg",
+    "1kg",
+    "per_kg",
+    "F1 Wagyu rump — the value entry point into our Wagyu range.",
+    "Australian F1 Wagyu rump steak. Wagyu-cross genetics carry extra marbling into a hard-working, big-flavoured cut, giving most of the Wagyu eating-quality lift at a lower price point than scotch fillet or porterhouse. Cook medium-rare and rest well, then slice against the grain.",
+    "Steak",
+    ["BBQ", "Grill", "Pan-Fry"],
+    ["Fresh Chilled", "Vacuum Sealed"],
+    null,
+    ["Wagyu", "Steaks", "BBQ", "Fresh Chilled"],
+    "/images/rump-steak.webp",
+    { secondary_subcategories: ["BBQ"], badge: "F1 Wagyu", quality_claims: "F1 Wagyu-Cross, Fresh Chilled & Vacuum Sealed" }
+  ),
+  createProduct(
+    "PRD-BEEF-041",
+    "Wagyu Beef Mince",
+    "beef",
+    "Wagyu",
+    "wagyu-beef-mince",
+    26.99,
+    "1kg",
+    "1kg",
+    "per_kg",
+    "F1 Wagyu beef mince — extra marbling for burgers, meatballs and bolognese.",
+    "Ground fresh from F1 Wagyu-cross trim. The extra fat and marbling that make Wagyu steaks so rich come through in mince too — juicier burgers and meatballs with no need to add extra fat. Same no-filler standard as our regular mince, just from the Wagyu-cross line.",
+    "Mince",
+    ["BBQ", "Pan-Fry", "Bake"],
+    ["Fresh Chilled", "Vacuum Sealed"],
+    null,
+    ["Wagyu", "Mince & Diced", "Fresh Chilled"],
+    "/images/premium-beef-mince.webp",
+    { badge: "F1 Wagyu", quality_claims: "F1 Wagyu-Cross, Fresh Chilled & Vacuum Sealed" }
   ),
 
   // 2. CHICKEN (33 PRODUCTS ACROSS 7 SUBCATEGORIES)
@@ -7055,6 +7137,64 @@ export const PRODUCTS: Product[] = [
     }
   ),
 
+  // --- 1b. BULK WAGYU (F1 cross, 2 Products) ---
+  createProduct(
+    "bulk-wagyu-mince-box-5kg",
+    "Bulk F1 Wagyu Mince Box",
+    "Wholesale",
+    "Bulk Wagyu",
+    "bulk-wagyu-mince-box-5kg",
+    119.95,
+    "5kg",
+    "5kg",
+    "fixed_pack_price",
+    "Bulk F1 Wagyu Mince Box (5kg) — wholesale carton at a discount to our retail Wagyu mince rate.",
+    "Bulk F1 Wagyu Mince Box (5kg). Fresh chilled F1 Wagyu-cross mince supplied in a wholesale carton, at a discount to the per-kg retail price. Suits restaurants, caterers and high-volume households wanting Wagyu richness in burgers, meatballs and bolognese without steak pricing.",
+    "Bulk Beef Mince",
+    ["Pan Fry", "Bake", "Slow Cook", "Grill"],
+    ["Bulk Carton", "Ground Meat"],
+    null,
+    ["Bulk Meat Orders", "Bulk Wagyu", "Bulk Mince"],
+    "/images/premium-beef-mince.webp",
+    {
+      storageType: "Fresh Chilled",
+      animal_protein: "Beef",
+      approximate_weight: "5kg",
+      badge: "F1 Wagyu",
+      seo_title: "Bulk F1 Wagyu Mince Box (5kg) | Wholesale Meat Orders",
+      seo_meta_description: "Bulk F1 Wagyu Mince Box (5kg) for $119.95 AUD fixed pack price. Fresh chilled F1 Wagyu-cross mince carton.",
+      breadcrumb_path: "Home > Wholesale > Bulk Meat Orders > Bulk Wagyu > Bulk F1 Wagyu Mince Box"
+    }
+  ),
+  createProduct(
+    "bulk-wagyu-whole-rump",
+    "Bulk F1 Wagyu Whole Rump",
+    "Wholesale",
+    "Bulk Wagyu",
+    "bulk-wagyu-whole-rump",
+    159.00,
+    "Approximately 3kg to 4kg",
+    "Approximately 3kg to 4kg",
+    "fixed_pack_price",
+    "Bulk F1 Wagyu Whole Rump (approx. 3kg to 4kg) — sub-primal Wagyu-cross beef cut.",
+    "Bulk F1 Wagyu Whole Rump (approximately 3kg to 4kg). Whole Wagyu-cross sub-primal ready for portioning into your own steaks, stir-fry strips or BBQ cuts — our lowest-priced entry into Wagyu at wholesale volume.",
+    "Bulk Beef Cut",
+    ["Roast", "Grill", "Pan Fry"],
+    ["Whole Sub-primal", "Bulk Cut"],
+    null,
+    ["Bulk Meat Orders", "Bulk Wagyu", "Bulk Cuts"],
+    "/images/rump-steak.webp",
+    {
+      storageType: "Fresh Chilled",
+      animal_protein: "Beef",
+      approximate_weight: "Approximately 3kg to 4kg",
+      badge: "F1 Wagyu",
+      seo_title: "Bulk F1 Wagyu Whole Rump | Bulk Wagyu Orders",
+      seo_meta_description: "Bulk F1 Wagyu Whole Rump (Approximately 3kg to 4kg) for $159.00 AUD fixed pack price. Sub-primal Wagyu-cross beef cut.",
+      breadcrumb_path: "Home > Wholesale > Bulk Meat Orders > Bulk Wagyu > Bulk F1 Wagyu Whole Rump"
+    }
+  ),
+
   // --- 2. BULK LAMB (4 Products) ---
   // Product 8: Half Lamb Share
   createProduct(
@@ -8164,8 +8304,14 @@ export const WHOLESALE_BULK_SUBCATEGORIES: WholesaleSubcategory[] = [
   {
     slug: "bulk-beef",
     name: "Bulk Beef",
-    description: "Quarter, half and whole beef carcass shares, bulk mince boxes and whole rump sub-primals.",
+    description: "Quarter, half and whole beef carcass shares, bulk mince boxes and whole rump sub-primals. Angus and Angus-cross.",
     image: "https://images.unsplash.com/photo-1558030006-450675393462?q=80&w=1200&auto=format&fit=crop",
+  },
+  {
+    slug: "bulk-wagyu",
+    name: "Bulk Wagyu",
+    description: "5kg F1 Wagyu mince cartons and whole Wagyu rump sub-primals at wholesale pricing.",
+    image: "/images/rump-steak.webp",
   },
   {
     slug: "bulk-lamb",
@@ -9625,6 +9771,59 @@ Mr Meat & Co's beef is Australian, grass-fed and pasture-raised, from Angus and 
     ],
     cta: { label: "Shop grass-fed Angus beef →", href: "/beef/", note: "Australian, grass-fed, Angus and Angus-cross — cut fresh in Alexandria." },
   },
+  {
+    slug: "what-is-wagyu-beef",
+    title: "What Is Wagyu Beef? F1 vs Full-Blood, Grading & How to Cook It",
+    seoTitle: "What Is Wagyu Beef? F1 vs Full-Blood & Grading",
+    excerpt: "Wagyu is a breed, not a grade. Here's what F1 and full-blood actually mean, how marbling and grading work, and how to cook it without wasting the marbling.",
+    category: "Meat Education",
+    date: "2026-09-11",
+    readTime: "6 min read",
+    image: "/images/scotch-fillet-steak.webp",
+    primaryKeyword: "wagyu beef",
+    metaDescription: "What is Wagyu beef? The Wagyu cattle breed explained — F1 vs full-blood, marbling and grading, and how to cook Wagyu steak without wasting the marbling.",
+    secondaryKeywords: ["f1 wagyu", "wagyu steak", "wagyu meat", "full blood wagyu", "what is f1 wagyu"],
+    content: `"Wagyu" gets used as a byword for expensive steak, but like Angus, it's a breed name first. What varies enormously — and what actually determines the price you pay — is how much Wagyu genetics an animal carries and how it graded.
+
+## Wagyu is a breed, not a grade
+
+Wagyu (literally "Japanese cattle") is a group of Japanese cattle breeds developed over centuries for one trait above all: the ability to marble intramuscular fat far more heavily than most other cattle. That marbling is what gives Wagyu its buttery texture and low melting point.
+
+## F1 vs full-blood vs purebred
+
+This is the distinction that actually matters for your wallet:
+
+- **F1 Wagyu** — first-cross: one Wagyu parent, one non-Wagyu parent (commonly Angus in Australia). Roughly half Wagyu genetics. This is the most common tier sold by Australian butchers and the one we carry — real marbling lift over standard beef, at a fraction of full-blood pricing.
+- **Full-blood Wagyu** — both parents are Wagyu, but the animal isn't necessarily born or raised in Japan. Heavier marbling than F1, priced accordingly.
+- **Purebred / Japanese Wagyu (Kobe, A5, etc.)** — specific Japanese bloodlines and regional certification programs (Kobe beef is a protected designation, not a generic term) with the highest marbling and the highest price. Very little of this reaches Australian retail, and "Kobe-style" on a menu almost never means the real, certified product.
+
+Most beef marketed simply as "Wagyu beef" in Australia — including most restaurant and butcher Wagyu — is F1. That's not a downgrade; it's the practical, everyday tier of a breed that gets exponentially more expensive as the Wagyu percentage climbs.
+
+## How marbling is graded
+
+Australia uses the **AUS-MEAT marbling score** (0–9+), assessed on the cut face of the ribeye. Standard grass-fed beef typically sits at 0–2. F1 Wagyu commonly grades in the 4–6 range — a clear step up. Full-blood and Japanese Wagyu can reach 7–9+, where the marbling is so heavy the meat looks almost pink-white rather than red. Higher isn't always "better" for every dish — a heavily marbled steak is rich in small portions but can feel one-note if you're used to a leaner steak.
+
+## Does the extra marbling change how you cook it?
+
+Yes, a little. The higher fat content makes Wagyu more forgiving than a lean cut, but it still rewards restraint:
+
+- **Season simply** — just salt. Wagyu's flavour is the point; heavy marinades and sauces waste it.
+- **Cook hot and fast** — a hot pan or grill renders the surface fat and marbling quickly without overcooking the centre.
+- **Pull it at medium-rare** — around 52–55°C internal. Past medium, the rendered fat starts to taste greasy rather than rich.
+- **Rest it** — as long as you cooked it, so the fat re-sets through the meat instead of pooling on the board.
+- **Portion smaller** — because Wagyu is richer, 150–200g per person is usually enough, versus 200–250g for a standard steak.
+
+## Our Wagyu
+
+We carry **F1 Wagyu** — Wagyu genetics over the same grass-fed Angus base as the rest of our beef — in scotch fillet, porterhouse, rump and mince. Browse the [Wagyu range](/beef/wagyu/), or for the base breed behind it, read [what is Angus beef](/blog/what-is-angus-beef/).`,
+    faqs: [
+      { question: "What does F1 Wagyu mean?", answer: "First-cross — one Wagyu parent, one non-Wagyu parent (commonly Angus in Australia), so roughly half Wagyu genetics. It's the most common Wagyu tier sold in Australia, offering a real marbling lift over standard beef without full-blood pricing." },
+      { question: "Is Wagyu a grade or a breed?", answer: "A breed. Wagyu ('Japanese cattle') is a group of Japanese cattle breeds developed for exceptionally heavy marbling. Grading (like AUS-MEAT marble score 0–9+) measures how much that genetic trait shows up in a specific animal." },
+      { question: "What's the difference between F1 and full-blood Wagyu?", answer: "F1 is roughly half Wagyu genetics (one Wagyu parent); full-blood means both parents are Wagyu. Full-blood carries heavier marbling and costs significantly more. Purebred Japanese Wagyu (Kobe, A5) sits above both again, and rarely reaches Australian retail in genuine form." },
+      { question: "How should I cook Wagyu steak?", answer: "Simply — salt only, hot and fast in a pan or on the grill, pulled at medium-rare (52–55°C internal), then rested as long as it cooked. The extra marbling is forgiving, but overcooking past medium turns the rendered fat greasy instead of rich." },
+    ],
+    cta: { label: "Shop F1 Wagyu →", href: "/beef/wagyu/", note: "Scotch fillet, porterhouse, rump and mince — F1 Wagyu over our grass-fed Angus base." },
+  },
 ];
 
 export const PAGES = {
@@ -9888,6 +10087,21 @@ export const PAGE_SEO: Record<string, PageSeo> = {
       { question: "Do you sell whole eye fillet or striploin?", answer: "Yes — whole (unportioned) eye fillet, striploin and rump are available, which works out cheaper per kg than pre-cut steaks." },
     ],
     guide: "Buy steak online and the cut you choose decides the method — a marbled scotch fillet and a lean eye fillet want completely different handling.\n\n### Choosing a steak\n\n**Scotch fillet (ribeye)** is the most marbled and forgiving — rich, juicy, hard to overcook. **Porterhouse (sirloin)** is leaner with a firm bite and a fat strip to crisp. **Eye fillet** is the most tender and the leanest, so it is the easiest to dry out. **Rump** is full-flavoured and better value, best at medium-rare and sliced against the grain. **T-bone** gives you fillet and sirloin on one bone. We cut to your thickness — 2.5–3cm is the sweet spot for a good crust and a pink centre.\n\n### Cooking steak\n\nDry the surface, oil the meat, season with salt, and get the pan or grill genuinely hot. As a guide for a 3cm steak: 3–4 minutes a side for medium-rare (an internal 52–55°C), then rest for as long as you cooked it. Leaner cuts (eye fillet, rump) should be pulled a few degrees earlier; scotch can take a little more. Australian beef is graded for eating quality — you can read how [MSA grading](https://www.mla.com.au/marketing-beef-and-lamb/meat-standards-australia/) works on the MLA site.",
+  },
+  "/beef/wagyu/": {
+    title: "Wagyu Steak Online — F1 Wagyu Beef | Mr Meat & Co",
+    description: "Wagyu steak online — F1 Wagyu scotch fillet, porterhouse, rump and mince, from Wagyu-cross Australian cattle over our grass-fed Angus base. Cut fresh, delivered cold.",
+    h1: "F1 Wagyu Steak, Cut Fresh & Delivered",
+    primaryKeyword: "wagyu steak",
+    supportingKeywords: ["wagyu beef", "f1 wagyu", "shop wagyu beef", "online wagyu", "wagyu beef steaks", "best wagyu beef"],
+    intro: "Wagyu steak online — our F1 Wagyu range crosses Wagyu genetics over the same grass-fed Angus cattle as the rest of our beef, for noticeably heavier marbling at an approachable price. Scotch fillet, porterhouse, rump and mince, cut fresh in Alexandria and delivered cold.",
+    faqs: [
+      { question: "What does \"F1 Wagyu\" mean?", answer: "F1 means first-cross — the animal has one Wagyu parent and one non-Wagyu parent (in our case, Angus), so it's roughly half Wagyu genetics. It's the most common tier of Wagyu sold in Australia and gives a real marbling lift over standard beef without full-blood Wagyu pricing." },
+      { question: "Is F1 Wagyu as good as full-blood Wagyu?", answer: "It's a different tier, not a lesser one — F1 Wagyu carries noticeably more marbling than standard grass-fed beef at a fraction of full-blood or Japanese Wagyu prices. Full-blood and Japanese A5 Wagyu marble further still, at a much higher price point." },
+      { question: "Which Wagyu cut should I start with?", answer: "Rump if you want to try Wagyu without a big spend — it carries the marbling lift at our lowest Wagyu price. Scotch fillet is the most marbled and forgiving to cook; porterhouse is firmer and leaner-grained." },
+      { question: "How should I cook Wagyu steak?", answer: "Simpler than you'd think — season with just salt, get the pan or grill hot, and don't overcook it. The extra marbling means Wagyu is more forgiving than a lean steak, but pulling it at medium-rare (52–55°C internal) still gives the best result." },
+    ],
+    guide: "F1 Wagyu is the entry point into Wagyu beef for most Australians, and it's worth understanding what you're actually buying before you pay a Wagyu premium.\n\n### What F1 Wagyu actually is\n\n\"F1\" is a breeding term, not a grade — it means first-cross: one Wagyu parent, one non-Wagyu parent. Our F1 Wagyu is bred from Wagyu genetics over the same grass-fed Angus base as the rest of our beef, so you're getting the marbling lift Wagyu is known for without paying full-blood or imported Japanese Wagyu prices. Full-blood and Japanese A5 Wagyu sit well above F1 on both marbling and price — F1 is the practical, everyday-splurge tier.\n\n### Choosing a cut\n\n**Scotch fillet** carries the most marbling and is the most forgiving to cook — the classic way to try Wagyu. **Porterhouse** is firmer and leaner-grained, still noticeably richer than our standard porterhouse. **Rump** is the value entry point — most of the marbling lift, our lowest Wagyu price. **Mince** brings the same extra fat and richness to burgers and meatballs without the steak price tag.\n\n### Cooking Wagyu\n\nThe extra intramuscular fat makes Wagyu more forgiving than a lean steak, but it still rewards a light touch: season with just salt, sear in a hot pan or on the grill, and pull it at medium-rare (52–55°C internal) so the fat has rendered without drying the meat out. Rest for as long as you cooked it. For the full breed background — F1 vs full-blood, and what the marbling is actually doing — read our [What Is Wagyu Beef?](/blog/what-is-wagyu-beef/) guide.",
   },
   "/beef/slow-cook/": {
     title: "Slow Cook Beef — Brisket, Cheek & Shin | Mr Meat & Co",
@@ -10263,13 +10477,26 @@ export const PAGE_SEO: Record<string, PageSeo> = {
     description: "Wholesale beef — quarter, half and whole grass-fed shares custom cut to your sheet, plus 5kg and 10kg mince boxes and whole primals. Snap-frozen, delivered.",
     h1: "Wholesale & Bulk Beef",
     primaryKeyword: "wholesale beef",
-    supportingKeywords: ["bulk beef", "wholesale beef mince", "bulk beef mince", "quarter beef share", "half beef box", "buy whole eye fillet"],
-    intro: "Wholesale beef by the quarter (40–55kg), half (80–110kg) or whole animal, broken down to your cut sheet and snap-frozen — plus 5kg and 10kg bulk mince boxes and whole primals (eye fillet, striploin, rump). Typically 20–35% below individual-cut pricing.",
+    supportingKeywords: ["bulk beef", "wholesale angus beef", "wholesale beef mince", "bulk beef mince", "quarter beef share", "half beef box"],
+    intro: "Wholesale beef by the quarter (40–55kg), half (80–110kg) or whole animal — Angus and Angus-cross, broken down to your cut sheet and snap-frozen — plus 5kg and 10kg bulk mince boxes and whole primals (eye fillet, striploin, rump). Typically 20–35% below individual-cut pricing. Looking for Wagyu instead? See our bulk Wagyu page.",
     faqs: [
       { question: "What's in a quarter, half or whole beef share?", answer: "A spread of premium steaks, roasting and casserole cuts, and mince and diced from the trim — plus bones, shin and offal if you want them. Roughly 25–30% premium, 30–35% roasts, 25–30% mince." },
       { question: "How much does a beef share weigh?", answer: "A quarter is about 40–55kg of packed meat, a half 80–110kg, a whole 160–220kg. Weight varies with the animal, so it's sold as 'approximately'." },
       { question: "Do I choose the cuts?", answer: "Yes — you fill in a cut sheet (steak thickness, roast sizes, mince-to-diced ratio, offal yes/no). We have a standard sheet if you'd rather not." },
       { question: "How much freezer space do I need?", answer: "About 1kg of packed meat per 1.5 litres. A quarter needs ~85L, a half ~170L (a dedicated 200–250L chest freezer), a whole ~330L+." },
+    ],
+  },
+  "/wholesale/bulk-meat-orders/bulk-wagyu/": {
+    title: "Wholesale Wagyu Beef — Bulk F1 Wagyu | Mr Meat & Co",
+    description: "Wholesale Wagyu beef — bulk F1 Wagyu mince cartons and whole rump sub-primals at a discount to retail pricing. For restaurants, caterers and bulk buyers.",
+    h1: "Wholesale F1 Wagyu Beef",
+    primaryKeyword: "wholesale wagyu beef",
+    supportingKeywords: ["bulk wagyu", "wholesale wagyu", "f1 wagyu bulk", "wagyu mince bulk", "wagyu wholesale price"],
+    intro: "Wholesale F1 Wagyu beef — bulk 5kg mince cartons and whole rump sub-primals, priced below our individual retail Wagyu rate. Same Wagyu-cross genetics over our grass-fed Angus base, at restaurant and caterer volumes.",
+    faqs: [
+      { question: "What Wagyu products are available wholesale?", answer: "A 5kg F1 Wagyu mince carton and a whole Wagyu rump sub-primal (approximately 3–4kg) are listed. For other cuts at volume, contact us for a custom quote." },
+      { question: "Is this the same Wagyu as your retail range?", answer: "Yes — the same F1 Wagyu-cross cattle over our grass-fed Angus base, just packed at wholesale volume and priced below the per-kg retail rate." },
+      { question: "Can I get other Wagyu cuts in bulk?", answer: "Scotch fillet and porterhouse can be arranged at volume on a custom quote — use the bulk order contact form and specify quantities." },
     ],
   },
   "/wholesale/bulk-meat-orders/bulk-chicken/": {

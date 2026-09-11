@@ -12,12 +12,13 @@
 | **Christmas ham** | 3 SKUs (Whole Bone-In, Half Leg, Boneless — all `Pre-Order`, `from_price`) + seasonal landing page | `pork` › Bacon & Ham; `/christmas-ham/` page + PAGE_SEO + Nav link + blog #25 |
 | **Bone broth / stock bones (human-grade)** | `Bones & Broth` subcategory on beef and pork. Beef: Marrow Bones (moved from Offal), Knuckle & Joint, Meaty Shin. Pork: Neck Bones, Split Trotters | `/beef/bones-broth/`, `/pork/bones-broth/` PAGE_SEO + blog #24 |
 | **Live poultry** (owner: "will stock live chickens") | New `live-poultry` category, 4 subcats (Laying Hens, Pullets, Meat Birds, Bantams), 5 products. Pickup / local-delivery only, welfare notice, `Seasonal` stock, excluded from cold-chain delivery | `/live-poultry/` + 4 subcat PAGE_SEO entries; custom render branch in `app/[category]/page.tsx`; llms.txt |
+| **Wagyu** (owner confirmed genuine F1 Wagyu sourcing, 2026-09-11) | Hero copy claimed "Wagyu & Dry-Aged Steaks" with zero Wagyu SKUs on site. New `Wagyu` subcategory under Beef — scotch fillet $79.99/kg, porterhouse $69.99/kg, rump $49.99/kg, mince $26.99/kg (AU market-reference pricing — owner to confirm against real supplier cost); plus a `Bulk Wagyu` wholesale subcategory (mince carton + whole rump). | `/beef/wagyu/` + PAGE_SEO; `/wholesale/bulk-meat-orders/bulk-wagyu/` + PAGE_SEO; `what-is-wagyu-beef` blog post; 6 new PRODUCTS entries |
+| **Angus** (owner confirmed beef is genuinely Angus/Angus-cross, 2026-09-11) | Site made no breed claims despite the beef being Angus. No new SKUs — same cattle as existing beef range. | `/beef/` intro + FAQ + supporting keyword; `wholesale/bulk-meat-orders/bulk-beef/` copy; `what-is-angus-beef` blog post |
 
 ## Demand noted, NOT actioned
 
 | Item | Reason |
 |---|---|
-| **Wagyu page** | Hero copy mentions Wagyu; no dedicated page. Add `/beef/wagyu/` if stock/margin supports it. Medium priority. |
 | **Deli / charcuterie** (jerky, biltong, salami, kabana) | Category was deliberately deleted earlier. Real demand exists (~6k combined) but out of current scope. Flag only. |
 | **Marrow bones for roasting (standalone)** | Now covered under `/beef/bones-broth/`. |
 | **Barramundi / snapper "for sale"** | Volume is mostly recreational-fishing intent. Existing seafood pages are enough. |

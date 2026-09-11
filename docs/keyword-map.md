@@ -239,10 +239,26 @@ steak cuts being genuinely sourceable (owner-confirmed).
 Commercial — primary transactional target), `wagyu meat` 390 (KD39), `beef wagyu` 260 (KD41),
 `shop wagyu beef` 50 (KD17, buy-intent), `online wagyu` 40 (KD10). Clean low-competition education
 cluster: **F1 Wagyu** (`f1 wagyu` + variants, ~380/mo combined, KD 0–18) — matches the F1/crossbred
-tier Australian butchers actually stock. Plan: real Wagyu steak SKU(s) once the owner supplies
-cuts/grade/pricing, a `/beef/wagyu/` subcategory targeting `wagyu steak`, and a "What Is Wagyu Beef?"
-blog post targeting `wagyu beef` + the F1 cluster.
-**Status: blocked on product data (cuts, grade/MBS, pack sizes, pricing) from the owner.**
+tier Australian butchers actually stock.
+**Done (commit pending push, 2026-09-11)**: owner confirmed genuine F1 Wagyu steak sourcing (wider
+range: scotch fillet, porterhouse, rump, mince) — pricing set from general AU market research
+(James Brothers Meat Co., Super Butcher, Tango Fresh, Farmer Butcher — F1 Wagyu retail runs roughly
+$22–30/kg for mince up to $55–95/kg for MB5+ steaks; ours sits at the accessible end: scotch fillet
+$79.99/kg, porterhouse $69.99/kg, rump $49.99/kg, mince $26.99/kg — **owner should sanity-check
+against actual supplier cost**). Built: 4 retail SKUs under new Beef > Wagyu subcategory,
+`/beef/wagyu/` PAGE_SEO targeting `wagyu steak`, "What Is Wagyu Beef?" blog post targeting
+`wagyu beef` + the F1 cluster, and a wholesale line (below). No real product photography yet —
+placeholder images reused from the matching standard cuts (scotch/porterhouse/rump/premium mince)
+pending real Wagyu photos.
+
+**Wholesale Angus & Wagyu** (owner asked 2026-09-11): Angus needed no new SKUs — it's the same
+cattle as the existing Bulk Beef wholesale line, so that page's copy/keywords now say
+Angus/Angus-cross instead of adding a redundant subcategory. Wagyu got a genuine new wholesale line:
+`Bulk Wagyu` subcategory (2 SKUs — 5kg F1 Wagyu mince carton $119.95, whole Wagyu rump sub-primal
+~3–4kg $159.00, both at a discount to retail) with its own
+`/wholesale/bulk-meat-orders/bulk-wagyu/` PAGE_SEO targeting `wholesale wagyu beef` (volume
+unverified — no standalone export for this term; named for consistency with the other
+`wholesale {meat}` bulk subcategory pages).
 
 **Angus** — `angus beef` 1,600/mo (KD21, Informational, head term), `angus cattle meat` 1,300/mo
 (KD12). Most surrounding volume is noise (Black Angus Steakhouse restaurant chain, Aldi/Costco

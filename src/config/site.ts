@@ -1139,7 +1139,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled", "Vacuum Sealed"],
     null,
     ["Wagyu", "Steaks", "Fresh Chilled"],
-    "/images/scotch-fillet-steak.webp",
+    "/images/wagyu-scotch-fillet-steak.webp",
     { featured: true, badge: "F1 Wagyu", quality_claims: "F1 Wagyu-Cross, Fresh Chilled & Vacuum Sealed" }
   ),
   createProduct(
@@ -1179,7 +1179,7 @@ export const PRODUCTS: Product[] = [
     ["Fresh Chilled", "Vacuum Sealed"],
     null,
     ["Wagyu", "Steaks", "BBQ", "Fresh Chilled"],
-    "/images/rump-steak.webp",
+    "/images/wagyu-rump-steak.webp",
     { secondary_subcategories: ["BBQ"], badge: "F1 Wagyu", quality_claims: "F1 Wagyu-Cross, Fresh Chilled & Vacuum Sealed" }
   ),
   createProduct(
@@ -7183,7 +7183,7 @@ export const PRODUCTS: Product[] = [
     ["Whole Sub-primal", "Bulk Cut"],
     null,
     ["Bulk Meat Orders", "Bulk Wagyu", "Bulk Cuts"],
-    "/images/rump-steak.webp",
+    "/images/wagyu-rump-steak.webp",
     {
       storageType: "Fresh Chilled",
       animal_protein: "Beef",
@@ -8311,7 +8311,7 @@ export const WHOLESALE_BULK_SUBCATEGORIES: WholesaleSubcategory[] = [
     slug: "bulk-wagyu",
     name: "Bulk Wagyu",
     description: "5kg F1 Wagyu mince cartons and whole Wagyu rump sub-primals at wholesale pricing.",
-    image: "/images/rump-steak.webp",
+    image: "/images/wagyu-rump-steak.webp",
   },
   {
     slug: "bulk-lamb",

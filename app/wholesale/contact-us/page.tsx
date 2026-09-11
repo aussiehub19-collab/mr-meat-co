@@ -61,7 +61,7 @@ export default function WholesaleContactPage() {
         {/* Contact Info Sidebar */}
         <div className="lg:col-span-4 space-y-6">
           <div className="bg-[#141414] p-6 rounded-2xl border border-[#991B1B]/40 space-y-4">
-            <h3 className="font-bold text-white font-serif text-lg">Direct Butcher Contact</h3>
+            <h2 className="font-bold text-white font-serif text-lg">Direct Butcher Contact</h2>
             <div className="space-y-3 text-xs text-gray-300">
               <a
                 href={`tel:${CONTACT.phone}`}
@@ -96,7 +96,7 @@ export default function WholesaleContactPage() {
           </div>
 
           <div className="bg-[#141414] p-6 rounded-2xl border border-[#991B1B]/40 space-y-3 text-xs text-gray-300">
-            <h4 className="font-bold text-white uppercase tracking-wider text-[11px]">Ordering Guidelines</h4>
+            <h2 className="font-bold text-white uppercase tracking-wider text-[11px]">Ordering Guidelines</h2>
             <p className="leading-relaxed">
               Standard turnaround time for custom bulk butcher specifications is 3 to 7 business days from order confirmation.
             </p>

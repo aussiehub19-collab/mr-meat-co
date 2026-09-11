@@ -479,7 +479,7 @@ export default function CheckoutPage() {
                     />
                   </div>
                   <div className="flex-1 min-w-0">
-                    <h4 className="font-bold text-white truncate">{item.name}</h4>
+                    <h3 className="font-bold text-white truncate">{item.name}</h3>
                     <p className="text-gray-400">${item.price.toFixed(2)} AUD / unit</p>
                     <div className="flex items-center space-x-2 mt-1">
                       <button

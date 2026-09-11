@@ -119,7 +119,7 @@ export default function HomePage() {
               <Truck className="w-6 h-6" />
             </div>
             <div>
-              <h4 className="font-bold text-white text-sm">Free Cold-Chain Across NSW</h4>
+              <p className="font-bold text-white text-sm">Free Cold-Chain Across NSW</p>
               <p className="text-xs text-gray-400 mt-1">Free refrigerated van delivery across NSW on orders ${SHOP.freeShippingThreshold}+. Shipped frozen by express courier elsewhere in Australia.</p>
             </div>
           </div>
@@ -129,7 +129,7 @@ export default function HomePage() {
               <ShieldCheck className="w-6 h-6" />
             </div>
             <div>
-              <h4 className="font-bold text-white text-sm">100% Australian Pasture</h4>
+              <p className="font-bold text-white text-sm">100% Australian Pasture</p>
               <p className="text-xs text-gray-400 mt-1">100-day grass-fed certified livestock with zero growth hormones or fillers.</p>
             </div>
           </div>
@@ -139,7 +139,7 @@ export default function HomePage() {
               <Percent className="w-6 h-6" />
             </div>
             <div>
-              <h4 className="font-bold text-white text-sm">10% Off with Crypto</h4>
+              <p className="font-bold text-white text-sm">10% Off with Crypto</p>
               <p className="text-xs text-gray-400 mt-1">Instant 10% discount when you pay with crypto (BTC / USDT). PayID &amp; bank transfer also accepted.</p>
             </div>
           </div>
@@ -149,7 +149,7 @@ export default function HomePage() {
               <Utensils className="w-6 h-6" />
             </div>
             <div>
-              <h4 className="font-bold text-white text-sm">Whole-Carcass Butchery</h4>
+              <p className="font-bold text-white text-sm">Whole-Carcass Butchery</p>
               <p className="text-xs text-gray-400 mt-1">Ground fresh daily by Alexandria master butchers with zero preservatives.</p>
             </div>
           </div>

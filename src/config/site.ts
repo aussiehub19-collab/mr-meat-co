@@ -9580,6 +9580,51 @@ Order your [Christmas ham](/christmas-ham/) now for December delivery.`,
     ],
     cta: { label: "Order a Christmas ham →", href: "/christmas-ham/", note: "Whole and half leg hams — order now for December delivery." },
   },
+  {
+    slug: "what-is-angus-beef",
+    title: "What Is Angus Beef? Breed, Grading & Why It's Prized",
+    seoTitle: "What Is Angus Beef? Breed, Marbling & Why It's Prized",
+    excerpt: "Angus is a cattle breed, not a cut or a grade. Here's what makes Angus and Angus-cross beef different, how it's graded, and why our beef is Angus.",
+    category: "Meat Education",
+    date: "2026-09-11",
+    readTime: "5 min read",
+    image: "/images/scotch-fillet-steak.webp",
+    primaryKeyword: "angus beef",
+    metaDescription: "What is Angus beef? The Angus cattle breed explained — marbling, grading, Angus vs Angus-cross, and why our grass-fed beef comes from Angus cattle.",
+    secondaryKeywords: ["angus cattle meat", "black angus beef", "australian black angus beef", "is angus beef good", "angus cross beef"],
+    content: `"Angus beef" gets used loosely, but it's simple once you know what it actually means: Angus is a breed of cattle, not a cut, a grade, or a farming method. It sits alongside grass-fed and dry-aged as one more thing that affects how your steak turns out — not a replacement for either.
+
+## Angus is a breed
+
+Aberdeen Angus originated in north-east Scotland and was brought to Australia in the 1800s. It's a naturally polled (hornless), predominantly black breed, bred for generations to marble well and finish efficiently on pasture. Because Angus genetics marble more consistently than many other breeds, "Angus" became shorthand in butchery and menus for reliably good beef — even though within any breed, individual animals still vary.
+
+## Angus vs Angus-cross
+
+Very little Australian beef is 100% purebred Angus from birth to plate. Most premium Australian beef — including ours — is **Angus or Angus-cross**: cattle bred from Angus bulls over a commercial cow herd, carrying enough Angus genetics to get the marbling and eating-quality benefit while staying suited to Australian pasture conditions. This is completely standard practice and is what most butchers and supermarkets mean when they say "Angus beef" unless they specifically say "purebred" or "full-blood."
+
+## What Angus genetics actually change
+
+- **Marbling** — the fine flecks of intramuscular fat that baste the meat as it cooks and carry flavour. Angus cattle marble more readily than most other British and European breeds.
+- **Consistency** — because the breed has been selected for this trait for so long, an Angus-influenced animal is more likely to grade well than an unselected one.
+- **Tenderness** — marbling and consistent finishing both help here, though how the animal is raised (grass-fed vs grain-finished) and how the meat is aged still matter just as much.
+
+What Angus genetics **don't** change: whether the animal was grass-fed or grain-finished, whether it had added hormones, or how it was cut and packed. Those are separate questions — see our [grass-fed vs grain-fed guide](/blog/grass-fed-vs-grain-fed-beef/) for that half of the picture.
+
+## "Certified Angus Beef" vs Angus beef
+
+You may have seen "Certified Angus Beef" — that's a specific branded program (originally American) with its own marbling and carcase specifications, separate from simply being an Angus-cross animal. We don't use that trademarked program; when we say our beef is Angus or Angus-cross, we mean the genetics, not a third-party certification stamp.
+
+## Our beef
+
+Mr Meat & Co's beef is Australian, grass-fed and pasture-raised, from Angus and Angus-cross cattle — HGP-free with no feedlot grain finishing. Angus genetics are why the marbling holds up on cuts like [scotch fillet and porterhouse](/beef/steaks/) even without grain finishing. Browse the [full beef range](/beef/) or read our [Australian beef cuts guide](/blog/australian-beef-cuts-explained/) for what to do with each one.`,
+    faqs: [
+      { question: "Is Angus a breed or a grade?", answer: "A breed. Angus cattle originated in Scotland and were bred for generations to marble well and finish efficiently on pasture. It isn't a cut, a certification, or a farming method." },
+      { question: "What's the difference between Angus and Angus-cross beef?", answer: "Purebred Angus is 100% Angus genetics from birth. Angus-cross is bred from Angus bulls over a commercial herd, carrying enough Angus genetics for the marbling benefit. Most Australian \"Angus beef\", including ours, is Angus or Angus-cross — that's standard industry practice, not a lesser product." },
+      { question: "Is Angus beef better than regular beef?", answer: "Angus genetics tend to marble more consistently than many other breeds, which generally means more even flavour and tenderness. But how the animal was raised — grass-fed vs grain-finished, and how it's aged — matters just as much as the breed." },
+      { question: "Is your beef Angus?", answer: "Yes — our beef is Australian, grass-fed and pasture-raised, from Angus and Angus-cross cattle, HGP-free with no feedlot grain finishing." },
+    ],
+    cta: { label: "Shop grass-fed Angus beef →", href: "/beef/", note: "Australian, grass-fed, Angus and Angus-cross — cut fresh in Alexandria." },
+  },
 ];
 
 export const PAGES = {
@@ -9660,10 +9705,11 @@ export const PAGE_SEO: Record<string, PageSeo> = {
     description: "Buy beef online — grass-fed Australian steaks, roasts, fresh mince, slow-cook cuts, BBQ and offal, cut fresh in Alexandria. Cold-chain NSW-wide, bulk beef too.",
     h1: "Grass-Fed Australian Beef, Cut Fresh & Delivered",
     primaryKeyword: "buy beef online",
-    supportingKeywords: ["grass fed beef online", "beef delivery sydney", "wholesale beef", "organic beef online", "australian beef delivered"],
-    intro: "Buy beef online from a craft butcher — every cut 100% Australian grass-fed and pasture-raised, from marbled scotch fillet and porterhouse to fresh mince ground daily, slow-cook brisket and cheek, and BBQ favourites. No added hormones, no feedlot finishing.",
+    supportingKeywords: ["grass fed beef online", "beef delivery sydney", "wholesale beef", "australian angus beef", "australian beef delivered"],
+    intro: "Buy beef online from a craft butcher — every cut 100% Australian grass-fed and pasture-raised, from Angus and Angus-cross cattle, from marbled scotch fillet and porterhouse to fresh mince ground daily, slow-cook brisket and cheek, and BBQ favourites. No added hormones, no feedlot finishing.",
     faqs: [
       { question: "Is your beef grass-fed and Australian?", answer: "Yes — 100% Australian grass-fed and pasture-raised for the life of the animal, HGP-free (no added hormones), with no feedlot grain finishing." },
+      { question: "Is your beef Angus?", answer: "Yes — Angus and Angus-cross cattle, which is what gives the marbling and consistency our steaks are known for even without grain finishing." },
       { question: "How is beef packed for delivery?", answer: "Vacuum-sealed or butcher-wrapped, labelled by cut, chilled to 0–2°C and packed with coolant sized to your order and the forecast, then delivered on refrigerated vans across Sydney." },
       { question: "What beef cuts do you sell?", answer: "Steaks (scotch fillet, porterhouse, eye fillet, rump, T-bone), roasts (rib, topside, silverside), mince and diced, slow-cook cuts (brisket, cheek, shin, oxtail, short rib) and offal." },
       { question: "Can I buy beef in bulk or by the quarter?", answer: "Yes — quarter, half and whole beef shares are on our bulk beef page, custom cut to your sheet and snap-frozen, plus 5kg and 10kg mince boxes." },

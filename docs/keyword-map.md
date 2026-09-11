@@ -225,5 +225,32 @@ christmas ham). No suburb pages.
 ## 8. Deferred / revisit (KD too high now, or volume unproven)
 
 - `beef mince` head (KD high) — supported via subcategory + blog, not chased as a standalone.
-- `wagyu` — hero mentions it; no page yet. Candidate for `/beef/wagyu/` if stock supports it.
 - Deli / charcuterie (jerky, biltong, salami) — demand exists; category was deliberately removed. Not recommended unless the owner wants to restock.
+
+## 9. Angus & Wagyu gap (Semrush AU, 2026-09-11) — owner-confirmed, in progress
+
+Owner supplied fresh exports for `angus-beef` and `wagyu` (2 pulls each, merged/deduped to 198 and
+191 unique AU keywords) after noticing the homepage hero claims "Wagyu & Dry-Aged Steaks" with **zero
+Wagyu steak SKUs on the site** (only one Wagyu burger-patty product existed) and **zero Angus/breed
+claims anywhere**, despite the beef genuinely being Angus/Angus-cross (owner-confirmed) and Wagyu
+steak cuts being genuinely sourceable (owner-confirmed).
+
+**Wagyu** — `wagyu beef` 8,100/mo (KD44, mixed intent, head term), `wagyu steak` 2,400/mo (KD23,
+Commercial — primary transactional target), `wagyu meat` 390 (KD39), `beef wagyu` 260 (KD41),
+`shop wagyu beef` 50 (KD17, buy-intent), `online wagyu` 40 (KD10). Clean low-competition education
+cluster: **F1 Wagyu** (`f1 wagyu` + variants, ~380/mo combined, KD 0–18) — matches the F1/crossbred
+tier Australian butchers actually stock. Plan: real Wagyu steak SKU(s) once the owner supplies
+cuts/grade/pricing, a `/beef/wagyu/` subcategory targeting `wagyu steak`, and a "What Is Wagyu Beef?"
+blog post targeting `wagyu beef` + the F1 cluster.
+**Status: blocked on product data (cuts, grade/MBS, pack sizes, pricing) from the owner.**
+
+**Angus** — `angus beef` 1,600/mo (KD21, Informational, head term), `angus cattle meat` 1,300/mo
+(KD12). Most surrounding volume is noise (Black Angus Steakhouse restaurant chain, Aldi/Costco
+retail, generic recipe queries) — the clean AU buying-intent slice is real but modest: `australian
+black angus beef` 20 (KD21, Commercial), `black angus beef near me` 20 (KD38, Transactional),
+`black angus grass fed` 20 (KD6), `black angus mince` 20 (KD3), `premium angus beef cuts` 30 (KD5).
+**Done (commit pending push, 2026-09-11)**: new blog post `what-is-angus-beef` targets `angus beef`
++ `angus cattle meat`; `/beef/` PAGE_SEO gained `australian angus beef` as a supporting keyword, an
+"Is your beef Angus?" FAQ, and an Angus/Angus-cross mention in the intro. No per-product edits (34
+beef SKUs) — the breed claim lives at the category + blog level, consistent with how other
+breed/sourcing facts are handled on this site.

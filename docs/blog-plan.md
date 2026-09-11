@@ -34,6 +34,7 @@
 | 23 | grass-fed-vs-grain-fed-beef | grass fed vs grain fed beef | /beef/ | TOF |
 | 24 | bone-broth-from-beef-bones | bone broth from beef bones | /beef/bones-broth/ | BOF |
 | 25 | christmas-ham-glaze-guide | christmas ham | /christmas-ham/ | BOF (seasonal) |
+| 26 | what-is-angus-beef | angus beef | /beef/ | TOF |
 
 ## Pillars & internal linking
 

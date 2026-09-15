@@ -23,7 +23,7 @@ Never hand-edit generated files (`llms.txt`, `.well-known/*`, `vercel.json`) —
 ## Live Placeholders
 - Domain: `mrmeatandco.com.au` — registered, DNS on Vercel, live and serving. `SITE.domain` + all agent files use the apex.
 - Forms: Zoho SMTP via `/api/contact` (nodemailer). Credentials are Vercel env vars only: `EMAIL_SERVER_HOST/PORT/SECURE/USER/PASSWORD`, `EMAIL_FROM`. If unset, the route simulates success and forms still redirect to their thank-you page (no email).
-- GSC Verification Code: `pending`
+- GSC: verified as a Domain property via DNS TXT at the registrar (no HTML meta tag needed). `SITE.gscVerification` stays `"pending"` intentionally — a meta-tag verification code would be a different value and isn't required for a Domain property.
 
 ## Brand Facts
 - Legal entity: Mr Meat & Co — ABN 71 635 847 908 (shown in the header strip, footer, and Organization schema)

@@ -6361,8 +6361,8 @@ export const PRODUCTS: Product[] = [
     "1kg",
     "1kg",
     "per_pack",
-    "Frozen 1kg raw beef pet mince.",
-    "Frozen raw beef pet mince in a 1kg pack. Pet food only — not for human consumption.",
+    "Raw beef pet mince, 1kg frozen pack.",
+    "Frozen raw beef pet mince, portioned into a 1kg pack for easy defrosting — ground from the same Australian beef trim as our human-grade cuts, kept completely separate from the retail range. Pet food only — not for human consumption.",
     "Pet Mince",
     ["Pet Food Only — Serve According to Verified Supplier Instructions"],
     ["Frozen"],
@@ -6375,7 +6375,7 @@ export const PRODUCTS: Product[] = [
       pet_food_only: true,
       human_consumption_warning: "Pet Food Only — Not for Human Consumption",
       seo_title: "Beef Pet Mince | Pet Food Catalogue",
-      seo_meta_description: "Beef Pet Mince in 1kg pack size for $14.00 AUD. Frozen raw beef pet mince. Pet food only — not for human consumption.",
+      seo_meta_description: "Beef Pet Mince, 1kg frozen pack, $14.00 AUD — ground from Australian beef trim, kept separate from our retail range. Pet food only.",
       breadcrumb_path: "Home > Pet Food > Raw Mince > Beef Pet Mince"
     }
   ),
@@ -6417,8 +6417,8 @@ export const PRODUCTS: Product[] = [
     "1kg",
     "1kg",
     "per_pack",
-    "Frozen 1kg raw chicken pet mince.",
-    "Frozen raw chicken pet mince in a 1kg pack. Pet food only — not for human consumption.",
+    "Raw chicken pet mince, 1kg frozen pack.",
+    "Frozen raw chicken pet mince in a 1kg pack, ground from chicken frame and trim — a leaner option than beef mince for pets on a raw diet. Pet food only — not for human consumption.",
     "Pet Mince",
     ["Pet Food Only — Serve According to Verified Supplier Instructions"],
     ["Frozen"],
@@ -6431,7 +6431,7 @@ export const PRODUCTS: Product[] = [
       pet_food_only: true,
       human_consumption_warning: "Pet Food Only — Not for Human Consumption",
       seo_title: "Chicken Pet Mince | Pet Food Catalogue",
-      seo_meta_description: "Chicken Pet Mince in 1kg pack size for $6.60 AUD. Frozen raw chicken pet mince. Pet food only — not for human consumption.",
+      seo_meta_description: "Chicken Pet Mince, 1kg frozen pack, $6.60 AUD — a leaner raw-diet option ground from chicken frame and trim. Pet food only.",
       breadcrumb_path: "Home > Pet Food > Raw Mince > Chicken Pet Mince"
     }
   ),
@@ -6445,8 +6445,8 @@ export const PRODUCTS: Product[] = [
     "1kg",
     "1kg",
     "per_pack",
-    "Frozen 1kg raw chicken and beef pet mince.",
-    "Frozen raw chicken and beef pet mince in a 1kg pack. Pet food only — not for human consumption.",
+    "Mixed chicken & beef pet mince, 1kg frozen pack.",
+    "A frozen 1kg blend of raw chicken and beef pet mince, giving a mixed-protein option without buying two separate packs. Pet food only — not for human consumption.",
     "Pet Mince",
     ["Pet Food Only — Serve According to Verified Supplier Instructions"],
     ["Frozen"],
@@ -6459,7 +6459,7 @@ export const PRODUCTS: Product[] = [
       pet_food_only: true,
       human_consumption_warning: "Pet Food Only — Not for Human Consumption",
       seo_title: "Chicken & Beef Pet Mince | Pet Food Catalogue",
-      seo_meta_description: "Chicken & Beef Pet Mince in 1kg pack size for $7.70 AUD. Frozen raw pet mince. Pet food only — not for human consumption.",
+      seo_meta_description: "Chicken & Beef Pet Mince, 1kg frozen pack, $7.70 AUD — a mixed-protein blend in one pack. Pet food only.",
       breadcrumb_path: "Home > Pet Food > Raw Mince > Chicken & Beef Pet Mince"
     }
   ),
@@ -6473,8 +6473,8 @@ export const PRODUCTS: Product[] = [
     "1kg",
     "1kg",
     "per_pack",
-    "Frozen 1kg raw kangaroo pet mince.",
-    "Frozen raw kangaroo pet mince in a 1kg pack. Pet food only — not for human consumption.",
+    "Raw kangaroo pet mince, 1kg frozen pack.",
+    "Frozen raw kangaroo pet mince in a 1kg pack — a lean, novel-protein option for pets with sensitivities to more common meats. Pet food only — not for human consumption.",
     "Pet Mince",
     ["Pet Food Only — Serve According to Verified Supplier Instructions"],
     ["Frozen"],
@@ -6487,7 +6487,7 @@ export const PRODUCTS: Product[] = [
       pet_food_only: true,
       human_consumption_warning: "Pet Food Only — Not for Human Consumption",
       seo_title: "Kangaroo Pet Mince | Pet Food Catalogue",
-      seo_meta_description: "Kangaroo Pet Mince in 1kg pack size for $15.00 AUD. Frozen raw kangaroo pet mince. Pet food only — not for human consumption.",
+      seo_meta_description: "Kangaroo Pet Mince, 1kg frozen pack, $15.00 AUD — a lean novel-protein option for pets with sensitivities. Pet food only.",
       breadcrumb_path: "Home > Pet Food > Raw Mince > Kangaroo Pet Mince"
     }
   ),
@@ -6671,8 +6671,8 @@ export const PRODUCTS: Product[] = [
     "1kg",
     "1kg",
     "per_pack",
-    "Frozen 1kg raw chicken necks for pets.",
-    "Frozen raw chicken necks in a 1kg pack. Pet food only — not for human consumption.",
+    "Raw chicken necks for pets, 1kg frozen pack.",
+    "Frozen raw chicken necks in a 1kg pack — a soft, edible-bone option raw feeders use to work bone content into a dog's diet. Pet food only — not for human consumption.",
     "Necks",
     ["Pet Food Only — Serve According to Verified Supplier Instructions"],
     ["Frozen"],
@@ -6685,7 +6685,7 @@ export const PRODUCTS: Product[] = [
       pet_food_only: true,
       human_consumption_warning: "Pet Food Only — Not for Human Consumption",
       seo_title: "Chicken Necks | Pet Food Catalogue",
-      seo_meta_description: "Chicken Necks in 1kg pack size for $6.00 AUD. Frozen raw chicken necks. Pet food only — not for human consumption.",
+      seo_meta_description: "Chicken Necks, 1kg frozen pack, $6.00 AUD — a soft edible-bone option for working bone content into a raw diet. Pet food only.",
       breadcrumb_path: "Home > Pet Food > Bones > Chicken Necks"
     }
   ),
@@ -6699,8 +6699,8 @@ export const PRODUCTS: Product[] = [
     "1kg",
     "1kg",
     "per_pack",
-    "Frozen 1kg raw chicken feet for pets.",
-    "Frozen raw chicken feet in a 1kg pack. Pet food only — not for human consumption.",
+    "Raw chicken feet for pets, 1kg frozen pack.",
+    "Frozen raw chicken feet in a 1kg pack — a natural, cartilage-rich chew popular with raw feeders for joint support. Pet food only — not for human consumption.",
     "Feet",
     ["Pet Food Only — Serve According to Verified Supplier Instructions"],
     ["Frozen"],
@@ -6713,7 +6713,7 @@ export const PRODUCTS: Product[] = [
       pet_food_only: true,
       human_consumption_warning: "Pet Food Only — Not for Human Consumption",
       seo_title: "Chicken Feet | Pet Food Catalogue",
-      seo_meta_description: "Chicken Feet in 1kg pack size for $6.00 AUD. Frozen raw chicken feet. Pet food only — not for human consumption.",
+      seo_meta_description: "Chicken Feet, 1kg frozen pack, $6.00 AUD — a natural, cartilage-rich chew for joint support. Pet food only.",
       breadcrumb_path: "Home > Pet Food > Bones > Chicken Feet"
     }
   ),
@@ -6755,8 +6755,8 @@ export const PRODUCTS: Product[] = [
     "1kg",
     "1kg",
     "per_pack",
-    "Frozen 1kg raw kangaroo tails for pets.",
-    "Frozen raw kangaroo tails in a 1kg pack. Pet food only — not for human consumption.",
+    "Raw kangaroo tails for pets, 1kg frozen pack.",
+    "Frozen raw kangaroo tails in a 1kg pack — a long-lasting recreational chew that also works bone and cartilage into a raw diet. Pet food only — not for human consumption.",
     "Tails",
     ["Pet Food Only — Serve According to Verified Supplier Instructions"],
     ["Frozen"],
@@ -6769,7 +6769,7 @@ export const PRODUCTS: Product[] = [
       pet_food_only: true,
       human_consumption_warning: "Pet Food Only — Not for Human Consumption",
       seo_title: "Kangaroo Tails | Pet Food Catalogue",
-      seo_meta_description: "Kangaroo Tails in 1kg pack size for $13.00 AUD. Frozen raw kangaroo tails. Pet food only — not for human consumption.",
+      seo_meta_description: "Kangaroo Tails, 1kg frozen pack, $13.00 AUD — a long-lasting recreational chew with bone and cartilage. Pet food only.",
       breadcrumb_path: "Home > Pet Food > Bones > Kangaroo Tails"
     }
   ),
@@ -6869,8 +6869,8 @@ export const PRODUCTS: Product[] = [
     "1kg",
     "1kg",
     "per_pack",
-    "Frozen 1kg mixed raw beef offal for pets.",
-    "Frozen raw mixed beef offal in a 1kg pack. Pet food only — not for human consumption.",
+    "Mixed raw beef offal for pets, 1kg frozen pack.",
+    "A frozen 1kg mix of raw beef offal — heart, liver and kidney — giving pets the organ-meat variety a balanced raw diet needs, without buying each separately. Pet food only — not for human consumption.",
     "Mixed Offal",
     ["Pet Food Only — Serve According to Verified Supplier Instructions"],
     ["Frozen"],
@@ -6883,7 +6883,7 @@ export const PRODUCTS: Product[] = [
       pet_food_only: true,
       human_consumption_warning: "Pet Food Only — Not for Human Consumption",
       seo_title: "Mixed Beef Offal for Pets | Pet Food Catalogue",
-      seo_meta_description: "Mixed Beef Offal for Pets in 1kg pack size for $14.99 AUD. Frozen raw beef offal. Pet food only — not for human consumption.",
+      seo_meta_description: "Mixed Beef Offal for Pets, 1kg frozen pack, $14.99 AUD — heart, liver and kidney in one mix. Pet food only.",
       breadcrumb_path: "Home > Pet Food > Offal > Mixed Beef Offal for Pets"
     }
   ),

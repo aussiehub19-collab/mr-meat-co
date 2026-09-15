@@ -15,17 +15,17 @@ Mr Meat & Co is an Australian online meat shop and craft butcher. It grinds and 
 - Crypto Discount: Instant 10% discount when paying with cryptocurrency (BTC, USDT). PayID and bank transfer accepted with no surcharge but no discount.
 
 ## Product Categories
-- [Beef](https://mrmeatandco.com.au/shop/beef/): Australian beef cuts, dry-aged steaks, fresh beef mince, slow-cook roasts, and offal.
-- [Chicken](https://mrmeatandco.com.au/shop/chicken/): Australian chicken breasts, thighs, drumsticks, wings, whole birds, lean mince, and crumbed schnitzels.
-- [Lamb](https://mrmeatandco.com.au/shop/lamb/): Australian lamb cutlets, loin chops, leg roasts, shoulder, shanks, and mince.
-- [Pork](https://mrmeatandco.com.au/shop/pork/): Australian pork cuts, crispy pork belly, ribs, pork shoulder roasts, cutlets, mince, bacon, and ham.
-- [Sausages](https://mrmeatandco.com.au/shop/sausages/): Australian craft sausages made with beef, pork, chicken, lamb, and gourmet flavour blends.
-- [BBQ & Grill](https://mrmeatandco.com.au/shop/bbq-grill/): Barbecue essentials — steak packs, sausage packs, ribs, skewers, and burger patties.
-- [Meat Boxes](https://mrmeatandco.com.au/shop/meat-boxes/): Household meat boxes, value freezer stockers, BBQ boxes, premium steak bundles, and lean protein prep.
-- [Ready to Cook](https://mrmeatandco.com.au/shop/ready-to-cook/): Chef-prepared weeknight dinners — chicken schnitzels, crumbed steak, marinated cuts, kebabs, and burger patties.
-- [Specialty Meat](https://mrmeatandco.com.au/shop/specialty-meat/): Specialty cuts including veal, goat, wild kangaroo, farmed rabbit, and game (venison, wild boar, crocodile, emu).
-- [Seafood](https://mrmeatandco.com.au/shop/seafood/): Fish fillets and portions, raw and cooked prawns, and salmon portions.
-- [Pet Food](https://mrmeatandco.com.au/shop/pet-food/): Natural raw BARF pet food — pet mince, beef marrow bones, and chicken frames.
+- [Beef](https://mrmeatandco.com.au/beef/): Australian beef cuts, dry-aged steaks, fresh beef mince, slow-cook roasts, and offal.
+- [Chicken](https://mrmeatandco.com.au/chicken/): Australian chicken breasts, thighs, drumsticks, wings, whole birds, lean mince, and crumbed schnitzels.
+- [Lamb](https://mrmeatandco.com.au/lamb/): Australian lamb cutlets, loin chops, leg roasts, shoulder, shanks, and mince.
+- [Pork](https://mrmeatandco.com.au/pork/): Australian pork cuts, crispy pork belly, ribs, pork shoulder roasts, cutlets, mince, bacon, and ham.
+- [Sausages](https://mrmeatandco.com.au/sausages/): Australian craft sausages made with beef, pork, chicken, lamb, and gourmet flavour blends.
+- [BBQ & Grill](https://mrmeatandco.com.au/bbq-grill/): Barbecue essentials — steak packs, sausage packs, ribs, skewers, and burger patties.
+- [Meat Boxes](https://mrmeatandco.com.au/meat-boxes/): Household meat boxes, value freezer stockers, BBQ boxes, premium steak bundles, and lean protein prep.
+- [Ready to Cook](https://mrmeatandco.com.au/ready-to-cook/): Chef-prepared weeknight dinners — chicken schnitzels, crumbed steak, marinated cuts, kebabs, and burger patties.
+- [Specialty Meat](https://mrmeatandco.com.au/specialty-meat/): Specialty cuts including veal, goat, wild kangaroo, farmed rabbit, and game (venison, wild boar, crocodile, emu).
+- [Seafood](https://mrmeatandco.com.au/seafood/): Fish fillets and portions, raw and cooked prawns, and salmon portions.
+- [Pet Food](https://mrmeatandco.com.au/pet-food/): Natural raw BARF pet food — pet mince, beef marrow bones, and chicken frames.
 - [Live Poultry](https://mrmeatandco.com.au/live-poultry/): Live birds for backyard flocks — point-of-lay hens, pullets, meat birds, and bantams. Farm pickup or local Sydney delivery only; not part of cold-chain meat delivery.
 
 ## Primary Featured Products

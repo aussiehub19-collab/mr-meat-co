@@ -4,7 +4,7 @@ import { sendMail } from "@/lib/mailer";
 import { buildEmailHtml } from "@/lib/emailTemplate";
 import { paymentTermsHtml } from "@/lib/order";
 import { getOrder, markOrderSent } from "@/lib/orderStore";
-import { SITE } from "@/config/site";
+import { SITE, FORMS } from "@/config/site";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -27,13 +27,17 @@ export async function POST(request: NextRequest) {
 
     const html = buildEmailHtml({
       title: `Payment details for your order`,
+      refBadge: body.orderNumber,
       intro: `Here's how to complete payment for order ${body.orderNumber}.`,
       rows: [
-        { label: "Order #", value: body.orderNumber, mono: true },
-        { label: "Amount Due", value: `$${Number(body.amountDue || 0).toFixed(2)} AUD` },
+        { label: "Amount Due", value: `$${Number(body.amountDue || 0).toFixed(2)} AUD`, highlight: true },
         { label: "How to pay", html: body.instructions.replace(/\n/g, "<br>") },
       ],
       afterRows: paymentTermsHtml(),
+      secondaryCta: {
+        label: "Contact Us",
+        url: `mailto:${FORMS.contactEmail}?subject=${encodeURIComponent(`Order ${body.orderNumber}`)}`,
+      },
       footer: `${SITE.name} — ${SITE.domain}`,
     });
 

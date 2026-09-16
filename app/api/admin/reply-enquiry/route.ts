@@ -3,7 +3,7 @@ import { checkAdminPasscode } from "@/lib/adminAuth";
 import { sendMail } from "@/lib/mailer";
 import { buildEmailHtml } from "@/lib/emailTemplate";
 import { getEnquiry, markEnquiryReplied } from "@/lib/enquiryStore";
-import { SITE } from "@/config/site";
+import { SITE, FORMS } from "@/config/site";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -30,6 +30,10 @@ export async function POST(request: NextRequest) {
       title: `Re: your ${enquiry.type} enquiry`,
       intro: `Hi ${enquiry.name || "there"},`,
       rows: [{ label: "Reply", html: body.message.replace(/\n/g, "<br>") }],
+      secondaryCta: {
+        label: "Contact Us",
+        url: `mailto:${FORMS.contactEmail}?subject=${encodeURIComponent(`Re: your ${enquiry.type} enquiry`)}`,
+      },
       footer: `${SITE.name} — ${SITE.domain}`,
     });
 

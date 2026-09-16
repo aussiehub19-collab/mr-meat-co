@@ -105,8 +105,12 @@ export async function POST(req: NextRequest) {
       ? buildEmailHtml({
           title: "We've received your order",
           refBadge: order.orderNumber,
-          intro: `Thanks, ${order.customerName} — our butcher team will send you a confirmation by email or WhatsApp shortly, with payment details and instructions to complete your order.`,
+          intro: `Thanks, ${order.customerName} — this confirms we've received your order. Please wait for a second email from us shortly with payment details, to confirm and complete your order.`,
           rows: [{ label: "Amount Due", value: `$${order.amountDue.toFixed(2)} AUD`, highlight: true }],
+          secondaryCta: {
+            label: "Contact Us",
+            url: `mailto:${FORMS.contactEmail}?subject=${encodeURIComponent(`Order ${order.orderNumber}`)}`,
+          },
           footer: `${SITE.name} — ${SITE.domain}`,
         })
       : null;
@@ -114,14 +118,14 @@ export async function POST(req: NextRequest) {
     const [adminResult] = await Promise.all([
       sendMail({
         to: FORMS.orderEmail,
-        subject: `New order ${order.orderNumber} — ${SITE.name}`,
+        subject: `New order ${order.orderNumber} — $${order.amountDue.toFixed(2)} AUD — ${SITE.name}`,
         html: adminHtml,
         replyTo: order.customerEmail,
       }),
       customerHtml && order.customerEmail
         ? sendMail({
             to: order.customerEmail,
-            subject: `Order received — ${order.orderNumber} — ${SITE.name}`,
+            subject: `Order received — ${order.orderNumber} — $${order.amountDue.toFixed(2)} AUD — ${SITE.name}`,
             html: customerHtml,
           })
         : Promise.resolve(null),

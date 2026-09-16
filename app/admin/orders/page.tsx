@@ -15,7 +15,7 @@ function OrdersList({ passcode }: { passcode: string }) {
   const load = useCallback(async () => {
     setError(null);
     try {
-      const res = await fetch('/api/admin/orders', { headers: { 'X-Admin-Passcode': passcode } });
+      const res = await fetch('/api/admin/orders/', { headers: { 'X-Admin-Passcode': passcode } });
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || 'Failed to load orders.');
       setOrders(data.orders);
@@ -31,7 +31,7 @@ function OrdersList({ passcode }: { passcode: string }) {
 
   const remove = async (orderNumber: string) => {
     if (!confirm(`Delete order ${orderNumber}? This can't be undone.`)) return;
-    await fetch(`/api/admin/orders/${encodeURIComponent(orderNumber)}`, {
+    await fetch(`/api/admin/orders/${encodeURIComponent(orderNumber)}/`, {
       method: 'DELETE',
       headers: { 'X-Admin-Passcode': passcode },
     });

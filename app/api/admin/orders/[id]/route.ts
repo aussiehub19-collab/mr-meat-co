@@ -9,23 +9,38 @@ export async function GET(request: NextRequest, { params }: { params: Promise<{ 
   const denied = checkAdminPasscode(request);
   if (denied) return denied;
   const { id } = await params;
-  const order = await getOrder(id);
-  if (!order) return NextResponse.json({ error: "Not found" }, { status: 404 });
-  return NextResponse.json({ order });
+  try {
+    const order = await getOrder(id);
+    if (!order) return NextResponse.json({ error: "Not found" }, { status: 404 });
+    return NextResponse.json({ order });
+  } catch (err) {
+    const error = err as Error;
+    return NextResponse.json({ error: error?.message || "Failed to load order." }, { status: 502 });
+  }
 }
 
 export async function DELETE(request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   const denied = checkAdminPasscode(request);
   if (denied) return denied;
   const { id } = await params;
-  await deleteOrder(id);
-  return NextResponse.json({ success: true });
+  try {
+    await deleteOrder(id);
+    return NextResponse.json({ success: true });
+  } catch (err) {
+    const error = err as Error;
+    return NextResponse.json({ success: false, error: error?.message || "Delete failed." }, { status: 502 });
+  }
 }
 
 export async function PATCH(request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   const denied = checkAdminPasscode(request);
   if (denied) return denied;
   const { id } = await params;
-  await markOrderSent(id);
-  return NextResponse.json({ success: true });
+  try {
+    await markOrderSent(id);
+    return NextResponse.json({ success: true });
+  } catch (err) {
+    const error = err as Error;
+    return NextResponse.json({ success: false, error: error?.message || "Update failed." }, { status: 502 });
+  }
 }

@@ -27,7 +27,7 @@ function Composer({ passcode }: { passcode: string }) {
 
   useEffect(() => {
     if (!orderId) return;
-    fetch(`/api/admin/orders/${encodeURIComponent(orderId)}`, { headers: { 'X-Admin-Passcode': passcode } })
+    fetch(`/api/admin/orders/${encodeURIComponent(orderId)}/`, { headers: { 'X-Admin-Passcode': passcode } })
       .then((r) => r.json())
       .then((d) => {
         if (d.order) {
@@ -45,7 +45,7 @@ function Composer({ passcode }: { passcode: string }) {
     setSending(true);
     setError(null);
     try {
-      const res = await fetch('/api/admin/send-payment-email', {
+      const res = await fetch('/api/admin/send-payment-email/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'X-Admin-Passcode': passcode },
         body: JSON.stringify({

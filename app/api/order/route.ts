@@ -2,8 +2,8 @@ import { NextRequest, NextResponse } from "next/server";
 import { SITE, FORMS, abs } from "@/config/site";
 import { sendMail } from "@/lib/mailer";
 import { buildEmailHtml, type EmailRow } from "@/lib/emailTemplate";
+import { generateOrderNumber } from "@/lib/orderNumber";
 import {
-  generateOrderNumber,
   isOrderStoreConfigured,
   saveOrder,
   type StoredOrder,
@@ -14,6 +14,10 @@ export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
 interface OrderPayload {
+  /** Optional — the WhatsApp checkout generates this client-side (before
+   *  any server round-trip) so the same reference appears in the WhatsApp
+   *  message, the dashboard, and this email. Falls back to a fresh one. */
+  orderNumber?: string;
   customerName: string;
   customerEmail?: string;
   customerPhone?: string;
@@ -26,6 +30,8 @@ interface OrderPayload {
   channel: "whatsapp" | "email";
 }
 
+const VALID_ORDER_NUMBER = /^MM-[A-Z0-9]{4,10}$/;
+
 export async function POST(req: NextRequest) {
   try {
     const data = (await req.json()) as Partial<OrderPayload>;
@@ -34,7 +40,11 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ success: false, message: "Missing order details." }, { status: 400 });
     }
 
-    const orderNumber = generateOrderNumber();
+    const orderNumber =
+      typeof data.orderNumber === "string" && VALID_ORDER_NUMBER.test(data.orderNumber)
+        ? data.orderNumber
+        : generateOrderNumber();
+
     const order: StoredOrder = {
       orderNumber,
       customerName: data.customerName,
@@ -51,9 +61,11 @@ export async function POST(req: NextRequest) {
       createdAt: new Date().toISOString(),
     };
 
+    let saved = false;
     if (isOrderStoreConfigured()) {
       try {
         await saveOrder(order);
+        saved = true;
       } catch (e) {
         console.error("[order] failed to save to order store:", (e as Error)?.message);
       }
@@ -62,26 +74,28 @@ export async function POST(req: NextRequest) {
     }
 
     const itemRows: EmailRow[] = order.items.map((i) => ({
-      label: i.name,
-      value: `${i.quantity} × $${i.price.toFixed(2)} = $${(i.price * i.quantity).toFixed(2)} AUD`,
+      label: `${i.name} × ${i.quantity}`,
+      value: `$${(i.price * i.quantity).toFixed(2)} AUD`,
     }));
 
     const adminHtml = buildEmailHtml({
-      title: `New order — ${order.orderNumber}`,
+      title: "New order",
+      refBadge: order.orderNumber,
       intro: `${order.customerName} placed an order via ${order.channel === "whatsapp" ? "WhatsApp" : "the website"}.`,
       rows: [
-        { label: "Order #", value: order.orderNumber, mono: true },
-        { label: "Customer", value: order.customerName },
+        { label: "Customer", heading: true },
+        { label: "Name", value: order.customerName },
         ...(order.customerEmail ? [{ label: "Email", value: order.customerEmail }] : []),
         ...(order.customerPhone ? [{ label: "Phone", value: order.customerPhone }] : []),
         ...(order.address ? [{ label: "Address", value: order.address }] : []),
+        { label: "Order", heading: true },
         ...itemRows,
-        { label: "Subtotal", value: `$${order.subtotal.toFixed(2)} AUD` },
-        { label: "Amount Due", value: `$${order.amountDue.toFixed(2)} AUD` },
-        { label: "Payment Method", value: order.paymentMethod },
         ...(order.notes ? [{ label: "Notes", value: order.notes }] : []),
+        { label: "Subtotal", value: `$${order.subtotal.toFixed(2)} AUD` },
+        { label: "Payment Method", value: order.paymentMethod },
+        { label: "Amount Due", value: `$${order.amountDue.toFixed(2)} AUD`, highlight: true },
       ],
-      cta: isOrderStoreConfigured()
+      cta: saved
         ? { label: "Reply in Dashboard →", url: abs(`/admin/orders/`) }
         : undefined,
       footer: `${SITE.name} order notification — ${SITE.domain}`,
@@ -90,11 +104,9 @@ export async function POST(req: NextRequest) {
     const customerHtml = order.customerEmail
       ? buildEmailHtml({
           title: "We've received your order",
-          intro: `Thanks, ${order.customerName} — your order ${order.orderNumber} has been received. Our butcher team will send you an order confirmation by email or WhatsApp shortly, with payment details and instructions to complete your order.`,
-          rows: [
-            { label: "Order #", value: order.orderNumber, mono: true },
-            { label: "Amount Due", value: `$${order.amountDue.toFixed(2)} AUD` },
-          ],
+          refBadge: order.orderNumber,
+          intro: `Thanks, ${order.customerName} — our butcher team will send you a confirmation by email or WhatsApp shortly, with payment details and instructions to complete your order.`,
+          rows: [{ label: "Amount Due", value: `$${order.amountDue.toFixed(2)} AUD`, highlight: true }],
           footer: `${SITE.name} — ${SITE.domain}`,
         })
       : null;
@@ -119,7 +131,7 @@ export async function POST(req: NextRequest) {
       success: true,
       orderNumber: order.orderNumber,
       emailed: adminResult.sent,
-      saved: isOrderStoreConfigured(),
+      saved,
     });
   } catch (err) {
     const error = err as Error;

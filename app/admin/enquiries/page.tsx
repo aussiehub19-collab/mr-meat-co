@@ -19,7 +19,7 @@ function EnquiriesList({ passcode }: { passcode: string }) {
   const load = useCallback(async () => {
     setError(null);
     try {
-      const res = await fetch('/api/admin/enquiries', { headers: { 'X-Admin-Passcode': passcode } });
+      const res = await fetch('/api/admin/enquiries/', { headers: { 'X-Admin-Passcode': passcode } });
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || 'Failed to load enquiries.');
       setEnquiries(data.enquiries);
@@ -35,7 +35,7 @@ function EnquiriesList({ passcode }: { passcode: string }) {
 
   const remove = async (id: string) => {
     if (!confirm('Delete this enquiry? This can\'t be undone.')) return;
-    await fetch(`/api/admin/enquiries/${encodeURIComponent(id)}`, {
+    await fetch(`/api/admin/enquiries/${encodeURIComponent(id)}/`, {
       method: 'DELETE',
       headers: { 'X-Admin-Passcode': passcode },
     });

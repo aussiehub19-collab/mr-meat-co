@@ -18,7 +18,7 @@ function Composer({ passcode }: { passcode: string }) {
 
   useEffect(() => {
     if (!enquiryId) return;
-    fetch(`/api/admin/enquiries/${encodeURIComponent(enquiryId)}`, { headers: { 'X-Admin-Passcode': passcode } })
+    fetch(`/api/admin/enquiries/${encodeURIComponent(enquiryId)}/`, { headers: { 'X-Admin-Passcode': passcode } })
       .then((r) => r.json())
       .then((d) => setEnquiry(d.enquiry || null))
       .catch(() => {});
@@ -29,7 +29,7 @@ function Composer({ passcode }: { passcode: string }) {
     setSending(true);
     setError(null);
     try {
-      const res = await fetch('/api/admin/reply-enquiry', {
+      const res = await fetch('/api/admin/reply-enquiry/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'X-Admin-Passcode': passcode },
         body: JSON.stringify({ enquiryId, message }),

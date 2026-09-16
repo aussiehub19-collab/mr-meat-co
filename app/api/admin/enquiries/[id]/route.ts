@@ -9,15 +9,25 @@ export async function GET(request: NextRequest, { params }: { params: Promise<{ 
   const denied = checkAdminPasscode(request);
   if (denied) return denied;
   const { id } = await params;
-  const enquiry = await getEnquiry(id);
-  if (!enquiry) return NextResponse.json({ error: "Not found" }, { status: 404 });
-  return NextResponse.json({ enquiry });
+  try {
+    const enquiry = await getEnquiry(id);
+    if (!enquiry) return NextResponse.json({ error: "Not found" }, { status: 404 });
+    return NextResponse.json({ enquiry });
+  } catch (err) {
+    const error = err as Error;
+    return NextResponse.json({ error: error?.message || "Failed to load enquiry." }, { status: 502 });
+  }
 }
 
 export async function DELETE(request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   const denied = checkAdminPasscode(request);
   if (denied) return denied;
   const { id } = await params;
-  await deleteEnquiry(id);
-  return NextResponse.json({ success: true });
+  try {
+    await deleteEnquiry(id);
+    return NextResponse.json({ success: true });
+  } catch (err) {
+    const error = err as Error;
+    return NextResponse.json({ success: false, error: error?.message || "Delete failed." }, { status: 502 });
+  }
 }

@@ -1,4 +1,5 @@
 import { redis, isRedisConfigured } from "./redis";
+export { generateOrderNumber } from "./orderNumber";
 
 export interface StoredOrderItem {
   name: string;
@@ -27,12 +28,6 @@ const keyFor = (orderNumber: string) => `order:${orderNumber}`;
 
 export function isOrderStoreConfigured(): boolean {
   return isRedisConfigured();
-}
-
-export function generateOrderNumber(): string {
-  const stamp = Date.now().toString(36).toUpperCase();
-  const rand = Math.random().toString(36).slice(2, 6).toUpperCase();
-  return `MMC-${stamp}-${rand}`;
 }
 
 export async function saveOrder(order: StoredOrder): Promise<void> {

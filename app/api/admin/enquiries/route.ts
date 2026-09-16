@@ -12,6 +12,15 @@ export async function GET(request: NextRequest) {
   if (!isEnquiryStoreConfigured()) {
     return NextResponse.json({ enquiries: [], configured: false });
   }
-  const enquiries = await listEnquiries();
-  return NextResponse.json({ enquiries, configured: true });
+  try {
+    const enquiries = await listEnquiries();
+    return NextResponse.json({ enquiries, configured: true });
+  } catch (err) {
+    const error = err as Error;
+    console.error("[admin/enquiries] failed to list enquiries:", error?.message);
+    return NextResponse.json(
+      { enquiries: [], configured: true, error: error?.message || "Failed to load enquiries." },
+      { status: 502 }
+    );
+  }
 }

@@ -14,7 +14,7 @@ export function useAdminPasscode() {
     setChecking(true);
     setError(null);
     try {
-      const res = await fetch("/api/admin/verify", {
+      const res = await fetch("/api/admin/verify/", {
         headers: { "X-Admin-Passcode": candidate },
       });
       if (res.ok) {

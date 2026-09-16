@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { SmartImage } from '@/components/SmartImage';
 import { useCart } from '@/lib/cart';
+import { generateOrderNumber } from '@/lib/orderNumber';
 import { SITE, SHOP, CONTACT } from '@/config/site';
 import {
   ShoppingBag,
@@ -52,7 +53,11 @@ export default function CheckoutPage() {
 
   // Shared order payload saved to the reply-portal dashboard (Upstash) and
   // emailed to the admin, regardless of which checkout channel is used.
-  const buildOrderPayload = (channel: 'whatsapp' | 'email') => ({
+  // orderNumber is generated client-side (see lib/orderNumber) so a
+  // WhatsApp checkout can show the same reference in the chat message
+  // that ends up in the dashboard, without waiting on a server round-trip.
+  const buildOrderPayload = (channel: 'whatsapp' | 'email', orderNumber: string) => ({
+    orderNumber,
     customerName: fullName,
     customerEmail: email || undefined,
     customerPhone: phone || undefined,
@@ -70,12 +75,15 @@ export default function CheckoutPage() {
     e.preventDefault();
     if (!isMinOrderMet) return;
 
+    const orderNumber = generateOrderNumber();
+
     const itemsList = cart
       .map((i) => `• ${i.name} (${i.quantity}x) = $${(i.price * i.quantity).toFixed(2)} AUD`)
       .join('\n');
 
     const msg = `🥩 *NEW MEAT ORDER - ${SITE.name} SYDNEY*\n` +
       `━━━━━━━━━━━━━━━━━━━━━━━━━━\n` +
+      `*Order Ref: ${orderNumber}*\n` +
       `*CUSTOMER DETAILS*\n` +
       `• Name: ${fullName || 'Not specified'}\n` +
       `• Phone/WhatsApp: ${phone || 'Not specified'}\n` +
@@ -96,10 +104,10 @@ export default function CheckoutPage() {
     window.open(url, '_blank');
 
     // Fire-and-forget: save to the dashboard + notify admin by email.
-    fetch('/api/order', {
+    fetch('/api/order/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(buildOrderPayload('whatsapp')),
+      body: JSON.stringify(buildOrderPayload('whatsapp', orderNumber)),
     }).catch(() => {});
 
     clearCart();
@@ -113,10 +121,10 @@ export default function CheckoutPage() {
 
     setIsSubmitting(true);
     try {
-      await fetch('/api/order', {
+      await fetch('/api/order/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(buildOrderPayload('email')),
+        body: JSON.stringify(buildOrderPayload('email', generateOrderNumber())),
       });
     } catch {
       // Redirect to the thank-you page regardless — order details also go via WhatsApp.

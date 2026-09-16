@@ -12,6 +12,15 @@ export async function GET(request: NextRequest) {
   if (!isOrderStoreConfigured()) {
     return NextResponse.json({ orders: [], configured: false });
   }
-  const orders = await listOrders();
-  return NextResponse.json({ orders, configured: true });
+  try {
+    const orders = await listOrders();
+    return NextResponse.json({ orders, configured: true });
+  } catch (err) {
+    const error = err as Error;
+    console.error("[admin/orders] failed to list orders:", error?.message);
+    return NextResponse.json(
+      { orders: [], configured: true, error: error?.message || "Failed to load orders." },
+      { status: 502 }
+    );
+  }
 }

@@ -134,7 +134,7 @@ export function buildEmailHtml(opts: {
 <style>
   :root { color-scheme: light only !important; }
   /* Gmail dark-mode overrides — u+.body targets Gmail's wrapper */
-  u + .body { background-color: ${PAGE_BG} !important; }
+  u + .body { background-color: ${CARD_BG} !important; }
   u + .body .hdr { background-color: ${HEADER_BG} !important; }
   u + .body .hdr-name { color: ${HEADER_TEXT} !important; }
   u + .body .hdr-abn { color: ${HEADER_BORDER} !important; }
@@ -143,7 +143,7 @@ export function buildEmailHtml(opts: {
   u + .body .ftr { background-color: ${FOOTER_BG} !important; }
   /* Apple Mail / iOS dark mode */
   @media (prefers-color-scheme: dark) {
-    .body, .body table, .body td { background-color: ${PAGE_BG} !important; }
+    .body, .body table, .body td { background-color: ${CARD_BG} !important; }
     .hdr, .hdr td { background-color: ${HEADER_BG} !important; }
     .hdr-name { color: ${HEADER_TEXT} !important; }
     .hdr-abn { color: ${HEADER_BORDER} !important; }
@@ -153,14 +153,14 @@ export function buildEmailHtml(opts: {
   }
 </style>
 </head>
-<body class="body" style="margin:0;padding:0;background-color:${PAGE_BG};-webkit-text-size-adjust:none;-ms-text-size-adjust:none">
+<body class="body" style="margin:0;padding:0;background-color:${CARD_BG};-webkit-text-size-adjust:none;-ms-text-size-adjust:none">
   ${opts.preheader ? `<div style="display:none;max-height:0;overflow:hidden;opacity:0;font-size:1px;line-height:1px;color:${PAGE_BG}">${escapeHtml(opts.preheader)}${"&#847; &zwnj; &nbsp; ".repeat(30)}</div>` : ""}
 
-  <!--[if mso]><table role="presentation" width="100%" cellpadding="0" cellspacing="0" bgcolor="${PAGE_BG}"><tr><td align="center"><table role="presentation" width="560" cellpadding="0" cellspacing="0"><tr><td><![endif]-->
+  <!--[if mso]><table role="presentation" width="100%" cellpadding="0" cellspacing="0" bgcolor="${CARD_BG}"><tr><td align="center"><table role="presentation" width="600" cellpadding="0" cellspacing="0"><tr><td><![endif]-->
 
-  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" bgcolor="${PAGE_BG}" style="background-color:${PAGE_BG};padding:36px 16px">
-    <tr><td align="center">
-      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" bgcolor="${CARD_BG}" class="card" style="max-width:560px;background-color:${CARD_BG};border-radius:16px;overflow:hidden;border:1px solid ${BORDER}">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" bgcolor="${CARD_BG}" class="card" style="background-color:${CARD_BG};padding:0">
+    <tr><td align="center" bgcolor="${CARD_BG}" class="card" style="background-color:${CARD_BG}">
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" bgcolor="${CARD_BG}" class="card" style="max-width:600px;background-color:${CARD_BG}">
 
         <!-- White header band -->
         <tr><td bgcolor="${HEADER_BG}" class="hdr" style="background-color:${HEADER_BG} !important;padding:28px 28px 22px;text-align:center;border-bottom:3px solid ${HEADER_BORDER}">

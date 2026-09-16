@@ -25,19 +25,15 @@ const SERIF = "Georgia, 'Times New Roman', Times, serif";
 const SANS = "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif";
 const MONO = "'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace";
 
-// A light card with a solid dark-red/black header band and red accents —
-// NOT a full dark-background card. Three separate rounds tried a genuinely
-// dark card (gradients; then solid colours + bgcolor attributes; then
-// dropping the color-scheme meta) and every one of them still rendered
-// white in Zoho Mail's webmail reader, which strips background-color from
-// large containers regardless of technique. This mirrors the pattern
-// already proven working in production (Australian Electric Motor Co's
-// Reply Portal, same recipient mailbox): colour lives in a compact header
-// band, buttons and borders — never a full-bleed page/card fill — which is
-// what actually survives every client's sanitiser, Zoho included.
+// A fully light card — no dark background anywhere, including the header —
+// so the admin (Zoho Mail) and customer (Gmail) copies render identically
+// everywhere instead of depending on how each client happens to handle a
+// dark fill. Brand colour comes through red accent text, borders and
+// buttons only. This is the same underlying lesson as the header-band
+// version that preceded it (see git history): the fewer background-color
+// declarations an email relies on, the more consistently it renders.
 const PAGE_BG = "#F4F1EA";
 const CARD_BG = "#FFFFFF";
-const HEADER_BG = "#140D0D";
 const BORDER = "#E5E1DB";
 const FOOTER_BG = "#F7F5F1";
 const FOOTER_BORDER = "#EDE9E1";
@@ -47,11 +43,11 @@ const ACCENT = "#991B1B";
 
 /**
  * Shared branded HTML-email shell — a light card (guaranteed to render
- * correctly everywhere) carrying the site's red/black branding through a
- * solid dark header band, red accent labels/borders and red buttons, rather
- * than a full dark background. Table-based inline CSS throughout for
- * Outlook/Gmail/Zoho/Apple Mail compatibility. Colours default to
- * SITE.primaryColor but a caller can override — never a hardcoded hex here.
+ * identically everywhere) carrying the site's red/black branding through
+ * red accent text, borders and buttons only, never a background fill.
+ * Table-based inline CSS throughout for Outlook/Gmail/Zoho/Apple Mail
+ * compatibility. Colours default to SITE.primaryColor but a caller can
+ * override — never a hardcoded hex here.
  */
 export function buildEmailHtml(opts: {
   title: string;
@@ -127,10 +123,10 @@ export function buildEmailHtml(opts: {
       <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:560px;background-color:${CARD_BG};border-radius:16px;overflow:hidden">
 
         <!-- Header -->
-        <tr><td style="background-color:${HEADER_BG};padding:26px 28px;text-align:center">
-          <div style="font-family:${SERIF};font-weight:700;font-size:22px;color:#ffffff;letter-spacing:0.03em;text-transform:uppercase">${escapeHtml(SITE.name)}</div>
-          <div style="font-family:${SANS};font-size:11px;font-weight:700;color:#EF9A9A;letter-spacing:0.08em;margin-top:8px">ABN ${escapeHtml(SITE.abn)}</div>
-          <div style="font-family:${SANS};font-size:10.5px;color:#B7ADA6;text-transform:uppercase;letter-spacing:0.14em;margin-top:4px">Craft Butcher &middot; Alexandria, Sydney</div>
+        <tr><td style="padding:28px 28px 22px;text-align:center;border-bottom:2px solid ${primary}">
+          <div style="font-family:${SERIF};font-weight:700;font-size:22px;color:${TEXT};letter-spacing:0.03em;text-transform:uppercase">${escapeHtml(SITE.name)}</div>
+          <div style="font-family:${SANS};font-size:11px;font-weight:700;color:${ACCENT};letter-spacing:0.08em;margin-top:8px">ABN ${escapeHtml(SITE.abn)}</div>
+          <div style="font-family:${SANS};font-size:10.5px;color:${TEXT_MUTED};text-transform:uppercase;letter-spacing:0.14em;margin-top:4px">Craft Butcher &middot; Alexandria, Sydney</div>
         </td></tr>
 
         <!-- Body -->

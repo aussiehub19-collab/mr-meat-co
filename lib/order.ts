@@ -99,7 +99,7 @@ export function paymentTermsHtml(opts: PaymentTermsOptions): string {
   points.push(
     `Once paid, send a screenshot of the completed payment to <a href="mailto:${escapeHtml(opts.contactEmail)}" style="color:#EF4444;font-weight:700;text-decoration:underline">${escapeHtml(opts.contactEmail)}</a> or WhatsApp <a href="${escapeHtml(opts.whatsappLink)}" style="color:#EF4444;font-weight:700;text-decoration:underline">${escapeHtml(opts.whatsapp)}</a> for confirmation.`
   );
-  return `<ul style="margin:0;padding-left:18px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:13px;line-height:1.7;color:#B8ADA5">${points
+  return `<ul style="margin:0;padding-left:18px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:13px;line-height:1.7;color:#D1CBC5">${points
     .map((p) => `<li style="margin-bottom:6px">${p}</li>`)
     .join("")}</ul>`;
 }

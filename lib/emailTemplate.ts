@@ -36,16 +36,16 @@ const MONO = "'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace";
 // attribute is the most robust across sanitising webmail readers (Zoho, Gmail,
 // Outlook) that drop CSS backgrounds, so the dark fill survives where earlier
 // CSS-only attempts washed out to white.
-const PAGE_BG = "#0F0A0A";
-const CARD_BG = "#1A1212";
+const PAGE_BG = "#120D0D";
+const CARD_BG = "#1C1414";
 const HEADER_BG = "#FFFFFF";
-const FOOTER_BG = "#140D0D";
-const BORDER = "#3D2020"; // dark red hairline on the dark card
+const FOOTER_BG = "#0C0808";
+const BORDER = "#5B1717"; // solid equivalent of rgba(185,28,28,0.4) over #1C1414
 const HEADER_BORDER = "#B91C1C"; // red rule under the white header
-const HEADER_TEXT = "#1A1212"; // dark name on the white header
+const HEADER_TEXT = "#1C1414"; // dark name on the white header
 const HEADER_MUTED = "#6B6259"; // muted location on the white header
-const TEXT = "#F5EFEC"; // light body text on dark
-const TEXT_MUTED = "#B8ADA5"; // muted labels on dark
+const TEXT = "#FDFBF7"; // light body text — matches globals.css body color
+const TEXT_MUTED = "#D1CBC5"; // muted labels on dark
 const ACCENT = "#EF4444"; // bright red — readable on dark for headings/links
 
 /**
@@ -158,7 +158,7 @@ export function buildEmailHtml(opts: {
 
         <!-- Footer -->
         <tr><td bgcolor="${FOOTER_BG}" style="background-color:${FOOTER_BG};padding:20px 28px;border-top:1px solid ${BORDER}">
-          <p style="margin:0;font-family:${SANS};font-size:11.5px;color:#8A7F77;line-height:1.6">${opts.footer ? escapeHtml(opts.footer) : `${escapeHtml(SITE.name)} — ${escapeHtml(SITE.domain)}`}</p>
+          <p style="margin:0;font-family:${SANS};font-size:11.5px;color:#D1CBC5;line-height:1.6">${opts.footer ? escapeHtml(opts.footer) : `${escapeHtml(SITE.name)} — ${escapeHtml(SITE.domain)}`}</p>
         </td></tr>
 
       </table>

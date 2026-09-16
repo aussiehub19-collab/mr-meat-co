@@ -94,7 +94,8 @@ function Composer({ passcode }: { passcode: string }) {
         rows: [
           { label: 'Amount Due', value: `$${(Number(amountDue) || 0).toFixed(2)} AUD`, highlight: true },
           { label: 'Payment Method', value: paymentMethod },
-          { label: 'How to pay', html: instructions.replace(/\n/g, '<br>') },
+          { label: 'How to Pay', heading: true },
+          { label: '', html: instructions.replace(/\n/g, '<br>'), block: true },
         ],
         afterRows: paymentTermsHtml({
           orderNumber: orderId || '',

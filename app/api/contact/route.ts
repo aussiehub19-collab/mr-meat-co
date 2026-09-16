@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 import { FORMS, SITE, abs } from "@/config/site";
+import { buildEmailHtml, type EmailRow } from "@/lib/emailTemplate";
 import { generateEnquiryId, saveEnquiry, isEnquiryStoreConfigured, type EnquiryType } from "@/lib/enquiryStore";
 
 // nodemailer needs the Node.js runtime (not edge).
@@ -34,13 +35,6 @@ function destFor(formType: string): string {
   if (formType === "order") return FORMS.orderEmail;
   if (formType === "wholesale" || formType === "bulk") return FORMS.wholesaleEmail;
   return FORMS.contactEmail;
-}
-
-function esc(s: string): string {
-  return s.replace(
-    /[&<>"]/g,
-    (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c] as string)
-  );
 }
 
 function titleCase(k: string): string {
@@ -110,25 +104,35 @@ export async function POST(req: NextRequest) {
       `\n\n— Sent from ${SITE.domain} (${formType} form)` +
       (dashboardNote ? `\n${dashboardNote}` : "");
 
-    const html =
-      `<h2>${esc(label)} — ${esc(SITE.name)}</h2>` +
-      `<table cellpadding="6" style="border-collapse:collapse;font-family:system-ui,-apple-system,sans-serif;font-size:14px">` +
-      rows
-        .map(
-          (r) =>
-            `<tr>` +
-            `<td style="border:1px solid #ddd;font-weight:700;vertical-align:top">${esc(r.key)}</td>` +
-            `<td style="border:1px solid #ddd;white-space:pre-wrap">${esc(r.value)}</td>` +
-            `</tr>`
-        )
-        .join("") +
-      `</table>` +
-      (dashboardNote && enquiryId
-        ? `<p style="margin-top:14px"><a href="${esc(abs(`/admin/reply-enquiry/?id=${encodeURIComponent(enquiryId)}`))}" style="display:inline-block;background:${esc(
-            SITE.primaryColor
-          )};color:#fff;text-decoration:none;font-weight:700;font-size:13px;padding:10px 18px;border-radius:8px">Reply in Dashboard →</a></p>`
-        : "") +
-      `<p style="color:#888;font-size:12px">Sent from ${esc(SITE.domain)} (${esc(formType)} form)</p>`;
+    // Message body (if the form has one) reads best as a full-width block;
+    // the remaining short fields render as clean label/value rows.
+    const messageField = rows.find((r) => r.key.toLowerCase() === "message");
+    const detailRows = rows.filter((r) => r.key.toLowerCase() !== "message");
+
+    const emailRows: EmailRow[] = [
+      { label: "Enquiry", heading: true },
+      ...detailRows.map((r) => ({ label: r.key, value: r.value })),
+      ...(messageField
+        ? ([
+            { label: "Message", heading: true },
+            { label: "", value: messageField.value, block: true },
+          ] as EmailRow[])
+        : []),
+    ];
+
+    const html = buildEmailHtml({
+      title: label,
+      intro: `A new ${label.toLowerCase()} came in via ${SITE.domain}.`,
+      rows: emailRows,
+      cta:
+        dashboardNote && enquiryId
+          ? { label: "Reply in Dashboard →", url: abs(`/admin/reply-enquiry/?id=${encodeURIComponent(enquiryId)}`) }
+          : undefined,
+      secondaryCta: submitterEmail
+        ? { label: "Reply by Email", url: `mailto:${submitterEmail}?subject=${encodeURIComponent(`Re: ${label}`)}` }
+        : undefined,
+      footer: `${SITE.name} — ${SITE.domain} (${formType} form)`,
+    });
 
     // Pre-launch / preview fallback: no SMTP env vars → don't fail the form.
     if (!smtpConfigured) {

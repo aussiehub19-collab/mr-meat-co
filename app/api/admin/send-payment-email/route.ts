@@ -37,7 +37,8 @@ export async function POST(request: NextRequest) {
       rows: [
         { label: "Amount Due", value: `$${Number(body.amountDue || 0).toFixed(2)} AUD`, highlight: true },
         ...(body.paymentMethod ? [{ label: "Payment Method", value: body.paymentMethod }] : []),
-        { label: "How to pay", html: body.instructions.replace(/\n/g, "<br>") },
+        { label: "How to Pay", heading: true },
+        { label: "", html: body.instructions.replace(/\n/g, "<br>"), block: true },
       ],
       afterRows: paymentTermsHtml({
         orderNumber: body.orderNumber,

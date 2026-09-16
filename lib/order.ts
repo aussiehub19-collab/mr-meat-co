@@ -83,8 +83,8 @@ export function paymentTermsLines(opts: PaymentTermsOptions): string[] {
 /** Same content as paymentTermsLines(), as an HTML bullet list with a
  *  clickable mailto: and WhatsApp link — for the actual outbound email
  *  (lib/emailTemplate.ts's EmailRow.html), which needs real markup rather
- *  than escaped plain text. Colours are solid hex (no rgba) to match the
- *  rest of the dark email theme reliably across clients. */
+ *  than escaped plain text. Colours match the dark-card email theme
+ *  (light body text, bright red accent) — see lib/emailTemplate.ts. */
 export function paymentTermsHtml(opts: PaymentTermsOptions): string {
   const points = [
     "Complete payment within <strong>48 hours</strong> to confirm this order.",

@@ -92,14 +92,14 @@ export function paymentTermsHtml(opts: PaymentTermsOptions): string {
   ];
   if (opts.showOskoNote) {
     points.push(
-      '<strong style="color:#EF4444">Use Osko / PayID transfer</strong> where possible — it clears instantly, so your order is confirmed fastest.'
+      '<strong style="color:#B91C1C">Use Osko / PayID transfer</strong> where possible — it clears instantly, so your order is confirmed fastest.'
     );
   }
   points.push("Cold-chain refrigerated delivery across NSW, frozen express courier nationwide, once payment clears.");
   points.push(
-    `Once paid, send a screenshot of the completed payment to <a href="mailto:${escapeHtml(opts.contactEmail)}" style="color:#EF4444;font-weight:700;text-decoration:underline">${escapeHtml(opts.contactEmail)}</a> or WhatsApp <a href="${escapeHtml(opts.whatsappLink)}" style="color:#EF4444;font-weight:700;text-decoration:underline">${escapeHtml(opts.whatsapp)}</a> for confirmation.`
+    `Once paid, send a screenshot of the completed payment to <a href="mailto:${escapeHtml(opts.contactEmail)}" style="color:#B91C1C;font-weight:700;text-decoration:underline">${escapeHtml(opts.contactEmail)}</a> or WhatsApp <a href="${escapeHtml(opts.whatsappLink)}" style="color:#B91C1C;font-weight:700;text-decoration:underline">${escapeHtml(opts.whatsapp)}</a> for confirmation.`
   );
-  return `<ul style="margin:0;padding-left:18px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:13px;line-height:1.7;color:#D1CBC5">${points
+  return `<ul style="margin:0;padding-left:18px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:13px;line-height:1.7;color:#4B4F56">${points
     .map((p) => `<li style="margin-bottom:6px">${p}</li>`)
     .join("")}</ul>`;
 }

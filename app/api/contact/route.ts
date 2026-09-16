@@ -96,7 +96,9 @@ export async function POST(req: NextRequest) {
       }
     }
 
-    const dashboardNote = enquiryId ? `Reply in Dashboard: ${abs(`/admin/enquiries/`)}` : null;
+    const dashboardNote = enquiryId
+      ? `Reply in Dashboard: ${abs(`/admin/reply-enquiry/?id=${encodeURIComponent(enquiryId)}`)}`
+      : null;
 
     const subject =
       (typeof data.subject === "string" && data.subject.trim()) ||
@@ -121,8 +123,8 @@ export async function POST(req: NextRequest) {
         )
         .join("") +
       `</table>` +
-      (dashboardNote
-        ? `<p style="margin-top:14px"><a href="${esc(abs(`/admin/enquiries/`))}" style="display:inline-block;background:${esc(
+      (dashboardNote && enquiryId
+        ? `<p style="margin-top:14px"><a href="${esc(abs(`/admin/reply-enquiry/?id=${encodeURIComponent(enquiryId)}`))}" style="display:inline-block;background:${esc(
             SITE.primaryColor
           )};color:#fff;text-decoration:none;font-weight:700;font-size:13px;padding:10px 18px;border-radius:8px">Reply in Dashboard →</a></p>`
         : "") +

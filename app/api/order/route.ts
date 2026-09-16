@@ -96,7 +96,7 @@ export async function POST(req: NextRequest) {
         { label: "Amount Due", value: `$${order.amountDue.toFixed(2)} AUD`, highlight: true },
       ],
       cta: saved
-        ? { label: "Reply in Dashboard →", url: abs(`/admin/orders/`) }
+        ? { label: "Reply in Dashboard →", url: abs(`/admin/send-payment-email/?id=${encodeURIComponent(order.orderNumber)}`) }
         : undefined,
       footer: `${SITE.name} order notification — ${SITE.domain}`,
     });
@@ -105,8 +105,16 @@ export async function POST(req: NextRequest) {
       ? buildEmailHtml({
           title: "We've received your order",
           refBadge: order.orderNumber,
-          intro: `Thanks, ${order.customerName} — this confirms we've received your order. Please wait for a second email from us shortly with payment details, to confirm and complete your order.`,
-          rows: [{ label: "Amount Due", value: `$${order.amountDue.toFixed(2)} AUD`, highlight: true }],
+          intro: `Thanks, ${order.customerName} — this confirms we've received your order. Keep this email as your reference. You'll receive a second email shortly with payment details; once that's confirmed we'll finalise your order for dispatch.`,
+          rows: [
+            { label: "Order", heading: true },
+            ...itemRows,
+            ...(order.notes ? [{ label: "Notes", value: order.notes }] : []),
+            { label: "Subtotal", value: `$${order.subtotal.toFixed(2)} AUD` },
+            { label: "Payment Method", value: order.paymentMethod },
+            ...(order.address ? [{ label: "Delivering To", value: order.address }] : []),
+            { label: "Amount Due", value: `$${order.amountDue.toFixed(2)} AUD`, highlight: true },
+          ],
           secondaryCta: {
             label: "Contact Us",
             url: `mailto:${FORMS.contactEmail}?subject=${encodeURIComponent(`Order ${order.orderNumber}`)}`,

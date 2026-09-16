@@ -113,8 +113,6 @@ export function buildEmailHtml(opts: {
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="color-scheme" content="dark">
-<meta name="supported-color-schemes" content="dark">
 <title>${escapeHtml(opts.title)}</title>
 </head>
 <body style="margin:0;padding:0;background-color:${PAGE_BG}">

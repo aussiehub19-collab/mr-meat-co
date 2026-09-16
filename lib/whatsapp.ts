@@ -1,5 +1,4 @@
 import { SITE, CONTACT } from "@/config/site";
-import { paymentTermsLines } from "./order";
 
 /** Bold site name — prepended to every WhatsApp message, either direction. */
 export const WA_HEADER = `*${SITE.name}*`;
@@ -57,11 +56,23 @@ export function waOrderLink(
   return waLink(body);
 }
 
-/** Admin → customer: payment details for a specific order. */
+/** wa.me link pre-filled to open a payment-confirmation chat for a specific
+ *  order — used wherever a customer is asked to send their payment
+ *  screenshot via WhatsApp (payment-details email/message). */
+export function waPaymentConfirmationLink(orderNumber: string): string {
+  return waLink([`Hi, here's my payment confirmation for order ${orderNumber}.`]);
+}
+
+/** Admin → customer: payment details for a specific order. `termsLines`
+ *  comes from lib/order.ts#paymentTermsLines — passed in rather than
+ *  imported here to avoid a circular import (lib/order.ts's HTML variant
+ *  doesn't depend on this file, but keeping the dependency one-directional
+ *  either way makes it easier to reason about). */
 export function waPaymentDetailsMessage(opts: {
   orderNumber: string;
   amountDue: number;
   instructions: string;
+  termsLines: string[];
 }): string[] {
   return [
     `Thanks for your order ${opts.orderNumber}!`,
@@ -70,13 +81,13 @@ export function waPaymentDetailsMessage(opts: {
     "",
     opts.instructions,
     "",
-    ...paymentTermsLines().map((l) => `✅ ${l}`),
+    ...opts.termsLines.map((l) => `✅ ${l}`),
   ];
 }
 
 export function waPaymentDetailsLink(
   phone: string,
-  opts: { orderNumber: string; amountDue: number; instructions: string }
+  opts: { orderNumber: string; amountDue: number; instructions: string; termsLines: string[] }
 ): string {
   return waLinkTo(phone, waPaymentDetailsMessage(opts));
 }

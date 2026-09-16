@@ -73,10 +73,14 @@ export async function POST(req: NextRequest) {
       console.error("[order] order store not configured (Upstash Redis env vars missing) — order not saved to dashboard.");
     }
 
-    const itemRows: EmailRow[] = order.items.map((i) => ({
-      label: `${i.name} × ${i.quantity}`,
-      value: `$${(i.price * i.quantity).toFixed(2)} AUD`,
-    }));
+    const itemRows: EmailRow[] = order.items.map((i) => {
+      const lineTotal = i.price * i.quantity;
+      const each = i.quantity > 1 ? ` ($${i.price.toFixed(2)} ea)` : "";
+      return {
+        label: `${i.quantity} × ${i.name}`,
+        value: `$${lineTotal.toFixed(2)} AUD${each}`,
+      };
+    });
 
     const adminHtml = buildEmailHtml({
       title: "New order",
@@ -88,9 +92,10 @@ export async function POST(req: NextRequest) {
         ...(order.customerEmail ? [{ label: "Email", value: order.customerEmail }] : []),
         ...(order.customerPhone ? [{ label: "Phone", value: order.customerPhone }] : []),
         ...(order.address ? [{ label: "Address", value: order.address }] : []),
-        { label: "Order", heading: true },
+        { label: "Items", heading: true },
         ...itemRows,
         ...(order.notes ? [{ label: "Notes", value: order.notes }] : []),
+        { label: "Summary", heading: true },
         { label: "Subtotal", value: `$${order.subtotal.toFixed(2)} AUD` },
         { label: "Payment Method", value: order.paymentMethod },
         { label: "Amount Due", value: `$${order.amountDue.toFixed(2)} AUD`, highlight: true },
@@ -107,9 +112,10 @@ export async function POST(req: NextRequest) {
           refBadge: order.orderNumber,
           intro: `Thanks, ${order.customerName} — this confirms we've received your order. Keep this email as your reference. You'll receive a second email shortly with payment details; once that's confirmed we'll finalise your order for dispatch.`,
           rows: [
-            { label: "Order", heading: true },
+            { label: "Items", heading: true },
             ...itemRows,
             ...(order.notes ? [{ label: "Notes", value: order.notes }] : []),
+            { label: "Summary", heading: true },
             { label: "Subtotal", value: `$${order.subtotal.toFixed(2)} AUD` },
             { label: "Payment Method", value: order.paymentMethod },
             ...(order.address ? [{ label: "Delivering To", value: order.address }] : []),

@@ -279,7 +279,7 @@ export default function HomePage() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {POSTS.map((post) => (
+          {POSTS.slice(0, 3).map((post) => (
             <Link
               key={post.slug}
               href={`/blog/${post.slug}/`}

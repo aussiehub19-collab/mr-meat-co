@@ -22,7 +22,8 @@ Never hand-edit generated files (`llms.txt`, `.well-known/*`, `vercel.json`) —
 
 ## Live Placeholders
 - Domain: `mrmeatandco.com.au` — registered, DNS on Vercel, live and serving. `SITE.domain` + all agent files use the apex.
-- Forms: Zoho SMTP via `/api/contact` (nodemailer). Credentials are Vercel env vars only: `EMAIL_SERVER_HOST/PORT/SECURE/USER/PASSWORD`, `EMAIL_FROM`. If unset, the route simulates success and forms still redirect to their thank-you page (no email).
+- Forms: Zoho SMTP via `/api/contact` and `/api/order` (nodemailer, `lib/mailer.ts`). Credentials are Vercel env vars only: `EMAIL_SERVER_HOST/PORT/SECURE/USER/PASSWORD`, `EMAIL_FROM`. If unset, the routes simulate success and forms still redirect to their thank-you page (no email).
+- Reply Portal (`/admin/orders/`, `/admin/enquiries/`, `/admin/send-payment-email/`, `/admin/reply-enquiry/`): passcode-gated dashboard backed by Upstash Redis. Needs two more Vercel env vars: `ADMIN_PASSCODE` (server-only — gates `/api/admin/*` via the `X-Admin-Passcode` header, never sent to the browser) and `UPSTASH_REDIS_REST_URL` + `UPSTASH_REDIS_REST_TOKEN` (Vercel → Storage tab → Create Database). Without Redis configured, orders/enquiries still email through as before — they just don't appear in the dashboard.
 - GSC: verified as a Domain property via DNS TXT at the registrar (no HTML meta tag needed). `SITE.gscVerification` stays `"pending"` intentionally — a meta-tag verification code would be a different value and isn't required for a Domain property.
 
 ## Brand Facts

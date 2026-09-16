@@ -2,45 +2,58 @@ User-agent: *
 Disallow: /thank-you-contact/
 Disallow: /thank-you-order/
 Disallow: /thank-you-wholesale/
+Disallow: /admin/
 Sitemap: https://mrmeatandco.com.au/sitemap.xml
 
 Content-Signal: search=yes, ai-input=yes, ai-train=no
 
 # AI crawlers — welcome to index product and content pages
 User-agent: GPTBot
+Disallow: /admin/
 Allow: /
 
 User-agent: ChatGPT-User
+Disallow: /admin/
 Allow: /
 
 User-agent: ClaudeBot
+Disallow: /admin/
 Allow: /
 
 User-agent: Claude-Web
+Disallow: /admin/
 Allow: /
 
 User-agent: PerplexityBot
+Disallow: /admin/
 Allow: /
 
 User-agent: Applebot
+Disallow: /admin/
 Allow: /
 
 User-agent: Amazonbot
+Disallow: /admin/
 Allow: /
 
 User-agent: Bytespider
+Disallow: /admin/
 Allow: /
 
 User-agent: CCBot
+Disallow: /admin/
 Allow: /
 
 User-agent: Google-Extended
+Disallow: /admin/
 Allow: /
 
 User-agent: Meta-ExternalAgent
+Disallow: /admin/
 Allow: /
 
 User-agent: cohere-ai
+Disallow: /admin/
 Allow: /
 
 # Agent-readable resources

@@ -50,6 +50,21 @@ export default function CheckoutPage() {
 
   const finalTotal = paymentOption === 'crypto' ? Math.max(0, subtotal - cryptoDiscountAmount) : subtotal;
 
+  // Shared order payload saved to the reply-portal dashboard (Upstash) and
+  // emailed to the admin, regardless of which checkout channel is used.
+  const buildOrderPayload = (channel: 'whatsapp' | 'email') => ({
+    customerName: fullName,
+    customerEmail: email || undefined,
+    customerPhone: phone || undefined,
+    address: `${address}, ${suburb} ${postcode}`,
+    items: cart.map((i) => ({ name: i.name, quantity: i.quantity, price: i.price })),
+    subtotal,
+    amountDue: finalTotal,
+    paymentMethod: paymentOption.toUpperCase(),
+    notes: deliveryNotes || undefined,
+    channel,
+  });
+
   // Handle WhatsApp Checkout
   const handleWhatsAppCheckout = (e: React.FormEvent) => {
     e.preventDefault();
@@ -77,7 +92,18 @@ export default function CheckoutPage() {
       `Please confirm receipt and send PayID / Bank / Crypto invoice for delivery. Thank you!`;
 
     const url = `https://wa.me/${CONTACT.whatsapp.replace(/[^\d]/g, '')}?text=${encodeURIComponent(msg)}`;
+    // Open synchronously, before any await — pop-up blockers trigger on awaited opens.
     window.open(url, '_blank');
+
+    // Fire-and-forget: save to the dashboard + notify admin by email.
+    fetch('/api/order', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(buildOrderPayload('whatsapp')),
+    }).catch(() => {});
+
+    clearCart();
+    window.location.href = '/thank-you-order/';
   };
 
   // Handle Web/Email Form Submission
@@ -86,35 +112,16 @@ export default function CheckoutPage() {
     if (!isMinOrderMet) return;
 
     setIsSubmitting(true);
-
-    const itemsList = cart
-      .map((i) => `${i.name} (${i.quantity}x) - $${(i.price * i.quantity).toFixed(2)} AUD`)
-      .join('\n');
-
-    const orderData = {
-      formType: 'order',
-      subject: `New Meat Order - ${fullName || 'Customer'} - $${finalTotal.toFixed(2)} AUD`,
-      from_name: `${SITE.name} Checkout`,
-      name: fullName,
-      phone,
-      email,
-      address: `${address}, ${suburb} ${postcode}`,
-      payment_method: paymentOption.toUpperCase(),
-      subtotal: `$${subtotal.toFixed(2)} AUD`,
-      total: `$${finalTotal.toFixed(2)} AUD`,
-      items: itemsList,
-      notes: deliveryNotes,
-    };
-
     try {
-      await fetch('/api/contact', {
+      await fetch('/api/order', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(orderData),
+        body: JSON.stringify(buildOrderPayload('email')),
       });
     } catch {
       // Redirect to the thank-you page regardless — order details also go via WhatsApp.
     }
+    clearCart();
     setIsSubmitting(false);
     window.location.href = '/thank-you-order/';
   };

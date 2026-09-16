@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import nodemailer from "nodemailer";
-import { FORMS, SITE } from "@/config/site";
+import { FORMS, SITE, abs } from "@/config/site";
+import { generateEnquiryId, saveEnquiry, isEnquiryStoreConfigured, type EnquiryType } from "@/lib/enquiryStore";
 
 // nodemailer needs the Node.js runtime (not edge).
 export const runtime = "nodejs";
@@ -69,6 +70,34 @@ export async function POST(req: NextRequest) {
       .filter(([k, v]) => !HIDDEN.has(k) && v != null && String(v).trim() !== "")
       .map(([k, v]) => ({ key: titleCase(k), value: String(v) }));
 
+    // Persist contact/wholesale/bulk enquiries to the reply-portal dashboard
+    // (order enquiries go through /api/order instead). Best-effort — a store
+    // failure never blocks the email from sending.
+    let enquiryId: string | null = null;
+    if (formType !== "order" && isEnquiryStoreConfigured()) {
+      try {
+        enquiryId = generateEnquiryId();
+        await saveEnquiry({
+          id: enquiryId,
+          type: formType as EnquiryType,
+          name: (typeof data.name === "string" && data.name) || "Unknown",
+          email: submitterEmail,
+          phone: typeof data.phone === "string" ? data.phone : undefined,
+          message:
+            (typeof data.message === "string" && data.message) ||
+            rows.map((r) => `${r.key}: ${r.value}`).join("\n"),
+          meta: Object.fromEntries(rows.map((r) => [r.key, r.value])),
+          status: "new",
+          createdAt: new Date().toISOString(),
+        });
+      } catch (e) {
+        console.error("[contact] failed to save enquiry to dashboard:", (e as Error)?.message);
+        enquiryId = null;
+      }
+    }
+
+    const dashboardNote = enquiryId ? `Reply in Dashboard: ${abs(`/admin/enquiries/`)}` : null;
+
     const subject =
       (typeof data.subject === "string" && data.subject.trim()) ||
       `${label} — ${SITE.name}`;
@@ -76,7 +105,8 @@ export async function POST(req: NextRequest) {
     const text =
       `${label} — ${SITE.name}\n\n` +
       rows.map((r) => `${r.key}: ${r.value}`).join("\n") +
-      `\n\n— Sent from ${SITE.domain} (${formType} form)`;
+      `\n\n— Sent from ${SITE.domain} (${formType} form)` +
+      (dashboardNote ? `\n${dashboardNote}` : "");
 
     const html =
       `<h2>${esc(label)} — ${esc(SITE.name)}</h2>` +
@@ -91,6 +121,11 @@ export async function POST(req: NextRequest) {
         )
         .join("") +
       `</table>` +
+      (dashboardNote
+        ? `<p style="margin-top:14px"><a href="${esc(abs(`/admin/enquiries/`))}" style="display:inline-block;background:${esc(
+            SITE.primaryColor
+          )};color:#fff;text-decoration:none;font-weight:700;font-size:13px;padding:10px 18px;border-radius:8px">Reply in Dashboard →</a></p>`
+        : "") +
       `<p style="color:#888;font-size:12px">Sent from ${esc(SITE.domain)} (${esc(formType)} form)</p>`;
 
     // Pre-launch / preview fallback: no SMTP env vars → don't fail the form.

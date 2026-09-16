@@ -6,13 +6,14 @@ export const config = {
     /*
      * Match all request paths except for the ones starting with:
      * - api (API routes)
+     * - admin (passcode-gated reply-portal dashboard — never public content)
      * - _next/static (static files)
      * - _next/image (image optimization files)
      * - favicon.ico (favicon file)
      * - images/
      * - .well-known/
      */
-    '/((?!api|_next/static|_next/image|favicon.ico|images|\.well-known).*)',
+    '/((?!api|admin|_next/static|_next/image|favicon.ico|images|\.well-known).*)',
   ],
 };
 
